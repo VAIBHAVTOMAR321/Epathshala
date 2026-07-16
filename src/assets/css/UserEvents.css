@@ -1,0 +1,57 @@
+.event-title {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.event-subtitle {
+  font-size: 10px;
+}
+
+.event-meta {
+  font-size: 10px;
+}
+
+.event-badge {
+  font-size: 10px;
+}
+
+.event-btn {
+  font-size: 10px;
+  padding: 4px 8px;
+}
+
+.event-heading {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.event-card-container {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.event-tabs .nav-link.active {
+  background: hsl(240deg 48.17% 70.51%) !important;
+  color: white !important;
+  border-color: hsl(240deg 48.17% 70.51%) !important;
+  font-weight: 600;
+}
+
+.event-tabs .nav-link {
+  font-size: 10px;
+}
+
+.event-modal-header {
+  background: linear-gradient(135deg, rgb(94 117 223), rgb(75 101 218));
+  color: white;
+  border: none;
+}
+
+.event-load-more {
+  font-size: 10px;
+}
+
+.event-pagination {
+  font-size: 10px;
+}

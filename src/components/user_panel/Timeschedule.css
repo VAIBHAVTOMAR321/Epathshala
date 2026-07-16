@@ -1,0 +1,140 @@
+.timetable-card {
+  min-height: 100%;
+}
+
+.timetable-wrapper {
+  overflow-x: auto;
+}
+
+.timetable-grid {
+  min-width: 860px;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+.timetable-grid thead th {
+  background: #f4f7ff;
+  font-weight: 700;
+  border-bottom: 2px solid #dee2e6;
+  padding: 14px 16px;
+}
+
+.time-header {
+  width: 120px;
+  background: #eef2ff;
+}
+
+.time-cell {
+  font-weight: 600;
+  background: #f8f9ff;
+  padding: 16px;
+  vertical-align: middle;
+}
+
+.schedule-cell {
+  min-height: 140px;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px dashed #dee2e6;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.schedule-cell:hover {
+  background: #f8faff;
+}
+
+.cell-drop-zone {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-card {
+  cursor: grab;
+  border-radius: 12px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.task-card:active {
+  cursor: grabbing;
+}
+
+.task-title {
+  font-size: 0.95rem;
+}
+
+.task-badge {
+  font-size: 0.72rem;
+  padding: 0.55em 0.65em;
+}
+
+.task-actions button {
+  flex: 1;
+}
+
+.empty-slot-text {
+  color: #6c757d;
+  font-size: 0.9rem;
+  min-height: 64px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.form-card {
+  min-height: 100%;
+}
+
+.profile-loading {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.info-card {
+  border-radius: 16px;
+}
+
+.timeline-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.timeline-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(112, 122, 234, 0.12);
+  color: #495057;
+}
+
+.timeline-list li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 992px) {
+  .timetable-grid {
+    min-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .timetable-grid {
+    min-width: 540px;
+  }
+
+  .task-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .timetable-grid {
+    min-width: 460px;
+  }
+
+  .time-cell,
+  .timetable-grid thead th {
+    padding: 10px 12px;
+  }
+}

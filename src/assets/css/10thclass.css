@@ -1,0 +1,269 @@
+/* UserSettings.css - Custom styles for UserSettings page */
+
+/* Tab Navigation Styles */
+#streams-tabs .nav-tabs {
+    border-bottom: 2px solid #e9ecef;
+    margin-bottom: 1.5rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#streams-tabs .nav-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+#streams-tabs .nav-tabs .nav-link {
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #6c757d;
+    font-weight: 500;
+    padding: 1rem 1.5rem;
+    margin-bottom: -2px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    position: relative;
+    border-radius: 8px 8px 0 0;
+    margin-right: 0.25rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#streams-tabs .nav-tabs .nav-link:hover {
+    color: #495057;
+    border-bottom-color: #dee2e6;
+    background: #e9ecef;
+}
+
+#streams-tabs .nav-tabs .nav-link.active {
+    color: #fff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-bottom: 3px solid transparent;
+    font-weight: 600;
+}
+
+#streams-tabs .nav-tabs .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2px 2px 0 0;
+}
+
+#streams-tabs .nav-tabs .nav-link svg {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Tab Content Styles */
+#streams-tabs .tab-content {
+    padding: 1rem 0;
+}
+
+#streams-tabs .tab-pane {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stream Selection Card Styles */
+.stream-selection-card {
+    transition: all 0.3s ease;
+    border: 2px solid #dee2e6 !important;
+    text-align: center !important;
+}
+
+.stream-selection-card h6,
+.stream-selection-card small {
+    text-align: center !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stream-selection-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+    border-color: #667eea !important;
+}
+
+.stream-selection-card.selected {
+    border-color: #667eea !important;
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8ecff 100%) !important;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2) !important;
+}
+
+.stream-icon-large {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 auto;
+}
+
+/* Course Card Styles */
+.course-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef !important;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+    border-color: #667eea !important;
+}
+
+.course-icon-large {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1.25rem;
+}
+
+/* Percentage Input Styles */
+.percentage-input-wrapper {
+    position: relative;
+}
+
+.percentage-input-large {
+    padding: 1rem 3rem 1rem 1rem;
+    font-size: 12px;
+    border-radius: 10px;
+    border: 2px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+.percentage-input-large:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.percentage-icon-large {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    font-size: 1.25rem;
+}
+
+/* Notifications Header Card */
+.notifications-header-card {
+  background: linear-gradient(135deg, rgb(94, 117, 223), rgb(230, 101, 10)) !important;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+    color: #fff !important;
+}
+
+.notifications-header-card h3 {
+    color: #fff !important;
+}
+
+.notifications-header-card p {
+    color: #fff !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #streams-tabs .nav-tabs .nav-link {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .stream-icon-large {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+
+    .course-icon-large {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .percentage-input-large {
+        padding: 0.75rem 2.5rem 0.75rem 0.75rem;
+        font-size: 1rem;
+    }
+
+    .notifications-header-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .notifications-header-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    #streams-tabs .nav-tabs .nav-link {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    #streams-tabs .nav-tabs .nav-link svg {
+        margin-right: 0.25rem;
+        font-size: 0.9rem;
+    }
+
+    .stream-icon-large {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .course-icon-large {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+
+    .percentage-input-large {
+        padding: 0.6rem 2rem 0.6rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .notifications-header-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .notifications-header-card p {
+        font-size: 0.85rem;
+    }
+
+    .stream-selection-card h6 {
+        font-size: 0.9rem;
+    }
+
+    .course-card h6 {
+        font-size: 0.9rem;
+    }
+
+    .course-card p {
+        font-size: 0.85rem;
+    }
+}

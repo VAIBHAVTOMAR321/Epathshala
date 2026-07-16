@@ -1,0 +1,255 @@
+.competition-container {
+  padding: 20px;
+}
+
+.competition-heading {
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.competition-card {
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.competition-card-title {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.competition-card-desc {
+  font-size: 10px;
+  color: #6c757d;
+  margin-bottom: 4px;
+}
+
+.competition-meta {
+  font-size: 12px;
+  color: #6c757d;
+  margin-bottom: 4px;
+}
+
+.competition-badge {
+  font-size: 12px;
+}
+
+.competition-rank-link {
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.competition-btn-start {
+  background: linear-gradient(135deg, rgb(94 117 223), rgb(75 101 218));
+  border: none;
+  font-size: 10px;
+  padding: 8px 12px;
+}
+
+.competition-btn-completed {
+  font-size: 10px;
+  padding: 8px 12px;
+}
+
+.competition-btn-back {
+  font-size: 10px;
+  padding: 6px 12px;
+}
+
+.competition-header {
+  margin-bottom: 12px;
+}
+
+.competition-title {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.competition-timer {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.competition-timer-active {
+  color: rgb(94 117 223);
+}
+
+.competition-timer-warning {
+  color: #dc3545;
+}
+
+.competition-question-num {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.competition-question-text {
+  font-weight: 500;
+  font-size: 10px;
+}
+
+.competition-question-hindi {
+  font-weight: 400;
+  font-size: 10px;
+}
+
+.competition-option-btn {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.competition-option-btn-selected {
+  background: linear-gradient(135deg, rgb(94 117 223), rgb(75 101 218));
+  border-color: rgb(94 117 223);
+  color: #ffffff;
+}
+
+.competition-option-btn-default {
+  background: #ffffff;
+  border-color: #e0e0e0;
+  color: #333333;
+}
+
+.competition-option-letter {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.competition-btn-prev {
+  min-width: 100px;
+  font-weight: 600;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.competition-btn-next {
+  min-width: 100px;
+  font-weight: 600;
+  padding: 8px 16px;
+  font-size: 10px;
+  background: linear-gradient(135deg, rgb(94 117 223), rgb(75 101 218));
+  border: none;
+}
+
+.competition-btn-submit {
+  min-width: 100px;
+  font-weight: 600;
+  padding: 8px 16px;
+  font-size: 10px;
+  background: linear-gradient(135deg, rgb(34 197 94), rgb(34 197 94));
+  border: none;
+}
+
+.competition-result-container {
+  padding: 20px 0;
+}
+
+.competition-result-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.competition-result-title {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.competition-result-score {
+  font-size: 10px;
+  color: #6c757d;
+  margin-bottom: 12px;
+}
+
+.competition-result-correct {
+  font-size: 12px;
+  color: #0d6efd;
+  margin-bottom: 4px;
+}
+
+.competition-result-wrong {
+  font-size: 12px;
+  color: #dc3545;
+  margin-bottom: 4px;
+}
+
+.competition-result-label {
+  font-size: 10px;
+  color: #6c757d;
+}
+
+.competition-result-percentage {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.competition-result-percentage-pass {
+  color: #28a745;
+}
+
+.competition-result-percentage-fail {
+  color: #dc3545;
+}
+
+.competition-btn-view-wrong {
+  font-size: 10px;
+  padding: 6px 12px;
+}
+
+.competition-btn-back-result {
+  font-size: 10px;
+  padding: 6px 12px;
+}
+
+.competition-card-body {
+  padding: 12px;
+}
+
+.competition-options {
+  margin-bottom: 16px;
+}
+
+.competition-option-item {
+  margin-bottom: 8px;
+}
+
+.competition-nav-buttons {
+  margin-top: 12px;
+}
+
+.competition-school-rank-card {
+  border-left: 4px solid #dee2e6;
+}
+
+.competition-school-rank-gold {
+  border-left: 4px solid #FFD700;
+}
+
+.competition-school-rank-silver {
+  border-left: 4px solid #C0C0C0;
+}
+
+.competition-school-rank-bronze {
+  border-left: 4px solid #CD7F32;
+}
+
+.competition-student-rank-card {
+  border-left: 4px solid #dee2e6;
+}
+
+.competition-student-rank-gold {
+  border-left: 4px solid #FFD700;
+}
+
+.competition-student-rank-silver {
+  border-left: 4px solid #C0C0C0;
+}
+
+.competition-student-rank-bronze {
+  border-left: 4px solid #CD7F32;
+}

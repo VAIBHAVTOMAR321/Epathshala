@@ -1,0 +1,180 @@
+/* 9th Grade Guidance Styles */
+
+#ninth-tabs .nav-tabs {
+    border-bottom: 2px solid #e9ecef;
+    margin-bottom: 1.5rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#ninth-tabs .nav-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+#ninth-tabs .nav-tabs .nav-link {
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #6c757d;
+    font-weight: 500;
+    padding: 1rem 1.5rem;
+    margin-bottom: -2px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    position: relative;
+    border-radius: 8px 8px 0 0;
+    margin-right: 0.25rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#ninth-tabs .nav-tabs .nav-link:hover {
+    color: #495057;
+    border-bottom-color: #dee2e6;
+    background: #e9ecef;
+}
+
+#ninth-tabs .nav-tabs .nav-link.active {
+    color: #fff;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border-bottom: 3px solid transparent;
+    font-weight: 600;
+}
+
+#ninth-tabs .nav-tabs .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #fff;
+    border-radius: 3px 3px 0 0;
+}
+
+/* Foundation Plan Cards */
+.course-icon-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    font-size: 1rem;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid #28a745;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0.25rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #28a745;
+    border: 2px solid white;
+}
+
+/* Development Areas Grid */
+.development-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Focus Areas */
+.focus-highlight {
+    background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Importance Badges */
+.importance-high {
+    background: #28a745 !important;
+}
+
+.importance-medium {
+    background: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.importance-low {
+    background: #fd7e14 !important;
+}
+
+/* Foundation Subject Cards */
+.foundation-subject-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.foundation-subject-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(40, 167, 69, 0.15);
+}
+
+/* Study Tips List */
+.study-tips-list li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.study-tips-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .course-icon-small {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .foundation-subject-card h6 {
+        font-size: 1rem;
+    }
+    
+    .foundation-subject-card p {
+        font-size: 0.875rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .foundation-subject-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+    
+    .timeline-item {
+        border-left-color: #333 !important;
+    }
+    
+    .timeline-item::before {
+        background: #333 !important;
+    }
+}
