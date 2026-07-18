@@ -23,7 +23,7 @@ const Login = () => {
 
   const content = {
     en: {
-      title: "Epathshala",
+      title: "gyandhara",
       subtitle: "Skill Today, Empower Tomorrow",
       welcome: "Welcome Back!",
       welcomeSub: "Continue your learning journey",
@@ -61,7 +61,7 @@ const Login = () => {
       }
     },
     hi: {
-      title: "Epathshala",
+      title: "gyandhara",
       subtitle: "करियर बनाना, भविष्य संवारना",
       welcome: "आपका स्वागत है!",
       welcomeSub: "अपनी सीखने की यात्रा जारी रखें",
@@ -155,7 +155,7 @@ const Login = () => {
       }
 
       const response = await axios.post(
-        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/login/',
+        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/login/',
         payload
       );
 

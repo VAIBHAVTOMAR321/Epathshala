@@ -82,7 +82,7 @@ const UserTest = () => {
 
         console.log('📝 Fetching test for module:', moduleId)
         const response = await axios.post(
-          'https://brjobsedu.com/Epathshala/Epathshala_backend/api/module-test/start/',
+          'https://brjobsedu.com/gyandhara/gyandhara_backend/api/module-test/start/',
           {
             module_id: moduleId,
             student_id: uniqueId
@@ -240,7 +240,7 @@ const UserTest = () => {
       }
 
       console.log('📝 Submitting test:', submissionData)
-      const endpoint = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/submit-test-unpaid/'
+      const endpoint = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/submit-test-unpaid/'
         
       const response = await axios.post(
         endpoint,
@@ -278,7 +278,7 @@ const UserTest = () => {
 
   const generateCertificate = async () => {
     try {
-      const endpoint = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/enrollment-unpaid/'
+      const endpoint = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/enrollment-unpaid/'
         
       const response = await axios.post(
         endpoint,
@@ -298,9 +298,9 @@ const UserTest = () => {
         alert('Certificate generated successfully!')
         
         if (response.data.data && response.data.data.certificate_file) {
-          window.open(`https://brjobsedu.com/Epathshala/Epathshala_backend${response.data.data.certificate_file}`, '_blank')
+          window.open(`https://brjobsedu.com/gyandhara/gyandhara_backend${response.data.data.certificate_file}`, '_blank')
         } else {
-          const coursesEndpoint = `https://brjobsedu.com/Epathshala/Epathshala_backend/api/enrollment-unpaid/?student_id=${uniqueId}`
+          const coursesEndpoint = `https://brjobsedu.com/gyandhara/gyandhara_backend/api/enrollment-unpaid/?student_id=${uniqueId}`
             
           const coursesResponse = await axios.get(
             coursesEndpoint,
@@ -318,7 +318,7 @@ const UserTest = () => {
             )
             
             if (updatedCourse && updatedCourse.certificate_file) {
-              window.open(`https://brjobsedu.com/Epathshala/Epathshala_backend${updatedCourse.certificate_file}`, '_blank')
+              window.open(`https://brjobsedu.com/gyandhara/gyandhara_backend${updatedCourse.certificate_file}`, '_blank')
             }
           }
         }

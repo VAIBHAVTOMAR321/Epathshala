@@ -1,17 +1,25 @@
 /* ==========================================
-   ePathshala Navbar Theme
+   gyandhara Navbar Theme
    Blue educational palette matching logo
    ========================================== */
 
 :root {
-  --gd-saffron: #1A5DAD;      /* Primary Royal Blue */
-  --gd-orange: #3DA5D9;       /* Sky Blue */
-  --gd-amber: #F5A623;        /* Golden Amber accent */
-  --gd-deep: #0D3B66;         /* Navy Deep */
-  --gd-warm-white: #F7FBFF;   /* Cool white background */
-  --gd-dark: #0D3B66;         /* Navy text */
-  --gd-text: #2C3E50;         /* Slate text */
-  --gd-text-light: #5A6C7D;   /* Muted text */
+  --gd-saffron: #1A5DAD;
+  /* Primary Royal Blue */
+  --gd-orange: #3DA5D9;
+  /* Sky Blue */
+  --gd-amber: #F5A623;
+  /* Golden Amber accent */
+  --gd-deep: #0D3B66;
+  /* Navy Deep */
+  --gd-warm-white: #F7FBFF;
+  /* Cool white background */
+  --gd-dark: #0D3B66;
+  /* Navy text */
+  --gd-text: #2C3E50;
+  /* Slate text */
+  --gd-text-light: #5A6C7D;
+  /* Muted text */
   --gd-shadow: rgba(26, 93, 173, 0.15);
 }
 
@@ -419,6 +427,7 @@
     opacity: 0;
     transform: translateY(-5px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -429,7 +438,18 @@
   animation: navFadeIn 0.4s ease forwards;
 }
 
-.nav-link-item:nth-child(1) { animation-delay: 0.05s; }
-.nav-link-item:nth-child(2) { animation-delay: 0.1s; }
-.nav-link-item:nth-child(3) { animation-delay: 0.15s; }
-.nav-link-item:nth-child(4) { animation-delay: 0.2s; }
+.nav-link-item:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.nav-link-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.nav-link-item:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.nav-link-item:nth-child(4) {
+  animation-delay: 0.2s;
+}

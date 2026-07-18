@@ -8,8 +8,8 @@ import { useAuth } from '../all_login/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import { FaArrowLeft, FaPlus, FaEdit, FaTrash, FaCalendar, FaClock, FaUsers, FaLink } from 'react-icons/fa'
 
-const API_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/grooming-classes/'
-const PARTICIPATION_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/grooming-participation/'
+const API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/grooming-classes/'
+const PARTICIPATION_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/grooming-participation/'
 
 const ManageGroomingClasses = () => {
   const { accessToken } = useAuth()

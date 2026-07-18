@@ -58,7 +58,7 @@ const GovernmentSchemes = () => {
         setLoading(true)
         
         const response = await axios.get(
-          'https://brjobsedu.com/Epathshala/Epathshala_backend/api/scheme-category-with-schemes/',
+          'https://brjobsedu.com/gyandhara/gyandhara_backend/api/scheme-category-with-schemes/',
           {
             headers: {
               'Authorization': `Bearer ${accessToken}`,
@@ -77,7 +77,7 @@ const GovernmentSchemes = () => {
               const categoryKey = category.scheme_category_id
               schemesMap[categoryKey] = category.schemes.map(scheme => {
                 const imgPath = scheme.scheme_image || ''
-                const imgUrl = imgPath && !imgPath.startsWith('http') ? `https://brjobsedu.com/Epathshala/Epathshala_backend${imgPath}` : imgPath
+                const imgUrl = imgPath && !imgPath.startsWith('http') ? `https://brjobsedu.com/gyandhara/gyandhara_backend${imgPath}` : imgPath
                 return {
                   gov_scheme_id: scheme.gov_scheme_id,
                   title: scheme.title || 'Untitled Scheme',
@@ -150,7 +150,7 @@ const GovernmentSchemes = () => {
 
     return apiCategories.map(category => {
       const iconPath = category.icon || ''
-      const fullPath = iconPath && !iconPath.startsWith('/media') ? iconPath : (iconPath ? `https://brjobsedu.com/Epathshala/Epathshala_backend${iconPath}` : '')
+      const fullPath = iconPath && !iconPath.startsWith('/media') ? iconPath : (iconPath ? `https://brjobsedu.com/gyandhara/gyandhara_backend${iconPath}` : '')
       
       return {
         id: category.scheme_category_id,

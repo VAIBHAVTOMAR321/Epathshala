@@ -18,7 +18,7 @@ function NavBar() {
          <Navbar.Brand as={Link} to="/" className="brand-logo-wrapper">
            <img 
              src={gyandharaLogo} 
-             alt="Gyandhara Logo" 
+             alt="gyandhara Logo" 
              className="navbar-logo"
            />
          </Navbar.Brand>

@@ -8,8 +8,8 @@ import { FaPlus, FaArrowLeft, FaEye, FaEdit, FaTrash, FaLayerGroup, FaCheck } fr
 import AdminLeftNav from './AdminLeftNav'
 import AdminHeader from './AdminHeader'
 
-const API_CATEGORY_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/scheme-category/'
-const API_SCHEME_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/scheme/'
+const API_CATEGORY_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/scheme-category/'
+const API_SCHEME_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/scheme/'
 
 const ManageGovtSchemes = () => {
   const { accessToken } = useAuth()

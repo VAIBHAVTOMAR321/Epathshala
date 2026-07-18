@@ -7,7 +7,7 @@ import SchoolLeftNav from "./SchoolLeftNav";
 import SchoolHeader from "./SchoolHeader";
 import { useLanguage } from "../all_login/LanguageContext";
 
-const API_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/school-issues/';
+const API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-issues/';
 
 const SchoolSendQuery = () => {
   const { language } = useLanguage();
@@ -140,7 +140,7 @@ const SchoolSendQuery = () => {
       // If not in user object, fetch from API
       setSchoolLoading(true);
       try {
-        const response = await fetch(`https://brjobsedu.com/Epathshala/Epathshala_backend/api/school-reg/?school_uni_id=${uniqueId}`, {
+        const response = await fetch(`https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-reg/?school_uni_id=${uniqueId}`, {
           headers: { 'Authorization': `Bearer ${accessToken}` }
         });
         if (response.ok) {

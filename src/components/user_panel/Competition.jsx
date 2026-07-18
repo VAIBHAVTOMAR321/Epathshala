@@ -240,7 +240,7 @@ const Competition = () => {
             'Authorization': `Bearer ${accessToken}`
           }
         }
-        const response = await axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz-competition-items/', config)
+        const response = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-competition-items/', config)
         
         if (response.data.success) {
           setQuizzes(response.data.data || [])
@@ -262,7 +262,7 @@ const Competition = () => {
           }
         }
         const response = await axios.get(
-          `https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz-competition-participants/?student_id=${uniqueId}`,
+          `https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-competition-participants/?student_id=${uniqueId}`,
           config
         )
         
@@ -302,7 +302,7 @@ const Competition = () => {
       for (const quizId of registeredQuizIds) {
         try {
           const response = await axios.get(
-            `https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz/rank/?quiz_id=${quizId}`,
+            `https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz/rank/?quiz_id=${quizId}`,
             config
           )
           
@@ -330,7 +330,7 @@ const Competition = () => {
       for (const quizId of registeredQuizIds) {
         try {
           const schoolResponse = await axios.get(
-            `https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz/school-rank/?quiz_id=${quizId}`,
+            `https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz/school-rank/?quiz_id=${quizId}`,
             config
           )
           
@@ -391,7 +391,7 @@ const Competition = () => {
         }
       }
       const response = await axios.get(
-        `https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz/rank/?quiz_id=${quizId}`,
+        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz/rank/?quiz_id=${quizId}`,
         config
       )
       
@@ -416,7 +416,7 @@ const Competition = () => {
         }
       }
       const response = await axios.get(
-        `https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz/school-rank/?quiz_id=${quizId}`,
+        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz/school-rank/?quiz_id=${quizId}`,
         config
       )
       
@@ -441,7 +441,7 @@ const Competition = () => {
       }
 
       const response = await axios.post(
-        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz-competition/start/',
+        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-competition/start/',
         startData,
         {
           headers: {
@@ -551,7 +551,7 @@ const Competition = () => {
       }
 
       const submitResponse = await axios.post(
-        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz-competition/submit/',
+        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-competition/submit/',
         submissionData,
         {
           headers: {

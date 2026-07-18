@@ -26,11 +26,11 @@ function Footer() {
       jobOpenings: "Job Openings",
       contactUs: "Contact Us",
       india: "India",
-      copyright: "© 2026 GyanDhara. All rights reserved. | Designed by BrainRock.",
+      copyright: "© 2026 gyandhara. All rights reserved. | Designed by BrainRock.",
       backToTop: "Back to Top"
     },
     hi: {
-      description: "छात्रों, शैक्षणिक संस्था और प्रशासकों के लिए ज्ञान, करियर मार्गदर्शन, कौशल विकास और शैक्षणिक उत्कृष्टता प्रदान करने वाला आपका व्यापक शैक्षिक मंच GyanDhara",
+      description: "छात्रों, शैक्षणिक संस्था और प्रशासकों के लिए ज्ञान, करियर मार्गदर्शन, कौशल विकास और शैक्षणिक उत्कृष्टता प्रदान करने वाला आपका व्यापक शैक्षिक मंच gyandhara",
       quickLinks: "त्वरित लिंक",
       home: "होम",
       login: "लॉगिन",
@@ -43,7 +43,7 @@ function Footer() {
       jobOpenings: "नौकरी के अवसर",
       contactUs: "हमसे संपर्क करें",
       india: "भारत",
-      copyright: "© 2026 GyanDhara। सर्वाधिकार सुरक्षित। | BrainRock द्वारा डिज़ाइन किया गया।",
+      copyright: "© 2026 gyandhara। सर्वाधिकार सुरक्षित। | BrainRock द्वारा डिज़ाइन किया गया।",
       backToTop: "ऊपर वापस जाएं"
     }
   };
@@ -57,7 +57,7 @@ function Footer() {
           {/* Logo and Brand Section */}
           <div className="footer-brand-section">
             <div className="footer-logo-section">
-              <img src={gyandharaLogo} alt="Gyandhara Logo" className="footer-logo" />
+              <img src={gyandharaLogo} alt="gyandhara Logo" className="footer-logo" />
              
             </div>
             <p className="footer-description">

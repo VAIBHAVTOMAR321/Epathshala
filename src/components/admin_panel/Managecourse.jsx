@@ -9,7 +9,7 @@ import { FaArrowLeft, FaPlus, FaEdit, FaTrash, FaChevronDown, FaChevronUp, FaTim
 import AdminLeftNav from './AdminLeftNav'
 import AdminHeader from './AdminHeader'
 
-const API_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-items/'
+const API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-items/'
 
 const Managecourse = () => {
   const { accessToken } = useAuth()

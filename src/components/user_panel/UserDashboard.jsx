@@ -109,7 +109,7 @@ const UserDashboard = () => {
       setError(null)
       
       const response = await axios.get(
-        `https://brjobsedu.com/Epathshala/Epathshala_backend/api/enrollment-unpaid/?student_id=${uniqueId}`,
+        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/enrollment-unpaid/?student_id=${uniqueId}`,
         {
           headers: {
             'Authorization': `Bearer ${accessToken}`,
@@ -123,7 +123,7 @@ const UserDashboard = () => {
         
         try {
           const allCoursesResponse = await axios.get(
-            'https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-items/'
+            'https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-items/'
           )
           
           if (allCoursesResponse.data.success && Array.isArray(allCoursesResponse.data.data)) {
@@ -168,7 +168,7 @@ const UserDashboard = () => {
     try {
       setAllCoursesLoading(true)
       const response = await axios.get(
-        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-items/'
+        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-items/'
       )
       console.log('📚 All courses API response:', response.data)
       
@@ -194,7 +194,7 @@ const UserDashboard = () => {
 
     try {
       const response = await axios.get(
-        `https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-feedback/?student_id=${uniqueId}`,
+        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-feedback/?student_id=${uniqueId}`,
         {
           headers: {
             'Authorization': `Bearer ${accessToken}`,
@@ -241,7 +241,7 @@ const UserDashboard = () => {
       setError(null)
       
       const response = await axios.get(
-        `https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-module/?course_id=${courseId}`,
+        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-module/?course_id=${courseId}`,
         {
           headers: {
             'Authorization': `Bearer ${accessToken}`
@@ -358,7 +358,7 @@ const UserDashboard = () => {
 
   const generateCertificate = async (course) => {
     try {
-      const endpoint = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/enrollment-unpaid/'
+      const endpoint = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/enrollment-unpaid/'
         
       const response = await axios.post(
         endpoint,
@@ -381,7 +381,7 @@ const UserDashboard = () => {
           await fetchCourses()
           alert('Certificate generated successfully!')
           window.open(
-            `https://brjobsedu.com/Epathshala/Epathshala_backend${certificateFile}`,
+            `https://brjobsedu.com/gyandhara/gyandhara_backend${certificateFile}`,
             "_blank",
           );
         } else if (response.data.message && response.data.message.includes('already')) {
@@ -434,7 +434,7 @@ const UserDashboard = () => {
     const course = courses.find(c => c.course_id === selectedCourse.course_id)
     if (course && course.certificate_file) {
       window.open(
-        `https://brjobsedu.com/Epathshala/Epathshala_backend${course.certificate_file}`,
+        `https://brjobsedu.com/gyandhara/gyandhara_backend${course.certificate_file}`,
         "_blank",
       );
     }
@@ -461,7 +461,7 @@ const UserDashboard = () => {
     try {
       setProgressLoading(true)
       
-      const endpoint = `https://brjobsedu.com/Epathshala/Epathshala_backend/api/module-progress-unpaid/?student_id=${uniqueId}`
+      const endpoint = `https://brjobsedu.com/gyandhara/gyandhara_backend/api/module-progress-unpaid/?student_id=${uniqueId}`
       
       const response = await axios.get(endpoint, {
         headers: {
@@ -578,7 +578,7 @@ const UserDashboard = () => {
       setFeedbackError(null)
       
       const response = await axios.post(
-        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-feedback/',
+        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-feedback/',
         {
           course_id: feedbackCourse.course_id,
           student_id: uniqueId,
@@ -737,7 +737,7 @@ const UserDashboard = () => {
     try {
       const currentModule = courseModules.modules[moduleIndex]
       
-      const endpoint = `https://brjobsedu.com/Epathshala/Epathshala_backend/api/module-progress-unpaid/`
+      const endpoint = `https://brjobsedu.com/gyandhara/gyandhara_backend/api/module-progress-unpaid/`
         
       const response = await axios.put(
         endpoint,
@@ -768,7 +768,7 @@ const UserDashboard = () => {
   const handleEnrollCourse = async (courseId) => {
     try {
       const response = await axios.post(
-        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/enroll-unpaid/',
+        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/enroll-unpaid/',
         {
           student_id: uniqueId,
           course_id: courseId
@@ -1342,7 +1342,7 @@ const UserDashboard = () => {
                                                       <div className="image-wrapper">
                                                         <div className="book-image-container rounded-3 overflow-hidden shadow-lg">
                                                           <img
-                                                            src={`https://brjobsedu.com/Epathshala/Epathshala_backend/${subModule.image}`}
+                                                            src={`https://brjobsedu.com/gyandhara/gyandhara_backend/${subModule.image}`}
                                                             alt={
                                                               subModule.sub_modu_title
                                                             }
@@ -1508,7 +1508,7 @@ const UserDashboard = () => {
                                                         }
                                                       >
                                                         <img
-                                                          src={`https://brjobsedu.com/Epathshala/Epathshala_backend${exercise.img}`}
+                                                          src={`https://brjobsedu.com/gyandhara/gyandhara_backend${exercise.img}`}
                                                           alt={
                                                             exercise.img_name
                                                           }
@@ -1838,7 +1838,7 @@ const UserDashboard = () => {
                                                     variant="success" 
                                                     onClick={() => {
                                                       window.open(
-                                                        `https://brjobsedu.com/Epathshala/Epathshala_backend${course.certificate_file}`,
+                                                        `https://brjobsedu.com/gyandhara/gyandhara_backend${course.certificate_file}`,
                                                         "_blank",
                                                       );
                                                     }}
@@ -1876,7 +1876,7 @@ const UserDashboard = () => {
                                               variant="success" 
                                               onClick={() => {
                                                 window.open(
-                                                  `https://brjobsedu.com/Epathshala/Epathshala_backend${course.certificate_file}`,
+                                                  `https://brjobsedu.com/gyandhara/gyandhara_backend${course.certificate_file}`,
                                                   "_blank",
                                                 );
                                               }}
@@ -2055,7 +2055,7 @@ const UserDashboard = () => {
                                                       variant="success" 
                                                       onClick={() => {
                                                         window.open(
-                                                          `https://brjobsedu.com/Epathshala/Epathshala_backend${foundEnrolledCourse.certificate_file}`,
+                                                          `https://brjobsedu.com/gyandhara/gyandhara_backend${foundEnrolledCourse.certificate_file}`,
                                                           "_blank",
                                                         );
                                                       }}
@@ -2402,7 +2402,7 @@ const UserDashboard = () => {
                     onTouchEnd={handleTouchEnd}
                   >
                     <img
-                      src={`https://brjobsedu.com/Epathshala/Epathshala_backend${exercise.img}`}
+                      src={`https://brjobsedu.com/gyandhara/gyandhara_backend${exercise.img}`}
                       alt={exercise.img_name}
                       onError={(e) => {
                         e.target.style.display = "none";

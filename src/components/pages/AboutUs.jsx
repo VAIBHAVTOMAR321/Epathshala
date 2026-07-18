@@ -7,9 +7,9 @@ function AboutUs() {
 
   const content = {
     en: {
-      heroTitle: "About Epathshala",
+      heroTitle: "About gyandhara",
       heroSubtitle: "Empowering Education Through Innovation and Excellence",
-      heroDesc: "Epathshala is India's premier educational platform dedicated to transforming the learning experience for students, educators, and institutions across the nation.",
+      heroDesc: "gyandhara is India's premier educational platform dedicated to transforming the learning experience for students, educators, and institutions across the nation.",
 
       missionTitle: "Our Mission",
       missionDesc: "To bridge the gap between education and career opportunities by providing comprehensive guidance, skill development programs, and innovative learning solutions that prepare students for the challenges of tomorrow.",
@@ -51,7 +51,7 @@ function AboutUs() {
         }
       ],
 
-      whyChooseTitle: "Why Choose Epathshala?",
+      whyChooseTitle: "Why Choose gyandhara?",
       whyChoose: [
         "Comprehensive educational ecosystem under one platform",
         "Expert guidance from experienced educators and industry professionals",
@@ -64,9 +64,9 @@ function AboutUs() {
 
     },
     hi: {
-      heroTitle: "Epathshala के बारे में",
+      heroTitle: "gyandhara के बारे में",
       heroSubtitle: "नवाचार और उत्कृष्टता के माध्यम से शिक्षा को सशक्त बनाना",
-      heroDesc: "Epathshala भारत की प्रमुख शैक्षिक मंच है जो छात्रों, शिक्षकों और संस्थानों के लिए सीखने के अनुभव को बदलने के लिए समर्पित है।",
+      heroDesc: "gyandhara भारत की प्रमुख शैक्षिक मंच है जो छात्रों, शिक्षकों और संस्थानों के लिए सीखने के अनुभव को बदलने के लिए समर्पित है।",
 
       missionTitle: "हमारा मिशन",
       missionDesc: "कल की चुनौतियों के लिए छात्रों को तैयार करने वाले व्यापक मार्गदर्शन, कौशल विकास कार्यक्रम और नवीन शिक्षण समाधानों प्रदान करके शिक्षा और करियर अवसरों के बीच की खाई को पाटना।",
@@ -108,7 +108,7 @@ function AboutUs() {
         }
       ],
 
-      whyChooseTitle: "Epathshala क्यों चुनें?",
+      whyChooseTitle: "gyandhara क्यों चुनें?",
       whyChoose: [
         "एक मंच के तहत व्यापक शैक्षिक पारिस्थितिकी तंत्र",
         "अनुभवी शिक्षकों और उद्योग पेशेवरों से विशेषज्ञ मार्गदर्शन",

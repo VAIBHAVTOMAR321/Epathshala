@@ -8,9 +8,9 @@ import '../../assets/css/Enrollments.css'
 import { useNavigate } from 'react-router-dom'
 import { FaArrowLeft, FaPlus, FaEdit, FaTrash, FaCalendar, FaClock, FaBriefcase, FaLink, FaMapMarkerAlt, FaMoneyBillWave, FaGraduationCap, FaTools, FaToggleOn, FaToggleOff, FaChalkboardTeacher, FaUser, FaVideo } from 'react-icons/fa'
 
-const JOB_API_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/job-openings/'
-const SEMINAR_API_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/seminar-items/'
-const WORKSHOP_API_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/workshop-items/'
+const JOB_API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/job-openings/'
+const SEMINAR_API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/seminar-items/'
+const WORKSHOP_API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/workshop-items/'
 
 const statusLabels = {
   active: 'Active',

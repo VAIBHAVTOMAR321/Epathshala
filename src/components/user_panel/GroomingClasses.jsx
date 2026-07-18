@@ -74,11 +74,11 @@ const GroomingClasses = () => {
     const fetchData = async () => {
       try {
         const [classesRes, participationRes] = await Promise.all([
-          axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/grooming-classes/', {
+          axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/grooming-classes/', {
             headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
             timeout: 10000
           }),
-          axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/grooming-participation/', {
+          axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/grooming-participation/', {
             headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
             timeout: 10000
           })
@@ -117,7 +117,7 @@ const GroomingClasses = () => {
     setEnrolling(classId)
     try {
       await axios.post(
-        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/grooming-participation/',
+        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/grooming-participation/',
         { student_id: uniqueId, class_id: classId },
         { headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' } }
       )

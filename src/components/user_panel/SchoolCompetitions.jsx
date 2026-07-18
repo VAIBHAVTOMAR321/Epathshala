@@ -42,7 +42,7 @@ const SchoolCompetitions = () => {
 
       try {
         const response = await axios.get(
-          "https://brjobsedu.com/Epathshala/Epathshala_backend/api/offline-competition/",
+          "https://brjobsedu.com/gyandhara/gyandhara_backend/api/offline-competition/",
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -92,7 +92,7 @@ const SchoolCompetitions = () => {
       }
 
       const response = await axios.get(
-        `https://brjobsedu.com/Epathshala/Epathshala_backend/api/offline-competition-participation/?student_id=${studentId}`,
+        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/offline-competition-participation/?student_id=${studentId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -133,7 +133,7 @@ const SchoolCompetitions = () => {
       }
 
       const response = await axios.post(
-        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/offline-competition-participation/',
+        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/offline-competition-participation/',
         {
           student_id: studentId,
           completion_id: comp.completion_id

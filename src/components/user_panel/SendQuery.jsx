@@ -10,7 +10,7 @@ import UserHeader from './UserHeader'
 import { useLanguage } from '../all_login/LanguageContext'
 
 
-const API_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/student-issue/'
+const API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/student-issue/'
 
 function SendQuery() {
   const { language } = useLanguage()
@@ -74,7 +74,7 @@ function SendQuery() {
 
       try {
         const response = await fetch(
-          `https://brjobsedu.com/Epathshala/Epathshala_backend/api/student-reg/?student_id=${uniqueId}`,
+          `https://brjobsedu.com/gyandhara/gyandhara_backend/api/student-reg/?student_id=${uniqueId}`,
           {
             method: 'GET',
             headers: {
