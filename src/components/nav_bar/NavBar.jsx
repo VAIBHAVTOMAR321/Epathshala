@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../all_login/LanguageContext";
 import "../../assets/css/navbar.css"
-import gyandharaLogo from "../../assets/images/gyandharalogo.png";
+import gyandharaLogo from "../../assets/images/gyandharalogo.jpeg";
 
 function NavBar() {
   const [expanded, setExpanded] = useState(false);
