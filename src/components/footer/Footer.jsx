@@ -26,7 +26,7 @@ function Footer() {
       jobOpenings: "Job Openings",
       contactUs: "Contact Us",
       india: "India",
-      copyright: "© 2026 gyandhara. All rights reserved. | Designed by BrainRock.",
+      copyright: "© 2026 epathshala. All rights reserved. | Designed by BrainRock.",
       backToTop: "Back to Top"
     },
     hi: {
