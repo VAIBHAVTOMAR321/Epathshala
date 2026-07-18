@@ -30,9 +30,8 @@ background-color: #000;
 }
 
 .footer-logo {
-  width: 167px;
-  height: 60px;
-  /* border-radius: 50%; */
+  width: 80px;
+  border-radius: 50%;
   object-fit: cover;
   margin-right: 15px;
   border: 2px solid rgba(255, 255, 255, 0.3);
