@@ -25,7 +25,7 @@
 
 /* ---- Main Navbar ---- */
 .custom-navbar {
-  background: var(--gd-warm-white) !important;
+  background-color:#fff !important;
   padding: 0 !important;
   box-shadow: 0 2px 20px rgba(13, 59, 102, 0.08);
   border-bottom: 3px solid transparent;
@@ -53,7 +53,7 @@
   width: auto;
   object-fit: contain;
   border-radius: 8px;
-  filter: drop-shadow(0 2px 4px rgba(13, 59, 102, 0.15));
+ 
   transition: transform 0.3s ease;
 }
 
