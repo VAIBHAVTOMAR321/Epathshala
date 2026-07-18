@@ -16,8 +16,8 @@ function Home() {
     en: {
     platformBadge: "🎓 Epathshala - Educational Platform",
     heroTitle: "Objective of Epathshala",
-     heroTitleHTML: "Objective of <span class=\"hero-title-word\">epathshala</span>",
-  heroSubtitle: "Welcome to epathshala, your all-in-one educational ecosystem designed to bridge the gap between academic learning and real-world success. We believe that education is not just about passing exams; it is about acquiring the skills, confidence, and direction necessary to thrive in a rapidly evolving global landscape. Whether you are a student looking to master new technologies or a institution aiming to streamline academic management, gyandhara provides the tools you need to succeed.",
+     heroTitleHTML: "Objective of <span class=\"hero-title-word\">Epathshala</span>",
+  heroSubtitle: "Welcome to epathshala, your all-in-one educational ecosystem designed to bridge the gap between academic learning and real-world success. We believe that education is not just about passing exams; it is about acquiring the skills, confidence, and direction necessary to thrive in a rapidly evolving global landscape.",
   heroImg: heroImg,
   exploreBtn: "Explore Now",
   joinBtn: "Register Today",
@@ -142,30 +142,148 @@ function Home() {
     <div className="home-wrapper">
       <div className="home-container">
         {/* Hero Section */}
-        <div className="hero-section">
-          <div className="hero-image-wrapper">
-            <div className="hero-decoration hero-cap-decoration">
-              <i className="bi bi-mortarboard-fill"></i>
-            </div>
-            <img src={t.heroImg} alt="epathshala Education" className="hero-image" />
-            <div className="hero-decoration hero-logo-decoration">
-              <img src={Logo2} alt="epathshala Logo" className="hero-logo" />
-            </div>
-          </div>
-          <div className="hero-content">
-            <div className="hero-badge">{t.platformBadge}</div>
-            <h1 dangerouslySetInnerHTML={{ __html: t.heroTitleHTML }}></h1>
-            <p>{t.heroSubtitle}</p>
-            <div className="hero-buttons">
-              <Link to="/register" className="btn-gyandhara btn-primary-custom">
-                <i className="bi bi-person-plus"></i> {t.joinBtn}
-              </Link>
-              <Link to="/login" className="btn-gyandhara btn-outline-custom-btn">
-                <i className="bi bi-box-arrow-in-right"></i> {t.learnMoreBtn}
-              </Link>
-            </div>
-          </div>
-        </div>
+       <div className="hero-section">
+
+  {/* LEFT SIDE */}
+  <div className="hero-image-wrapper">
+
+    {/* Top Left Card */}
+    <div className="floating-card floating-card-1">
+      <div className="icon-box blue">
+        <i className="bi bi-mortarboard-fill"></i>
+      </div>
+      <div>
+        <h6> Education</h6>
+       
+      </div>
+    </div>
+
+    {/* Image */}
+    <img
+      src={t.heroImg}
+      alt="Epathshala"
+      className="hero-image"
+    />
+
+    {/* Top Right Card */}
+    <div className="floating-card floating-card-2">
+      <div className="icon-box green">
+        <i className="bi bi-trophy-fill"></i>
+      </div>
+      <div>
+        <h6>Learn</h6>
+        
+      </div>
+    </div>
+
+    {/* Bottom Left Card */}
+    <div className="floating-card floating-card-3">
+      <div className="icon-box orange">
+        <i className="bi bi-person-workspace"></i>
+      </div>
+      <div>
+        <h6>Career Guidance</h6>
+        
+      </div>
+    </div>
+
+    {/* Logo */}
+  
+
+  </div>
+
+  {/* RIGHT SIDE */}
+
+  <div className="hero-content">
+
+    <div className="hero-badge">
+      <i className="bi bi-stars"></i>
+      {t.platformBadge}
+    </div>
+
+    <h1
+      dangerouslySetInnerHTML={{
+        __html: t.heroTitleHTML,
+      }}
+    />
+
+    <p>{t.heroSubtitle}</p>
+
+    <div className="feature-grid">
+
+      <div className="feature-card">
+        <i className="bi bi-book-half"></i>
+       
+          <h6>Interactive Learning</h6>
+       
+       
+      </div>
+
+      <div className="feature-card">
+        <i className="bi bi-trophy"></i>
+     
+          <h6>Competitive Exams</h6>
+          
+     
+      </div>
+
+      <div className="feature-card">
+        <i className="bi bi-bullseye"></i>
+     
+          <h6>Career Guidance</h6>
+         
+    
+      </div>
+
+      <div className="feature-card">
+        <i className="bi bi-building"></i>
+     
+          <h6>Govt Certified</h6>
+          
+      
+      </div>
+
+      <div className="feature-card">
+        <i className="bi bi-cpu"></i>
+      
+          <h6>AI Skills</h6>
+         
+     
+      </div>
+
+      <div className="feature-card">
+        <i className="bi bi-globe2"></i>
+       
+          <h6>Learn Anywhere</h6>
+          
+        
+      </div>
+
+    </div>
+
+   <div className="hero-buttons">
+  <Link
+    to="/register"
+    className="btn-gyandhara btn-primary-custom"
+  >
+    <i className="bi bi-person-plus-fill"></i>
+    <span>{t.joinBtn}</span>
+  </Link>
+
+  <Link
+    to="/login"
+    className="btn-gyandhara btn-outline-custom-btn"
+  >
+    <i className="bi bi-book-fill"></i>
+    <span>Explore Courses</span>
+  </Link>
+</div>
+
+  </div>
+
+</div>
+
+
 
         {/* For Students Section */}
         <section className="role-section ">
