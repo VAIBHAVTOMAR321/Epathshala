@@ -40,7 +40,7 @@ const UserProfile = () => {
 
       try {
         const response = await axios.get(
-          `https://brjobsedu.com/gyandhara/gyandhara_backend/api/student-reg/?student_id=${uniqueId}`,
+          `https://brjobsedu.com/Epathshala/Epathshala_backend/api/student-reg/?student_id=${uniqueId}`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,

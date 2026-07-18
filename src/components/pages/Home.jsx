@@ -14,10 +14,10 @@ function Home() {
 
   const content = {
     en: {
-    platformBadge: "🎓 GyanDhara - Educational Platform",
-    heroTitle: "Objective of GyanDhara",
-     heroTitleHTML: "Objective of <span class=\"hero-title-word\">GyanDhara</span>",
-  heroSubtitle: "Welcome to GyanDhara, your all-in-one educational ecosystem designed to bridge the gap between academic learning and real-world success. We believe that education is not just about passing exams; it is about acquiring the skills, confidence, and direction necessary to thrive in a rapidly evolving global landscape. Whether you are a student looking to master new technologies or a institution aiming to streamline academic management, GyanDhara provides the tools you need to succeed.",
+    platformBadge: "🎓 Epathshala - Educational Platform",
+    heroTitle: "Objective of Epathshala",
+     heroTitleHTML: "Objective of <span class=\"hero-title-word\">Epathshala</span>",
+  heroSubtitle: "Welcome to Epathshala, your all-in-one educational ecosystem designed to bridge the gap between academic learning and real-world success. We believe that education is not just about passing exams; it is about acquiring the skills, confidence, and direction necessary to thrive in a rapidly evolving global landscape. Whether you are a student looking to master new technologies or a institution aiming to streamline academic management, Epathshala provides the tools you need to succeed.",
   heroImg: heroImg,
   exploreBtn: "Explore Now",
   joinBtn: "Register Today",
@@ -40,7 +40,7 @@ function Home() {
 
       // For Schools Section
       schoolTitle: "LMS For Institutions 🏫",
-      schoolSubtitle: "Transform your institution's learning experience with GyanDhara's comprehensive platform",
+      schoolSubtitle: "Transform your institution's learning experience with Epathshala's comprehensive platform",
       schoolFeatures: [
         { icon: "bi-house-check", title: "Institution Registration", desc: "Register your institution and get a dedicated dashboard", color: "blue" },
         { icon: "bi-people-fill", title: "Student Management", desc: "Efficiently manage student registrations and profiles", color: "orange" },
@@ -49,7 +49,7 @@ function Home() {
       ],
       
       // Platform Benefits
-      benefitsTitle: "Why Choose GyanDhara?",
+      benefitsTitle: "Why Choose Epathshala?",
       benefits: [
         { icon: "bi-collection-play", title: "Multi-Role Platform", desc: "Dedicated interfaces for students, institutions, and administrators", color: "blue" },
         { icon: "bi-people-fill", title: "Comprehensive Services", desc: "Career guidance, academic support, and skill development", color: "orange" },
@@ -62,7 +62,7 @@ function Home() {
       ],
 
       // CTA
-      readyTitle: "Ready to Join GyanDhara?",
+      readyTitle: "Ready to Join Epathshala?",
       readySub: "Start your journey towards career excellence and academic success",
       getStartedBtn: "Get Started Today",
       learnMoreBtn: "Learn More",
@@ -73,10 +73,10 @@ function Home() {
       modalRegister: "Register Today"
     },
     hi: {
-      platformBadge: "🎓 GyanDhara - शैक्षिक मंच",
-      heroTitle: "GyanDhara का उद्देश्य",
-      heroTitleHTML: "<span class=\"hero-title-word\">GyanDhara</span> का उद्देश्य",
-      heroSubtitle: "GyanDhara में आपका स्वागत है, आपका ऑल-इन-वन शैक्षिक पारिस्थितिकी तंत्र जो शैक्षणिक शिक्षण और वास्तविक दुनिया की सफलता के बीच की खाई को पाटने के लिए डिज़ाइन किया गया है। हमारा मानना है कि शिक्षा केवल परीक्षा पास करने के बारे में नहीं है; यह एक तेजी से विकसित हो रहे वैश्विक परिदृश्य में उन्नति के लिए आवश्यक कौशल, आत्मविश्वास और दिशा प्राप्त करने के बारे में है। चाहे आप नई तकनीकों में महारत हासिल करने के इच्छुक छात्र हों या शैक्षणिक प्रबंधन को सुव्यवस्थित करने का लक्ष्य रखने वाला शैक्षणिक संस्था, GyanDhara आपको सफल होने के लिए आवश्यक उपकरण प्रदान करता है।",
+      platformBadge: "🎓 Epathshala - शैक्षिक मंच",
+      heroTitle: "Epathshala का उद्देश्य",
+      heroTitleHTML: "<span class=\"hero-title-word\">Epathshala</span> का उद्देश्य",
+      heroSubtitle: "Epathshala में आपका स्वागत है, आपका ऑल-इन-वन शैक्षिक पारिस्थितिकी तंत्र जो शैक्षणिक शिक्षण और वास्तविक दुनिया की सफलता के बीच की खाई को पाटने के लिए डिज़ाइन किया गया है। हमारा मानना है कि शिक्षा केवल परीक्षा पास करने के बारे में नहीं है; यह एक तेजी से विकसित हो रहे वैश्विक परिदृश्य में उन्नति के लिए आवश्यक कौशल, आत्मविश्वास और दिशा प्राप्त करने के बारे में है। चाहे आप नई तकनीकों में महारत हासिल करने के इच्छुक छात्र हों या शैक्षणिक प्रबंधन को सुव्यवस्थित करने का लक्ष्य रखने वाला शैक्षणिक संस्था, Epathshala आपको सफल होने के लिए आवश्यक उपकरण प्रदान करता है।",
       heroImg: heroImg,
       exploreBtn: "अब खोजें",
       joinBtn: "आज पंजीकृत करें",
@@ -99,7 +99,7 @@ function Home() {
 
       // For Schools Section
       schoolTitle: "शैक्षणिक संस्था के लिए 🏫",
-      schoolSubtitle: "GyanDhara के व्यापक मंच के साथ अपने संस्थान के शिक्षण अनुभव को बदलें",
+      schoolSubtitle: "Epathshala के व्यापक मंच के साथ अपने संस्थान के शिक्षण अनुभव को बदलें",
       schoolFeatures: [
         { icon: "bi-house-check", title: "शैक्षणिक संस्था पंजीकरण", desc: "अपने संस्थान को पंजीकृत करें और समर्पित डैशबोर्ड प्राप्त करें", color: "blue" },
         { icon: "bi-people-fill", title: "छात्र प्रबंधन", desc: "छात्र पंजीकरण और प्रोफाइल को कुशलतापूर्वक प्रबंधित करें", color: "orange" },
@@ -108,7 +108,7 @@ function Home() {
       ],
       
       // Platform Benefits
-      benefitsTitle: "GyanDhara को क्यों चुनें?",
+      benefitsTitle: "Epathshala को क्यों चुनें?",
       benefits: [
         { icon: "bi-collection-play", title: "बहु-भूमिका मंच", desc: "छात्रों, शैक्षणिक संस्था और प्रशासकों के लिए समर्पित इंटरफेस", color: "blue" },
         { icon: "bi-people-fill", title: "व्यापक सेवाएं", desc: "करियर मार्गदर्शन, शैक्षणिक सहायता और कौशल विकास", color: "orange" },
@@ -121,7 +121,7 @@ function Home() {
       ],
 
       // CTA
-      readyTitle: "क्या आप GyanDhara से जुड़ने के लिए तैयार हैं?",
+      readyTitle: "क्या आप Epathshala से जुड़ने के लिए तैयार हैं?",
       readySub: "करियर की उत्कृष्टता और शैक्षणिक सफलता की ओर अपनी यात्रा शुरू करें",
       getStartedBtn: "आज शुरुआत करें",
       learnMoreBtn: "अधिक जानें",
@@ -147,9 +147,9 @@ function Home() {
             <div className="hero-decoration hero-cap-decoration">
               <i className="bi bi-mortarboard-fill"></i>
             </div>
-            <img src={t.heroImg} alt="Gyandhara Education" className="hero-image" />
+            <img src={t.heroImg} alt="Epathshala Education" className="hero-image" />
             <div className="hero-decoration hero-logo-decoration">
-              <img src={Logo2} alt="Gyandhara Logo" className="hero-logo" />
+              <img src={Logo2} alt="Epathshala Logo" className="hero-logo" />
             </div>
           </div>
           <div className="hero-content">
@@ -157,10 +157,10 @@ function Home() {
             <h1 dangerouslySetInnerHTML={{ __html: t.heroTitleHTML }}></h1>
             <p>{t.heroSubtitle}</p>
             <div className="hero-buttons">
-              <Link to="/register" className="btn-gyandhara btn-primary-custom">
+              <Link to="/register" className="btn-Epathshala btn-primary-custom">
                 <i className="bi bi-person-plus"></i> {t.joinBtn}
               </Link>
-              <Link to="/login" className="btn-gyandhara btn-outline-custom-btn">
+              <Link to="/login" className="btn-Epathshala btn-outline-custom-btn">
                 <i className="bi bi-box-arrow-in-right"></i> {t.learnMoreBtn}
               </Link>
             </div>
@@ -223,13 +223,13 @@ function Home() {
           <div className="competitive-cta-content">
             <h3>Ready to test yourself?</h3>
             <p>Take our competitive mock test and assess your preparation</p>
-            <Link to="/Competitive" className="btn-gyandhara btn-primary-custom btn-lg">
+            <Link to="/Competitive" className="btn-Epathshala btn-primary-custom btn-lg">
               <i className="bi bi-pencil-square"></i> Start  Test
             </Link>
           </div>
         </section>
 
-        {/*Why Choose GyanDhara? section*/}
+        {/*Why Choose Epathshala? section*/}
         <section className="benefits-section role-header role-section-school ">
           <div className="role-header">
             <h2>{t.benefitsTitle}</h2>
@@ -261,10 +261,10 @@ function Home() {
           <p>{t.readySub}</p>
         
           <div className="cta-buttons mt-4">
-            <Link to="/register" className="btn-gyandhara btn-primary-custom btn-lg">
+            <Link to="/register" className="btn-Epathshala btn-primary-custom btn-lg">
               <i className="bi bi-rocket-fill"></i> {t.getStartedBtn}
             </Link>
-            <Link to="/login" className="btn-gyandhara btn-outline-custom-btn btn-lg">
+            <Link to="/login" className="btn-Epathshala btn-outline-custom-btn btn-lg">
               <i className="bi bi-box-arrow-in-right"></i> {t.signInBtn}
             </Link>
           </div>

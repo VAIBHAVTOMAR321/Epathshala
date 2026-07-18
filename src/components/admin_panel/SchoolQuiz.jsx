@@ -9,7 +9,7 @@ import { FaArrowLeft, FaPlus, FaEdit, FaTrash, FaChevronDown, FaChevronUp, FaTim
 import AdminLeftNav from './AdminLeftNav'
 import AdminHeader from './AdminHeader'
 
-const API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-competition-items/'
+const API_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz-competition-items/'
 
 const SchoolQuiz = () => {
   const { accessToken } = useAuth()
@@ -93,7 +93,7 @@ const SchoolQuiz = () => {
     if (!accessToken) return
     try {
       setSchoolsLoading(true)
-      const response = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-list/', {
+      const response = await axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/school-list/', {
         headers: {
           'Authorization': `Bearer ${accessToken}`
         }
@@ -156,7 +156,7 @@ const SchoolQuiz = () => {
       const enrichedQuizzes = await Promise.all(
         fetchedQuizzes.map(async (quiz) => {
           try {
-            const rankRes = await axios.get(`https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz/rank/?quiz_id=${quiz.quiz_id}`, {
+            const rankRes = await axios.get(`https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz/rank/?quiz_id=${quiz.quiz_id}`, {
               headers: {
                 'Authorization': `Bearer ${accessToken}`
               }
@@ -268,7 +268,7 @@ const SchoolQuiz = () => {
     setModalSchoolFilter('all')
     setRankLoading(true)
     try {
-      const response = await axios.get(`https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz/rank/?quiz_id=${quiz.quiz_id}`, {
+      const response = await axios.get(`https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz/rank/?quiz_id=${quiz.quiz_id}`, {
         headers: {
           'Authorization': `Bearer ${accessToken}`
         }

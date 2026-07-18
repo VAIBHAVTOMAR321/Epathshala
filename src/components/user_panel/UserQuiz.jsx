@@ -247,7 +247,7 @@ const UserQuiz = () => {
             'Authorization': `Bearer ${accessToken}`
           }
         }
-        const response = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-items/', config)
+        const response = await axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz-items/', config)
         
         if (response.data.success) {
           setQuizzes(response.data.data || [])
@@ -267,7 +267,7 @@ const UserQuiz = () => {
             'Authorization': `Bearer ${accessToken}`
           }
         }
-        const response = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-participants/', config)
+        const response = await axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz-participants/', config)
         
         if (response.data.status && response.data.data) {
           const participated = {}
@@ -302,7 +302,7 @@ const UserQuiz = () => {
           const rankPromises = quizIds.map(async (quizId) => {
             try {
               const rankResponse = await axios.get(
-                `https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-participants/?quiz_id=${quizId}`,
+                `https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz-participants/?quiz_id=${quizId}`,
                 config
               )
               if (rankResponse.data.status && rankResponse.data.data) {
@@ -423,7 +423,7 @@ const UserQuiz = () => {
       console.log('Registering quiz participant:', participantData)
 
       const participantResponse = await axios.post(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-participants/',
+        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/quiz-participants/',
         participantData,
         {
           headers: {
@@ -566,7 +566,7 @@ const UserQuiz = () => {
 
       // Submit quiz to backend
       const submitResponse = await axios.post(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/submit-quiz/',
+        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/submit-quiz/',
         submissionData,
         {
           headers: {

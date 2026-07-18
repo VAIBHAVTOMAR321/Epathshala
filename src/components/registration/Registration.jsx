@@ -183,7 +183,7 @@ const Registration = () => {
     setLoadingDistricts(true);
     try {
       const response = await axios.get(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/district-blocks/'
+        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/district-blocks/'
       );
       if (response.data.status && response.data.data.districts) {
         setDistricts(response.data.data.districts);
@@ -199,7 +199,7 @@ const Registration = () => {
     setLoadingBlocks(true);
     try {
       const response = await axios.get(
-        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/district-blocks/?district=${district}`
+        `https://brjobsedu.com/Epathshala/Epathshala_backend/api/district-blocks/?district=${district}`
       );
       if (response.data.status && response.data.data.blocks) {
         setBlocks(response.data.data.blocks);
@@ -214,7 +214,7 @@ const Registration = () => {
    const fetchSchools = async (searchTerm = '') => {
      try {
        const response = await axios.get(
-         'https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-list/'
+         'https://brjobsedu.com/Epathshala/Epathshala_backend/api/school-list/'
        );
        if (response.data.success && response.data.data) {
          setSchools(response.data.data);
@@ -244,7 +244,7 @@ const Registration = () => {
 
       try {
         const response = await axios.get(
-          `https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-details/`,
+          `https://brjobsedu.com/Epathshala/Epathshala_backend/api/school-details/`,
           { params: { aadhaar_no: studentData.aadhaar_no } }
         );
 
@@ -282,7 +282,7 @@ const Registration = () => {
       setCheckingAadhaar(true);
       try {
         const response = await axios.get(
-          'https://brjobsedu.com/gyandhara/gyandhara_backend/api/student-aadhaar-list/'
+          'https://brjobsedu.com/Epathshala/Epathshala_backend/api/student-aadhaar-list/'
         );
 
         if (response.data.success && response.data.aadhaar_nos) {
@@ -446,7 +446,7 @@ const Registration = () => {
       };
 
       await axios.post(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/student-reg/',
+        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/student-reg/',
         registrationData
       );
 
@@ -492,7 +492,7 @@ const Registration = () => {
 
     try {
       await axios.post(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-reg/',
+        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/school-reg/',
         {
           school_id: schoolData.school_id,
           school_name: schoolData.school_name,

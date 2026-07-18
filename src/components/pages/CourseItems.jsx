@@ -55,7 +55,7 @@ function CourseItems() {
 
   const fetchCourses = async () => {
     try {
-      const response = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-items/')
+      const response = await axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-items/')
       let courseData = []
       if (response.data && response.data.data) {
         courseData = response.data.data
@@ -146,7 +146,7 @@ function CourseItems() {
                     <div className="course-image-container" style={{ height: '140px' }}>
                       <Card.Img 
                         variant="top" 
-                        src={course.course_img.startsWith('http') ? course.course_img : `https://brjobsedu.com/gyandhara/gyandhara_backend${course.course_img}`}
+                        src={course.course_img.startsWith('http') ? course.course_img : `https://brjobsedu.com/Epathshala/Epathshala_backend${course.course_img}`}
                         alt={course.course_name}
                         className="course-image"
                         onError={(e) => {

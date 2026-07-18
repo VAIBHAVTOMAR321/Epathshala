@@ -8,7 +8,7 @@ import { useAuth } from '../all_login/AuthContext'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { FaArrowLeft, FaPlus, FaEdit, FaTrash, FaClock, FaCalendar, FaUsers, FaLink } from 'react-icons/fa'
 
-const API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/grooming-classes/'
+const API_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/grooming-classes/'
 
 const CreateGroomingClass = () => {
   const { accessToken } = useAuth()

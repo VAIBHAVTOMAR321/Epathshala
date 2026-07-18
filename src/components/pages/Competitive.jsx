@@ -54,7 +54,7 @@ function Competitive() {
 
     try {
       const response = await fetch(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/start-open-quiz/',
+        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/start-open-quiz/',
         {
           method: 'POST',
           headers: {
@@ -136,7 +136,7 @@ function Competitive() {
       }));
 
       const response = await fetch(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/submit-open-quiz/',
+        'https://brjobsedu.com/Epathshala/Epathshala_backend/api/submit-open-quiz/',
         {
           method: 'POST',
           headers: {
@@ -323,7 +323,7 @@ function Competitive() {
   if (testSubmitted && testResults) {
     const isHindi = language === 'hi';
     const certificateUrl = testResults.certificate
-      ? `https://brjobsedu.com/gyandhara/gyandhara_backend${testResults.certificate}`
+      ? `https://brjobsedu.com/Epathshala/Epathshala_backend${testResults.certificate}`
       : null;
     const shareText = `I completed the  Test -   Competitive Test Assessment with a score of ${testResults.percentage.toFixed(1)}%!`;
 

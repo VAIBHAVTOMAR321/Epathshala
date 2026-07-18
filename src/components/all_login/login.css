@@ -1,6 +1,6 @@
 /* ==========================================
-   GyanDhara Login Theme
-   Blue-Orange matching brand logo
+   Epathshala Login Theme
+   Royal Blue & Golden Amber Educational Palette
    ========================================== */
 
 .login-page {
@@ -20,9 +20,9 @@
   right: 0;
   bottom: 0;
   background-image:
-    radial-gradient(circle at 15% 85%, rgba(230, 81, 0, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 85% 15%, rgba(27, 79, 138, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(255, 143, 0, 0.03) 0%, transparent 40%);
+    radial-gradient(circle at 15% 85%, rgba(245, 166, 35, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 85% 15%, rgba(26, 93, 173, 0.10) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(247, 183, 51, 0.04) 0%, transparent 40%);
   pointer-events: none;
 }
 
@@ -34,8 +34,8 @@
   border-radius: 24px;
   overflow: hidden;
   box-shadow:
-    0 25px 60px -12px rgba(14, 58, 107, 0.18),
-    0 0 0 1px rgba(27, 79, 138, 0.08);
+    0 25px 60px -12px rgba(13, 59, 102, 0.18),
+    0 0 0 1px rgba(26, 93, 173, 0.08);
   position: relative;
   z-index: 1;
 }
@@ -59,19 +59,19 @@
   left: 10%;
   right: 10%;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--gd-border, #D6E4F0), transparent);
+  background: linear-gradient(to right, transparent, var(--gd-border, #D6E6F5), transparent);
 }
 
 .brand-logo {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #1B4F8A 0%, #E65100 100%);
+  background: linear-gradient(135deg, #1A5DAD 0%, #F5A623 100%);
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 12px;
-  box-shadow: 0 6px 20px rgba(27, 79, 138, 0.25), 0 4px 12px rgba(230, 81, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(26, 93, 173, 0.25), 0 4px 12px rgba(245, 166, 35, 0.15);
   position: relative;
   overflow: hidden;
 }
@@ -83,26 +83,28 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
   pointer-events: none;
 }
 
 .brand-logo i {
   font-size: 26px;
   color: white;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 }
 
 .login-header h1 {
   font-size: 24px;
   font-weight: 800;
-  color: #1B4F8A;
+  color: #0D3B66;
+  /* Navy */
   margin: 0 0 2px;
   letter-spacing: 0.5px;
 }
 
 .login-header h1 span {
-  color: #E65100;
+  color: #F5A623;
+  /* Golden Amber */
 }
 
 .login-header p {
@@ -122,7 +124,8 @@
 .welcome-section h2 {
   font-size: 17px;
   font-weight: 600;
-  color: #1E293B;
+  color: #2C3E50;
+  /* Slate */
   margin: 0 0 3px;
 }
 
@@ -172,17 +175,19 @@
 }
 
 .role-tab:hover {
-  border-color: #FF8F00;
-  background: #FFF8E1;
-  color: #E65100;
+  border-color: #F5A623;
+  /* Amber */
+  background: #FFF8E7;
+  /* Light Amber BG */
+  color: #F5A623;
 }
 
 .role-tab.active {
-  /* border-color: transparent; */
-  background: linear-gradient(135deg, #1B4F8A 0%, #E65100 100%);
+  background: linear-gradient(135deg, #0D3B66 0%, #1A5DAD 100%);
   color: white;
-  box-shadow: 0 4px 14px rgba(230, 81, 0, 3);
+  box-shadow: 0 4px 14px rgba(26, 93, 173, 0.3);
   font-weight: 600;
+  border-color: transparent;
 }
 
 .role-tab i {
@@ -213,9 +218,19 @@
 }
 
 @keyframes shakeX {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-6px); }
-  75% { transform: translateX(6px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-6px);
+  }
+
+  75% {
+    transform: translateX(6px);
+  }
 }
 
 .form-group {
@@ -249,8 +264,9 @@
   pointer-events: none;
 }
 
-.input-wrapper-text input:focus ~ i {
-  color: #E65100;
+.input-wrapper-text input:focus~i {
+  color: #F5A623;
+  /* Amber */
 }
 
 .input-wrapper-text input {
@@ -261,14 +277,14 @@
   font-size: 13px;
   transition: all 0.25s ease;
   background: #FAFBFD;
-  color: #1E293B;
+  color: #2C3E50;
 }
 
 .input-wrapper-text input:focus {
   outline: none;
-  border-color: #FF8F00;
+  border-color: #F5A623;
   background: #FFFFFF;
-  box-shadow: 0 0 0 4px rgba(255, 143, 0, 12);
+  box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.15);
 }
 
 .input-wrapper-text input::placeholder {
@@ -293,8 +309,8 @@
   pointer-events: none;
 }
 
-.input-wrapper input:focus ~ i:first-of-type {
-  color: #E65100;
+.input-wrapper input:focus~i:first-of-type {
+  color: #F5A623;
 }
 
 .input-wrapper input {
@@ -305,14 +321,14 @@
   font-size: 13px;
   transition: all 0.25s ease;
   background: #FAFBFD;
-  color: #1E293B;
+  color: #2C3E50;
 }
 
 .input-wrapper input:focus {
   outline: none;
-  border-color: #FF8F00;
+  border-color: #F5A623;
   background: #FFFFFF;
-  box-shadow: 0 0 0 4px rgba(255, 143, 0, 12);
+  box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.15);
 }
 
 .input-wrapper input::placeholder {
@@ -348,7 +364,7 @@
 }
 
 .password-toggle:hover {
-  color: #E65100;
+  color: #F5A623;
 }
 
 /* ---- Options ---- */
@@ -371,27 +387,30 @@
 .remember-me input {
   width: 15px;
   height: 15px;
-  accent-color: #E65100;
+  accent-color: #1A5DAD;
+  /* Blue for standard form elements */
   cursor: pointer;
 }
 
 .forgot-link {
   font-size: 12px;
-  color: #1B4F8A;
+  color: #1A5DAD;
+  /* Royal Blue */
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s ease;
 }
 
 .forgot-link:hover {
-  color: #E65100;
+  color: #F5A623;
+  /* Amber hover */
 }
 
 /* ---- Login Button ---- */
 .login-btn {
   width: 100%;
   padding: 13px;
-  background: linear-gradient(135deg, #1B4F8A 0%, #2E6DB4 40%, #E65100 100%);
+  background: linear-gradient(135deg, #0D3B66 0%, #1A5DAD 50%, #F5A623 100%);
   background-size: 200% 100%;
   background-position: 0% 50%;
   border: none;
@@ -419,7 +438,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
   transition: left 0.5s ease;
 }
 
@@ -429,7 +448,7 @@
 
 .login-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(27, 79, 138, 0.3), 0 4px 15px rgba(230, 81, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(26, 93, 173, 0.3), 0 4px 15px rgba(245, 166, 35, 0.25);
   background-position: 100% 50%;
 }
 
@@ -452,7 +471,9 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ---- Footer ---- */
@@ -470,20 +491,22 @@
 }
 
 .login-footer a {
-  color: #E65100;
+  color: #F5A623;
+  /* Amber for call-to-action links */
   text-decoration: none;
   font-weight: 700;
   transition: color 0.2s ease;
 }
 
 .login-footer a:hover {
-  color: #1B4F8A;
+  color: #0D3B66;
+  /* Navy hover */
 }
 
 /* ---- Right Panel (Highlights) ---- */
 .login-highlights {
   flex: 1;
-  background: linear-gradient(160deg, #0E3A6B 0%, #1B4F8A 40%, #16213E 100%);
+  background: linear-gradient(160deg, #0D3B66 0%, #1A5DAD 40%, #102A43 100%);
   padding: 28px 28px;
   display: flex;
   flex-direction: column;
@@ -500,7 +523,7 @@
   right: -20%;
   width: 250px;
   height: 250px;
-  background: radial-gradient(circle, rgba(230, 81, 0, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.10) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -511,7 +534,7 @@
   left: -15%;
   width: 200px;
   height: 200px;
-  background: radial-gradient(circle, rgba(46, 109, 180, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(61, 165, 217, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -531,12 +554,12 @@
 
 .highlight-item i {
   font-size: 26px;
-  background: linear-gradient(135deg, #FF8F00 0%, #FFB74D 100%);
+  background: linear-gradient(135deg, #F5A623 0%, #FFC857 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 8px;
-  filter: drop-shadow(0 2px 4px rgba(255, 143, 0, 0.3));
+  filter: drop-shadow(0 2px 4px rgba(245, 166, 35, 0.3));
 }
 
 .highlight-item h3 {
@@ -556,17 +579,17 @@
 
 /* ---- Decorative book icon on highlights ---- */
 .highlight-item:nth-child(1) i {
-  background: linear-gradient(135deg, #FF8F00 0%, #FFB74D 100%);
+  background: linear-gradient(135deg, #F5A623 0%, #FFC857 100%);
 }
 
 .highlight-item:nth-child(2) i {
-  background: linear-gradient(135deg, #4FC3F7 0%, #81D4FA 100%);
-  filter: drop-shadow(0 2px 4px rgba(79, 195, 247, 0.3));
+  background: linear-gradient(135deg, #3DA5D9 0%, #80CFFA 100%);
+  filter: drop-shadow(0 2px 4px rgba(61, 165, 217, 0.3));
 }
 
 .highlight-item:nth-child(3) i {
-  background: linear-gradient(135deg, #E65100 0%, #FF8F00 100%);
-  filter: drop-shadow(0 2px 4px rgba(230, 81, 0, 3));
+  background: linear-gradient(135deg, #F5A623 0%, #F7B733 100%);
+  filter: drop-shadow(0 2px 4px rgba(245, 166, 35, 0.3));
 }
 
 /* ==========================================
@@ -574,24 +597,68 @@
    ========================================== */
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.login-header { animation: fadeInUp 0.4s ease 0.05s both; }
-.welcome-section { animation: fadeInUp 0.4s ease 0.1s both; }
-.role-selector { animation: fadeInUp 0.4s ease 0.15s both; }
-.role-tab { animation: fadeInUp 0.3s ease both; }
-.role-tab:nth-child(1) { animation-delay: 0.18s; }
-.role-tab:nth-child(2) { animation-delay: 0.22s; }
-.role-tab:nth-child(3) { animation-delay: 0.26s; }
-.role-tab:nth-child(4) { animation-delay: 0.30s; }
-.role-tab:nth-child(5) { animation-delay: 0.34s; }
-.role-tab:nth-child(6) { animation-delay: 0.38s; }
+.login-header {
+  animation: fadeInUp 0.4s ease 0.05s both;
+}
 
-.highlight-item:nth-child(1) { animation: fadeInUp 0.5s ease 0.3s both; }
-.highlight-item:nth-child(2) { animation: fadeInUp 0.5s ease 0.4s both; }
-.highlight-item:nth-child(3) { animation: fadeInUp 0.5s ease 0.5s both; }
+.welcome-section {
+  animation: fadeInUp 0.4s ease 0.1s both;
+}
+
+.role-selector {
+  animation: fadeInUp 0.4s ease 0.15s both;
+}
+
+.role-tab {
+  animation: fadeInUp 0.3s ease both;
+}
+
+.role-tab:nth-child(1) {
+  animation-delay: 0.18s;
+}
+
+.role-tab:nth-child(2) {
+  animation-delay: 0.22s;
+}
+
+.role-tab:nth-child(3) {
+  animation-delay: 0.26s;
+}
+
+.role-tab:nth-child(4) {
+  animation-delay: 0.30s;
+}
+
+.role-tab:nth-child(5) {
+  animation-delay: 0.34s;
+}
+
+.role-tab:nth-child(6) {
+  animation-delay: 0.38s;
+}
+
+.highlight-item:nth-child(1) {
+  animation: fadeInUp 0.5s ease 0.3s both;
+}
+
+.highlight-item:nth-child(2) {
+  animation: fadeInUp 0.5s ease 0.4s both;
+}
+
+.highlight-item:nth-child(3) {
+  animation: fadeInUp 0.5s ease 0.5s both;
+}
 
 /* ==========================================
    RESPONSIVE

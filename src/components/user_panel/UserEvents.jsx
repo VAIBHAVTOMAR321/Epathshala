@@ -49,7 +49,7 @@ const UserEvents = () => {
         setLoading(true)
         setError("")
         const response = await axios.get(
-          'https://brjobsedu.com/gyandhara/gyandhara_backend/api/event-item/',
+          'https://brjobsedu.com/Epathshala/Epathshala_backend/api/event-item/',
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -221,7 +221,7 @@ const UserEvents = () => {
                           }}>
                             {event.event_image ? (
                               <img 
-                                src={`https://brjobsedu.com/gyandhara/gyandhara_backend${event.event_image}`}
+                                src={`https://brjobsedu.com/Epathshala/Epathshala_backend${event.event_image}`}
                               alt={language === 'hi' && event.event_name_hindi ? event.event_name_hindi : event.event_name}
                                 style={{ 
                                   width: '100%',
@@ -368,7 +368,7 @@ const UserEvents = () => {
               {selectedEvent.event_image && (
                 <div className="mb-3">
                   <img 
-                    src={`https://brjobsedu.com/gyandhara/gyandhara_backend${selectedEvent.event_image}`}
+                    src={`https://brjobsedu.com/Epathshala/Epathshala_backend${selectedEvent.event_image}`}
                     alt={selectedEvent.event_name}
                     className="img-fluid rounded"
                     style={{ maxHeight: '300px', objectFit: 'cover' }}

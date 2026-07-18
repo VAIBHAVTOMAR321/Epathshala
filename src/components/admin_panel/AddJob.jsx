@@ -8,7 +8,7 @@ import axios from 'axios'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { FaArrowLeft, FaPlus, FaEdit, FaTrash, FaClock, FaCalendar, FaBriefcase, FaLink, FaGraduationCap, FaTools } from 'react-icons/fa'
 
-const API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/job-openings/'
+const API_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/job-openings/'
 
 const AddJob = () => {
   const { accessToken } = useAuth()

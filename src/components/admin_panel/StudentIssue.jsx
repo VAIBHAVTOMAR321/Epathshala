@@ -12,8 +12,8 @@ import { FaArrowLeft, FaReply, FaCheck, FaTrash, FaChevronDown, FaChevronUp } fr
 import AdminLeftNav from './AdminLeftNav'
 import AdminHeader from './AdminHeader'
 
-const STUDENT_API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/student-issue/'
-const SCHOOL_API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-issues/'
+const STUDENT_API_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/student-issue/'
+const SCHOOL_API_URL = 'https://brjobsedu.com/Epathshala/Epathshala_backend/api/school-issues/'
 
 const StudentIssue = () => {
   const { accessToken } = useAuth()

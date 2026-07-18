@@ -9,7 +9,7 @@ import UserLeftNav from "./UserLeftNav";
 import "./UserProfile.css";
 import "./Timeschedule.css";
 
-const API_URL = "https://brjobsedu.com/gyandhara/gyandhara_backend/api/time-schedule/";
+const API_URL = "https://brjobsedu.com/Epathshala/Epathshala_backend/api/time-schedule/";
 
 const Timeschedule = () => {
   const { language } = useLanguage();

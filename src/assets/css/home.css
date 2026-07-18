@@ -1,35 +1,51 @@
 /* ==========================================
-   GyanDhara Home Theme
-   Blue-Orange Educational Palette
-   Matching the brand logo colors
+   Epathshala Home Theme
+   Royal Blue & Golden Amber Educational Palette
+   Matching the ePathshala brand identity
    ========================================== */
 
 :root {
-  --gd-blue: #1B4F8A;
-  --gd-blue-dark: #0E3A6B;
-  --gd-blue-light: #2E6DB4;
-  --gd-orange: #E65100;
-  --gd-orange-light: #FF8F00;
-  --gd-orange-warm: #FFB74D;
-  --gd-blue-bg: #EBF2FA;
-  --gd-orange-bg: #FFF3E0;
+  /* Core Brand Colors */
+  --gd-blue: #1A5DAD;
+  /* Royal Blue */
+  --gd-blue-dark: #0D3B66;
+  /* Navy */
+  --gd-blue-light: #3DA5D9;
+  /* Sky Blue */
+  --gd-orange: #F5A623;
+  /* Golden Amber */
+  --gd-orange-light: #F7B733;
+  /* Brighter Amber */
+  --gd-orange-warm: #FFC857;
+  /* Warm Yellow Gold */
+
+  /* Backgrounds & Neutrals */
+  --gd-blue-bg: #F0F7FF;
+  /* Very light blue background */
+  --gd-orange-bg: #FFF8E7;
+  /* Very light amber background */
   --gd-white: #FFFFFF;
-  --gd-text: #1E293B;
-  --gd-text-light: #5A6B80;
+  --gd-text: #2C3E50;
+  /* Slate dark text */
+  --gd-text-light: #5A6C7D;
+  /* Muted text */
   --gd-gray: #8896A6;
-  --gd-border: #D6E4F0;
-  --gd-shadow-blue: rgba(27, 79, 138, 0.12);
-  --gd-shadow-orange: rgba(230, 81, 0, 0.2);
-  --gd-gradient-blue: linear-gradient(135deg, #0E3A6B 0%, #2E6DB4 100%);
-  --gd-gradient-hero: linear-gradient(135deg, #EBF2FA 0%, #D6E4F0 50%, #FFF3E0 100%);
-  --gd-gradient-warm: linear-gradient(135deg, #E65100 0%, #FF8F00 100%);
+  --gd-border: #D6E6F5;
+
+  /* Shadows */
+  --gd-shadow-blue: rgba(26, 93, 173, 0.12);
+  --gd-shadow-orange: rgba(245, 166, 35, 0.25);
+
+  /* Gradients */
+  --gd-gradient-blue: linear-gradient(135deg, #0D3B66 0%, #3DA5D9 100%);
+  --gd-gradient-hero: linear-gradient(135deg, #F0F7FF 0%, #D6E6F5 50%, #FFF8E7 100%);
+  --gd-gradient-warm: linear-gradient(135deg, #F5A623 0%, #FFC857 100%);
   --gd-radius: 20px;
 }
 
 .home-wrapper {
   background: var(--gd-blue-bg);
   min-height: calc(100vh - 52px);
-  /* padding: 40px 20px; */
   margin-top: 64px;
 }
 
@@ -52,8 +68,6 @@
   display: flex;
   align-items: center;
   gap: 50px;
-  /* border: 1px solid var(--gd-border);
-  box-shadow: 0 8px 40px rgba(14, 58, 107, 0.08); */
 }
 
 .hero-section::before {
@@ -63,7 +77,7 @@
   right: -40px;
   width: 280px;
   height: 280px;
-  background: radial-gradient(circle, rgba(230, 81, 0, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.10) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -75,26 +89,22 @@
   left: 20%;
   width: 220px;
   height: 220px;
-  background: radial-gradient(circle, rgba(27, 79, 138, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(26, 93, 173, 0.08) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
 
 .hero-image {
-      /* margin-bottom: 214px; */
-    /* margin-top: 90px; */
- 
   min-width: 350px;
-  /* height: 360px; */
   border-radius: var(--gd-radius);
   object-fit: cover;
-  box-shadow: 0 20px 50px rgba(14, 58, 107, 0.18);
+  box-shadow: 0 20px 50px rgba(13, 59, 102, 0.18);
   flex-shrink: 0;
   border: 4px solid var(--gd-white);
   transition: transform 0.4s ease;
 }
 
-.modal-title-style{
+.modal-title-style {
   color: #fff !important;
 }
 
@@ -111,8 +121,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 25px rgba(14, 58, 107, 0.15);
- 
+  box-shadow: 0 8px 25px rgba(13, 59, 102, 0.15);
   background: var(--gd-white);
   border-radius: 50%;
 }
@@ -137,8 +146,7 @@
   left: 45%;
   border-radius: 50px;
   padding: 4px;
-
-background-color: #fff;
+  background-color: #fff;
 }
 
 .hero-logo {
@@ -179,24 +187,21 @@ background-color: #fff;
   letter-spacing: -0.5px;
 }
 
-.hero-section h1 span.hero-title-word {
+.hero-section h1 span.hero-title-word,
+.hero-section h1 span {
   color: var(--gd-orange);
-
+  /* Golden Amber */
   padding-bottom: 4px;
   display: inline-block;
   line-height: 1.3;
 }
 
-.hero-section h1 span {
-  color: var(--gd-orange);
-}
-
 .hero-section p {
-  font-size: 20px;
+  font-size: 16px;
   margin: 0 0 32px;
   text-align: justify;
-  font-size: 16px;
   line-height: 1.7;
+  color: var(--gd-text-light);
 }
 
 .hero-buttons {
@@ -206,7 +211,7 @@ background-color: #fff;
 }
 
 /* ---- Buttons ---- */
-.btn-gyandhara {
+.btn-Epathshala {
   padding: 10px 20px;
   font-size: 12px;
   font-weight: 700;
@@ -221,44 +226,40 @@ background-color: #fff;
   cursor: pointer;
 }
 
-.btn-gyandhara.btn-lg {
+.btn-Epathshala.btn-lg {
   padding: 16px 42px;
   font-size: 1.1rem;
 }
 
+/* Primary Button -> Amber/Gold Gradient with Navy Text for Contrast */
 .btn-primary-custom {
   background: var(--gd-gradient-warm);
-  color: var(--gd-white);
+  color: var(--gd-blue-dark) !important;
   box-shadow: 0 6px 20px var(--gd-shadow-orange);
 }
 
 .btn-primary-custom:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(230, 81, 0, 0.35);
-  color: var(--gd-white);
+  box-shadow: 0 12px 35px rgba(245, 166, 35, 0.4);
+  color: var(--gd-blue-dark) !important;
 }
 
 .btn-outline-custom {
   background: transparent;
   border: 2.5px solid var(--gd-blue);
- color: #fff;
+  color: #fff;
 }
+
 .btn-outline-custom-btn {
   background: transparent;
   border: 2.5px solid var(--gd-blue);
- color: #2E6DB4;
-}
-.btn-outline-custom-btn:hover {
-  background: var(--gd-gradient-blue);
-  color: var(--gd-white);
-  border-color: transparent;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px var(--gd-shadow-blue);
+  color: var(--gd-blue);
 }
 
+.btn-outline-custom-btn:hover,
 .btn-outline-custom:hover {
   background: var(--gd-gradient-blue);
-  color: var(--gd-white);
+  color: var(--gd-white) !important;
   border-color: transparent;
   transform: translateY(-3px);
   box-shadow: 0 10px 30px var(--gd-shadow-blue);
@@ -267,7 +268,7 @@ background-color: #fff;
 /* ==========================================
    ROLE SECTIONS (Students, Schools, Admins)
    ========================================== */
-.role-section-school{
+.role-section-school {
   margin-top: 12px;
   padding: 55px 45px;
   background-image: url('../images/school.png');
@@ -280,6 +281,7 @@ background-color: #fff;
   flex-direction: column;
   justify-content: center;
 }
+
 .role-section {
   margin-top: 12px;
   padding: 55px 45px;
@@ -289,17 +291,14 @@ background-color: #fff;
   background-repeat: no-repeat;
   width: 100%;
   min-height: 400px;
-  /* border-radius: var(--gd-radius);
-  border: 1px solid var(--gd-border);
-  box-shadow: 0 8px 40px rgba(14, 58, 107, 0.06); */
 }
 
 .student-section {
-  background: linear-gradient(135deg, rgba(235, 242, 250, 0.8) 0%, rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(135deg, rgba(240, 247, 255, 0.8) 0%, rgba(255, 255, 255, 1) 100%);
 }
 
 .school-section {
-  background: linear-gradient(135deg, rgba(255, 243, 224, 0.8) 0%, rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(135deg, rgba(255, 248, 231, 0.8) 0%, rgba(255, 255, 255, 1) 100%);
 }
 
 .admin-section {
@@ -374,14 +373,14 @@ background-color: #fff;
 
 .role-feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 18px 35px rgba(14, 58, 107, 0.12);
+  box-shadow: 0 18px 35px rgba(13, 59, 102, 0.12);
   border-color: var(--gd-blue-light);
 }
 
 .role-feature-icon-wrapper {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, rgba(27, 79, 138, 0.1), rgba(230, 81, 0, 0.1));
+  background: linear-gradient(135deg, rgba(26, 93, 173, 0.1), rgba(245, 166, 35, 0.1));
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -414,14 +413,14 @@ background-color: #fff;
 
 /* ---- Color Variations for Cards ---- */
 :root {
-  --color-blue: #1B4F8A;
-  --color-orange: #E65100;
+  --color-blue: #1A5DAD;
+  --color-orange: #F5A623;
   --color-green: #25A346;
   --color-purple: #7B2CBF;
-  --color-blue-light: #e3f2fd;
-  --color-orange-light: #ffe0b2;
-  --color-green-light: #e8f5e9;
-  --color-purple-light: #f3e5f5;
+  --color-blue-light: #E3F2FD;
+  --color-orange-light: #FFF3D6;
+  --color-green-light: #E8F5E9;
+  --color-purple-light: #F3E5F5;
 }
 
 /* Blue Cards */
@@ -430,7 +429,7 @@ background-color: #fff;
 }
 
 .role-feature-card.card-blue .role-feature-icon-wrapper {
-  background: linear-gradient(135deg, rgba(27, 79, 138, 0.2), rgba(27, 79, 138, 0.1));
+  background: linear-gradient(135deg, rgba(26, 93, 173, 0.2), rgba(26, 93, 173, 0.1));
 }
 
 .role-feature-card.card-blue .role-feature-icon-wrapper i {
@@ -442,16 +441,16 @@ background-color: #fff;
 }
 
 .role-feature-card.card-blue:hover .role-feature-icon-wrapper {
-  background: linear-gradient(135deg, var(--color-blue), #2E6DB4);
+  background: linear-gradient(135deg, var(--color-blue), #3DA5D9);
 }
 
-/* Orange Cards */
+/* Orange (Amber) Cards */
 .role-feature-card.card-orange {
   border-bottom: 5px solid var(--color-orange);
 }
 
 .role-feature-card.card-orange .role-feature-icon-wrapper {
-  background: linear-gradient(135deg, rgba(230, 81, 0, 0.2), rgba(230, 81, 0, 0.1));
+  background: linear-gradient(135deg, rgba(245, 166, 35, 0.2), rgba(245, 166, 35, 0.1));
 }
 
 .role-feature-card.card-orange .role-feature-icon-wrapper i {
@@ -463,7 +462,7 @@ background-color: #fff;
 }
 
 .role-feature-card.card-orange:hover .role-feature-icon-wrapper {
-  background: linear-gradient(135deg, var(--color-orange), #FF8F00);
+  background: linear-gradient(135deg, var(--color-orange), #FFC857);
 }
 
 /* Green Cards */
@@ -516,24 +515,43 @@ background-color: #fff;
   color: var(--gd-white);
 }
 
-/* Icon wrapper color classes */
-.icon-blue { background: linear-gradient(135deg, rgba(27, 79, 138, 0.2), rgba(27, 79, 138, 0.1)); }
-.icon-blue i { color: var(--color-blue); }
+.icon-blue {
+  background: linear-gradient(135deg, rgba(26, 93, 173, 0.2), rgba(26, 93, 173, 0.1));
+}
 
-.icon-orange { background: linear-gradient(135deg, rgba(230, 81, 0, 0.2), rgba(230, 81, 0, 0.1)); }
-.icon-orange i { color: var(--color-orange); }
+.icon-blue i {
+  color: var(--color-blue);
+}
 
-.icon-green { background: linear-gradient(135deg, rgba(37, 163, 70, 0.2), rgba(37, 163, 70, 0.1)); }
-.icon-green i { color: var(--color-green); }
+.icon-orange {
+  background: linear-gradient(135deg, rgba(245, 166, 35, 0.2), rgba(245, 166, 35, 0.1));
+}
 
-.icon-purple { background: linear-gradient(135deg, rgba(123, 44, 191, 0.2), rgba(123, 44, 191, 0.1)); }
-.icon-purple i { color: var(--color-purple); }
+.icon-orange i {
+  color: var(--color-orange);
+}
+
+.icon-green {
+  background: linear-gradient(135deg, rgba(37, 163, 70, 0.2), rgba(37, 163, 70, 0.1));
+}
+
+.icon-green i {
+  color: var(--color-green);
+}
+
+.icon-purple {
+  background: linear-gradient(135deg, rgba(123, 44, 191, 0.2), rgba(123, 44, 191, 0.1));
+}
+
+.icon-purple i {
+  color: var(--color-purple);
+}
 
 .role-feature-card p {
-  font-size:14px;
- 
+  font-size: 14px;
   line-height: 1.55;
   margin: 0;
+  color: var(--gd-text-light);
 }
 
 /* ==========================================
@@ -558,7 +576,7 @@ background-color: #fff;
 
 .exam-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 18px 35px rgba(14, 58, 107, 0.1);
+  box-shadow: 0 18px 35px rgba(13, 59, 102, 0.1);
   border-color: var(--gd-blue-light);
 }
 
@@ -577,7 +595,7 @@ background-color: #fff;
   min-height: 400px;
   border-radius: var(--gd-radius);
   border: 1px solid var(--gd-border);
-  box-shadow: 0 8px 40px rgba(14, 58, 107, 0.08);
+  box-shadow: 0 8px 40px rgba(13, 59, 102, 0.08);
 }
 
 .section-title {
@@ -636,11 +654,9 @@ background-color: #fff;
 
 .benefit-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 18px 35px rgba(14, 58, 107, 0.1);
+  box-shadow: 0 18px 35px rgba(13, 59, 102, 0.1);
   border-color: var(--gd-blue-light);
 }
-
-/* ---- Benefit Card Color Variations ---- */
 
 /* Blue Benefit Cards */
 .benefit-card.card-blue {
@@ -652,7 +668,7 @@ background-color: #fff;
 }
 
 .benefit-card.card-blue .benefit-icon {
-  background: linear-gradient(135deg, rgba(27, 79, 138, 0.15), rgba(27, 79, 138, 0.08));
+  background: linear-gradient(135deg, rgba(26, 93, 173, 0.15), rgba(26, 93, 173, 0.08));
 }
 
 .benefit-card.card-blue .benefit-icon i {
@@ -664,7 +680,7 @@ background-color: #fff;
 }
 
 .benefit-card.card-blue:hover .benefit-icon {
-  background: linear-gradient(135deg, var(--color-blue), #2E6DB4);
+  background: linear-gradient(135deg, var(--color-blue), #3DA5D9);
 }
 
 /* Orange Benefit Cards */
@@ -677,7 +693,7 @@ background-color: #fff;
 }
 
 .benefit-card.card-orange .benefit-icon {
-  background: linear-gradient(135deg, rgba(230, 81, 0, 0.15), rgba(230, 81, 0, 0.08));
+  background: linear-gradient(135deg, rgba(245, 166, 35, 0.15), rgba(245, 166, 35, 0.08));
 }
 
 .benefit-card.card-orange .benefit-icon i {
@@ -689,7 +705,7 @@ background-color: #fff;
 }
 
 .benefit-card.card-orange:hover .benefit-icon {
-  background: linear-gradient(135deg, var(--color-orange), #FF8F00);
+  background: linear-gradient(135deg, var(--color-orange), #FFC857);
 }
 
 /* Green Benefit Cards */
@@ -742,7 +758,6 @@ background-color: #fff;
   background: linear-gradient(135deg, var(--color-purple), #9C27B0);
 }
 
-/* Icon color overrides for hover state */
 .benefit-card.card-blue:hover .benefit-icon i,
 .benefit-card.card-orange:hover .benefit-icon i,
 .benefit-card.card-green:hover .benefit-icon i,
@@ -754,7 +769,7 @@ background-color: #fff;
 .benefit-icon {
   width: 70px;
   height: 70px;
-  background: linear-gradient(135deg, rgba(27, 79, 138, 0.15), rgba(230, 81, 0, 0.15));
+  background: linear-gradient(135deg, rgba(26, 93, 173, 0.15), rgba(245, 166, 35, 0.15));
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -797,7 +812,6 @@ background-color: #fff;
    ========================================== */
 
 .final-cta-section {
-  /* margin-top: 80px; */
   padding: 60px 50px;
   background-image: url('../images/school.png');
   background-size: cover;
@@ -811,7 +825,7 @@ background-color: #fff;
   color: var(--gd-white);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 15px 50px rgba(14, 58, 107, 0.2);
+  box-shadow: 0 15px 50px rgba(13, 59, 102, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -824,7 +838,7 @@ background-color: #fff;
   right: -10%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(255, 143, 0, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.15) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -844,7 +858,7 @@ background-color: #fff;
   position: relative;
   z-index: 2;
   opacity: 0.95;
-  color:var(--gd-text-light) !important;
+  color: var(--gd-text-light) !important;
 }
 
 .cta-buttons {
@@ -856,7 +870,7 @@ background-color: #fff;
   z-index: 2;
 }
 
-.cta-buttons .btn-gyandhara {
+.cta-buttons .btn-Epathshala {
   padding: 10px 40px;
   font-size: 12px;
 }
@@ -866,48 +880,123 @@ background-color: #fff;
    ========================================== */
 
 @keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.hero-badge { animation: heroFadeUp 0.5s ease 0.1s both; }
-.hero-section h1 { animation: heroFadeUp 0.5s ease 0.2s both; }
-.hero-section p { animation: heroFadeUp 0.5s ease 0.3s both; }
-.hero-buttons { animation: heroFadeUp 0.5s ease 0.4s both; }
-.hero-image-wrapper { animation: heroFadeUp 0.6s ease 0.1s both; margin-top: 90px; margin-bottom: 40px;}
+.hero-badge {
+  animation: heroFadeUp 0.5s ease 0.1s both;
+}
 
-.role-feature-card { animation: heroFadeUp 0.5s ease both; }
-.role-feature-card:nth-child(1) { animation-delay: 0.05s; }
-.role-feature-card:nth-child(2) { animation-delay: 0.1s; }
-.role-feature-card:nth-child(3) { animation-delay: 0.15s; }
-.role-feature-card:nth-child(4) { animation-delay: 0.2s; }
-.role-feature-card:nth-child(5) { animation-delay: 0.25s; }
-.role-feature-card:nth-child(6) { animation-delay: 0.3s; }
-.role-feature-card:nth-child(7) { animation-delay: 0.35s; }
-.role-feature-card:nth-child(8) { animation-delay: 0.4s; }
+.hero-section h1 {
+  animation: heroFadeUp 0.5s ease 0.2s both;
+}
 
-.benefit-card { animation: heroFadeUp 0.5s ease both; }
-.benefit-card:nth-child(1) { animation-delay: 0.05s; }
-.benefit-card:nth-child(2) { animation-delay: 0.1s; }
-.benefit-card:nth-child(3) { animation-delay: 0.15s; }
-.benefit-card:nth-child(4) { animation-delay: 0.2s; }
+.hero-section p {
+  animation: heroFadeUp 0.5s ease 0.3s both;
+}
 
-.exam-card { animation: heroFadeUp 0.5s ease both; }
-.exam-card:nth-child(1) { animation-delay: 0.05s; }
-.exam-card:nth-child(2) { animation-delay: 0.1s; }
-.exam-card:nth-child(3) { animation-delay: 0.15s; }
-.exam-card:nth-child(4) { animation-delay: 0.2s; }
+.hero-buttons {
+  animation: heroFadeUp 0.5s ease 0.4s both;
+}
+
+.hero-image-wrapper {
+  animation: heroFadeUp 0.6s ease 0.1s both;
+  margin-top: 90px;
+  margin-bottom: 40px;
+}
+
+.role-feature-card {
+  animation: heroFadeUp 0.5s ease both;
+}
+
+.role-feature-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.role-feature-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.role-feature-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.role-feature-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.role-feature-card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.role-feature-card:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.role-feature-card:nth-child(7) {
+  animation-delay: 0.35s;
+}
+
+.role-feature-card:nth-child(8) {
+  animation-delay: 0.4s;
+}
+
+.benefit-card {
+  animation: heroFadeUp 0.5s ease both;
+}
+
+.benefit-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.benefit-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.benefit-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.benefit-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.exam-card {
+  animation: heroFadeUp 0.5s ease both;
+}
+
+.exam-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.exam-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.exam-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.exam-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
 
 /* ==========================================
     MODAL STYLES
     ========================================== */
 
-/* Ensure modal close button is visible */
 .modal-title-style {
   color: #fff !important;
 }
 
-/* Ensure modal close button is white */
 .modal .btn-close {
   opacity: 1 !important;
   background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'%3e%3c/path%3e%3c/svg%3e") center / 1em auto no-repeat !important;
@@ -918,38 +1007,29 @@ background-color: #fff;
   opacity: 0.8 !important;
 }
 
-/* Modal header styling */
 .modal-header {
   border-bottom: 1px solid var(--gd-border) !important;
   padding: 16px 20px !important;
-  background: linear-gradient(135deg, #2c3e50 0%, #000000 100%) !important;
+  background: linear-gradient(135deg, var(--gd-blue-dark) 0%, var(--gd-blue) 100%) !important;
 }
 
-.modal-title {
-  color: var(--gd-white-white) !important;
-}
-
-/* Modal body styling */
 .modal-body {
   padding: 20px !important;
   background: #f8f9fa !important;
 }
 
-/* Ensure modal is properly centered */
 .modal-dialog-centered {
   display: flex;
   align-items: center;
   min-height: calc(100% - (var(--bs-modal-margin) * 2));
 }
 
-/* Modal content shadow */
 .modal-content {
   border-radius: 16px !important;
   border: none !important;
-  box-shadow: 0 20px 60px rgba(14, 58, 107, 0.2) !important;
+  box-shadow: 0 20px 60px rgba(13, 59, 102, 0.2) !important;
 }
 
-/* Coming Soon Modal Overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -988,14 +1068,14 @@ background-color: #fff;
   margin-right: auto;
 }
 
-.competitive-cta-content .btn-gyandhara {
+.competitive-cta-content .btn-Epathshala {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-.competitive-cta-content .btn-gyandhara:hover {
+.competitive-cta-content .btn-Epathshala:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-  color: var(--gd-white);
+  color: var(--gd-blue-dark) !important;
 }
 
 .modal-overlay .modal-dialog {
@@ -1007,7 +1087,7 @@ background-color: #fff;
 .coming-soon-modal {
   border-radius: 20px !important;
   border: none !important;
-  box-shadow: 0 25px 70px rgba(14, 58, 107, 0.3) !important;
+  box-shadow: 0 25px 70px rgba(13, 59, 102, 0.3) !important;
   overflow: hidden;
 }
 
@@ -1058,10 +1138,11 @@ background-color: #fff;
 
 .coming-soon-modal .modal-footer .btn-primary {
   background: var(--gd-gradient-warm);
+  color: var(--gd-blue-dark);
   border: none;
   padding: 8px 32px;
   border-radius: 50px;
-  font-weight: 600;
+  font-weight: 700;
   transition: all 0.3s ease;
 }
 
@@ -1070,7 +1151,6 @@ background-color: #fff;
   box-shadow: 0 8px 20px var(--gd-shadow-orange);
 }
 
-/* Additional centering for modal */
 .modal.show .modal-dialog {
   display: flex;
   align-items: center;
@@ -1082,80 +1162,17 @@ background-color: #fff;
 @media (min-width: 576px) {
   .modal.show .modal-dialog {
     margin: var(--bs-modal-margin) auto;
+    left: 0;
   }
 }
 
-/* Ensure modal is properly centered */
-.modal-dialog-centered {
-  display: flex;
-  align-items: center;
-  min-height: calc(100% - (var(--bs-modal-margin) * 2));
-}
-
-/* Additional modal positioning */
 .modal.fade .modal-dialog {
   transition: transform 0.3s ease-out;
 }
 
-/* New modal positioning class */
-.modal-position-left {
-  position: relative;
-  left: 48px;
-}
-
-/* Additional centering for modal */
-.modal.show .modal-dialog {
-  display: flex;
-  align-items: center;
-  min-height: calc(100% - (var(--bs-modal-margin) * 2));
-  position: relative;
-  left: 48px;
-}
-
-@media (min-width: 576px) {
-  .modal.show .modal-dialog {
-    margin: var(--bs-modal-margin) auto;
-  }
-}
-
-/* Ensure modal is properly centered */
-.modal-dialog-centered {
-  display: flex;
-  align-items: center;
-  min-height: calc(100% - (var(--bs-modal-margin) * 2));
-}
-
-/* Additional modal positioning */
-.modal.fade .modal-dialog {
-  transition: transform 0.3s ease-out;
-}
-
-/* Additional centering for modal */
-.modal.show .modal-dialog {
-  display: flex;
-  align-items: center;
-  min-height: calc(100% - (var(--bs-modal-margin) * 2));
-  position: relative;
-  left: 48px;
-}
-
-@media (min-width: 576px) {
-  .modal.show .modal-dialog {
-    margin: var(--bs-modal-margin) auto;
-  }
-}
-
-/* Ensure modal is properly centered */
-.modal-dialog-centered {
-  display: flex;
-  align-items: center;
-  min-height: calc(100% - (var(--bs-modal-margin) * 2));
-}
-
-/* Additional modal positioning */
-.modal.fade .modal-dialog {
-  transition: transform 0.3s ease-out;
-}
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
 
 @media (max-width: 992px) {
   .hero-section {
@@ -1166,9 +1183,10 @@ background-color: #fff;
     border-radius: 16px;
     margin: 0 15px;
   }
-  .role-section-school{
-  margin-top: 12px;
-  padding: 55px 20px;
+
+  .role-section-school {
+    margin-top: 12px;
+    padding: 55px 20px;
   }
 
   .hero-image-wrapper {
@@ -1208,7 +1226,7 @@ background-color: #fff;
     justify-content: center;
   }
 
-  .btn-gyandhara {
+  .btn-Epathshala {
     padding: 11px 24px;
     font-size: 0.95rem;
   }
@@ -1217,13 +1235,11 @@ background-color: #fff;
     padding: 35px 20px;
     margin-top: 0;
     border-radius: 16px;
-    /* margin: 0 15px; */
   }
 
   .benefits-section {
     padding: 35px 20px;
     border-radius: 16px;
-    /* margin: 0 15px; */
   }
 }
 
@@ -1281,7 +1297,7 @@ background-color: #fff;
     justify-content: center;
   }
 
-  .btn-gyandhara {
+  .btn-Epathshala {
     padding: 12px 28px;
     font-size: 0.98rem;
   }
@@ -1357,7 +1373,7 @@ background-color: #fff;
     flex-direction: column;
   }
 
-  .cta-buttons .btn-gyandhara {
+  .cta-buttons .btn-Epathshala {
     width: 100%;
     justify-content: center;
   }
@@ -1373,7 +1389,7 @@ background-color: #fff;
     padding: 8px 18px;
   }
 
-  .btn-gyandhara {
+  .btn-Epathshala {
     padding: 11px 22px;
     font-size: 0.92rem;
     gap: 8px;
@@ -1384,7 +1400,7 @@ background-color: #fff;
     align-items: center;
   }
 
-  .btn-gyandhara {
+  .btn-Epathshala {
     width: 100%;
     justify-content: center;
   }
@@ -1471,55 +1487,4 @@ background-color: #fff;
   .benefit-card p {
     font-size: 0.85rem;
   }
-}
-
-/* ==========================================
-    MODAL STYLES
-    ========================================== */
-
-/* Ensure modal close button is visible */
-.modal-title-style {
-  color: #fff !important;
-}
-
-/* Ensure modal close button is white */
-.modal .btn-close {
-  opacity: 1 !important;
-  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'%3e%3c/path%3e%3c/svg%3e") center / 1em auto no-repeat !important;
-  filter: none !important;
-}
-
-.modal .btn-close:hover {
-  opacity: 0.8 !important;
-}
-
-/* Modal header styling */
-.modal-header {
-  border-bottom: 1px solid var(--gd-border) !important;
-  padding: 16px 20px !important;
-  background: linear-gradient(135deg, #2c3e50 0%, #000000 100%) !important;
-}
-
-/* .modal-title {
-  color: var(--gd-blue-dark) !important;
-} */
-
-/* Modal body styling */
-.modal-body {
-  padding: 20px !important;
-  background: #f8f9fa !important;
-}
-
-/* Ensure modal is properly centered */
-.modal-dialog-centered {
-  display: flex;
-  align-items: center;
-  min-height: calc(100% - (var(--bs-modal-margin) * 2));
-}
-
-/* Modal content shadow */
-.modal-content {
-  border-radius: 16px !important;
-  border: none !important;
-  box-shadow: 0 20px 60px rgba(14, 58, 107, 0.2) !important;
 }

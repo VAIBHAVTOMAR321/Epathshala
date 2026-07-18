@@ -347,7 +347,7 @@ const DashBord = () => {
       
        // Fetch unpaid enrollment data
          try {
-           const unpaidEnrollRes = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/enrollment-unpaid/', config)
+           const unpaidEnrollRes = await axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/enrollment-unpaid/', config)
            if (unpaidEnrollRes.data && unpaidEnrollRes.data.success) {
              const enrollments = unpaidEnrollRes.data.data
              setUnpaidEnrollmentCount(enrollments.length)
@@ -377,7 +377,7 @@ const DashBord = () => {
 
      // Fetch courses data from new endpoint
      try {
-        const courseRes = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-items/', config)
+        const courseRes = await axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-items/', config)
         if (courseRes.data && courseRes.data.success) {
           setCourses(courseRes.data.data)
         }
@@ -387,7 +387,7 @@ const DashBord = () => {
 
        // Fetch counseling data
        try {
-         const counselingRes = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/student-cousult/', config)
+         const counselingRes = await axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/student-cousult/', config)
          if (counselingRes.data && counselingRes.data.status) {
            const data = counselingRes.data.data
            setCounselingData(data)
@@ -416,7 +416,7 @@ const DashBord = () => {
 
        // Fetch admin notifications count
       try {
-        const notifRes = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/admin-notifications/', config)
+        const notifRes = await axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/admin-notifications/', config)
         if (notifRes.data && notifRes.data.status) {
           setAdminNotificationCount(notifRes.data.count || 0)
         }
@@ -426,7 +426,7 @@ const DashBord = () => {
 
       // Fetch events count
       try {
-        const eventsRes = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/event-item/')
+        const eventsRes = await axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/event-item/')
         if (eventsRes.data && eventsRes.data.success) {
           setEventsCount(eventsRes.data.data.length)
         }
@@ -463,7 +463,7 @@ const DashBord = () => {
   const fetchEvents = async () => {
     setLoadingEvents(true)
     try {
-      const response = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/event-item/')
+      const response = await axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/event-item/')
       if (response.data && response.data.success) {
         setEvents(response.data.data)
       }
@@ -478,7 +478,7 @@ const DashBord = () => {
   const handleDeleteEvent = async (event) => {
     if (window.confirm(`Are you sure you want to delete the event "${event.event_name}"?`)) {
       try {
-        await axios.delete('https://brjobsedu.com/gyandhara/gyandhara_backend/api/event-item/', {
+        await axios.delete('https://brjobsedu.com/Epathshala/Epathshala_backend/api/event-item/', {
           data: { event_id: event.event_id }
         })
         alert('Event deleted successfully!')
@@ -554,7 +554,7 @@ const DashBord = () => {
       }
 
       if (isAddingEvent) {
-        await axios.post('https://brjobsedu.com/gyandhara/gyandhara_backend/api/event-item/', formData, {
+        await axios.post('https://brjobsedu.com/Epathshala/Epathshala_backend/api/event-item/', formData, {
           ...config,
           headers: {
             ...config.headers,
@@ -563,7 +563,7 @@ const DashBord = () => {
         })
         alert('Event added successfully!')
       } else {
-        await axios.put('https://brjobsedu.com/gyandhara/gyandhara_backend/api/event-item/', formData, {
+        await axios.put('https://brjobsedu.com/Epathshala/Epathshala_backend/api/event-item/', formData, {
           ...config,
           headers: {
             ...config.headers,
@@ -629,7 +629,7 @@ const DashBord = () => {
   const handleNotificationsClick = async () => {
     try {
       const config = getAuthConfig()
-      const response = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/admin-notifications/', config)
+      const response = await axios.get('https://brjobsedu.com/Epathshala/Epathshala_backend/api/admin-notifications/', config)
       if (response.data && response.data.status) {
         setAdminNotifications(response.data.data || [])
         setShowNotificationsListModal(true)
@@ -643,7 +643,7 @@ const DashBord = () => {
     if (window.confirm('Are you sure you want to delete this notification?')) {
       try {
         const config = getAuthConfig()
-        await axios.delete('https://brjobsedu.com/gyandhara/gyandhara_backend/api/admin-notifications/', {
+        await axios.delete('https://brjobsedu.com/Epathshala/Epathshala_backend/api/admin-notifications/', {
           data: { notification_ids: [notificationId] },
           ...config
         })
@@ -662,7 +662,7 @@ const DashBord = () => {
 
     try {
       const config = getAuthConfig()
-      await axios.post('https://brjobsedu.com/gyandhara/gyandhara_backend/api/admin-notifications/', {
+      await axios.post('https://brjobsedu.com/Epathshala/Epathshala_backend/api/admin-notifications/', {
         title: notificationFormData.title,
         message: notificationFormData.message
       }, config)
@@ -719,7 +719,7 @@ const DashBord = () => {
    const handleViewCourse = async (course) => {
      try {
        const config = getAuthConfig()
-       const response = await axios.get(`https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-module/?course_id=${course.course_id}`, config)
+       const response = await axios.get(`https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-module/?course_id=${course.course_id}`, config)
        if (response.data && response.data.success) {
          setSelectedCourse(response.data.data)
        }
@@ -733,7 +733,7 @@ const DashBord = () => {
      setProgressLoading(true)
      try {
        const config = getAuthConfig()
-       const response = await axios.get(`https://brjobsedu.com/gyandhara/gyandhara_backend/api/module-progress-unpaid/?student_id=${studentId}`, config)
+       const response = await axios.get(`https://brjobsedu.com/Epathshala/Epathshala_backend/api/module-progress-unpaid/?student_id=${studentId}`, config)
        if (response.data && response.data.success) {
          return response.data.data
        }
@@ -769,7 +769,7 @@ const DashBord = () => {
     if (window.confirm(`Are you sure you want to delete the course "${course.course_name}"?`)) {
       try {
         const config = getAuthConfig()
-        await axios.delete('https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-items/', {
+        await axios.delete('https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-items/', {
           data: { course_id: course.course_id },
           ...config
         })
@@ -791,7 +791,7 @@ const DashBord = () => {
     setLoadingModules(true)
     try {
       const config = getAuthConfig()
-      const response = await axios.get(`https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-module/?course_id=${course_id}`, config)
+      const response = await axios.get(`https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-module/?course_id=${course_id}`, config)
       if (response.data && response.data.success) {
         const fetchedModules = response.data.data.modules || []
         setModules(fetchedModules)
@@ -827,7 +827,7 @@ const DashBord = () => {
 
       if (moduleFormData.module_id) {
         // Update existing module (PUT request)
-        await axios.put('https://brjobsedu.com/gyandhara/gyandhara_backend/api/module-items/', {
+        await axios.put('https://brjobsedu.com/Epathshala/Epathshala_backend/api/module-items/', {
           ...dataToSend,
           module_id: moduleFormData.module_id
         }, config)
@@ -835,7 +835,7 @@ const DashBord = () => {
         
       } else {
         // Create new module (POST request)
-        await axios.post('https://brjobsedu.com/gyandhara/gyandhara_backend/api/module-items/', dataToSend, config)
+        await axios.post('https://brjobsedu.com/Epathshala/Epathshala_backend/api/module-items/', dataToSend, config)
         alert('Module added successfully!')
       }
       
@@ -872,7 +872,7 @@ const DashBord = () => {
     if (window.confirm(`Are you sure you want to delete the module "${module.mod_title}"?`)) {
       try {
         const config = getAuthConfig()
-        await axios.delete('https://brjobsedu.com/gyandhara/gyandhara_backend/api/module-items/', {
+        await axios.delete('https://brjobsedu.com/Epathshala/Epathshala_backend/api/module-items/', {
           data: { module_id: module.module_id },
           ...config
         })
@@ -904,7 +904,7 @@ const DashBord = () => {
     setLoadingSubmodules(true)
     try {
       const config = getAuthConfig()
-      const response = await axios.get(`https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-module/?course_id=${course_id}`, config)
+      const response = await axios.get(`https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-module/?course_id=${course_id}`, config)
       if (response.data && response.data.success) {
         // Find the module and get its submodules
         const targetModule = response.data.data.modules.find(m => m.module_id === module_id)
@@ -957,7 +957,7 @@ const DashBord = () => {
 
       if (submoduleFormData.sub_module_id) {
         // Update existing submodule (PUT request)
-        await axios.put('https://brjobsedu.com/gyandhara/gyandhara_backend/api/submodule-items/', formData, {
+        await axios.put('https://brjobsedu.com/Epathshala/Epathshala_backend/api/submodule-items/', formData, {
           ...config,
           headers: {
             ...config.headers,
@@ -967,7 +967,7 @@ const DashBord = () => {
         alert('Submodule updated successfully!')
       } else {
         // Create new submodule (POST request)
-        await axios.post('https://brjobsedu.com/gyandhara/gyandhara_backend/api/submodule-items/', formData, {
+        await axios.post('https://brjobsedu.com/Epathshala/Epathshala_backend/api/submodule-items/', formData, {
           ...config,
           headers: {
             ...config.headers,
@@ -1018,7 +1018,7 @@ const DashBord = () => {
     if (window.confirm(`Are you sure you want to delete the submodule "${submodule.sub_modu_title}"?`)) {
       try {
         const config = getAuthConfig()
-        await axios.delete('https://brjobsedu.com/gyandhara/gyandhara_backend/api/submodule-items/', {
+        await axios.delete('https://brjobsedu.com/Epathshala/Epathshala_backend/api/submodule-items/', {
           data: { sub_module_id: submodule.sub_module_id },
           ...config
         })
@@ -1110,7 +1110,7 @@ const DashBord = () => {
       }
       
       const config = getAuthConfig()
-      const response = await axios.get(`https://brjobsedu.com/gyandhara/gyandhara_backend/api/exercise-img/?module_id=${module_id}`, config)
+      const response = await axios.get(`https://brjobsedu.com/Epathshala/Epathshala_backend/api/exercise-img/?module_id=${module_id}`, config)
       console.log('API Response:', response)
       if (response.data && response.data.success) {
         setExercises(response.data.data)
@@ -1147,7 +1147,7 @@ const DashBord = () => {
 
       if (exerciseFormData.id) {
         // Update existing exercise
-        await axios.put('https://brjobsedu.com/gyandhara/gyandhara_backend/api/exercise-img/', formData, {
+        await axios.put('https://brjobsedu.com/Epathshala/Epathshala_backend/api/exercise-img/', formData, {
           ...config,
           headers: {
             ...config.headers,
@@ -1157,7 +1157,7 @@ const DashBord = () => {
         alert('Exercise updated successfully!')
       } else {
         // Create new exercise
-        await axios.post('https://brjobsedu.com/gyandhara/gyandhara_backend/api/exercise-img/', formData, {
+        await axios.post('https://brjobsedu.com/Epathshala/Epathshala_backend/api/exercise-img/', formData, {
           ...config,
           headers: {
             ...config.headers,
@@ -1196,7 +1196,7 @@ const DashBord = () => {
     if (window.confirm(`Are you sure you want to delete the exercise "${exercise.img_name}"?`)) {
       try {
         const config = getAuthConfig()
-        await axios.delete('https://brjobsedu.com/gyandhara/gyandhara_backend/api/exercise-img/', {
+        await axios.delete('https://brjobsedu.com/Epathshala/Epathshala_backend/api/exercise-img/', {
           data: { id: exercise.id },
           ...config
         })
@@ -1219,7 +1219,7 @@ const DashBord = () => {
     setLoadingQuestions(true)
     try {
       const config = getAuthConfig()
-      const response = await axios.get(`https://brjobsedu.com/gyandhara/gyandhara_backend/api/module-questions/?course_id=${course_id}&module_id=${module_id}`, config)
+      const response = await axios.get(`https://brjobsedu.com/Epathshala/Epathshala_backend/api/module-questions/?course_id=${course_id}&module_id=${module_id}`, config)
       if (response.data && response.data.success) {
         setQuestions(response.data.data)
       }
@@ -1252,10 +1252,10 @@ const DashBord = () => {
 
       if (questionFormData.id) {
         dataToSend.id = questionFormData.id
-        await axios.put('https://brjobsedu.com/gyandhara/gyandhara_backend/api/module-questions/', dataToSend, config)
+        await axios.put('https://brjobsedu.com/Epathshala/Epathshala_backend/api/module-questions/', dataToSend, config)
         alert('Question updated successfully!')
       } else {
-        await axios.post('https://brjobsedu.com/gyandhara/gyandhara_backend/api/module-questions/', dataToSend, config)
+        await axios.post('https://brjobsedu.com/Epathshala/Epathshala_backend/api/module-questions/', dataToSend, config)
         alert('Question added successfully!')
       }
       
@@ -1295,7 +1295,7 @@ const DashBord = () => {
     if (window.confirm('Are you sure you want to delete this question?')) {
       try {
         const config = getAuthConfig()
-        await axios.delete('https://brjobsedu.com/gyandhara/gyandhara_backend/api/module-questions/', {
+        await axios.delete('https://brjobsedu.com/Epathshala/Epathshala_backend/api/module-questions/', {
           data: { id: question.id },
           ...config
         })
@@ -1329,7 +1329,7 @@ const DashBord = () => {
         // Update existing course
         formData.append('course_id', courseFormData.course_id)
         formData.append('course_status', courseFormData.course_status || 'unpaid')
-        await axios.put('https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-items/', formData, {
+        await axios.put('https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-items/', formData, {
           ...config,
           headers: {
             ...config.headers,
@@ -1340,7 +1340,7 @@ const DashBord = () => {
       } else {
         // Create new course - only create unpaid courses
         formData.append('course_status', 'unpaid') // Explicitly set to unpaid
-        await axios.post('https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-items/', formData, {
+        await axios.post('https://brjobsedu.com/Epathshala/Epathshala_backend/api/course-items/', formData, {
           ...config,
           headers: {
             ...config.headers,
@@ -1869,7 +1869,7 @@ const DashBord = () => {
                          {course.course_img ? (
                            <div className="mb-3">
                              <Image
-                               src={`https://brjobsedu.com/gyandhara/gyandhara_backend${course.course_img}`}
+                               src={`https://brjobsedu.com/Epathshala/Epathshala_backend${course.course_img}`}
                                alt={course.course_name}
                                thumbnail
                                className="img-fluid"
@@ -2179,7 +2179,7 @@ const DashBord = () => {
                   <Image
                     src={courseFormData.course_img 
                       ? URL.createObjectURL(courseFormData.course_img)
-                      : `https://brjobsedu.com/gyandhara/gyandhara_backend${courseFormData.existing_course_img}`
+                      : `https://brjobsedu.com/Epathshala/Epathshala_backend${courseFormData.existing_course_img}`
                     }
                     alt="Course preview"
                     thumbnail
@@ -2481,7 +2481,7 @@ const DashBord = () => {
                     {submodule.image && (
                       <div className="mb-3">
                         <Image 
-                          src={`https://brjobsedu.com/gyandhara/gyandhara_backend${submodule.image}`} 
+                          src={`https://brjobsedu.com/Epathshala/Epathshala_backend${submodule.image}`} 
                           alt="Submodule" 
                           thumbnail 
                           className="img-fluid"
@@ -2615,7 +2615,7 @@ const DashBord = () => {
                       {exercise.img && (
                         <div className="me-3">
                           <Image 
-                            src={`https://brjobsedu.com/gyandhara/gyandhara_backend${exercise.img}`} 
+                            src={`https://brjobsedu.com/Epathshala/Epathshala_backend${exercise.img}`} 
                             alt={exercise.img_name} 
                             thumbnail 
                             className="img-fluid"
@@ -3474,7 +3474,7 @@ const DashBord = () => {
                     {event.event_image && (
                       <Card.Img 
                         variant="top" 
-                        src={`https://brjobsedu.com/gyandhara/gyandhara_backend${event.event_image}`} 
+                        src={`https://brjobsedu.com/Epathshala/Epathshala_backend${event.event_image}`} 
                         alt={event.event_name}
                         style={{ height: '160px', objectFit: 'cover' }}
                       />
@@ -3576,7 +3576,7 @@ const DashBord = () => {
                 <div className="mb-3">
                   {selectedCourse.course_img ? (
                     <Image
-                      src={`https://brjobsedu.com/gyandhara/gyandhara_backend${selectedCourse.course_img}`}
+                      src={`https://brjobsedu.com/Epathshala/Epathshala_backend${selectedCourse.course_img}`}
                       alt={selectedCourse.course_name}
                       thumbnail
                       className="img-fluid"
@@ -3628,7 +3628,7 @@ const DashBord = () => {
                                    {subMod.image && (
                                      <div className="mt-2">
                                        <Image 
-                                         src={`https://brjobsedu.com/gyandhara/gyandhara_backend${subMod.image}`} 
+                                         src={`https://brjobsedu.com/Epathshala/Epathshala_backend${subMod.image}`} 
                                          alt={subMod.sub_modu_title} 
                                          thumbnail 
                                          className="img-fluid"
@@ -3933,7 +3933,7 @@ const DashBord = () => {
               {selectedEvent.event_image && (
                 <div className="mb-3">
                   <Image 
-                    src={`https://brjobsedu.com/gyandhara/gyandhara_backend${selectedEvent.event_image}`} 
+                    src={`https://brjobsedu.com/Epathshala/Epathshala_backend${selectedEvent.event_image}`} 
                     alt={selectedEvent.event_name}
                     fluid
                     className="rounded"
