@@ -23,7 +23,7 @@ const Login = () => {
 
   const content = {
     en: {
-      title: "gyandhara",
+      title: "Epathshala",
       subtitle: "Skill Today, Empower Tomorrow",
       welcome: "Welcome Back!",
       welcomeSub: "Continue your learning journey",
