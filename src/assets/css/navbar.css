@@ -28,16 +28,16 @@
   background-color:#fff !important;
   padding: 0 !important;
   box-shadow: 0 2px 20px rgba(13, 59, 102, 0.08);
-  border-bottom: 3px solid transparent;
+ 
   border-image: linear-gradient(to right, var(--gd-deep), var(--gd-saffron), var(--gd-amber)) 1;
   transition: all 0.3s ease;
   min-height: 70px;
   display: flex;
   align-items: center;
 }
-
 .custom-navbar.scrolled {
   box-shadow: 0 4px 30px rgba(26, 93, 173, 0.15);
+
 }
 
 /* ---- Brand / Logo ---- */
