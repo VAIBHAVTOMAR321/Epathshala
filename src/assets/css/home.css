@@ -497,6 +497,16 @@
   justify-content: center;
 }
 
+/* Interactive Image Hover Effect */
+.role-section-school .img-fluid {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.role-section-school .img-fluid:hover {
+  transform: scale(1.04);
+  box-shadow: 0 20px 45px rgba(13, 59, 102, 0.18) !important;
+}
+
 .role-section {
   margin-top: 12px;
   padding: 55px 45px;
@@ -1795,4 +1805,55 @@
   color: #000;
   font-weight:700;
 
+}
+
+/* Image Overlay Styles */
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem; /* Matches the image's rounded corners */
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 59, 102, 0.7); /* Semi-transparent navy from your theme */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  padding: 20px;
+  pointer-events: none; /* Allows hover effects on the image itself */
+}
+
+.image-container:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-overlay-content {
+  text-align: center;
+  transform: translateY(15px);
+  transition: transform 0.4s ease;
+}
+
+.image-container:hover .image-overlay-content {
+  transform: translateY(0);
+}
+
+.image-overlay-content h5 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.image-overlay-content p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.9;
+  margin: 0;
 }

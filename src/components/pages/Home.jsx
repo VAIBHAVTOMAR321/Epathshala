@@ -6,6 +6,7 @@ import heroImg from "../../assets/images/CBSEimg.png";
 import '../../assets/css/home.css'
 import Logo2 from "../../assets/images/gyandharalogo2.png";
 import CompetitiveExams from './CompetitiveExams'
+import LMSStudent from "../../assets/images/lms_student.jpeg";
 
 function Home() {
   const { language } = useLanguage()
@@ -310,11 +311,19 @@ function Home() {
               </Row>
             </Col>
             <Col lg={5}>
-              <img 
-                src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&q=80" 
-                alt="Students learning" 
-                className="img-fluid rounded-3 shadow-lg"
-              />
+              <div className="image-container">
+                <img src={LMSStudent} alt="student Learning"
+                 
+                  alt="Students learning" 
+                  className="img-fluid rounded-3 shadow-lg"
+                />
+                <div className="image-overlay">
+                  <div className="image-overlay-content">
+                    <h5>{t.studentTitle}</h5>
+                    <p>{t.studentSubtitle}</p>
+                  </div>
+                </div>
+              </div>
             </Col>
           </Row>
         </section>
@@ -323,7 +332,15 @@ function Home() {
         <section className="role-section-school">
           <Row className="align-items-center g-5">
             <Col lg={5}>
-              <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80" alt="Institution" className="img-fluid rounded-3 shadow-lg" />
+              <div className="image-container">
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80" alt="Institution" className="img-fluid rounded-3 shadow-lg" />
+                <div className="image-overlay">
+                  <div className="image-overlay-content">
+                    <h5>{t.schoolTitle}</h5>
+                    <p>{t.schoolSubtitle}</p>
+                  </div>
+                </div>
+              </div>
             </Col>
             <Col lg={7}>
               <div className="role-header">
