@@ -286,51 +286,67 @@ function Home() {
 
 
         {/* For Students Section */}
-        <section className="role-section ">
-          <div className="role-header">
-            <h2>{t.studentTitle}</h2>
-            <p>{t.studentSubtitle}</p>
-          </div>
-          <div className="role-features-grid">
-            {t.studentFeatures.map((feature, index) => (
-              <div 
-                className={`role-feature-card card-${feature.color}`} 
-                key={index} 
-                onClick={handleCardClick}
-                style={{ cursor: 'pointer' }}
-              >
-                <div className={`role-feature-icon-wrapper icon-${feature.color}`}>
-                  <i className={`bi ${feature.icon}`}></i>
-                </div>
-                <h4>{feature.title}</h4>
-                <p>{feature.desc}</p>
+        <section className="role-section-school">
+          <Row className="align-items-center g-5">
+            <Col lg={7}>
+              <div className="role-header">
+                <h2>{t.studentTitle}</h2>
+                <p>{t.studentSubtitle}</p>
               </div>
-            ))}
-          </div>
+              <Row className="g-3">
+                {t.studentFeatures.slice(0, 6).map((feature, index) => (
+                  <Col md={6} key={index}>
+                    <div className="student-feature-item" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
+                      <div className={`student-feature-icon icon-${feature.color}`}>
+                        <i className={`bi ${feature.icon}`}></i>
+                      </div>
+                      <div className="student-feature-text">
+                        <h5>{feature.title}</h5>
+                        <p>{feature.desc}</p>
+                      </div>
+                    </div>
+                  </Col>
+                ))}
+              </Row>
+            </Col>
+            <Col lg={5}>
+              <img 
+                src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&q=80" 
+                alt="Students learning" 
+                className="img-fluid rounded-3 shadow-lg"
+              />
+            </Col>
+          </Row>
         </section>
 
         {/* For Schools Section */}
-        <section className="role-section-school ">
-          <div className="role-header">
-            <h2>{t.schoolTitle}</h2>
-            <p>{t.schoolSubtitle}</p>
-          </div>
-          <div className="role-features-grid">
-            {t.schoolFeatures.map((feature, index) => (
-              <div 
-                className={`role-feature-card card-${feature.color}`} 
-                key={index} 
-                onClick={handleCardClick}
-                style={{ cursor: 'pointer' }}
-              >
-                <div className={`role-feature-icon-wrapper icon-${feature.color}`}>
-                  <i className={`bi ${feature.icon}`}></i>
-                </div>
-                <h4>{feature.title}</h4>
-                <p>{feature.desc}</p>
+        <section className="role-section-school">
+          <Row className="align-items-center g-5">
+            <Col lg={5}>
+              <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80" alt="Institution" className="img-fluid rounded-3 shadow-lg" />
+            </Col>
+            <Col lg={7}>
+              <div className="role-header">
+                <h2>{t.schoolTitle}</h2>
+                <p>{t.schoolSubtitle}</p>
               </div>
-            ))}
-          </div>
+              <Row className="g-3">
+                {t.schoolFeatures.map((feature, index) => (
+                  <Col md={6} key={index}>
+                    <div className="institution-feature-item" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
+                      <div className={`institution-feature-icon icon-${feature.color}`}>
+                        <i className={`bi ${feature.icon}`}></i>
+                      </div>
+                      <div className="institution-feature-text">
+                        <h5>{feature.title}</h5>
+                        <p>{feature.desc}</p>
+                      </div>
+                    </div>
+                  </Col>
+                ))}
+              </Row>
+            </Col>
+          </Row>
         </section>
 
         {/* Competitive Exams Test Series Section */}
@@ -354,21 +370,23 @@ function Home() {
         
           </div>
             <Row className="g-4">
-                {t.benefits.map((benefit, index) => (
-                    <Col lg={3} md={6} sm={12} key={index}>
-                        <div 
-                          className={`benefit-card card-${benefit.color} h-100 border-0 shadow-sm`}
-                          onClick={handleCardClick}
-                          style={{ cursor: 'pointer' }}
-                        >
-                            <div className={`benefit-icon icon-${benefit.color}`}>
-                                <i className={`bi ${benefit.icon}`}></i>
-                            </div>
-                            <h4>{benefit.title}</h4>
-                            <p>{benefit.desc}</p>
-                        </div>
-                    </Col>
-                ))}
+              {t.benefits.map((benefit, index) => (
+                <Col lg={3} md={6} sm={12} key={index}>
+                  <div 
+                    className="student-feature-item h-100"
+                    onClick={handleCardClick}
+                    style={{ cursor: 'pointer', flexDirection: 'column', textAlign: 'center' }}
+                  >
+                    <div className={`student-feature-icon icon-${benefit.color} mx-auto`}>
+                      <i className={`bi ${benefit.icon}`}></i>
+                    </div>
+                    <div className="student-feature-text mt-3">
+                      <h5 style={{ textAlign: 'center' }}>{benefit.title}</h5>
+                      <p style={{ textAlign: 'center' }}>{benefit.desc}</p>
+                    </div>
+                  </div>
+                </Col>
+              ))}
             </Row>
          
         </section>

@@ -1703,3 +1703,96 @@
     font-size: 0.85rem;
   }
 }
+
+/* Add these new styles to the end of your home.css file */
+
+.student-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background-color: #fff;
+  border: 1px solid #e9ecef;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  height: 100%;
+}
+
+.student-feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+.student-feature-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.student-feature-text h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 0.25rem;
+  color: #343a40;
+}
+
+.student-feature-text p {
+  font-size: 0.9rem;
+  color: #6c757d;
+  text-align:left;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Styles for Institution Features (reusing student styles for consistency) */
+.institution-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background-color: #fff;
+  border: 1px solid #e9ecef;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  height: 100%;
+}
+
+.institution-feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+.institution-feature-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.institution-feature-text {
+  /* This class inherits h5 and p styles from .student-feature-text, so no extra rules are needed if they are identical. */
+}
+.institution-feature-text{
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-align: left;
+    margin-bottom: 0;
+    line-height: 1.5;
+
+
+}
+.institution-feature-item h5{
+  color: #000;
+  font-weight:700;
+
+}
