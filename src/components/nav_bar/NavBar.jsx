@@ -21,13 +21,30 @@ function NavBar() {
              alt="gyandhara Logo" 
              className="navbar-logo"
            />
-           <span style={{
-             fontWeight: 'bold',
-             fontSize: '1.5rem',
-             color: '#0D3B66', // Using --gd-blue-dark from your theme
-             marginLeft: '10px',
-             verticalAlign: 'middle'
-           }}>ePathshala</span>
+          <span style={{
+  fontWeight: '800',
+  fontSize: '18px', // Increased slightly for logo visibility, adjust as needed
+  marginLeft: '10px',
+  verticalAlign: 'middle',
+  display: 'inline-flex',
+  alignItems: 'center',
+
+}}>
+  <span style={{ 
+    color: '#3d3fac', 
+     fontWeight: '800',// Golden Amber color for 'e' to make it pop
+   // Optional: italicizes the 'e' for a modern logo look
+    marginRight: '2px'
+    
+  }}>
+    e
+  </span>
+  <span style={{ 
+    color: '#010508' // Navy Blue for 'Pathshala'
+  }}>
+    Pathshala
+  </span>
+</span>
          </Navbar.Brand>
 
           {/* Mobile Language Toggle - Visible only on mobile */}
