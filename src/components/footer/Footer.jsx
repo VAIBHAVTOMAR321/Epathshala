@@ -26,7 +26,7 @@ function Footer() {
       jobOpenings: "Job Openings",
       contactUs: "Contact Us",
       india: "India",
-      copyright: "© 2026 epathshala. All rights reserved. | Designed by BrainRock.",
+      copyright: "© 2026 ePathshala. All rights reserved. | Designed by BrainRock.",
       backToTop: "Back to Top"
     },
     hi: {
@@ -43,7 +43,7 @@ function Footer() {
       jobOpenings: "नौकरी के अवसर",
       contactUs: "हमसे संपर्क करें",
       india: "भारत",
-      copyright: "© 2026 gyandhara। सर्वाधिकार सुरक्षित। | BrainRock द्वारा डिज़ाइन किया गया।",
+      copyright: "© 2026 ePathshala। सर्वाधिकार सुरक्षित। | BrainRock द्वारा डिज़ाइन किया गया।",
       backToTop: "ऊपर वापस जाएं"
     }
   };
@@ -57,7 +57,7 @@ function Footer() {
           {/* Logo and Brand Section */}
           <div className="footer-brand-section">
             <div className="footer-logo-section">
-              <img src={gyandharaLogo} alt="gyandhara Logo" className="footer-logo" />
+              <img src={gyandharaLogo} alt="ePathshala Logo" className="footer-logo" />
              
             </div>
             <p className="footer-description">

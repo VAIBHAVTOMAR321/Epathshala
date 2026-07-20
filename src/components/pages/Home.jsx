@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Container, Row, Col, Modal, Button } from 'react-bootstrap'
 import { useLanguage } from '../all_login/LanguageContext'
-import heroImg from "../../assets/images/CBSEimg.png";
 import '../../assets/css/home.css'
 import Logo2 from "../../assets/images/gyandharalogo2.png";
 import CompetitiveExams from './CompetitiveExams'
@@ -18,8 +17,8 @@ function Home() {
     platformBadge: "🎓 ePathshala - Educational Platform",
     heroTitle: "Objective of ePathshala",
      heroTitleHTML: "Objective of <span class=\"hero-title-word\">ePathshala</span>",
-  heroSubtitle: "Welcome to ePathshala, your all-in-one educational ecosystem designed to bridge the gap between academic learning and real-world success. We believe that education is not just about passing exams; it is about acquiring the skills, confidence, and direction necessary to thrive in a rapidly evolving global landscape.",
-  heroImg: heroImg,
+  heroSubtitle: "Your all-in-one educational ecosystem designed to bridge the gap between academic learning and real-world success. We empower students and institutions with the tools and guidance needed to thrive.",
+  heroImg: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80",
   exploreBtn: "Explore Now",
   joinBtn: "Register Today",
       
@@ -76,9 +75,9 @@ function Home() {
     hi: {
       platformBadge: "🎓 ePathshala - शैक्षिक मंच",
       heroTitle: "ePathshala का उद्देश्य",
-      heroTitleHTML: "<span class=\"hero-title-word\">ePathshala</span> का उद्देश्य",
-      heroSubtitle: "ePathshala में आपका स्वागत है, आपका ऑल-इन-वन शैक्षिक पारिस्थितिकी तंत्र जो शैक्षणिक शिक्षण और वास्तविक दुनिया की सफलता के बीच की खाई को पाटने के लिए डिज़ाइन किया गया है। हमारा मानना है कि शिक्षा केवल परीक्षा पास करने के बारे में नहीं है; यह एक तेजी से विकसित हो रहे वैश्विक परिदृश्य में उन्नति के लिए आवश्यक कौशल, आत्मविश्वास और दिशा प्राप्त करने के बारे में है। चाहे आप नई तकनीकों में महारत हासिल करने के इच्छुक छात्र हों या शैक्षणिक प्रबंधन को सुव्यवस्थित करने का लक्ष्य रखने वाला शैक्षणिक संस्था, epathshala आपको सफल होने के लिए आवश्यक उपकरण प्रदान करता है।",
-      heroImg: heroImg,
+      heroTitleHTML: "ePathshala का <span class=\"hero-title-word\">उद्देश्य</span>",
+      heroSubtitle: "ePathshala में आपका स्वागत है, आपका ऑल-इन-वन शैक्षिक पारिस्थितिकी तंत्र जो शैक्षणिक शिक्षण और वास्तविक दुनिया की सफलता के बीच की खाई को पाटने के लिए डिज़ाइन किया गया है। हम छात्रों और संस्थानों को आगे बढ़ने के लिए आवश्यक उपकरण और मार्गदर्शन के साथ सशक्त बनाते हैं।",
+      heroImg: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80",
       exploreBtn: "अब खोजें",
       joinBtn: "आज पंजीकृत करें",
       
@@ -143,165 +142,56 @@ function Home() {
     <div className="home-wrapper">
       <div className="home-container">
         {/* Hero Section */}
-       <div className="hero-section">
+        <section className="new-hero-section">
+          <Container>
+            <Row className="align-items-center g-5">
+              <Col lg={6} className="hero-text-content order-lg-1 order-2">
+                <h1 dangerouslySetInnerHTML={{ __html: t.heroTitleHTML }} />
+                <p className="hero-subtitle-new">{t.heroSubtitle}</p>
+                <div className="hero-features-list">
+                  <span><i className="bi bi-check-circle-fill"></i> Interactive Learning</span>
+                  <span><i className="bi bi-check-circle-fill"></i> Competitive Exams</span>
+                  <span><i className="bi bi-check-circle-fill"></i> Career Guidance</span>
+                </div>
+                <div className="hero-buttons">
+                  <Link to="/register" className="btn-gyandhara btn-primary-custom">
+                    <i className="bi bi-person-plus-fill"></i>
+                    <span>{t.joinBtn}</span>
+                  </Link>
+                  <Link to="/courses" className="btn-gyandhara btn-outline-custom-btn">
+                    <i className="bi bi-book-fill"></i>
+                    <span>{t.exploreBtn}</span>
+                  </Link>
+                </div>
+              </Col>
+              <Col lg={6} className="order-lg-2 order-1">
+                <div className="hero-image-container-new">
+                  <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80" alt="ePathshala for students" className="hero-image-new" />
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
 
-  {/* LEFT SIDE */}
-  <div className="hero-image-wrapper">
-
-    {/* Top Left Card */}
-    <div className="floating-card floating-card-1">
-      <div className="icon-box blue">
-        <i className="bi bi-mortarboard-fill"></i>
-      </div>
-      <div>
-        <h6> Education</h6>
-       
-      </div>
-    </div>
-
-    {/* Image */}
-    <img
-      src={t.heroImg}
-      alt="ePathshala"
-      className="hero-image"
-    />
-
-    {/* Top Right Card */}
-    <div className="floating-card floating-card-2">
-      <div className="icon-box green">
-        <i className="bi bi-trophy-fill"></i>
-      </div>
-      <div>
-        <h6>Learn</h6>
-        
-      </div>
-    </div>
-
-    {/* Bottom Left Card */}
-    <div className="floating-card floating-card-3">
-      <div className="icon-box orange">
-        <i className="bi bi-person-workspace"></i>
-      </div>
-      <div>
-        <h6>Career Guidance</h6>
-        
-      </div>
-    </div>
-
-    {/* Logo */}
-  
-
-  </div>
-
-  {/* RIGHT SIDE */}
-
-  <div className="hero-content">
-
-    <div className="hero-badge">
-      <i className="bi bi-stars"></i>
-      {t.platformBadge}
-    </div>
-
-    <h1
-      dangerouslySetInnerHTML={{
-        __html: t.heroTitleHTML,
-      }}
-    />
-
-    <p>{t.heroSubtitle}</p>
-
-    <div className="feature-grid">
-
-      <div className="feature-card">
-        <i className="bi bi-book-half"></i>
-       
-          <h6>Interactive Learning</h6>
-       
-       
-      </div>
-
-      <div className="feature-card">
-        <i className="bi bi-trophy"></i>
-     
-          <h6>Competitive Exams</h6>
-          
-     
-      </div>
-
-      <div className="feature-card">
-        <i className="bi bi-bullseye"></i>
-     
-          <h6>Career Guidance</h6>
-         
-    
-      </div>
-
-      <div className="feature-card">
-        <i className="bi bi-building"></i>
-     
-          <h6>Govt Certified</h6>
-          
-      
-      </div>
-
-      <div className="feature-card">
-        <i className="bi bi-cpu"></i>
-      
-          <h6>AI Skills</h6>
-         
-     
-      </div>
-
-      <div className="feature-card">
-        <i className="bi bi-globe2"></i>
-       
-          <h6>Learn Anywhere</h6>
-          
-        
-      </div>
-
-    </div>
-
-   <div className="hero-buttons">
-  <Link
-    to="/register"
-    className="btn-gyandhara btn-primary-custom"
-  >
-    <i className="bi bi-person-plus-fill"></i>
-    <span>{t.joinBtn}</span>
-  </Link>
-
-  <Link
-    to="/login"
-    className="btn-gyandhara btn-outline-custom-btn"
-  >
-    <i className="bi bi-book-fill"></i>
-    <span>Explore Courses</span>
-  </Link>
-</div>
-
-  </div>
-
-</div>
-
-
+        {/* Section Separator */}
+        <div className="section-separator"></div>
 
         {/* For Students Section */}
-        <section className="role-section-school">
+        <section className="role-section-new student-section-new">
           <Row className="align-items-center g-5">
             <Col lg={7}>
-              <div className="role-header">
+              <div className="role-header-new">
                 <h2>{t.studentTitle}</h2>
                 <p>{t.studentSubtitle}</p>
               </div>
               <Row className="g-3">
                 {t.studentFeatures.slice(0, 6).map((feature, index) => (
                   <Col md={6} key={index}>
-                    <div className="student-feature-item" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
-                      <div className={`student-feature-icon icon-${feature.color}`}>
+                    <div className="feature-item-new" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
+                      <div className={`feature-icon-new icon-${feature.color}`}>
                         <i className={`bi ${feature.icon}`}></i>
                       </div>
-                      <div className="student-feature-text">
+                      <div className="feature-text-new">
                         <h5>{feature.title}</h5>
                         <p>{feature.desc}</p>
                       </div>
@@ -311,50 +201,41 @@ function Home() {
               </Row>
             </Col>
             <Col lg={5}>
-              <div className="image-container">
+              <div className="role-image-container-new">
                 <img src={LMSStudent} alt="student Learning"
                  
                   alt="Students learning" 
                   className="img-fluid rounded-3 shadow-lg"
                 />
-                <div className="image-overlay">
-                  <div className="image-overlay-content">
-                    <h5>{t.studentTitle}</h5>
-                    <p>{t.studentSubtitle}</p>
-                  </div>
-                </div>
               </div>
             </Col>
           </Row>
         </section>
 
+        {/* Section Separator */}
+        <div className="section-separator separator-flip"></div>
+
         {/* For Schools Section */}
-        <section className="role-section-school">
+        <section className="role-section-new school-section-new">
           <Row className="align-items-center g-5">
             <Col lg={5}>
-              <div className="image-container">
+              <div className="role-image-container-new">
                 <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80" alt="Institution" className="img-fluid rounded-3 shadow-lg" />
-                <div className="image-overlay">
-                  <div className="image-overlay-content">
-                    <h5>{t.schoolTitle}</h5>
-                    <p>{t.schoolSubtitle}</p>
-                  </div>
-                </div>
               </div>
             </Col>
             <Col lg={7}>
-              <div className="role-header">
+              <div className="role-header-new">
                 <h2>{t.schoolTitle}</h2>
                 <p>{t.schoolSubtitle}</p>
               </div>
               <Row className="g-3">
                 {t.schoolFeatures.map((feature, index) => (
                   <Col md={6} key={index}>
-                    <div className="institution-feature-item" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
-                      <div className={`institution-feature-icon icon-${feature.color}`}>
+                    <div className="feature-item-new" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
+                      <div className={`feature-icon-new icon-${feature.color}`}>
                         <i className={`bi ${feature.icon}`}></i>
                       </div>
-                      <div className="institution-feature-text">
+                      <div className="feature-text-new">
                         <h5>{feature.title}</h5>
                         <p>{feature.desc}</p>
                       </div>
@@ -371,57 +252,44 @@ function Home() {
 
         {/* Quick Link to Competitive Test */}
         <section className="competitive-cta-section">
-          <div className="competitive-cta-content">
-            <h3>Ready to test yourself?</h3>
-            <p>Take our competitive mock test and assess your preparation</p>
-            <Link to="/Competitive" className="btn-gyandhara btn-primary-custom btn-lg">
-              <i className="bi bi-pencil-square"></i> Start  Test
-            </Link>
+          <Row className="g-0">
+            <Col md={8}>
+              <div className="competitive-cta-content">
+                <h3>Ready to test yourself?</h3>
+                <p>Take our competitive mock test and assess your preparation.</p>
+                <Link to="/Competitive" className="btn-gyandhara btn-primary-custom">
+                  <i className="bi bi-pencil-square"></i> Start Test
+                </Link>
+              </div>
+            </Col>
+          </Row>
+          <div className="competitive-cta-decoration">
+            <i className="bi bi-trophy-fill"></i>
           </div>
         </section>
 
         {/*Why Choose gyandhara? section*/}
-        <section className="benefits-section role-header role-section-school ">
-          <div className="role-header">
+        <section className="benefits-section-new why-choose-us-section">
+          <div className="role-header-new text-center">
             <h2>{t.benefitsTitle}</h2>
-        
           </div>
-            <Row className="g-4">
-              {t.benefits.map((benefit, index) => (
-                <Col lg={3} md={6} sm={12} key={index}>
-                  <div 
-                    className="student-feature-item h-100"
-                    onClick={handleCardClick}
-                    style={{ cursor: 'pointer', flexDirection: 'column', textAlign: 'center' }}
-                  >
-                    <div className={`student-feature-icon icon-${benefit.color} mx-auto`}>
-                      <i className={`bi ${benefit.icon}`}></i>
-                    </div>
-                    <div className="student-feature-text mt-3">
-                      <h5 style={{ textAlign: 'center' }}>{benefit.title}</h5>
-                      <p style={{ textAlign: 'center' }}>{benefit.desc}</p>
-                    </div>
+          <div className="timeline-container">
+            {t.benefits.map((benefit, index) => (
+              <div key={index} className="timeline-item" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
+                <div className="timeline-icon-wrapper">
+                  <div className={`timeline-icon icon-${benefit.color}`}>
+                    <i className={`bi ${benefit.icon}`}></i>
                   </div>
-                </Col>
-              ))}
-            </Row>
-         
+                </div>
+                <div className="timeline-content">
+                  <h5 className="timeline-title">{benefit.title}</h5>
+                  <p className="timeline-desc">{benefit.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="final-cta-section role-section-school">
-          <h2>{t.readyTitle}</h2>
-          <p>{t.readySub}</p>
-        
-          <div className="cta-buttons mt-4">
-            <Link to="/register" className="btn-gyandhara btn-primary-custom btn-lg">
-              <i className="bi bi-rocket-fill"></i> {t.getStartedBtn}
-            </Link>
-            <Link to="/login" className="btn-gyandhara btn-outline-custom-btn btn-lg">
-              <i className="bi bi-box-arrow-in-right"></i> {t.signInBtn}
-            </Link>
-          </div>
-        </section>
       </div>
 
       {/* Auth Prompt Modal */}
