@@ -486,7 +486,7 @@
 .role-section-school {
   margin-top: 12px;
   padding: 55px 45px;
-  background-image: url('../images/school.png');
+  /* background-image: url('../images/school.png'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -510,7 +510,7 @@
 .role-section {
   margin-top: 12px;
   padding: 55px 45px;
-  background-image: url('../images/student.png');
+  /* background-image: url('../images/student.png'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -786,7 +786,7 @@
 .competitive-exams-section {
   margin-top: 12px;
   padding: 55px 45px;
-  background-image: url('../images/school.png');
+  /* background-image: url('../images/school.png'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -812,7 +812,7 @@
 .benefits-section {
   margin-top: 12px;
   padding: 55px 45px;
-  background-image: url('../images/school.png');
+  /* background-image: url('../images/school.png'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1038,7 +1038,7 @@
 
 .final-cta-section {
   padding: 60px 50px;
-  background-image: url('../images/school.png');
+  /* background-image: url('../images/school.png'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
