@@ -77,12 +77,12 @@ function NavBar() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto nav-links">
               <Nav.Link as={Link} to="/" className={`nav-link-item ${location.pathname === "/" ? "active" : ""}`} onClick={() => setExpanded(false)}>
-                <span className="nav-link-dot"></span>
+              
                 {language === 'hi' ? 'होम' : 'Home'}
               </Nav.Link>
 
               <Nav.Link as={Link} to="/CourseItems" className={`nav-link-item ${location.pathname === "/CourseItems" ? "active" : ""}`} onClick={() => setExpanded(false)}>
-                <span className="nav-link-dot"></span>
+             
                 {language === 'hi' ? 'कोर्स' : 'Courses'}
               </Nav.Link>
             </Nav>
