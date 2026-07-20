@@ -381,7 +381,7 @@ const UserDashboard = () => {
           await fetchCourses()
           alert('Certificate generated successfully!')
           window.open(
-            `https://brjobsedu.com/gyandhara/gyandhara_backend${certificateFile}`,
+            `https://brjobsedu.com/epathshala/epathshala_backend${certificateFile}`,
             "_blank",
           );
         } else if (response.data.message && response.data.message.includes('already')) {
@@ -434,7 +434,7 @@ const UserDashboard = () => {
     const course = courses.find(c => c.course_id === selectedCourse.course_id)
     if (course && course.certificate_file) {
       window.open(
-        `https://brjobsedu.com/gyandhara/gyandhara_backend${course.certificate_file}`,
+        `https://brjobsedu.com/epathshala/epathshala_backend${course.certificate_file}`,
         "_blank",
       );
     }
@@ -1342,7 +1342,7 @@ const UserDashboard = () => {
                                                       <div className="image-wrapper">
                                                         <div className="book-image-container rounded-3 overflow-hidden shadow-lg">
                                                           <img
-                                                            src={`https://brjobsedu.com/gyandhara/gyandhara_backend/${subModule.image}`}
+                                                            src={`https://brjobsedu.com/epathshala/epathshala_backend/${subModule.image}`}
                                                             alt={
                                                               subModule.sub_modu_title
                                                             }
@@ -1508,7 +1508,7 @@ const UserDashboard = () => {
                                                         }
                                                       >
                                                         <img
-                                                          src={`https://brjobsedu.com/gyandhara/gyandhara_backend${exercise.img}`}
+                                                          src={`https://brjobsedu.com/epathshala/epathshala_backend${exercise.img}`}
                                                           alt={
                                                             exercise.img_name
                                                           }
@@ -1838,7 +1838,7 @@ const UserDashboard = () => {
                                                     variant="success" 
                                                     onClick={() => {
                                                       window.open(
-                                                        `https://brjobsedu.com/gyandhara/gyandhara_backend${course.certificate_file}`,
+                                                        `https://brjobsedu.com/epathshala/epathshala_backend${course.certificate_file}`,
                                                         "_blank",
                                                       );
                                                     }}
@@ -1876,7 +1876,7 @@ const UserDashboard = () => {
                                               variant="success" 
                                               onClick={() => {
                                                 window.open(
-                                                  `https://brjobsedu.com/gyandhara/gyandhara_backend${course.certificate_file}`,
+                                                  `https://brjobsedu.com/epathshala/epathshala_backend${course.certificate_file}`,
                                                   "_blank",
                                                 );
                                               }}
@@ -2055,7 +2055,7 @@ const UserDashboard = () => {
                                                       variant="success" 
                                                       onClick={() => {
                                                         window.open(
-                                                          `https://brjobsedu.com/gyandhara/gyandhara_backend${foundEnrolledCourse.certificate_file}`,
+                                                          `https://brjobsedu.com/epathshala/epathshala_backend${foundEnrolledCourse.certificate_file}`,
                                                           "_blank",
                                                         );
                                                       }}
@@ -2402,7 +2402,7 @@ const UserDashboard = () => {
                     onTouchEnd={handleTouchEnd}
                   >
                     <img
-                      src={`https://brjobsedu.com/gyandhara/gyandhara_backend${exercise.img}`}
+                      src={`https://brjobsedu.com/epathshala/epathshala_backend${exercise.img}`}
                       alt={exercise.img_name}
                       onError={(e) => {
                         e.target.style.display = "none";

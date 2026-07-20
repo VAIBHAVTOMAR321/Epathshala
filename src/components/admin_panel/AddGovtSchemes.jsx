@@ -327,7 +327,7 @@ const AddGovtSchemes = () => {
   }
 
   const handleEdit = (scheme) => {
-    const previewUrl = scheme.scheme_image ? `https://brjobsedu.com/gyandhara/gyandhara_backend${scheme.scheme_image}` : null
+    const previewUrl = scheme.scheme_image ? `https://brjobsedu.com/epathshala/epathshala_backend${scheme.scheme_image}` : null
     
     // Populate sub_mod with titles from predefined sections if title is empty
     const populateSubMod = (subModArray) => {
@@ -720,7 +720,7 @@ const AddGovtSchemes = () => {
                           const imgUrl = scheme.scheme_image 
                             ? (scheme.scheme_image.startsWith('http') 
                                 ? scheme.scheme_image 
-                                : `https://brjobsedu.com/gyandhara/gyandhara_backend${scheme.scheme_image}`) 
+                                : `https://brjobsedu.com/epathshala/epathshala_backend${scheme.scheme_image}`) 
                             : null
                           return (
                             <div key={scheme.gov_scheme_id} className="list-group-item p-3">

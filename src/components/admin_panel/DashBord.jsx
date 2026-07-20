@@ -1869,7 +1869,7 @@ const DashBord = () => {
                          {course.course_img ? (
                            <div className="mb-3">
                              <Image
-                               src={`https://brjobsedu.com/gyandhara/gyandhara_backend${course.course_img}`}
+                               src={`https://brjobsedu.com/epathshala/epathshala_backend${course.course_img}`}
                                alt={course.course_name}
                                thumbnail
                                className="img-fluid"
@@ -2179,7 +2179,7 @@ const DashBord = () => {
                   <Image
                     src={courseFormData.course_img 
                       ? URL.createObjectURL(courseFormData.course_img)
-                      : `https://brjobsedu.com/gyandhara/gyandhara_backend${courseFormData.existing_course_img}`
+                      : `https://brjobsedu.com/epathshala/epathshala_backend${courseFormData.existing_course_img}`
                     }
                     alt="Course preview"
                     thumbnail
@@ -2481,7 +2481,7 @@ const DashBord = () => {
                     {submodule.image && (
                       <div className="mb-3">
                         <Image 
-                          src={`https://brjobsedu.com/gyandhara/gyandhara_backend${submodule.image}`} 
+                          src={`https://brjobsedu.com/epathshala/epathshala_backend${submodule.image}`} 
                           alt="Submodule" 
                           thumbnail 
                           className="img-fluid"
@@ -2615,7 +2615,7 @@ const DashBord = () => {
                       {exercise.img && (
                         <div className="me-3">
                           <Image 
-                            src={`https://brjobsedu.com/gyandhara/gyandhara_backend${exercise.img}`} 
+                            src={`https://brjobsedu.com/epathshala/epathshala_backend${exercise.img}`} 
                             alt={exercise.img_name} 
                             thumbnail 
                             className="img-fluid"
@@ -3474,7 +3474,7 @@ const DashBord = () => {
                     {event.event_image && (
                       <Card.Img 
                         variant="top" 
-                        src={`https://brjobsedu.com/gyandhara/gyandhara_backend${event.event_image}`} 
+                        src={`https://brjobsedu.com/epathshala/epathshala_backend${event.event_image}`} 
                         alt={event.event_name}
                         style={{ height: '160px', objectFit: 'cover' }}
                       />
@@ -3576,7 +3576,7 @@ const DashBord = () => {
                 <div className="mb-3">
                   {selectedCourse.course_img ? (
                     <Image
-                      src={`https://brjobsedu.com/gyandhara/gyandhara_backend${selectedCourse.course_img}`}
+                      src={`https://brjobsedu.com/epathshala/epathshala_backend${selectedCourse.course_img}`}
                       alt={selectedCourse.course_name}
                       thumbnail
                       className="img-fluid"
@@ -3628,7 +3628,7 @@ const DashBord = () => {
                                    {subMod.image && (
                                      <div className="mt-2">
                                        <Image 
-                                         src={`https://brjobsedu.com/gyandhara/gyandhara_backend${subMod.image}`} 
+                                         src={`https://brjobsedu.com/epathshala/epathshala_backend${subMod.image}`} 
                                          alt={subMod.sub_modu_title} 
                                          thumbnail 
                                          className="img-fluid"
@@ -3933,7 +3933,7 @@ const DashBord = () => {
               {selectedEvent.event_image && (
                 <div className="mb-3">
                   <Image 
-                    src={`https://brjobsedu.com/gyandhara/gyandhara_backend${selectedEvent.event_image}`} 
+                    src={`https://brjobsedu.com/epathshala/epathshala_backend${selectedEvent.event_image}`} 
                     alt={selectedEvent.event_name}
                     fluid
                     className="rounded"

@@ -323,7 +323,7 @@ function Competitive() {
   if (testSubmitted && testResults) {
     const isHindi = language === 'hi';
     const certificateUrl = testResults.certificate
-      ? `https://brjobsedu.com/gyandhara/gyandhara_backend${testResults.certificate}`
+      ? `https://brjobsedu.com/epathshala/epathshala_backend${testResults.certificate}`
       : null;
     const shareText = `I completed the  Test -   Competitive Test Assessment with a score of ${testResults.percentage.toFixed(1)}%!`;
 

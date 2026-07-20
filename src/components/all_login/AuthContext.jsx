@@ -4,7 +4,7 @@ import axios from 'axios';
 const AuthContext = createContext(null);
 
 const STORAGE_KEY = 'gyandhara_auth';
-const API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api';
+const API_URL = 'https://brjobsedu.com/epathshala/epathshala_backend/api/';
 
 let isRefreshing = false;
 let failedQueue = [];
