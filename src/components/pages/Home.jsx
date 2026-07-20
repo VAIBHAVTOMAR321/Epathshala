@@ -14,10 +14,10 @@ function Home() {
 
   const content = {
     en: {
-    platformBadge: "🎓 Epathshala - Educational Platform",
-    heroTitle: "Objective of Epathshala",
-     heroTitleHTML: "Objective of <span class=\"hero-title-word\">Epathshala</span>",
-  heroSubtitle: "Welcome to epathshala, your all-in-one educational ecosystem designed to bridge the gap between academic learning and real-world success. We believe that education is not just about passing exams; it is about acquiring the skills, confidence, and direction necessary to thrive in a rapidly evolving global landscape.",
+    platformBadge: "🎓 ePathshala - Educational Platform",
+    heroTitle: "Objective of ePathshala",
+     heroTitleHTML: "Objective of <span class=\"hero-title-word\">ePathshala</span>",
+  heroSubtitle: "Welcome to ePathshala, your all-in-one educational ecosystem designed to bridge the gap between academic learning and real-world success. We believe that education is not just about passing exams; it is about acquiring the skills, confidence, and direction necessary to thrive in a rapidly evolving global landscape.",
   heroImg: heroImg,
   exploreBtn: "Explore Now",
   joinBtn: "Register Today",
@@ -40,7 +40,7 @@ function Home() {
 
       // For Schools Section
       schoolTitle: "LMS For Institutions 🏫",
-      schoolSubtitle: "Transform your institution's learning experience with Epathshala's comprehensive platform",
+      schoolSubtitle: "Transform your institution's learning experience with ePathshala's comprehensive platform",
       schoolFeatures: [
         { icon: "bi-house-check", title: "Institution Registration", desc: "Register your institution and get a dedicated dashboard", color: "blue" },
         { icon: "bi-people-fill", title: "Student Management", desc: "Efficiently manage student registrations and profiles", color: "orange" },
@@ -49,7 +49,7 @@ function Home() {
       ],
       
       // Platform Benefits
-      benefitsTitle: "Why Choose Epathshala?",
+      benefitsTitle: "Why Choose ePathshala?",
       benefits: [
         { icon: "bi-collection-play", title: "Multi-Role Platform", desc: "Dedicated interfaces for students, institutions, and administrators", color: "blue" },
         { icon: "bi-people-fill", title: "Comprehensive Services", desc: "Career guidance, academic support, and skill development", color: "orange" },
@@ -62,7 +62,7 @@ function Home() {
       ],
 
       // CTA
-      readyTitle: "Ready to Join Epathshala?",
+      readyTitle: "Ready to Join ePathshala?",
       readySub: "Start your journey towards career excellence and academic success",
       getStartedBtn: "Get Started Today",
       learnMoreBtn: "Learn More",
@@ -73,10 +73,10 @@ function Home() {
       modalRegister: "Register Today"
     },
     hi: {
-      platformBadge: "🎓 Epathshala - शैक्षिक मंच",
-      heroTitle: "Epathshala का उद्देश्य",
-      heroTitleHTML: "<span class=\"hero-title-word\">Epathshala</span> का उद्देश्य",
-      heroSubtitle: "Epathshala में आपका स्वागत है, आपका ऑल-इन-वन शैक्षिक पारिस्थितिकी तंत्र जो शैक्षणिक शिक्षण और वास्तविक दुनिया की सफलता के बीच की खाई को पाटने के लिए डिज़ाइन किया गया है। हमारा मानना है कि शिक्षा केवल परीक्षा पास करने के बारे में नहीं है; यह एक तेजी से विकसित हो रहे वैश्विक परिदृश्य में उन्नति के लिए आवश्यक कौशल, आत्मविश्वास और दिशा प्राप्त करने के बारे में है। चाहे आप नई तकनीकों में महारत हासिल करने के इच्छुक छात्र हों या शैक्षणिक प्रबंधन को सुव्यवस्थित करने का लक्ष्य रखने वाला शैक्षणिक संस्था, epathshala आपको सफल होने के लिए आवश्यक उपकरण प्रदान करता है।",
+      platformBadge: "🎓 ePathshala - शैक्षिक मंच",
+      heroTitle: "ePathshala का उद्देश्य",
+      heroTitleHTML: "<span class=\"hero-title-word\">ePathshala</span> का उद्देश्य",
+      heroSubtitle: "ePathshala में आपका स्वागत है, आपका ऑल-इन-वन शैक्षिक पारिस्थितिकी तंत्र जो शैक्षणिक शिक्षण और वास्तविक दुनिया की सफलता के बीच की खाई को पाटने के लिए डिज़ाइन किया गया है। हमारा मानना है कि शिक्षा केवल परीक्षा पास करने के बारे में नहीं है; यह एक तेजी से विकसित हो रहे वैश्विक परिदृश्य में उन्नति के लिए आवश्यक कौशल, आत्मविश्वास और दिशा प्राप्त करने के बारे में है। चाहे आप नई तकनीकों में महारत हासिल करने के इच्छुक छात्र हों या शैक्षणिक प्रबंधन को सुव्यवस्थित करने का लक्ष्य रखने वाला शैक्षणिक संस्था, epathshala आपको सफल होने के लिए आवश्यक उपकरण प्रदान करता है।",
       heroImg: heroImg,
       exploreBtn: "अब खोजें",
       joinBtn: "आज पंजीकृत करें",
@@ -99,7 +99,7 @@ function Home() {
 
       // For Schools Section
       schoolTitle: "शैक्षणिक संस्था के लिए 🏫",
-      schoolSubtitle: "Epathshala के व्यापक मंच के साथ अपने संस्थान के शिक्षण अनुभव को बदलें",
+      schoolSubtitle: "ePathshala के व्यापक मंच के साथ अपने संस्थान के शिक्षण अनुभव को बदलें",
       schoolFeatures: [
         { icon: "bi-house-check", title: "शैक्षणिक संस्था पंजीकरण", desc: "अपने संस्थान को पंजीकृत करें और समर्पित डैशबोर्ड प्राप्त करें", color: "blue" },
         { icon: "bi-people-fill", title: "छात्र प्रबंधन", desc: "छात्र पंजीकरण और प्रोफाइल को कुशलतापूर्वक प्रबंधित करें", color: "orange" },
@@ -108,7 +108,7 @@ function Home() {
       ],
       
       // Platform Benefits
-      benefitsTitle: "epathshala को क्यों चुनें?",
+      benefitsTitle: "ePathshala को क्यों चुनें?",
       benefits: [
         { icon: "bi-collection-play", title: "बहु-भूमिका मंच", desc: "छात्रों, शैक्षणिक संस्था और प्रशासकों के लिए समर्पित इंटरफेस", color: "blue" },
         { icon: "bi-people-fill", title: "व्यापक सेवाएं", desc: "करियर मार्गदर्शन, शैक्षणिक सहायता और कौशल विकास", color: "orange" },
@@ -121,7 +121,7 @@ function Home() {
       ],
 
       // CTA
-      readyTitle: "क्या आप epathshala से जुड़ने के लिए तैयार हैं?",
+      readyTitle: "क्या आप ePathshala से जुड़ने के लिए तैयार हैं?",
       readySub: "करियर की उत्कृष्टता और शैक्षणिक सफलता की ओर अपनी यात्रा शुरू करें",
       getStartedBtn: "आज शुरुआत करें",
       learnMoreBtn: "अधिक जानें",
@@ -161,7 +161,7 @@ function Home() {
     {/* Image */}
     <img
       src={t.heroImg}
-      alt="Epathshala"
+      alt="ePathshala"
       className="hero-image"
     />
 
