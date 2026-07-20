@@ -30,11 +30,12 @@ background-color: var(--gd-blue-dark);
 }
 
 .footer-logo {
-  width: 120px;
+  width: 110px;
   margin-right: 15px;
   background-color: var(--gd-white);
   border-radius: 8px;
   padding: 8px;
+  border-radius: 50%;
 }
 
 .footer-brand-text {

@@ -1030,6 +1030,7 @@
   color: var(--gd-text-light);
   line-height: 1.55;
   margin: 0;
+  text-align:left;
 }
 
 /* ==========================================
@@ -1924,6 +1925,7 @@
   color: var(--gd-blue-dark) !important;
   line-height: 1.2;
   margin-bottom: 1rem;
+ text-align: left;
 }
 
 .hero-text-content .hero-title-word {
@@ -1936,6 +1938,7 @@
   line-height: 1.7;
   max-width: 550px;
   margin-bottom: 2rem;
+  text-align: left;
 }
 
 .hero-image-container-new {
@@ -2119,6 +2122,7 @@
   font-weight: 700;
   margin-bottom: 0.25rem;
   color: var(--gd-blue-dark);
+  text-align: left;
 }
 
 .feature-text-new p {
@@ -2126,6 +2130,7 @@
   color: var(--gd-text-light);
   margin-bottom: 0;
   line-height: 1.5;
+  text-align:left;
 }
 
 .role-image-container-new {
@@ -2247,6 +2252,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 20px var(--gd-shadow-blue);
   transition: all 0.3s ease;
+  text-align: left;;
 }
 .timeline-title {
   font-size: 1rem;
