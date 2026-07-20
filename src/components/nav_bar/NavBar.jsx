@@ -21,6 +21,13 @@ function NavBar() {
              alt="gyandhara Logo" 
              className="navbar-logo"
            />
+           <span style={{
+             fontWeight: 'bold',
+             fontSize: '1.5rem',
+             color: '#0D3B66', // Using --gd-blue-dark from your theme
+             marginLeft: '10px',
+             verticalAlign: 'middle'
+           }}>ePathshala</span>
          </Navbar.Brand>
 
           {/* Mobile Language Toggle - Visible only on mobile */}
