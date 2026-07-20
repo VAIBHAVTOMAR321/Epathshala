@@ -8,7 +8,7 @@ import axios from 'axios'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { FaArrowLeft, FaPlus, FaEdit, FaTrash, FaClock, FaCalendar, FaChalkboardTeacher, FaLink, FaGraduationCap, FaGift, FaUser, FaMapMarkerAlt, FaGlobe } from 'react-icons/fa'
 
-const API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/workshop-items/'
+const API_URL = 'https://brjobsedu.com/epathshala/epathshala_backend/api/workshop-items/'
 
 const AddWorkshop = () => {
   const { accessToken } = useAuth()

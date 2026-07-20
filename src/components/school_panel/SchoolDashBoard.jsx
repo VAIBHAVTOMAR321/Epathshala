@@ -231,7 +231,7 @@ const SchoolDashBoard = () => {
         // Fetching all quizzes. Note: The API provided doesn't explicitly require auth in the snippet, 
         // but we include it for consistency with the rest of the app.
         const response = await axios.get(
-          `https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-items/`,
+          `https://brjobsedu.com/epathshala/epathshala_backend/api/quiz-items/`,
           {
              headers: {
                 Authorization: `Bearer ${accessToken}`, 
@@ -264,7 +264,7 @@ const SchoolDashBoard = () => {
         try {
           setEnrollmentLoading(true);
           const enrollmentResponse = await axios.get(
-            `https://brjobsedu.com/gyandhara/gyandhara_backend/api/enrollment-unpaid/?school_uni_id=${uniqueId}`,
+            `https://brjobsedu.com/epathshala/epathshala_backend/api/enrollment-unpaid/?school_uni_id=${uniqueId}`,
             {
               headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -287,7 +287,7 @@ const SchoolDashBoard = () => {
         try {
           setModuleLoading(true);
           const moduleResponse = await axios.get(
-            `https://brjobsedu.com/gyandhara/gyandhara_backend/api/module-progress-unpaid/?school_uni_id=${uniqueId}`,
+            `https://brjobsedu.com/epathshala/epathshala_backend/api/module-progress-unpaid/?school_uni_id=${uniqueId}`,
             {
               headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -319,7 +319,7 @@ const SchoolDashBoard = () => {
  
      try {
        const response = await axios.get(
-         `https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-participants/?quiz_id=${quiz.quiz_id}`,
+         `https://brjobsedu.com/epathshala/epathshala_backend/api/quiz-participants/?quiz_id=${quiz.quiz_id}`,
          {
            headers: {
              Authorization: `Bearer ${accessToken}`,
@@ -368,7 +368,7 @@ const SchoolDashBoard = () => {
     try {
       setSchoolRankLoading(true);
       const response = await axios.get(
-        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-event/school-rank/?quiz_id=${quizId}`,
+        `https://brjobsedu.com/epathshala/epathshala_backend/api/quiz-event/school-rank/?quiz_id=${quizId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

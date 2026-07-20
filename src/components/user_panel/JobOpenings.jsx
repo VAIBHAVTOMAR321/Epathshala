@@ -125,7 +125,7 @@ const JobOpenings = () => {
         }
       }
       const response = await axios.get(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/job-openings/',
+        'https://brjobsedu.com/epathshala/epathshala_backend/api/job-openings/',
         config
       )
 
@@ -155,7 +155,7 @@ const JobOpenings = () => {
         }
       }
       const response = await axios.get(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/seminar-items/',
+        'https://brjobsedu.com/epathshala/epathshala_backend/api/seminar-items/',
         config
       )
 
@@ -185,7 +185,7 @@ const JobOpenings = () => {
         }
       }
       const response = await axios.get(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/workshop-items/',
+        'https://brjobsedu.com/epathshala/epathshala_backend/api/workshop-items/',
         config
       )
 

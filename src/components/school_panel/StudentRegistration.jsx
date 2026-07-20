@@ -211,7 +211,7 @@ const StudentRegistration = () => {
     setStudentsLoading(true);
     try {
       const response = await axios.get(
-        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-aadhaar-reg/?school_uni_id=${school_uni_id}`,
+        `https://brjobsedu.com/epathshala/epathshala_backend/api/school-aadhaar-reg/?school_uni_id=${school_uni_id}`,
         {
           headers: { 
             'Content-Type': 'application/json',
@@ -292,7 +292,7 @@ const StudentRegistration = () => {
     setError('');
     try {
       await axios.put(
-        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-aadhaar-reg/`,
+        `https://brjobsedu.com/epathshala/epathshala_backend/api/school-aadhaar-reg/`,
         {
           id: editingStudent.id,
           school_uni_id,
@@ -336,7 +336,7 @@ const StudentRegistration = () => {
     try {
       if (deletingMultiple) {
         await axios.delete(
-          'https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-aadhaar-reg/',
+          'https://brjobsedu.com/epathshala/epathshala_backend/api/school-aadhaar-reg/',
           {
             data: { id: selectedIds },
             headers: { 
@@ -349,7 +349,7 @@ const StudentRegistration = () => {
         setSelectedIds([]);
       } else {
         await axios.delete(
-          'https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-aadhaar-reg/',
+          'https://brjobsedu.com/epathshala/epathshala_backend/api/school-aadhaar-reg/',
           {
             data: { id: [deletingStudentId] },
             headers: { 
@@ -499,7 +499,7 @@ const StudentRegistration = () => {
       };
 
       await axios.post(
-        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-aadhaar-reg/`,
+        `https://brjobsedu.com/epathshala/epathshala_backend/api/school-aadhaar-reg/`,
         payload,
         {
           headers: {
@@ -618,7 +618,7 @@ const StudentRegistration = () => {
     setCheckingExisting(true);
     try {
       const response = await axios.get(
-        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-aadhaar-reg/?school_uni_id=${school_uni_id}`,
+        `https://brjobsedu.com/epathshala/epathshala_backend/api/school-aadhaar-reg/?school_uni_id=${school_uni_id}`,
         {
           headers: { 
             'Content-Type': 'application/json',
@@ -704,7 +704,7 @@ const StudentRegistration = () => {
 
       try {
         await axios.post(
-          `https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-aadhaar-reg/`,
+          `https://brjobsedu.com/epathshala/epathshala_backend/api/school-aadhaar-reg/`,
           payload,
           {
             headers: {
@@ -805,7 +805,7 @@ const StudentRegistration = () => {
 
       try {
         await axios.post(
-          `https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-aadhaar-reg/`,
+          `https://brjobsedu.com/epathshala/epathshala_backend/api/school-aadhaar-reg/`,
           payload,
           {
             headers: {

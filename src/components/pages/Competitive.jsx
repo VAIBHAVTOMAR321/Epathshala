@@ -54,7 +54,7 @@ function Competitive() {
 
     try {
       const response = await fetch(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/start-open-quiz/',
+        'https://brjobsedu.com/epathshala/epathshala_backend/api/start-open-quiz/',
         {
           method: 'POST',
           headers: {
@@ -136,7 +136,7 @@ function Competitive() {
       }));
 
       const response = await fetch(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/submit-open-quiz/',
+        'https://brjobsedu.com/epathshala/epathshala_backend/api/submit-open-quiz/',
         {
           method: 'POST',
           headers: {

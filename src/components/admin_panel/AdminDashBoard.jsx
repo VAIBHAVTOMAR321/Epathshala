@@ -102,7 +102,7 @@ const AdminDashBoard = () => {
      try {
        const [studentsRes, schoolsRes, enrollmentsRes, quizRes, quizItemsRes] = await Promise.all([
          axios.get(
-           'https://brjobsedu.com/gyandhara/gyandhara_backend/api/student-reg/',
+           'https://brjobsedu.com/epathshala/epathshala_backend/api/student-reg/',
            {
              headers: {
                Authorization: `Bearer ${accessToken}`,
@@ -110,7 +110,7 @@ const AdminDashBoard = () => {
            }
          ),
          axios.get(
-           'https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-reg/',
+           'https://brjobsedu.com/epathshala/epathshala_backend/api/school-reg/',
            {
              headers: {
                Authorization: `Bearer ${accessToken}`,
@@ -118,7 +118,7 @@ const AdminDashBoard = () => {
            }
          ),
          axios.get(
-           'https://brjobsedu.com/gyandhara/gyandhara_backend/api/enrollment-unpaid/',
+           'https://brjobsedu.com/epathshala/epathshala_backend/api/enrollment-unpaid/',
            {
              headers: {
                Authorization: `Bearer ${accessToken}`,
@@ -126,7 +126,7 @@ const AdminDashBoard = () => {
            }
          ),
          axios.get(
-           'https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-participants/',
+           'https://brjobsedu.com/epathshala/epathshala_backend/api/quiz-participants/',
            {
              headers: {
                Authorization: `Bearer ${accessToken}`,
@@ -134,7 +134,7 @@ const AdminDashBoard = () => {
            }
          ),
          axios.get(
-           'https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-items/',
+           'https://brjobsedu.com/epathshala/epathshala_backend/api/quiz-items/',
            {
              headers: {
                Authorization: `Bearer ${accessToken}`,
@@ -308,7 +308,7 @@ const AdminDashBoard = () => {
 
     try {
       await axios.put(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/school-reg/',
+        'https://brjobsedu.com/epathshala/epathshala_backend/api/school-reg/',
         {
           school_uni_id: schoolId,
           status: newStatus

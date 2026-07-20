@@ -102,9 +102,9 @@ const TwelfthGuidance = () => {
         }
 
         if (userRoleType === 'student-unpaid') {
-          response = await axios.get(`https://brjobsedu.com/gyandhara/gyandhara_backend/api/student-unpaid/?student_id=${uniqueId}`, config)
+          response = await axios.get(`https://brjobsedu.com/epathshala/epathshala_backend/api/student-unpaid/?student_id=${uniqueId}`, config)
         } else {
-          response = await axios.get(`https://brjobsedu.com/gyandhara/gyandhara_backend/api/all-registration/?student_id=${uniqueId}`, config)
+          response = await axios.get(`https://brjobsedu.com/epathshala/epathshala_backend/api/all-registration/?student_id=${uniqueId}`, config)
         }
 
         const { data } = response
@@ -138,7 +138,7 @@ const TwelfthGuidance = () => {
       }
 
       const response = await axios.post(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/student-cousult/',
+        'https://brjobsedu.com/epathshala/epathshala_backend/api/student-cousult/',
         payload,
         config
       )

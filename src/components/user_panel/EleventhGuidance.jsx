@@ -73,7 +73,7 @@ const TenthGuidance = () => {
       }
 
       const response = await axios.post(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/student-cousult/',
+        'https://brjobsedu.com/epathshala/epathshala_backend/api/student-cousult/',
         payload,
         config
       )

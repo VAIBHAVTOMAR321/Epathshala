@@ -155,7 +155,7 @@ const Login = () => {
       }
 
       const response = await axios.post(
-        'https://brjobsedu.com/gyandhara/gyandhara_backend/api/login/',
+        'https://brjobsedu.com/epathshala/epathshala_backend/api/login/',
         payload
       );
 

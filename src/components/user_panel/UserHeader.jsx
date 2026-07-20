@@ -52,7 +52,7 @@ function UserHeader({ toggleSidebar }) {
       setApiError(null); // Reset error
 
       const response = await axios.get(
-        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/notifications/?student_id=${uniqueId}`,
+        `https://brjobsedu.com/epathshala/epathshala_backend/api/notifications/?student_id=${uniqueId}`,
         {
           headers: { Authorization: `Bearer ${accessToken}` },
           timeout: 5000,
@@ -172,7 +172,7 @@ function UserHeader({ toggleSidebar }) {
     if (!notification.seen) {
       try {
         await axios.put(
-          `https://brjobsedu.com/gyandhara/gyandhara_backend/api/notifications/multi-seen/`,
+          `https://brjobsedu.com/epathshala/epathshala_backend/api/notifications/multi-seen/`,
           { student_id: uniqueId, notification_ids: [notification.id] },
           { headers: { Authorization: `Bearer ${accessToken}` } }
         );
@@ -194,7 +194,7 @@ function UserHeader({ toggleSidebar }) {
       if (unseenIds.length === 0) return;
 
       await axios.put(
-        `https://brjobsedu.com/gyandhara/gyandhara_backend/api/notifications/multi-seen/`,
+        `https://brjobsedu.com/epathshala/epathshala_backend/api/notifications/multi-seen/`,
         { student_id: uniqueId, notification_ids: unseenIds },
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
@@ -238,7 +238,7 @@ function UserHeader({ toggleSidebar }) {
       }
       try {
         const response = await axios.get(
-          `https://brjobsedu.com/gyandhara/gyandhara_backend/api/student-reg/?student_id=${uniqueId}`,
+          `https://brjobsedu.com/epathshala/epathshala_backend/api/student-reg/?student_id=${uniqueId}`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,

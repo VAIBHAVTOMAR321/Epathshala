@@ -55,7 +55,7 @@ function CourseItems() {
 
   const fetchCourses = async () => {
     try {
-      const response = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-items/')
+      const response = await axios.get('https://brjobsedu.com/epathshala/epathshala_backend/api/course-items/')
       let courseData = []
       if (response.data && response.data.data) {
         courseData = response.data.data

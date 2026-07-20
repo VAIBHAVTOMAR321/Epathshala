@@ -11,7 +11,7 @@ import { useAuth } from '../all_login/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import '../../assets/css/admindashboard.css'
 
-const API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-items/'
+const API_URL = 'https://brjobsedu.com/epathshala/epathshala_backend/api/quiz-items/'
 
 const QuizManageMent = () => {
   const { accessToken } = useAuth()

@@ -49,7 +49,7 @@ const UserEvents = () => {
         setLoading(true)
         setError("")
         const response = await axios.get(
-          'https://brjobsedu.com/gyandhara/gyandhara_backend/api/event-item/',
+          'https://brjobsedu.com/epathshala/epathshala_backend/api/event-item/',
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,

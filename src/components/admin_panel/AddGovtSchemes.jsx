@@ -107,7 +107,7 @@ const AddGovtSchemes = () => {
     try {
       setLoading(true)
       const config = getAuthConfig()
-      const response = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/scheme-category/', config)
+      const response = await axios.get('https://brjobsedu.com/epathshala/epathshala_backend/api/scheme-category/', config)
       if (response.data && response.data.success) {
         setCategories(response.data.data)
         if (response.data.data.length > 0) {
@@ -132,7 +132,7 @@ const AddGovtSchemes = () => {
     try {
       setLoadingSchemes(true)
       const config = getAuthConfig()
-      const response = await axios.get('https://brjobsedu.com/gyandhara/gyandhara_backend/api/scheme-category-with-schemes/', config)
+      const response = await axios.get('https://brjobsedu.com/epathshala/epathshala_backend/api/scheme-category-with-schemes/', config)
       if (response.data && response.data.success) {
         const allSchemes = response.data.data.flatMap(cat => 
           (cat.schemes || []).map(scheme => ({
@@ -215,7 +215,7 @@ const AddGovtSchemes = () => {
           imageFormData.append('scheme_image', formData.scheme_image)
           
           await axios.put(
-            'https://brjobsedu.com/gyandhara/gyandhara_backend/api/scheme/',
+            'https://brjobsedu.com/epathshala/epathshala_backend/api/scheme/',
             imageFormData,
             {
               ...config,
@@ -225,7 +225,7 @@ const AddGovtSchemes = () => {
           )
         } else {
           await axios.put(
-            'https://brjobsedu.com/gyandhara/gyandhara_backend/api/scheme/',
+            'https://brjobsedu.com/epathshala/epathshala_backend/api/scheme/',
             payload,
             {
               ...config,
@@ -248,7 +248,7 @@ const AddGovtSchemes = () => {
           imageFormData.append('scheme_image', formData.scheme_image)
           
           await axios.post(
-            'https://brjobsedu.com/gyandhara/gyandhara_backend/api/scheme/',
+            'https://brjobsedu.com/epathshala/epathshala_backend/api/scheme/',
             imageFormData,
             {
               ...config,
@@ -258,7 +258,7 @@ const AddGovtSchemes = () => {
           )
         } else {
           await axios.post(
-            'https://brjobsedu.com/gyandhara/gyandhara_backend/api/scheme/',
+            'https://brjobsedu.com/epathshala/epathshala_backend/api/scheme/',
             payload,
             {
               ...config,
@@ -372,7 +372,7 @@ const AddGovtSchemes = () => {
 
     try {
       const config = getAuthConfig()
-      await axios.delete('https://brjobsedu.com/gyandhara/gyandhara_backend/api/scheme/', {
+      await axios.delete('https://brjobsedu.com/epathshala/epathshala_backend/api/scheme/', {
         data: { gov_scheme_id: scheme.gov_scheme_id },
         ...config
       })

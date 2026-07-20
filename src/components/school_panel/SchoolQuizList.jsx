@@ -7,11 +7,11 @@ import { FaArrowLeft, FaCalendar, FaUsers, FaClock, FaBook, FaCheck, FaTimes, Fa
 import SchoolLeftNav from './SchoolLeftNav'
 import SchoolHeader from './SchoolHeader'
 
-const API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-competition-items/'
-const API_URL_RANK = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz/rank/'
-const API_URL_SCHOOL_RANK = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz/school-rank/'
-const API_URL_REGISTRATION = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/quiz-competition-participants/'
-const API_URL_STUDENTS = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/student-schoolwise/'
+const API_URL = 'https://brjobsedu.com/epathshala/epathshala_backend/api/quiz-competition-items/'
+const API_URL_RANK = 'https://brjobsedu.com/epathshala/epathshala_backend/api/quiz/rank/'
+const API_URL_SCHOOL_RANK = 'https://brjobsedu.com/epathshala/epathshala_backend/api/quiz/school-rank/'
+const API_URL_REGISTRATION = 'https://brjobsedu.com/epathshala/epathshala_backend/api/quiz-competition-participants/'
+const API_URL_STUDENTS = 'https://brjobsedu.com/epathshala/epathshala_backend/api/student-schoolwise/'
 
 // Helper to normalize class names for comparison (e.g., "9th" -> 9, 9 -> 9)
 const normalizeClass = (cls) => {

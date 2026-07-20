@@ -58,7 +58,7 @@ const GovernmentSchemes = () => {
         setLoading(true)
         
         const response = await axios.get(
-          'https://brjobsedu.com/gyandhara/gyandhara_backend/api/scheme-category-with-schemes/',
+          'https://brjobsedu.com/epathshala/epathshala_backend/api/scheme-category-with-schemes/',
           {
             headers: {
               'Authorization': `Bearer ${accessToken}`,

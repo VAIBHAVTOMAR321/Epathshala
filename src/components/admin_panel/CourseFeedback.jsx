@@ -11,7 +11,7 @@ import { FaArrowLeft, FaChevronDown, FaChevronRight } from 'react-icons/fa'
 import AdminLeftNav from './AdminLeftNav'
 import AdminHeader from './AdminHeader'
 
-const API_URL = 'https://brjobsedu.com/gyandhara/gyandhara_backend/api/course-feedback/'
+const API_URL = 'https://brjobsedu.com/epathshala/epathshala_backend/api/course-feedback/'
 
 const CourseFeedback = () => {
   const { accessToken } = useAuth()
