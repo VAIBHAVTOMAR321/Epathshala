@@ -23,7 +23,7 @@ const Login = () => {
 
   const content = {
     en: {
-      title: "Welcome to Epathshala",
+      title: "Welcome to ePathshala",
       subtitle: "Your gateway to knowledge and success. Please sign in.",
       welcome: "Welcome Back!",
       welcomeSub: "Continue your learning journey",
@@ -55,7 +55,7 @@ const Login = () => {
       }
     },
     hi: {
-      title: "ज्ञानधारा में आपका स्वागत है",
+      title: "ePathshala में आपका स्वागत है",
       subtitle: "ज्ञान और सफलता का आपका प्रवेश द्वार। कृपया साइन इन करें।",
       welcome: "पुनः स्वागत है!",
       welcomeSub: "अपनी सीखने की यात्रा जारी रखें",
