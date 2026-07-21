@@ -546,7 +546,7 @@ padding: 4px !important;
 }
 
 .course-accordion .accordion-header {
-background: linear-gradient(135deg, rgb(94, 117, 223), rgb(230, 101, 10));
+  background: linear-gradient(180deg, #2e1065f4 0%, #03012c 45%, #100227 100%);
   padding: 0;
   border-radius: 8px 8px 0 0 !important;
   overflow: hidden;

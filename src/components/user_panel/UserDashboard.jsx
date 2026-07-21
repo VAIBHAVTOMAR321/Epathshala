@@ -1749,9 +1749,9 @@ const UserDashboard = () => {
                                       alignItems: 'center',
                                       justifyContent: 'center',
                                       position: 'relative',
-                                      background: isAllModulesCompleted(course) 
-                                        ? 'linear-gradient(135deg, #10b981, #059669)'
-                                        : 'linear-gradient(135deg, rgb(94 117 223), rgb(230, 101, 10))'
+                                    background: isAllModulesCompleted(course)
+  ? 'linear-gradient(135deg, #22C55E 0%, #16A34A 100%)'
+  : 'linear-gradient(135deg, #24215f 0%, #03012c 100%)'
                                     }}>
                                       {isAllModulesCompleted(course) ? (
                                         <FaCertificate className="text-white" style={{ fontSize: '28px', animation: 'pulse 2s infinite' }} />
