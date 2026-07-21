@@ -228,10 +228,11 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     /* padding: 8px; */
 }
+
 /* Sidebar Styles */
 .user-Left {
     width: 260px;
-    background-color: hsl(240deg 48.17% 70.51%);;
+    background-color: hsl(332, 94%, 13%);;
     color: white;
     transition: all 0.3s ease;
     position: fixed;
@@ -928,7 +929,7 @@ border: none !important;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: hsl(240deg 48.17% 70.51%) !important;
+    background-color: rgb(64, 2, 31) !important;
 }
 
 .admin-mobile-offcanvas .admin-offcanvas-header .btn-close {
@@ -995,7 +996,7 @@ border: none !important;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #0d5ab8  !important;
+    background-color: rgb(64, 2, 31) !important;
 }
 
 .school-mobile-offcanvas .btn-close {
