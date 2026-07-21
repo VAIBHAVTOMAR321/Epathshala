@@ -101,7 +101,16 @@ const Login = () => {
   ];
 
   const handleRoleChange = (e) => {
-    setFormData({ ...formData, role: e.target.value });
+    const newRole = e.target.value;
+    setFormData({
+      ...formData,
+      role: newRole,
+      // Reset other fields when role changes
+      email_or_phone: '',
+      aadhaar_no: '',
+      school_id: '',
+      password: '',
+    });
     setError('');
   }
 
