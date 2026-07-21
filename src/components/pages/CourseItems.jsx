@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Card, Button, Badge, Spinner, Form, Modal } from 'react-bootstrap'
+import { Container, Row, Col, Card, Button, Badge, Spinner, Form, Modal, InputGroup } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import '../../assets/css/courseitems.css'
@@ -17,6 +17,7 @@ function CourseItems() {
   const content = {
     en: {
       title: "Our Courses",
+      subtitle: "Explore a wide range of courses to build your skills and advance your career.",
       loading: "Loading courses...",
       noResults: "No courses found",
       noMatch: (term) => `No courses match "${term}"`,
@@ -32,6 +33,7 @@ function CourseItems() {
     },
     hi: {
       title: "हमारे पाठ्यक्रम",
+      subtitle: "अपने कौशल का निर्माण करने और अपने करियर को आगे बढ़ाने के लिए पाठ्यक्रमों की एक विस्तृत श्रृंखला का अन्वेषण करें।",
       loading: "पाठ्यक्रम लोड हो रहे हैं...",
       noResults: "कोई पाठ्यक्रम नहीं मिला",
       noMatch: (term) => `"${term}" से मेल खाने वाला कोई पाठ्यक्रम नहीं मिला`,
@@ -92,56 +94,48 @@ function CourseItems() {
   return (
     <div className="course-items-page">
       
-      <div className="course-hero-banner mt-5 mb-1" >
-        <Container className='box-shadow p-4 rounded-3 ' style={{ backgroundColor: 'rgba(255, 255, 255, 0.9) ',marginTop:'80px' }}>
+      <div className="course-hero-banner">
+        <Container>
           <Row className="justify-content-center text-center">
-            <Col lg={8}>
-              <div className="mb-3 text-black" style={{ fontSize: '1.8rem' }}>{t.title}</div>
-              <div className="search-filter-container p-3 bg-white shadow-lg rounded-pill d-flex align-items-center">
-                <div className="flex-grow-1 d-flex align-items-center px-3 border-end">
-                  <FaSearch className="text-muted me-2" />
-                  <Form.Control 
-                    type="text" 
-                    placeholder={t.searchPlaceholder}
-                    className="border-0 shadow-none p-0"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
-                </div>
-                <Button 
-                  variant="primary" 
-                  className="rounded-pill px-4 ms-2 py-2 fw-bold"
-                  onClick={() => { /* Trigger search if needed, currently handled by onChange */ }}
-                  aria-label="Search"
-                >
-                  <FaSearch className="me-1" />
-                </Button>
+            <Col lg={9}>
+              <div className="course-hero-content">
+                <h1 className="hero-title">{t.title}</h1>
+                <p className="hero-subtitle">{t.subtitle}</p>
+                <InputGroup className="search-input-group">
+                    <Form.Control 
+                      type="text" 
+                      placeholder={t.searchPlaceholder}
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      aria-label="Search Courses"
+                    />
+                    <Button variant="primary" aria-label="Search">
+                      <FaSearch />
+                    </Button>
+                </InputGroup>
               </div>
             </Col>
           </Row>
-          <Container className="course-content">
+        </Container>
+      </div>
+
+      <Container className="course-content-area">
         <div className="d-flex justify-content-between align-items-center mb-4">
-          <h5 className="mb-0 text-muted small fw-bold">
+          <h5 className="mb-0 results-header">
             {t.resultsFound(filteredCourses.length)}
           </h5>
           {searchTerm && (
-            <Button 
-              variant="link" 
-              size="sm" 
-              className="text-decoration-none fw-bold"
-              onClick={() => setSearchTerm('')}
-            >
+            <Button variant="link" size="sm" className="text-decoration-none fw-bold" onClick={() => setSearchTerm('')}>
               Clear Search
             </Button>
           )}
         </div>
 
-        {/* Courses Grid */}
         {filteredCourses.length > 0 ? (
           <Row className="courses-grid">
             {filteredCourses.map((course) => (
-              <Col key={course.id} lg={3} md={4} sm={6} className="mb-3">
-                <Card className="course-card h-100" style={{ fontSize: '0.8rem' }}>
+              <Col key={course.id} lg={3} md={4} sm={6} className="mb-4">
+                <Card className="course-card h-100">
                   {course.course_img && (
                     <div className="course-image-container" style={{ height: '140px' }}>
                       <Card.Img 
@@ -156,30 +150,22 @@ function CourseItems() {
                       />
                     </div>
                   )}
-                  <Card.Body className="course-card-body p-2">
+                  <Card.Body className="course-card-body">
                     <div className="course-category">
-                      <Badge bg="primary" className="course-badge py-1 px-2" style={{ fontSize: '0.7rem' }}>
+                      <Badge bg="primary" className="course-badge">
                         {course.course_category || ''}
                       </Badge>
                     </div>
-                    <Card.Title className="fw-bold mb-1" style={{ fontSize: '0.9rem' }}>
+                    <Card.Title>
                       {language === 'hi' && course.course_name_hindi ? course.course_name_hindi : course.course_name}
                     </Card.Title>
-                  
                     <Card.Text className="course-description">
                       {language === 'hi' && course.course_desc_hindi ? (course.course_desc_hindi.length > 80 ? course.course_desc_hindi.substring(0, 80) + '...' : course.course_desc_hindi) : (course.course_desc?.length > 80 ? course.course_desc.substring(0, 80) + '...' : course.course_desc)}
                     </Card.Text>
-                    
-                    {language !== 'hi' && course.course_name_hindi && (
-                      <div className="course-hindi-info">
-                        <small className="text-muted">{course.course_name_hindi}</small>
-                      </div>
-                    )}
-               
                   </Card.Body>
-                  <Card.Footer className="bg-transparent border-0 p-2 pt-0">
+                  <Card.Footer>
                     <Button 
-                      className="w-100 explore-btn btn-sm d-flex align-items-center justify-content-center gap-2" style={{ fontSize: '0.75rem', padding: '0.3rem 0.5rem' }}
+                      className="w-100 explore-btn d-flex align-items-center justify-content-center gap-2"
                       onClick={handleCardClick}
                     >
                       {t.exploreBtn} <FaArrowRight size={12} />
@@ -207,15 +193,11 @@ function CourseItems() {
           </Card>
         )}
       </Container>
-        </Container>
-      </div>
-
-      
 
       {/* Auth Prompt Modal */}
       <Modal show={showModal} onHide={handleClose} centered size="sm">
         <Modal.Header closeButton className="border-0 pb-0">
-          <Modal.Title className="fs-5 fw-bold text-primary w-100 text-center">{t.modalTitle}</Modal.Title>
+          <Modal.Title className="fs-5 fw-bold w-100 text-center modal-title-style">{t.modalTitle}</Modal.Title>
         </Modal.Header>
         <Modal.Body className="text-center pt-2">
           <p className="mb-4 text-muted">{t.modalMessage}</p>

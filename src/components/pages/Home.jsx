@@ -158,7 +158,10 @@ function Home() {
                     <i className="bi bi-person-plus-fill"></i>
                     <span>{t.joinBtn}</span>
                   </Link>
-                  <Link to="/courses" className="btn-gyandhara btn-outline-custom-btn">
+                  <Link
+                    to="/CourseItems"
+                    className="btn-gyandhara btn-outline-custom-btn"
+                    onClick={() => window.scrollTo(0, 0)}>
                     <i className="bi bi-book-fill"></i>
                     <span>{t.exploreBtn}</span>
                   </Link>

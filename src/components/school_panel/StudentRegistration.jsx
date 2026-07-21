@@ -2,15 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import { Container, Row, Col, Card, Button, Form, Alert, Table, Spinner, Modal, Pagination } from "react-bootstrap";
 import axios from "axios";
 import * as XLSX from 'xlsx';
-import jsPDF from 'jspdf';
-import { autoTable } from 'jspdf-autotable';
-import { FaFileExcel, FaFilePdf } from 'react-icons/fa';
+import jsPDF from 'jspdf'; 
+import autoTable from 'jspdf-autotable';
+import { FaFileExcel, FaFilePdf, FaUserPlus, FaUsers, FaList, FaCheckCircle, FaTimesCircle, FaExclamationTriangle } from 'react-icons/fa';
 
 import { useAuth } from "../all_login/AuthContext";
 import { useLanguage } from "../all_login/LanguageContext";
 import SchoolHeader from "./SchoolHeader";
 import SchoolLeftNav from "./SchoolLeftNav";
 import "../../assets/css/userleftnav.css";
+import "../../assets/css/StudentRegistration.css";
 
 const StudentRegistration = () => {
   const { uniqueId: school_uni_id, accessToken } = useAuth();
@@ -398,12 +399,12 @@ const StudentRegistration = () => {
     const items = [];
     for (let i = 1; i <= totalPages; i++) {
       items.push(
-        <Pagination.Item key={i} active={i === currentPage} onClick={() => setCurrentPage(i)}>
+        <Pagination.Item key={i} active={i === currentPage} onClick={() => setCurrentPage(i)} className="mx-1">
           {i}
         </Pagination.Item>
       );
     }
-    return items;
+    return <Pagination className="justify-content-center">{items}</Pagination>;
   };
 
   // Download Excel for students
@@ -852,121 +853,129 @@ const StudentRegistration = () => {
       <div className="main-content-dash">
         <SchoolHeader toggleSidebar={toggleSidebar} />
 
-        <Container fluid className="dashboard-box mt-3">
-          <Row>
-            <Col>
-              <Card className="shadow-box">
-                <Card.Body>
-                  <h4 className="mb-4">{t.title}</h4>
+        <Container fluid className="dashboard-box mt-3 student-registration-page">
+          <h4 className="mb-4 font-weight-bold">{t.title}</h4>
 
-                  {/* Alert Messages */}
-                  {error && (
-                    <Alert variant="danger" dismissible onClose={() => setError('')}>
-                      {error}
-                    </Alert>
-                  )}
-                  {success && (
-                    <Alert variant="success" dismissible onClose={() => setSuccess('')}>
-                      {success}
-                    </Alert>
-                  )}
+          {/* Alert Messages */}
+          {error && (
+            <Alert variant="danger" dismissible onClose={() => setError('')}>
+              {error}
+            </Alert>
+          )}
+          {success && (
+            <Alert variant="success" dismissible onClose={() => setSuccess('')}>
+              {success}
+            </Alert>
+          )}
 
-                  {/* Tabs */}
-                  <div className="mb-4">
-                    <Button
-                      variant={activeTab === 'single' ? 'primary' : 'outline-primary'}
-                      className="me-2"
-                      onClick={() => handleTabChange('single')}
-                    >
-                      {t.singleTab}
-                    </Button>
-                    <Button
-                      variant={activeTab === 'bulk' ? 'primary' : 'outline-primary'}
-                      className="me-2"
-                      onClick={() => handleTabChange('bulk')}
-                    >
-                      {t.bulkTab}
-                    </Button>
-                    <Button
-                      variant={activeTab === 'list' ? 'primary' : 'outline-primary'}
-                      onClick={() => handleTabChange('list')}
-                    >
-                      {t.listTab}
-                    </Button>
-                  </div>
+          {/* Tabs */}
+          <div className="nav nav-tabs">
+            <Button
+              variant="link"
+              className={`nav-link ${activeTab === 'single' ? 'active' : ''}`}
+              onClick={() => handleTabChange('single')}
+            >
+              <FaUserPlus /> {t.singleTab}
+            </Button>
+            <Button
+              variant="link"
+              className={`nav-link ${activeTab === 'bulk' ? 'active' : ''}`}
+              onClick={() => handleTabChange('bulk')}
+            >
+              <FaUsers /> {t.bulkTab}
+            </Button>
+            <Button
+              variant="link"
+              className={`nav-link ${activeTab === 'list' ? 'active' : ''}`}
+              onClick={() => handleTabChange('list')}
+            >
+              <FaList /> {t.listTab}
+            </Button>
+          </div>
 
-                  {/* Single Registration Form */}
-                  {activeTab === 'single' && (
-                    <Form onSubmit={handleSingleSubmit}>
-                      <Row className="mb-3">
-                        <Col md={6}>
-                          <Form.Group>
-                            <Form.Label>{t.schoolId} <span className="text-danger">*</span></Form.Label>
-                            <Form.Control
-                              type="text"
-                              value={school_uni_id || ''}
-                              disabled
-                              placeholder={t.autoFilled}
-                            />
-                            <Form.Text className="text-muted">
-                              {t.autoFilledSub}
-                            </Form.Text>
-                          </Form.Group>
-                        </Col>
-                      </Row>
+          {/* Single Registration Form */}
+          {activeTab === 'single' && (
+            <Card className="registration-card">
+              <Card.Header>
+                <h5>{t.singleTab}</h5>
+              </Card.Header>
+              <Card.Body>
+                <Form onSubmit={handleSingleSubmit}>
+                  <Row className="mb-3">
+                    <Col md={6}>
+                      <Form.Group>
+                        <Form.Label>{t.schoolId} <span className="text-danger">*</span></Form.Label>
+                        <Form.Control
+                          type="text"
+                          value={school_uni_id || ''}
+                          disabled
+                          placeholder={t.autoFilled}
+                        />
+                        <Form.Text className="text-muted">
+                          {t.autoFilledSub}
+                        </Form.Text>
+                      </Form.Group>
+                    </Col>
+                  </Row>
 
-                      <Row className="mb-3">
-                        <Col md={6}>
-                          <Form.Group>
-                            <Form.Label>{t.fullName} <span className="text-danger">*</span></Form.Label>
-                            <Form.Control
-                              type="text"
-                              name="full_name"
-                              value={singleForm.full_name}
-                              onChange={handleSingleChange}
-                              placeholder={t.fullNamePlaceholder}
-                              isInvalid={!!singleErrors.full_name}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                              {singleErrors.full_name}
-                            </Form.Control.Feedback>
-                          </Form.Group>
-                        </Col>
-                        <Col md={6}>
-                          <Form.Group>
-                            <Form.Label>{t.aadhaar} <span className="text-danger">*</span></Form.Label>
-                            <Form.Control
-                              type="text"
-                              name="aadhaar_no"
-                              value={singleForm.aadhaar_no}
-                              onChange={handleSingleChange}
-                              placeholder={t.aadhaarPlaceholder}
-                              maxLength={12}
-                              isInvalid={!!singleErrors.aadhaar_no}
-                            />
-                            <Form.Control.Feedback type="invalid">
-                              {singleErrors.aadhaar_no}
-                            </Form.Control.Feedback>
-                          </Form.Group>
-                        </Col>
-                      </Row>
+                  <Row className="mb-3">
+                    <Col md={6}>
+                      <Form.Group>
+                        <Form.Label>{t.fullName} <span className="text-danger">*</span></Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="full_name"
+                          value={singleForm.full_name}
+                          onChange={handleSingleChange}
+                          placeholder={t.fullNamePlaceholder}
+                          isInvalid={!!singleErrors.full_name}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {singleErrors.full_name}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                      <Form.Group>
+                        <Form.Label>{t.aadhaar} <span className="text-danger">*</span></Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="aadhaar_no"
+                          value={singleForm.aadhaar_no}
+                          onChange={handleSingleChange}
+                          placeholder={t.aadhaarPlaceholder}
+                          maxLength={12}
+                          isInvalid={!!singleErrors.aadhaar_no}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {singleErrors.aadhaar_no}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                  </Row>
 
-                      <Button variant="success" type="submit" disabled={loading}>
-                        {loading ? (
-                          <>
-                            <Spinner animation="border" size="sm" className="me-2" />
-                            {t.registering}
-                          </>
-                        ) : (
-                          t.register
-                        )}
-                      </Button>
-                    </Form>
-                  )}
+                  <Button variant="success" type="submit" disabled={loading}>
+                    {loading ? (
+                      <>
+                        <Spinner animation="border" size="sm" className="me-2" />
+                        {t.registering}
+                      </>
+                    ) : (
+                      <><FaUserPlus className="me-2" />{t.register}</>
+                    )}
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          )}
 
                   {/* Bulk Registration */}
                   {activeTab === 'bulk' && (
-                    <div>
+                    <Card className="registration-card">
+                      <Card.Header>
+                        <h5>{t.bulkTab}</h5>
+                      </Card.Header>
+                      <Card.Body>
                       <div className="mb-4">
                         <Form.Group className="mb-3">
                           <Form.Label>{t.uploadTitle}</Form.Label>
@@ -979,10 +988,10 @@ const StudentRegistration = () => {
                           />
                           <div className="mt-2">
                             <Button
-                              variant="outline-secondary"
+                              variant="outline-primary"
                               size="sm"
                               onClick={downloadTemplate}
-                              className="me-2"
+                              className="me-2 template-btn"
                             >
                               Download Template
                             </Button>
@@ -1002,8 +1011,8 @@ const StudentRegistration = () => {
                       {previewReady && parsedData.length > 0 && (
                         <div className="mt-4">
                           <h5>{t.previewTitle} ({parsedData.length} {language === 'hi' ? 'छात्र' : 'students'})</h5>
-                          <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
-                            <Table striped bordered hover responsive>
+                          <div className="table-responsive" style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                            <Table striped bordered hover responsive className="preview-table">
                               <thead className="table-school">
                                 <tr>
                                   <th>#</th>
@@ -1026,21 +1035,21 @@ const StudentRegistration = () => {
                                         {submittingBulk ? (
                                           rowStatus ? (
                                             rowStatus.status === 'pending' ? (
-                                              <Spinner animation="border" size="sm" />
+                                              <Spinner animation="border" size="sm" variant="primary" />
                                             ) : rowStatus.status === 'success' ? (
-                                              <span className="text-success">✓ {rowStatus.message}</span>
+                                              <span className="text-success"><FaCheckCircle className="status-icon" /> {rowStatus.message}</span>
                                             ) : rowStatus.status === 'skipped' ? (
-                                              <span className="text-warning">⚠ {rowStatus.message}</span>
+                                              <span className="text-warning"><FaExclamationTriangle className="status-icon" /> {rowStatus.message}</span>
                                             ) : (
-                                              <span className="text-danger">✗ {rowStatus.message}</span>
+                                              <span className="text-danger"><FaTimesCircle className="status-icon" /> {rowStatus.message}</span>
                                             )
                                           ) : null
                                         ) : isExisting ? (
-                                          <span className="text-warning">⚠ {language === 'hi' ? 'पहले से पंजीकृत' : 'Already registered'}</span>
+                                          <span className="text-warning"><FaExclamationTriangle className="status-icon" /> {language === 'hi' ? 'पहले से पंजीकृत' : 'Already registered'}</span>
                                         ) : rowError ? (
-                                          <span className="text-danger">✗ {rowError.message}</span>
+                                          <span className="text-danger"><FaTimesCircle className="status-icon" /> {rowError.message}</span>
                                         ) : (
-                                          <span className="text-success">✓ {language === 'hi' ? 'नया' : 'New'}</span>
+                                          <span className="text-success"><FaCheckCircle className="status-icon" /> {language === 'hi' ? 'नया' : 'New'}</span>
                                         )}
                                       </td>
                                     </tr>
@@ -1090,13 +1099,14 @@ const StudentRegistration = () => {
                           )}
                         </div>
                       )}
-                    </div>
+                      </Card.Body>
+                    </Card>
                   )}
 
                   {/* View Students Tab */}
                   {activeTab === 'list' && (
-                    <div className="mt-4">
-                      <div className="d-flex justify-content-between align-items-center mb-3">
+                    <Card className="registration-card">
+                      <Card.Header className="d-flex justify-content-between align-items-center">
                         <h5>{t.studentList} ({totalStudents} {language === 'hi' ? 'कुल' : 'total'})</h5>
                         <div className="d-flex gap-2 align-items-center">
                           <Button
@@ -1123,7 +1133,8 @@ const StudentRegistration = () => {
                             </Button>
                           )}
                         </div>
-                      </div>
+                      </Card.Header>
+                      <Card.Body>
 
                       {studentsLoading ? (
                         <div className="text-center py-4">
@@ -1134,8 +1145,8 @@ const StudentRegistration = () => {
                         <Alert variant="info">{t.noStudents}</Alert>
                       ) : (
                         <>
-                          <div style={{ maxHeight: '500px', overflowY: 'auto' }}>
-                            <Table striped bordered hover responsive>
+                          <div className="table-responsive" style={{ maxHeight: '500px', overflowY: 'auto' }}>
+                            <Table striped bordered hover responsive className="student-list-table">
                               <thead className="table-school">
                                 <tr>
                                   <th>
@@ -1166,7 +1177,7 @@ const StudentRegistration = () => {
                                     <td>{student.aadhaar_no ? '******' + student.aadhaar_no.slice(-4) : '-'}</td>
                                     <td>{student.full_name}</td>
                                     <td>{student.created_at ? new Date(student.created_at).toLocaleDateString() : '-'}</td>
-                                    <td>
+                                    <td className="student-list-actions">
                                       <Button
                                         variant="outline-primary"
                                         size="sm"
@@ -1188,17 +1199,12 @@ const StudentRegistration = () => {
                               </tbody>
                             </Table>
                           </div>
-                          {totalPages > 1 && (
-                            <Pagination className="mt-3">{renderPagination()}</Pagination>
-                          )}
+                          {totalPages > 1 && <div className="mt-3">{renderPagination()}</div>}
                         </>
                       )}
-                    </div>
+                      </Card.Body>
+                    </Card>
                   )}
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
         </Container>
       </div>
 
