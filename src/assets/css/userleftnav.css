@@ -930,7 +930,7 @@ border: none !important;
  }
  
  .user-mobile-offcanvas .nav-item:hover {
-     background: #10341f;
+     background: #3a2467;
  }
  
  .user-mobile-offcanvas .nav-item.active {
@@ -953,12 +953,19 @@ border: none !important;
  }
  
  .user-offcanvas-header {
-     background: linear-gradient(135deg, #383be8, #4246e4) !important;
+
+     background: linear-gradient(180deg, #372060f4 0%, #60409cf4 45%, #5b32a1f4 100%) !important;
      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
  }
  
  .user-offcanvas-body {
-     background: linear-gradient(135deg, #4246e4, hsl(25, 92%, 47%)) !important;
+
+      background: linear-gradient(
+  180deg,
+  #372060f4 0%,
+  #60409cf4 45%,
+  #5b32a1f4  100%
+);
      padding: 0 !important;
  }
  
@@ -1126,7 +1133,7 @@ border: none !important;
 }
 
 .vendors-icon {
-    background: linear-gradient(135deg, #097743 0%, #065c35 100%);
+    background: linear-gradient(135deg, hsl(265, 80%, 23%) 0%, #10006b 100%);
     color: white;
 }
 
@@ -1135,7 +1142,7 @@ border: none !important;
 }
 
 .staff-icon {
-    background: linear-gradient(135deg, #1a5332 0%, #0f3a25 100%);
+    background: linear-gradient(135deg, #260568 0%, #380e6a 100%);
     color: white;
 }
 

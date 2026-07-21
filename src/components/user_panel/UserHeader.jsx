@@ -356,7 +356,7 @@ function UserHeader({ toggleSidebar }) {
                <div
                   onClick={() => navigate("/GroomingClasses")}
                   style={{
-                    background: "#383be8",
+                    background: "#46016d",
                     color: "#fff",
                     padding: "4px 10px", // Tighter padding
                     borderRadius: "6px",
