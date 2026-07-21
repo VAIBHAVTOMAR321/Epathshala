@@ -181,7 +181,7 @@ const GroomingClasses = () => {
             </div>
           ) : (
             <>
-              <Card className="shadow-sm mb-4 border-0" style={{ borderRadius: '15px', background: 'linear-gradient(135deg, rgb(94, 117, 223), rgb(230, 101, 10))', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)' }}>
+              <Card className="shadow-sm mb-4 border-0" style={{ borderRadius: '15px', background: 'linear-gradient(135deg, rgb(94, 117, 223), rgb(42, 15, 132))', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)' }}>
                 <Card.Body className="py-4">
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="text-white">

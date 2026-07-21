@@ -91,7 +91,7 @@ body {
   padding: 6px !important;
 }
 .btn-primary{
-background: linear-gradient(135deg, rgb(94, 117, 223), rgb(230, 101, 10));
+background: linear-gradient(135deg, rgb(94, 117, 223), rgb(74, 2, 129));
   border: none;
 }
 .table-school tr th{
@@ -99,7 +99,7 @@ background: linear-gradient(135deg, rgb(94, 117, 223), rgb(230, 101, 10));
     color: white !important;
 }
 .table-thead th {
-background: linear-gradient(135deg, rgb(94, 117, 223), rgb(230, 101, 10));
+background: linear-gradient(135deg, rgb(94, 117, 223), rgb(51, 21, 140));
   color: white;
 }
 .table-thead th td {
