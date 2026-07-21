@@ -231,7 +231,7 @@
 /* Sidebar Styles */
 .school-Left {
     width: 260px;
-    background-color:#0d5ab8 !important;
+    background-color:#b87b0d !important;
     color: white;
     transition: all 0.3s ease;
     position: fixed;
@@ -1067,7 +1067,7 @@ border: none !important;
 
 /* Card Type Specific Styles */
 .card-users {
-    color: #1d85e9;
+    color: #b87b0d;
 }
 
 .users-icon {
