@@ -13,11 +13,10 @@
 }
 
 .profile-header-card {
- background: linear-gradient(135deg, rgb(94, 117, 223), rgb(51, 18, 114));
+ background: linear-gradient(180deg, #372060f4 0%, #60409cf4 45%, #5b32a1f4 100%);
   border-radius: 12px;
   color: white;
 }
-
 
 .profile-header-row {
   display: flex;

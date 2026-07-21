@@ -173,7 +173,7 @@
 
 /* Notifications Header Card */
 .notifications-header-card {
-  background: linear-gradient(135deg, rgb(94, 117, 223), rgb(60, 7, 141)) !important;
+ background: linear-gradient(180deg, #372060f4 0%, #60409cf4 45%, #5b32a1f4 100%) !important;
      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
     color: #fff !important;
 }
