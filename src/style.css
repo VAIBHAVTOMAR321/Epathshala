@@ -68,7 +68,9 @@ body {
   --spi-space-1100: 44px;
   --spi-space-1200: 48px;
 }
-
+.course-card-body{
+  text-align: left;
+}
 .tab-btn{
   font-size: 12px !important;
 }

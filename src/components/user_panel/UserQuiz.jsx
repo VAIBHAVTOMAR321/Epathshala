@@ -38,7 +38,7 @@ const UserQuiz = () => {
     setSidebarOpen(!sidebarOpen)
   }
   
-  const [quizzes, setQuizzes] = useState([])
+  const [quizzes, setQuizzes] = useState([])  
   const [loading, setLoading] = useState(true)
   const [participatedQuizzes, setParticipatedQuizzes] = useState({})
   const [quizRanks, setQuizRanks] = useState({})
