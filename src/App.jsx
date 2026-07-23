@@ -520,7 +520,7 @@ function App() {
   return (
     <AuthProvider>
       <LanguageProvider>
-        <Router basename="/gyandhara">
+        <Router basename="/epathshala">
           <AppContent />
         </Router>
       </LanguageProvider>
