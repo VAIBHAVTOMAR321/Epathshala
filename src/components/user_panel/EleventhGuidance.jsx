@@ -258,7 +258,7 @@ const getStreamDisplayName = (streamId) => {
       vocational: {
         high: [
           { 
-            name: 'ITI (Industrial Training Institute)', 
+            name: 'ITI (Industrial Training school)', 
             icon: <FaWrench />, 
             description: 'For students interested in technical trades', 
             careers: ['Electrician', 'Fitter', 'Mechanic', 'Welder'],
@@ -482,7 +482,7 @@ const getStreamDisplayName = (streamId) => {
       ],
       vocational: [
         { 
-          name: 'ITI (Industrial Training Institute)', 
+          name: 'ITI (Industrial Training school)', 
           icon: <FaWrench />, 
           description: 'For students interested in technical trades', 
           careers: ['Electrician', 'Fitter', 'Mechanic', 'Welder'],

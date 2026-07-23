@@ -352,7 +352,7 @@ const TwelfthGuidance = () => {
   const getCollegeData = () => {
     return {
       'IIT': {
-        title: 'IIT (Indian Institutes of Technology)',
+        title: 'IIT (Indian Schools of Technology)',
         icon: <FaCog />,
         fullPath: '12th (PCM) → JEE Main → JEE Advanced → IIT Admission',
         eligibility: 'JEE Main + Advanced qualified',
@@ -367,7 +367,7 @@ const TwelfthGuidance = () => {
         ]
       },
       'NIT': {
-        title: 'NIT (National Institutes of Technology)',
+        title: 'NIT (National Schools of Technology)',
         icon: <FaUniversity />,
         fullPath: '12th (PCM) → JEE Main → CSAB Counseling → NIT Admission',
         eligibility: 'JEE Main qualified',
@@ -382,7 +382,7 @@ const TwelfthGuidance = () => {
         ]
       },
       'IIIT': {
-        title: 'IIIT (Indian Institutes of Information Technology)',
+        title: 'IIIT (Indian Schools of Information Technology)',
         icon: <FaMicrochip />,
         fullPath: '12th (PCM) → JEE Main → CSAB/JoSAA → IIIT Admission',
         eligibility: 'JEE Main qualified',

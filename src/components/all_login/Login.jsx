@@ -30,8 +30,8 @@ const Login = () => {
       roleLabel: "Select Your Role",
       emailPhone: "Email or Phone",
       emailPhonePlaceholder: "Enter email or phone",
-      schoolId: "Institution ID",
-      schoolIdPlaceholder: "Enter institution ID",
+      schoolId: "School ID",
+      schoolIdPlaceholder: "Enter School ID",
       aadhaar: "Aadhaar Number",
       aadhaarPlaceholder: "Enter 12-digit Aadhaar",
       password: "Password",
@@ -42,7 +42,7 @@ const Login = () => {
       createAccount: "Create an account",
       validation: {
         emailRequired: "Email/Phone is required",
-        schoolIdRequired: "Institution ID is required",
+        schoolIdRequired: "School ID is required",
         aadhaarRequired: "Aadhaar number is required",
         passwordRequired: "Password is required",
         loginSuccess: "Login successful!",
@@ -51,7 +51,7 @@ const Login = () => {
       roles: {
         '9th-student': '9th Student', '10th-student': '10th Student',
         '11th-student': '11th Student', '12th-student': '12th Student',
-        'admin': 'Admin', 'school': 'Institution'
+        'admin': 'Admin', 'school': 'School'
       }
     },
     hi: {
@@ -84,7 +84,7 @@ const Login = () => {
       roles: {
         '9th-student': '9वीं छात्र', '10th-student': '10वीं छात्र',
         '11th-student': '11वीं छात्र', '12th-student': '12वीं छात्र',
-        'admin': 'एडमिन', 'institution': 'शैक्षणिक संस्था'
+        'admin': 'एडमिन', 'school': 'शैक्षणिक संस्था'
       }
     }
   };

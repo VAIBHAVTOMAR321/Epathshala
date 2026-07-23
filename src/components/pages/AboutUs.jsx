@@ -9,7 +9,7 @@ function AboutUs() {
     en: {
       heroTitle: "About gyandhara",
       heroSubtitle: "Empowering Education Through Innovation and Excellence",
-      heroDesc: "gyandhara is India's premier educational platform dedicated to transforming the learning experience for students, educators, and institutions across the nation.",
+      heroDesc: "gyandhara is India's premier educational platform dedicated to transforming the learning experience for students, educators, and schools across the nation.",
 
       missionTitle: "Our Mission",
       missionDesc: "To bridge the gap between education and career opportunities by providing comprehensive guidance, skill development programs, and innovative learning solutions that prepare students for the challenges of tomorrow.",
@@ -36,8 +36,8 @@ function AboutUs() {
         },
         {
           icon: "bi-building-fill",
-          title: "Institution Management",
-          desc: "Dedicated tools for institutions to manage student registrations, create quizzes, and track performance."
+          title: "School Management",
+          desc: "Dedicated tools for schools to manage student registrations, create quizzes, and track performance."
         },
         {
           icon: "bi-book-fill",
@@ -58,7 +58,7 @@ function AboutUs() {
         "Regular updates on government schemes and educational policies",
         "Interactive learning tools and assessment systems",
         "Strong focus on skill development and career readiness",
-        "Dedicated support for institutions and educational institutions"
+        "Dedicated support for schools and educational schools"
       ],
 
 

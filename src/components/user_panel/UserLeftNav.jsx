@@ -125,7 +125,7 @@ const menuItems = [
      },
      {
        icon: <FaUsers />,
-       label: language === 'hi' ? "शैक्षणिक संस्था प्रतियोगिताएं" : "Institutional Competitions",
+       label: language === 'hi' ? "शैक्षणिक संस्था प्रतियोगिताएं" : "School Competitions",
        path: "/SchoolCompetitions",
      },
      {

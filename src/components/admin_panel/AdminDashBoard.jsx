@@ -144,7 +144,7 @@ const AdminDashBoard = () => {
        ]);
 
        console.log('Students Response:', studentsRes.data);
-       console.log('Institutions Response:', schoolsRes.data);
+       console.log('Schools Response:', schoolsRes.data);
        console.log('Enrollments Response:', enrollmentsRes.data);
        console.log('Quiz Response:', quizRes.data);
        console.log('Quiz Items Response:', quizItemsRes.data);
@@ -1082,8 +1082,8 @@ const AdminDashBoard = () => {
           s.status || 'pending'
         ]);
       } else if (activeTab === 'schools') {
-        title = "Institution List Report";
-        headers = [['#', 'Institution ID', 'Institution Name', 'District', 'State', 'Status']];
+        title = "School List Report";
+        headers = [['#', 'School ID', 'School Name', 'District', 'State', 'Status']];
         data = schools.map((s, i) => [
           i + 1,
           s.school_uni_id || '-',
@@ -1228,7 +1228,7 @@ const AdminDashBoard = () => {
                     onChange={(e) => setQuizSchoolFilter(e.target.value)}
                     size="sm"
                   >
-                    <option value="">All Institutions</option>
+                    <option value="">All Schools</option>
                     {uniqueSchools.map((school, i) => (
                       <option key={i} value={school}>{school}</option>
                     ))}
@@ -1375,7 +1375,7 @@ const AdminDashBoard = () => {
       key: "schools",
       icon: "bi-mortarboard",
       number: stats.totalSchools,
-      label: "Total Institutions",
+      label: "Total Schools",
       className: "schools"
     },
     {
@@ -1579,7 +1579,7 @@ const AdminDashBoard = () => {
                  ))
                ) : (
                   <tr>
-                    <td colSpan="7" className="text-center">No Institution found</td>
+                    <td colSpan="7" className="text-center">No School found</td>
                   </tr>
                )}
              </tbody>

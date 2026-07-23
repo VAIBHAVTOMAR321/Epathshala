@@ -192,7 +192,7 @@ const SchoolCompetitions = () => {
           {/* Data */}
           {!loading && !error && (
             <>
-              <h2 className="mb-4">Institutional Competitions</h2>
+              <h2 className="mb-4">School Competitions</h2>
 
               <Row className="g-4">
                 {competitions.length > 0 ? (
@@ -217,7 +217,7 @@ const SchoolCompetitions = () => {
 
                           <div className="mt-3">
                             <p>
-                              <strong>{language === 'hi' ? "शैक्षणिक संस्था:" : "Institution:"}</strong>{" "}
+                              <strong>{language === 'hi' ? "शैक्षणिक संस्था:" : "School:"}</strong>{" "}
                               {comp.school_name || "-"}
                             </p>
 

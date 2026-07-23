@@ -71,7 +71,7 @@ const SchoolQuizList = () => {
     if (!quizResults || !Array.isArray(quizResults)) return []
     const stats = {}
     quizResults.forEach(item => {
-      const schoolName = item.school?.school_name || 'Unknown Institution'
+      const schoolName = item.school?.school_name || 'Unknown School'
       stats[schoolName] = (stats[schoolName] || 0) + 1
     })
     return Object.entries(stats).map(([name, count]) => ({ name, count }))
@@ -515,7 +515,7 @@ const toggleStudentSelection = (studentId) => {
                  </div>
                 ) : allStudentsFlat.length === 0 ? (
                   <Alert variant="warning">
-                    No students registered in your Institution yet.
+                    No students registered in your School yet.
                     <Button 
                       variant="link" 
                       size="sm" 
@@ -760,7 +760,7 @@ const toggleStudentSelection = (studentId) => {
                     <Card.Body className="p-2">
                       <FaBuilding className="mb-1 text-success" size={20} />
                       <h5 className="mb-0 fw-bold">{uniqueSchoolsCount}</h5>
-                      <div className="text-muted" style={{ fontSize: '0.7rem' }}>Institutions</div>
+                      <div className="text-muted" style={{ fontSize: '0.7rem' }}>School</div>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -772,14 +772,14 @@ const toggleStudentSelection = (studentId) => {
                   {resultsSchoolFilter === 'all' ? 'Top 10 Global Rankers' : `Top Rankers - ${resultsSchoolFilter}`}
                 </h6>
                 <Form.Group className="d-flex align-items-center">
-                  <Form.Label className="mb-0 me-2 small fw-bold text-muted">Institution Filter:</Form.Label>
+                  <Form.Label className="mb-0 me-2 small fw-bold text-muted">School Filter:</Form.Label>
                   <Form.Select 
                     size="sm" 
                     style={{ width: '250px', fontSize: '0.75rem' }}
                     value={resultsSchoolFilter} 
                     onChange={(e) => setResultsSchoolFilter(e.target.value)}
                   >
-                    <option value="all">All Institutions (Overall Standings)</option>
+                    <option value="all">All Schools (Overall Standings)</option>
                     {schoolStats.map((school, idx) => (
                       <option key={idx} value={school.name}>{school.name}</option>
                     ))}
@@ -792,7 +792,7 @@ const toggleStudentSelection = (studentId) => {
                     <tr style={{ fontSize: '0.75rem' }}>
                       <th style={{ width: '60px' }}>Rank</th>
                       <th>Student Info</th>
-                      <th>Institution</th>
+                      <th>School</th>
                       <th className="text-center">Score</th>
                       <th className="text-center">Status</th>
                     </tr>
@@ -824,14 +824,14 @@ const toggleStudentSelection = (studentId) => {
               </div>
 
               <h6 className="fw-bold mb-2 small d-flex align-items-center">
-                <FaBuilding className="text-info me-2" /> Institution Performance & Rankings
+                <FaBuilding className="text-info me-2" /> School Performance & Rankings
               </h6>
               <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
                 <Table bordered hover size="sm" className="small mb-0">
                   <thead className="table-school">
                     <tr style={{ fontSize: '0.75rem' }}>
                       <th className="text-center" style={{ width: '60px' }}>Rank</th>
-                      <th>Institution Name</th>
+                      <th>School Name</th>
                       <th className="text-center" style={{ width: '100px' }}>Students</th>
                       <th className="text-center" style={{ width: '100px' }}>Avg. Score</th>
                     </tr>

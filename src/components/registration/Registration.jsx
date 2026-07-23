@@ -12,16 +12,16 @@ const Registration = () => {
     en: {
       title: "Registration",
       subtitle: "Skill today, empower tomorrow",
-      schoolTab: "Institution Registration",
+      schoolTab: "School Registration",
       studentTab: "Student Registration",
-      schoolId: "Institution ID",
+      schoolId: "School ID",
       state: "State",
       district: "District",
       block: "Block",
-      schoolName: "Institution Name",
+      schoolName: "School Name",
       password: "Password",
       confirmPassword: "Confirm Password",
-      registerSchool: "Register Institution",
+      registerSchool: "Register School",
       alreadyAccount: "Already have an account? Login here",
       aadhaarNo: "Aadhaar Number",
       aadhaarPlaceholder: "12 digits",
@@ -38,7 +38,7 @@ const Registration = () => {
       emailPlaceholder: "Email",
       classLabel: "Class",
       selectClass: "Select class",
-      selectSchool: "Select Institution",
+      selectSchool: "Select School",
       additionalInfo: "Additional Information",
       registerStudentBtn: "Register as Student",
       registeringBtn: "Registering...",
@@ -54,11 +54,11 @@ const Registration = () => {
         pass6: "Password must be at least 6 characters",
         passMatch: "Passwords do not match",
         classReq: "Please select a class",
-        schoolReq: "Institution name is required",
+        schoolReq: "School name is required",
         districtReq: "Please select a district",
         blockReq: "Please select a block",
         studentSuccess: "Student Registration successful! You can now login.",
-        schoolSuccess: "Institution Registration successful! You can now login.",
+        schoolSuccess: "School Registration successful! You can now login.",
         failed: "Registration failed. Please try again."
       }
     },
@@ -220,7 +220,7 @@ const Registration = () => {
          setSchools(response.data.data);
        }
      } catch (err) {
-       console.error('Error fetching institutions:', err);
+       console.error('Error fetching schools:', err);
      }
    };
 

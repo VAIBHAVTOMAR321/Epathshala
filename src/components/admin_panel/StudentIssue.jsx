@@ -480,12 +480,12 @@ const StudentIssue = () => {
                           <thead className="bg-primary text-white">
                             <tr>
                               <th className="py-3 px-2">Query ID</th>
-                              <th className="py-3 px-2">{activeTab === 'student' ? 'Student Name' : 'Institution Name'}</th>
-                              <th className="py-3 px-2">{activeTab === 'student' ? 'Student ID' : 'Institution/Uni ID'}</th>
+                              <th className="py-3 px-2">{activeTab === 'student' ? 'Student Name' : 'School Name'}</th>
+                              <th className="py-3 px-2">{activeTab === 'student' ? 'Student ID' : 'School ID'}</th>
                               {activeTab === 'student' && (
                                 <>
-                                  <th className="py-3 px-2">Institution Name</th>
-                                  <th className="py-3 px-2">Institution ID</th>
+                                  <th className="py-3 px-2">School Name</th>
+                                  <th className="py-3 px-2">School ID</th>
                                 </>
                               )}
                               <th className="py-3 px-2">Title</th>
@@ -573,7 +573,7 @@ const StudentIssue = () => {
                                     <small className="text-muted">ID: {activeTab === 'student' ? query.student_id : (query.school_id || query.student_uni_id)}</small>
                                     {activeTab === 'student' && (
                                       <div className="mt-1 border-top pt-1">
-                                        <small className="text-muted d-block">Institution: {query.school_name}</small>
+                                        <small className="text-muted d-block">School: {query.school_name}</small>
                                         <small className="text-muted d-block">Inst. ID: {query.school_uni_id}</small>
                                       </div>
                                     )}
@@ -720,22 +720,22 @@ const StudentIssue = () => {
             <div>
               <Row className="mb-3">
                 <Col md={6} xs={12}>
-                  <p className="mb-1"><strong>{activeTab === 'student' ? 'Student Name:' : 'Institution Name:'}</strong></p>
+                  <p className="mb-1"><strong>{activeTab === 'student' ? 'Student Name:' : 'School Name:'}</strong></p>
                   <p className="text-muted">{activeTab === 'student' ? selectedQuery.full_name : selectedQuery.school_name}</p>
                 </Col>
                 <Col md={6} xs={12}>
-                  <p className="mb-1"><strong>{activeTab === 'student' ? 'Student ID:' : 'Institution/Uni ID:'}</strong></p>
+                  <p className="mb-1"><strong>{activeTab === 'student' ? 'Student ID:' : 'School ID:'}</strong></p>
                   <p className="text-muted">{activeTab === 'student' ? selectedQuery.student_id : (selectedQuery.school_id || selectedQuery.student_uni_id)}</p>
                 </Col>
               </Row>
               {activeTab === 'student' && (
                 <Row className="mb-3">
                   <Col md={6} xs={12}>
-                    <p className="mb-1"><strong>Institution Name:</strong></p>
+                    <p className="mb-1"><strong>School Name:</strong></p>
                     <p className="text-muted">{selectedQuery.school_name}</p>
                   </Col>
                   <Col md={6} xs={12}>
-                    <p className="mb-1"><strong>Institution ID:</strong></p>
+                    <p className="mb-1"><strong>School ID:</strong></p>
                     <p className="text-muted">{selectedQuery.school_uni_id}</p>
                   </Col>
                 </Row>

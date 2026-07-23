@@ -379,7 +379,7 @@ const SchoolDashBoard = () => {
         setSchoolRanks(response.data.data || []);
       }
     } catch (error) {
-      console.error('Error fetching institution ranks:', error);
+      console.error('Error fetching school ranks:', error);
       setSchoolRanks([]);
     } finally {
       setSchoolRankLoading(false);
@@ -400,7 +400,7 @@ const SchoolDashBoard = () => {
         <Container fluid className="dashboard-box mt-3">
           <Row className="mb-4 align-items-center">
             <Col>
-              <h4 className="font-weight-bold">Institution Dashboard</h4>
+              <h4 className="font-weight-bold">School Dashboard</h4>
               <p className="text-muted mb-0">
                 Manage student enrollments, track progress, and view quiz analytics
               </p>
@@ -819,7 +819,7 @@ const SchoolDashBoard = () => {
                              <Card.Header className="bg-warning text-dark d-flex justify-content-between align-items-center">
                                  <h6 className="mb-0 fw-bold">
                                      <FaTrophy className="me-2" />
-                                     Institution Rankings
+                                     School Rankings
                                  </h6>
                                  <Badge bg="dark">Quiz: {selectedQuiz?.title}</Badge>
                              </Card.Header>
@@ -827,7 +827,7 @@ const SchoolDashBoard = () => {
                                  {schoolRankLoading ? (
                                      <div className="text-center py-4">
                                          <Spinner animation="border" variant="primary" />
-                                         <p className="text-muted mt-2">Loading institution rankings...</p>
+                                         <p className="text-muted mt-2">Loading School rankings...</p>
                                      </div>
                                  ) : schoolRanks.length > 0 ? (
                                      <div style={{ maxHeight: '300px', overflowY: 'auto' }}>
@@ -835,8 +835,8 @@ const SchoolDashBoard = () => {
                                              <thead className="table-school">
                                                  <tr>
                                                      <th className="text-center" style={{ width: '80px' }}>Rank</th>
-                                                     <th>Institution Name</th>
-                                                     <th className="text-center">Institution ID</th>
+                                                     <th>School Name</th>
+                                                     <th className="text-center">School ID</th>
                                                      <th className="text-center">Avg Score</th>
                                                      <th className="text-center">Students</th>
                                                  </tr>
@@ -867,7 +867,7 @@ const SchoolDashBoard = () => {
                                  ) : (
                                      <div className="text-center py-4">
                                          <FaTrophy className="text-muted fs-1 mb-3" />
-                                         <p className="text-muted mb-0">No institution ranking data available</p>
+                                         <p className="text-muted mb-0">No school ranking data available</p>
                                      </div>
                                  )}
                              </Card.Body>
@@ -886,7 +886,7 @@ const SchoolDashBoard = () => {
                                              <tr>
                                                  <th>Rank</th>
                                                  <th>Student Name</th>
-                                                 <th>Institution</th>
+                                                 <th>School</th>
                                                  <th>Score</th>
                                                  <th>Status</th>
                                                  <th>Date</th>
@@ -1696,7 +1696,7 @@ const SchoolDashBoard = () => {
               }}
             >
               <Modal.Title className="d-flex align-items-center gap-2">
-                <FaChartBar className="me-2" /> Institution Analytics Dashboard
+                <FaChartBar className="me-2" /> School Analytics Dashboard
               </Modal.Title>
             </Modal.Header>
             <Modal.Body className="p-4">

@@ -39,11 +39,11 @@ const SchoolSendQuery = () => {
 
   const content = {
     en: {
-      title: "Institution Support & Query",
+      title: "School Support & Query",
       back: "Back to Dashboard",
       raiseTitle: "Raise a Query",
       historyTitle: "My Queries",
-      schoolName: "Institution Name",
+      schoolName: "School Name",
       queryTitle: "Title",
       description: "Issue Description",
       submit: "Submit Query",
@@ -153,7 +153,7 @@ const SchoolSendQuery = () => {
           }
         }
       } catch (error) {
-        console.error('Error fetching institution details:', error);
+        console.error('Error fetching school details:', error);
       } finally {
         setSchoolLoading(false);
       }

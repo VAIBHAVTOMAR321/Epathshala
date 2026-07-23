@@ -530,7 +530,7 @@ const SchoolQuiz = () => {
                   >
                     <FaArrowLeft /> Dashboard
                   </Button>
-                  <h4 className="mb-0">Institution Quiz Competition</h4>
+                  <h4 className="mb-0">School Quiz Competition</h4>
                 </div>
                 <Button variant="primary" onClick={handleAddQuiz}>
                   <FaPlus className="me-1" /> Add New Quiz
@@ -605,7 +605,7 @@ const SchoolQuiz = () => {
                               <th className="py-3 px-2">Title</th>
                               <th className="py-3 px-2">Activity Type</th>
                               <th className="py-3 px-2">Classes</th>
-                              <th className="py-3 px-2">Institutions</th>
+                              <th className="py-3 px-2">Schools</th>
                               <th className="py-3 px-2">Participants</th>
                               <th className="py-3 px-2">Questions</th>
                               <th className="py-3 px-2">Participated</th>
@@ -753,7 +753,7 @@ const SchoolQuiz = () => {
 
                                 <div className="mb-2">
                                   <small className="text-muted d-block">
-                                    Institutions:
+                                    Schools:
                                   </small>
                                   <span className="small fw-medium">
                                     {quiz.school_allowed?.length || 0}
@@ -1015,7 +1015,7 @@ const SchoolQuiz = () => {
               </Col>
               <Col md={4} xs={12}>
                 <Form.Group>
-                  <Form.Label>Enrolled Institutions</Form.Label>
+                  <Form.Label>Enrolled Schools</Form.Label>
 
                   <div className="border rounded p-2 bg-white">
                     {/* Selected Items with Scroll */}
@@ -1088,9 +1088,9 @@ const SchoolQuiz = () => {
                         e.target.value = "";
                       }}
                     >
-                      <option value="">Select Institution</option>
+                      <option value="">Select School</option>
 
-                      <option value="all">Select All Institutions</option>
+                      <option value="all">Select All Schools</option>
 
                       {schools
                         .filter(
@@ -1346,13 +1346,13 @@ const SchoolQuiz = () => {
               <Row className="align-items-center g-2">
                 <Col md={6}>
                   <Form.Group className="d-flex align-items-center">
-                    <Form.Label className="mb-0 me-2 fw-medium small text-nowrap">Filter by Institution:</Form.Label>
+                    <Form.Label className="mb-0 me-2 fw-medium small text-nowrap">Filter by School:</Form.Label>
                     <Form.Select 
                       size="sm" 
                       value={modalSchoolFilter} 
                       onChange={(e) => setModalSchoolFilter(e.target.value)}
                     >
-                      <option value="all">All Participating Institutions</option>
+                      <option value="all">All Participating Schools</option>
                       {[...new Set(rankData.map(item => item.school?.school_name))]
                         .filter(Boolean)
                         .sort()
@@ -1370,7 +1370,7 @@ const SchoolQuiz = () => {
                 Total Students: {modalSchoolFilter === 'all' ? (rankData[0]?.participant_count || rankData.length) : rankData.filter(item => item.school?.school_name === modalSchoolFilter).length}
               </Badge>
               <Badge bg="info" className="py-2 px-3">
-                Total Institutions: {new Set(rankData.map(item => item.school?.school_uni_id)).size}
+                Total Schools: {new Set(rankData.map(item => item.school?.school_uni_id)).size}
               </Badge>
             </div>
             <div className="table-responsive">
@@ -1380,7 +1380,7 @@ const SchoolQuiz = () => {
                     <th className="py-2">Rank</th>
                     <th className="py-2">Student Name</th>
                     <th className="py-2">Student ID</th>
-                    <th className="py-2">Institution</th>
+                    <th className="py-2">Schools</th>
                     <th className="py-2">Score</th>
                     <th className="py-2">Status</th>
                     <th className="py-2">Submitted At</th>

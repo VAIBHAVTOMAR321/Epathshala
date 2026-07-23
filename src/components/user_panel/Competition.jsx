@@ -428,7 +428,7 @@ const Competition = () => {
         setShowSchoolRankModal(true)
       }
     } catch (error) {
-      console.error('Error fetching institution ranks:', error)
+      console.error('Error fetching school ranks:', error)
     }
   }
 
@@ -748,7 +748,7 @@ const Competition = () => {
                                   onClick={() => fetchSchoolRanks(quiz.quiz_id)}
                                 >
                                   <FaSchool className="me-1" />
-                                  {language === 'hi' ? "शैक्षणिक संस्था रैंकिंग" : "Institution Rankings"}
+                                  {language === 'hi' ? "शैक्षणिक संस्था रैंकिंग" : "School Rankings"}
                                 </small>
                                 <small 
                                   className="text-primary competition-rank-link"
@@ -808,7 +808,7 @@ const Competition = () => {
                   <FaLock className="me-2" />
                   {language === 'hi' ? "आप अभी तक किसी क्विज़ प्रतियोगिता के लिए पंजीकृत नहीं हैं।" : "You are not registered for any quiz competition yet."}
                   <br />
-                  <small className="text-muted">{language === 'hi' ? "क्विज़ प्रतियोगिताओं के लिए पंजीकरण करने के लिए अपने शैक्षणिक संस्था से संपर्क करें।" : "Contact your institution to register for quiz competitions."}</small>
+                  <small className="text-muted">{language === 'hi' ? "क्विज़ प्रतियोगिताओं के लिए पंजीकरण करने के लिए अपने शैक्षणिक संस्था से संपर्क करें।" : "Contact your school to register for quiz competitions."}</small>
                 </Alert>
               )}
             </>
@@ -993,7 +993,7 @@ const Competition = () => {
         <Modal.Header closeButton>
           <Modal.Title>
             <FaSchool className="me-2" />
-            Institution Rankings
+            School Rankings
           </Modal.Title>
         </Modal.Header>
         <Modal.Body style={{ maxHeight: '400px', overflowY: 'auto' }}>
@@ -1016,7 +1016,7 @@ const Competition = () => {
               </Card>
             ))
           ) : (
-            <p className="text-center text-muted">No institution rankings available</p>
+            <p className="text-center text-muted">No school rankings available</p>
           )}
         </Modal.Body>
         <Modal.Footer>

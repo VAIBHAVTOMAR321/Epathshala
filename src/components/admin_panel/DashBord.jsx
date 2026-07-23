@@ -1578,7 +1578,7 @@ const DashBord = () => {
             <Col md={6}>
               <div className="d-flex flex-wrap gap-2 align-items-center">
                 <FaFilter className="text-muted me-2" />
-                <strong>Filter by Institutions:</strong>
+                <strong>Filter by School:</strong>
                 <Form.Control
                   as="select"
                   size="sm"
@@ -3102,7 +3102,7 @@ const DashBord = () => {
                 <Col md={6}>
                   <div className="d-flex flex-wrap gap-2 align-items-center">
                     <FaFilter className="text-muted me-2" />
-                    <strong>Filter by Institution:</strong>
+                    <strong>Filter by School:</strong>
                     <Form.Control
                       as="select"
                       size="sm"
@@ -3812,11 +3812,11 @@ const DashBord = () => {
                  <Col md={6}>
                    <Card className="h-100 shadow-sm border-0">
                      <Card.Header className="bg-light">
-                       <h6 className="mb-0">Institution & Location Details</h6>
+                       <h6 className="mb-0">School & Location Details</h6>
                      </Card.Header>
                      <Card.Body>
-                       <p><strong>Institution Name:</strong> {selectedCounseling.student_details?.school_name || '-'}</p>
-                       <p><strong>Institution ID:</strong> {selectedCounseling.student_details?.school_uni_id || '-'}</p>
+                       <p><strong>School Name:</strong> {selectedCounseling.student_details?.school_name || '-'}</p>
+                       <p><strong>School ID:</strong> {selectedCounseling.student_details?.school_uni_id || '-'}</p>
                        <p><strong>State:</strong> {selectedCounseling.student_details?.state || '-'}</p>
                        <p><strong>District:</strong> {selectedCounseling.student_details?.district || '-'}</p>
                        <p><strong>Block:</strong> {selectedCounseling.student_details?.block || '-'}</p>
@@ -4040,7 +4040,7 @@ const DashBord = () => {
                    doc.setFontSize(10)
                    doc.text(`Generated: ${new Date().toLocaleString()}`, margin, yPos)
                    yPos += 6
-                   const filterSummary = `Filters: ${enrollmentSelectedSchools.length > 0 ? enrollmentSelectedSchools.join(', ') : 'All institutes'} | Classes: ${enrollmentSelectedClasses.length > 0 ? enrollmentSelectedClasses.join(', ') : 'All classes'} | Status: ${analyticsStatusFilter}`
+                   const filterSummary = `Filters: ${enrollmentSelectedSchools.length > 0 ? enrollmentSelectedSchools.join(', ') : 'All schools'} | Classes: ${enrollmentSelectedClasses.length > 0 ? enrollmentSelectedClasses.join(', ') : 'All classes'} | Status: ${analyticsStatusFilter}`
                    doc.text(filterSummary, margin, yPos)
                    yPos += 10
 
@@ -4117,10 +4117,10 @@ const DashBord = () => {
                        yPos = 20
                      }
                      doc.setFontSize(12)
-                     doc.text('Top Institution Distribution', margin, yPos)
+                     doc.text('Top School Distribution', margin, yPos)
                      yPos += 7
                      autoTable(doc, {
-                       head: [['Institution', 'Unique Students', '% of Students']],
+                       head: [['School', 'Unique Students', '% of Students']],
                        body: schoolRows,
                        startY: yPos,
                        margin: { left: margin, right: margin },
@@ -4138,10 +4138,10 @@ const DashBord = () => {
                        yPos = 20
                      }
                      doc.setFontSize(12)
-                     doc.text('Top Performing Institutions', margin, yPos)
+                     doc.text('Top Performing Schools', margin, yPos)
                      yPos += 7
                      autoTable(doc, {
-                       head: [['Rank', 'Institution Name', 'Unique Students', 'Balanced Score']],
+                       head: [['Rank', 'School Name', 'Unique Students', 'Balanced Score']],
                        body: topSchools,
                        startY: yPos,
                        margin: { left: margin, right: margin },
@@ -4169,7 +4169,7 @@ const DashBord = () => {
                      doc.text(`Student List Preview (first ${studentRows.length} of ${filteredData.length})`, margin, yPos)
                      yPos += 7
                      autoTable(doc, {
-                       head: [['#', 'Student ID', 'Name', 'Institution', 'Class', 'Status', 'Enrolled Date']],
+                       head: [['#', 'Student ID', 'Name', 'School', 'Class', 'Status', 'Enrolled Date']],
                        body: studentRows,
                        startY: yPos,
                        margin: { left: margin, right: margin },
@@ -4200,7 +4200,7 @@ const DashBord = () => {
                  try {
                    // Sheet 1: Student Details
                    const studentData = [
-                     ['Student ID', 'Name', 'Institution', 'Class', 'Status', 'Enrolled Date'],
+                     ['Student ID', 'Name', 'School', 'Class', 'Status', 'Enrolled Date'],
                      ...filteredData.map(e => [
                        e.student_id || '',
                        e.student_name || '',
@@ -4214,7 +4214,7 @@ const DashBord = () => {
                    // Sheet 2: School-wise Breakdown
                    const schoolGroups = {}
                    filteredData.forEach(e => {
-                     const school = e.school_name || 'Unknown institution'
+                     const school = e.school_name || 'Unknown School'
                      const cls = String(e.class_name || 'Unknown')
                      if (!schoolGroups[school]) schoolGroups[school] = {}
                      if (!schoolGroups[school][cls]) schoolGroups[school][cls] = { total: 0, completed: 0 }
@@ -4223,7 +4223,7 @@ const DashBord = () => {
                    })
 
                    const schoolData = [
-                     ['Institution Name', 'Class', 'Total', 'Completed', 'Ongoing'],
+                     ['School Name', 'Class', 'Total', 'Completed', 'Ongoing'],
                      ...Object.entries(schoolGroups)
                        .sort((a, b) => {
                          const totalA = Object.values(a[1]).reduce((sum, c) => sum + c.total, 0)
@@ -4256,7 +4256,7 @@ const DashBord = () => {
 
                    const wb = XLSX.utils.book_new()
                    XLSX.utils.book_append_sheet(wb, wsStudents, 'Student Details')
-                   XLSX.utils.book_append_sheet(wb, wsSchools, 'Institution-wise Summary')
+                   XLSX.utils.book_append_sheet(wb, wsSchools, 'School-wise Summary')
                    XLSX.writeFile(wb, `enrollment-analytics-${new Date().toISOString().split('T')[0]}.xlsx`)
                  } catch (err) {
                    console.error('Excel export error:', err)
@@ -4494,7 +4494,7 @@ const DashBord = () => {
                   {enrollmentSelectedSchools.length > 0 && filteredData.length > 0 && (
                     <Card className="shadow-sm border-0 mb-4">
                       <Card.Header className="bg-secondary text-white">
-                        <h6 className="mb-0 fw-bold"><FaBuilding className="me-2" /> Institution-wise Detailed Breakdown</h6>
+                        <h6 className="mb-0 fw-bold"><FaBuilding className="me-2" /> School-wise Detailed Breakdown</h6>
                       </Card.Header>
                       <Card.Body>
                         {(() => {
@@ -4588,7 +4588,7 @@ const DashBord = () => {
                                 <th>#</th>
                                 <th>Student ID</th>
                                 <th>Name</th>
-                                <th>Institution</th>
+                                <th>School</th>
                                 <th>Class</th>
                                 <th>Status</th>
                                 <th>Enrolled</th>
@@ -4689,7 +4689,7 @@ const DashBord = () => {
       {showPerformanceModal && (
         <Modal show={showPerformanceModal} onHide={() => setShowPerformanceModal(false)} fullscreen={true}>
           <Modal.Header closeButton className="bg-gradient text-white" style={{ background: 'linear-gradient(135deg, #28a745 0%, #20c997 100%)' }}>
-            <Modal.Title><FaTrophy className="me-2" /> Institution Performance Ranking</Modal.Title>
+            <Modal.Title><FaTrophy className="me-2" /> School Performance Ranking</Modal.Title>
             <div className="d-flex gap-2">
               <Button variant="light" size="sm" onClick={exportPerformancePDF}>
                 <FaFilePdf className="me-1" /> Export PDF
@@ -4715,7 +4715,7 @@ const DashBord = () => {
 
                   // Title
                   doc.setFontSize(18)
-                  doc.text('Institution Performance Ranking Report', margin, 20)
+                  doc.text('School Performance Ranking Report', margin, 20)
                   doc.setFontSize(11)
                   doc.text(`Generated: ${new Date().toLocaleString()}`, margin, 28)
                   doc.text(`Total Schools: ${rankedSchools.length}`, margin, 36)
@@ -4723,7 +4723,7 @@ const DashBord = () => {
                   let yPos = 44
 
                   // Performance Table
-                  const columns = ['Rank', 'Institution Name', 'Unique Students', 'Total Courses', 'Avg Courses/Student', 'Completion %', 'Balanced Score']
+                  const columns = ['Rank', 'School Name', 'Unique Students', 'Total Courses', 'Avg Courses/Student', 'Completion %', 'Balanced Score']
                   const rows = rankedSchools.map(s => [
                      `#${s.rank}`,
                      s.schoolName.substring(0, 25),
@@ -4743,7 +4743,7 @@ const DashBord = () => {
                     headStyles: { fillColor: [40, 167, 69], textColor: 255 }
                   })
 
-                  doc.save(`institution-performance-ranking-${new Date().toISOString().split('T')[0]}.pdf`)
+                  doc.save(`school-performance-ranking-${new Date().toISOString().split('T')[0]}.pdf`)
                 } catch (err) {
                   console.error('Performance PDF export error:', err)
                   alert('Failed to export PDF')
@@ -4754,7 +4754,7 @@ const DashBord = () => {
               const exportPerformanceExcel = () => {
                 try {
                   const wsData = [
-                     ['Rank', 'Institution Name', 'Unique Students', 'Total Courses', 'Avg Courses/Student', 'Completion Rate (%)', 'Balanced Score'],
+                     ['Rank', 'School Name', 'Unique Students', 'Total Courses', 'Avg Courses/Student', 'Completion Rate (%)', 'Balanced Score'],
                      ...rankedSchools.map(s => [
                        s.rank,
                        s.schoolName,
@@ -4773,7 +4773,7 @@ const DashBord = () => {
 
                   const wb = XLSX.utils.book_new()
                   XLSX.utils.book_append_sheet(wb, ws, 'Performance Ranking')
-                  XLSX.writeFile(wb, `institution-performance-ranking-${new Date().toISOString().split('T')[0]}.xlsx`)
+                  XLSX.writeFile(wb, `school-performance-ranking-${new Date().toISOString().split('T')[0]}.xlsx`)
                 } catch (err) {
                   console.error('Performance Excel export error:', err)
                   alert('Failed to export Excel')
@@ -4789,7 +4789,7 @@ const DashBord = () => {
                   <Card className="shadow-sm border-0 mb-4">
                     <Card.Body>
                       <p className="text-muted small mb-0">
-                        Institutions are ranked by Balanced Performance Score considering unique students and course participation.
+                        Schools are ranked by Balanced Performance Score considering unique students and course participation.
                         Score = 0.4 × (avg courses/student relative) + 0.4 × completion rate + 0.2 × student engagement.
                         Higher score indicates better overall performance.
                       </p>
@@ -4827,7 +4827,7 @@ const DashBord = () => {
                            <thead className="table-light">
                              <tr>
                                <th>Rank</th>
-                               <th>Institution Name</th>
+                               <th>School Name</th>
                                <th>Unique Students</th>
                                <th>Total Courses</th>
                                <th>Avg Courses/Student</th>
@@ -4903,8 +4903,8 @@ const DashBord = () => {
                          (AvgCourses/Student / MaxAvgCourses) × 100
                        </code>
                        <p className="small text-muted mb-0">
-                         Compares the institution's average courses per student <strong>against the highest average across all schools</strong>.
-                         Rewards institution encouraging more course participation.
+                         Compares the School's average courses per student <strong>against the highest average across all schools</strong>.
+                         Rewards school encouraging more course participation.
                        </p>
                      </Card.Body>
                    </Card>
@@ -4921,7 +4921,7 @@ const DashBord = () => {
                        </code>
                        <p className="small text-muted mb-0">
                          Measures the <strong>actual completion percentage</strong> of courses participated by students.
-                         Rewards institutions for high completion rates.
+                         Rewards schools for high completion rates.
                        </p>
                      </Card.Body>
                    </Card>
@@ -4937,7 +4937,7 @@ const DashBord = () => {
                          min(UniqueStudents / 10, 1) × 100
                        </code>
                        <p className="small text-muted mb-0">
-                         Rewards institutions for having more <strong>unique participating students</strong>.
+                         Rewards schools for having more <strong>unique participating students</strong>.
                          Capped at 100 points for 10+ students.
                        </p>
                      </Card.Body>
@@ -4951,8 +4951,8 @@ const DashBord = () => {
                  </Card.Header>
                  <Card.Body>
                    <ul className="mb-0">
-                     <li><strong>40% weight on course participation</strong> rewards institutions that encourage students to take multiple courses.</li>
-                     <li><strong>40% weight on completion rate</strong> ensures institutions are rewarded for actual course completion and learning outcomes.</li>
+                     <li><strong>40% weight on course participation</strong> rewards schools that encourage students to take multiple courses.</li>
+                     <li><strong>40% weight on completion rate</strong> ensures schools are rewarded for actual course completion and learning outcomes.</li>
                      <li><strong>20% weight on student engagement</strong> gives bonus points for having more unique participating students.</li>
                      <li>This <strong>balanced approach</strong> considers both quantity (participation) and quality (completion) of education delivery.</li>
                    </ul>
@@ -4965,7 +4965,7 @@ const DashBord = () => {
                  </Card.Header>
                  <Card.Body>
                    <p className="small mb-2">
-                     <strong>Scenario:</strong> Institution A: 25 unique students, total 75 course participations (avg 3 courses/student), 60 courses completed. MaxAvgCourses = 4.2, StudentEngagement = min(25/10, 1) = 1.0.
+                     <strong>Scenario:</strong> School A: 25 unique students, total 75 course participations (avg 3 courses/student), 60 courses completed. MaxAvgCourses = 4.2, StudentEngagement = min(25/10, 1) = 1.0.
                    </p>
                    <div className="small">
                      <ul className="mb-1">
@@ -4983,9 +4983,9 @@ const DashBord = () => {
               <div className="mt-4">
                 <h6 className="fw-bold mb-2">Rules</h6>
                 <ul className="small text-muted mb-0">
-                  <li>If a institution has 0 enrolled students, its balanced score is 0.</li>
+                  <li>If a School has 0 enrolled students, its balanced score is 0.</li>
                   <li>Scores are rounded to 2 decimal places.</li>
-                  <li>Institutions are ranked from highest to lowest score.</li>
+                  <li>Schools are ranked from highest to lowest score.</li>
                 </ul>
               </div>
             </div>

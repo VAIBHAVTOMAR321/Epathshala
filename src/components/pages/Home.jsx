@@ -17,7 +17,7 @@ function Home() {
     platformBadge: "🎓 ePathshala - Educational Platform",
     heroTitle: "Objective of ePathshala",
      heroTitleHTML: "Objective of <span class=\"hero-title-word\">ePathshala</span>",
-  heroSubtitle: "Your all-in-one educational ecosystem designed to bridge the gap between academic learning and real-world success. We empower students and institutions with the tools and guidance needed to thrive.",
+  heroSubtitle: "Your all-in-one educational ecosystem designed to bridge the gap between academic learning and real-world success. We empower students and school with the tools and guidance needed to thrive.",
   heroImg: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80",
   exploreBtn: "Explore Now",
   joinBtn: "Register Today",
@@ -39,10 +39,10 @@ function Home() {
       ],
 
       // For Schools Section
-      schoolTitle: "LMS For Institutions 🏫",
-      schoolSubtitle: "Transform your institution's learning experience with ePathshala's comprehensive platform",
+      schoolTitle: "LMS For Schools 🏫",
+      schoolSubtitle: "Transform your school's learning experience with ePathshala's comprehensive platform",
       schoolFeatures: [
-        { icon: "bi-house-check", title: "Institution Registration", desc: "Register your institution and get a dedicated dashboard", color: "blue" },
+        { icon: "bi-house-check", title: "School Registration", desc: "Register your school and get a dedicated dashboard", color: "blue" },
         { icon: "bi-people-fill", title: "Student Management", desc: "Efficiently manage student registrations and profiles", color: "orange" },
         { icon: "bi-question-circle-fill", title: "Events And Activities", desc: "Create and manage events and activities for your students", color: "green" },
         { icon: "bi-bar-chart-line-fill", title: "Performance Tracking", desc: "Monitor student progress and learning outcomes", color: "purple" }
@@ -51,7 +51,7 @@ function Home() {
       // Platform Benefits
       benefitsTitle: "Why Choose ePathshala?",
       benefits: [
-        { icon: "bi-collection-play", title: "Multi-Role Platform", desc: "Dedicated interfaces for students, institutions, and administrators", color: "blue" },
+        { icon: "bi-collection-play", title: "Multi-Role Platform", desc: "Dedicated interfaces for students, schools, and administrators", color: "blue" },
         { icon: "bi-people-fill", title: "Comprehensive Services", desc: "Career guidance, academic support, and skill development", color: "orange" },
         { icon: "bi-lightbulb", title: "Career Oriented", desc: "Focus on job opportunities and professional growth", color: "green" },
         { icon: "bi-shield-check", title: "Secure & Reliable", desc: "Safe platform for educational and career information", color: "purple" },
@@ -223,7 +223,7 @@ function Home() {
           <Row className="align-items-center g-5">
             <Col lg={5}>
               <div className="role-image-container-new">
-                <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80" alt="Institution" className="img-fluid rounded-3 shadow-lg" />
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80" alt="School" className="img-fluid rounded-3 shadow-lg" />
               </div>
             </Col>
             <Col lg={7}>
