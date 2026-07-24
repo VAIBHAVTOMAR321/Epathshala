@@ -4,6 +4,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { useLanguage } from './LanguageContext';
 import './login.css';
+import loginArt from '../../assets/images/login-img.png'; // Import SVG as a static asset
+import gyandharaLogo from '../../assets/images/gyandharalogo.jpeg'; // Import your logo
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +26,7 @@ const Login = () => {
   const content = {
     en: {
       title: "Welcome to ePathshala",
+      formTitle: "Sign in to your Account",
       subtitle: "Your gateway to knowledge and success. Please sign in.",
       welcome: "Welcome Back!",
       welcomeSub: "Continue your learning journey",
@@ -37,7 +40,8 @@ const Login = () => {
       password: "Password",
       passwordPlaceholder: "Enter password",
       remember: "Remember me",
-      signIn: "Sign In",      signingIn: "Signing In...",
+      signIn: "Sign In",
+     
       newHere: "New here?",
       createAccount: "Create an account",
       validation: {
@@ -52,6 +56,13 @@ const Login = () => {
         '9th-student': '9th Student', '10th-student': '10th Student',
         '11th-student': '11th Student', '12th-student': '12th Student',
         'admin': 'Admin', 'school': 'School'
+      }
+      ,roleHeadings: {
+        '9th-student': '9th Class Login',
+        '10th-student': '10th Class Login',
+        '11th-student': '11th Class Login',
+        '12th-student': '12th Class Login',
+        'admin': 'Admin Login', 'school': 'School Login'
       }
     },
     hi: {
@@ -70,6 +81,7 @@ const Login = () => {
       passwordPlaceholder: "पासवर्ड दर्ज करें",
       remember: "मुझे याद रखें",
       signIn: "साइन इन करें",
+      forgotPassword: "पासवर्ड भूल गए?",
       signingIn: "साइन इन हो रहा है...",
       newHere: "यहाँ नए हैं?",
       createAccount: "खाता बनाएं",
@@ -85,6 +97,13 @@ const Login = () => {
         '9th-student': '9वीं छात्र', '10th-student': '10वीं छात्र',
         '11th-student': '11वीं छात्र', '12th-student': '12वीं छात्र',
         'admin': 'एडमिन', 'school': 'शैक्षणिक संस्था'
+      }
+      ,roleHeadings: {
+        '9th-student': '9वीं कक्षा लॉगिन',
+        '10th-student': '10वीं कक्षा लॉगिन',
+        '11th-student': '11वीं कक्षा लॉगिन',
+        '12th-student': '12वीं कक्षा लॉगिन',
+        'admin': 'एडमिन लॉगिन', 'school': 'स्कूल लॉगिन'
       }
     }
   };
@@ -189,116 +208,132 @@ const Login = () => {
 
   return (
     <div className="login-page">
-      <div className="login-container">
-        <div className="login-header">
-          <i className="bi bi-mortarboard-fill login-logo"></i>
-          <h1>{t.title}</h1>
-          <p>{t.subtitle}</p>
+      <div className="login-container-grid">
+        <div className="login-image-section">
+          <div className="login-header">
+            <img src={gyandharaLogo} alt="Gyandhara Logo" className="login-logo-img" />
+            <h1>{t.title}</h1>
+            <p>{t.subtitle}</p>
+          </div>
+          <img src={loginArt} className="login-art-img" alt="ePathshala Login Art" />
         </div>
+        <div className="login-form-section">
 
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="role-selector">
-            <label>{t.roleLabel}</label>
-            <div className="role-radio-group">
-              {roleOptions.map((option) => (
-                <div key={option.value} className="role-radio-item">
-                  <input
-                    type="radio"
-                    id={option.value}
-                    name="role"
-                    value={option.value}
-                    checked={formData.role === option.value}
-                    onChange={handleRoleChange}
-                  />
-                  <label htmlFor={option.value}>
-                    <i className={option.icon}></i>
-                    <span>{option.label}</span>
-                  </label>
-                </div>
-              ))}
-            </div>
+          <div className="login-form-header">
+            <h2>{t.formTitle}</h2>
+            <p>{t.roleHeadings[formData.role]}</p>
           </div>
 
-          {error && (
-            <div className="alert-message error">
-              <i className="bi bi-x-circle-fill"></i>
-              <span>{error}</span>
+          <form onSubmit={handleSubmit} className="login-form">
+            <div className="role-selector">
+              <label>{t.roleLabel}</label>
+              <div className="role-radio-group">
+                {roleOptions.map((option) => (
+                  <div key={option.value} className="role-radio-item">
+                    <input
+                      type="radio"
+                      id={option.value}
+                      name="role"
+                      value={option.value}
+                      checked={formData.role === option.value}
+                      onChange={handleRoleChange}
+                    />
+                    <label htmlFor={option.value}>
+                      <i className={option.icon}></i>
+                      <span>{option.label}</span>
+                    </label>
+                  </div>
+                ))}
+              </div>
             </div>
-          )}
 
-          {formData.role === 'admin' && (
+            {error && (
+              <div className="alert-message error">
+                <i className="bi bi-x-circle-fill"></i>
+                <span>{error}</span>
+              </div>
+            )}
+
+            {formData.role === 'admin' && (
+              <div className="form-group">
+                <label>{t.emailPhone}</label>
+                <div className="input-wrapper">
+                  <i className="bi bi-person-fill"></i>
+                  <input type="text" name="email_or_phone" value={formData.email_or_phone} onChange={handleChange} placeholder={t.emailPhonePlaceholder} />
+                </div>
+              </div>
+            )}
+            {formData.role === 'school' && (
+                <div className="form-group">
+                  <label>{t.schoolId}</label>
+                  <div className="input-wrapper">
+                    <i className="bi bi-building-fill"></i>
+                    <input
+                      type="text"
+                      name="school_id"
+                      value={formData.school_id}
+                      onChange={handleChange}
+                      placeholder={t.schoolIdPlaceholder}
+                    />
+                  </div>
+                </div>
+            )}
+            {formData.role.includes('student') && (
+                <div className="form-group">
+                  <label>{t.aadhaar}</label>
+                  <div className="input-wrapper">
+                    <i className="bi bi-person-badge"></i>
+                    <input
+                      type="text"
+                      name="aadhaar_no"
+                      value={formData.aadhaar_no}
+                      onChange={handleChange}
+                      placeholder={t.aadhaarPlaceholder}
+                      maxLength="12"
+                    />
+                  </div>
+                </div>
+            )}
+
             <div className="form-group">
-              <label>{t.emailPhone}</label>
+              <label>{t.password}</label>
               <div className="input-wrapper">
-                <i className="bi bi-person-fill"></i>
-                <input type="text" name="email_or_phone" value={formData.email_or_phone} onChange={handleChange} placeholder={t.emailPhonePlaceholder} />
+                <i className="bi bi-lock-fill"></i>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder={t.passwordPlaceholder}
+                />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  <i className={showPassword ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'}></i>
+                </button>
               </div>
             </div>
-          )}
-          {formData.role === 'school' && (
-              <div className="form-group">
-                <label>{t.schoolId}</label>
-                <div className="input-wrapper">
-                  <i className="bi bi-building-fill"></i>
-                  <input
-                    type="text"
-                    name="school_id"
-                    value={formData.school_id}
-                    onChange={handleChange}
-                    placeholder={t.schoolIdPlaceholder}
-                  />
-                </div>
-              </div>
-          )}
-          {formData.role.includes('student') && (
-              <div className="form-group">
-                <label>{t.aadhaar}</label>
-                <div className="input-wrapper">
-                  <i className="bi bi-person-badge"></i>
-                  <input
-                    type="text"
-                    name="aadhaar_no"
-                    value={formData.aadhaar_no}
-                    onChange={handleChange}
-                    placeholder={t.aadhaarPlaceholder}
-                    maxLength="12"
-                  />
-                </div>
-              </div>
-          )}
 
-          <div className="form-group">
-            <label>{t.password}</label>
-            <div className="input-wrapper">
-              <i className="bi bi-lock-fill"></i>
-              <input
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder={t.passwordPlaceholder}
-              />
-              <button
-                type="button"
-                className="password-toggle"
-                onClick={() => setShowPassword(!showPassword)}
-                aria-label={showPassword ? "Hide password" : "Show password"}
-              >
-                <i className={showPassword ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'}></i>
-              </button>
-            </div>
+            <button type="submit" className="login-btn" disabled={loading}>
+              {loading ? <span className="spinner"></span> : t.signIn}
+            </button>
+          </form>
+
+          <div className="login-options">
+            <Link to="/forgot-password" className="forgot-password-link">
+              {t.forgotPassword}
+            </Link>
           </div>
 
-          <button type="submit" className="login-btn" disabled={loading}>
-            {loading ? <span className="spinner"></span> : t.signIn}
-          </button>
-        </form>
-
-        <div className="login-footer">
-          <p>
-            {t.newHere}{' '}
-            <Link to="/register">{t.createAccount}</Link>
-          </p>
+          <div className="login-footer">
+            <p>
+              {t.newHere}{' '}
+              <Link to="/register">{t.createAccount}</Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
