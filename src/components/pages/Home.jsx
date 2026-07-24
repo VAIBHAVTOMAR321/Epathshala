@@ -251,7 +251,7 @@ function Home() {
         </section>
 
         {/* Competitive Exams Test Series Section */}
-        <CompetitiveExams language={language} />
+        <CompetitiveExams language={language} filter="school" />
 
         {/* Quick Link to Competitive Test */}
         <section className="competitive-cta-section">

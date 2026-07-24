@@ -1,40 +1,72 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
-function CompetitiveExams({ language }) {
+function CompetitiveExams({ language, filter }) {
   const content = {
     en: {
       title: "Competitive Exam Test Series",
       subtitle: "Prepare for your dream job with our comprehensive test series for all major competitive exams",
       exams: [
-        { icon: "bi-journal-text", title: "UPSC", desc: "Civil Services Examination preparation with mock tests and study material", color: "blue" },
-        { icon: "bi-journal-text", title: "UKPSC", desc: "Uttarakhand Provincial Services exam series with practice tests", color: "orange" },
-        { icon: "bi-journal-text", title: "SSC", desc: "Staff Selection Commission exams CGL, CHSL, JE with complete test series", color: "green" },
-        { icon: "bi-shield-fill", title: "Defence (NDA/CDS/AFCAT)", desc: "NDA, CDS, AFCAT preparation with subject-wise mock tests", color: "purple" },
-        { icon: "bi-journal-medical", title: "CAT/MAT/CMAT", desc: "Management entrance exam preparation with mock tests and analysis", color: "blue" },
-        { icon: "bi-building", title: "State Recruitment Exams", desc: "State-wise recruitment exams with comprehensive test series", color: "orange" },
-        { icon: "bi-mortarboard-fill", title: "Teaching Eligibility Exams", desc: "CTET, UPTET, BEd entrance exam preparation", color: "green" },
-        { icon: "bi-person-badge-fill", title: "Police & Paramilitary", desc: "Police recruitment exams with physical training and mock tests", color: "purple" }
+        { icon: "bi-journal-text", title: "UPSC", desc: "Civil Services Examination preparation with mock tests and study material", color: "blue", level: "graduation" },
+        { icon: "bi-journal-text", title: "UKPSC", desc: "Uttarakhand Provincial Services exam series with practice tests", color: "orange", level: "graduation" },
+        {
+          icon: "bi-journal-text",
+          title: "CHSL",
+          desc: "Staff Selection Commission exams CHSL with complete test series",
+          color: "green",
+          level: "school" // CHSL has 10+2 level exams like CHSL
+        },
+        {
+          icon: "bi-shield-fill",
+          title: "Defence (NDA/CDS/AFCAT)",
+          desc: "NDA, CDS, AFCAT preparation with subject-wise mock tests", color: "purple"
+        },
+        { icon: "bi-journal-medical", title: "CAT/MAT/CMAT", desc: "Management entrance exam preparation with mock tests and analysis", color: "blue", level: "graduation" },
+        { icon: "bi-building", title: "State Recruitment Exams", desc: "State-wise recruitment exams with comprehensive test series", color: "orange", level: "school" },
+        { icon: "bi-mortarboard-fill", title: "Teaching Eligibility Exams", desc: "CTET, UPTET, BEd entrance exam preparation", color: "green", level: "graduation" },
+        { icon: "bi-person-badge-fill", title: "Police & Paramilitary", desc: "Police recruitment exams with mock tests", color: "purple" }
       ]
     },
     hi: {
       title: "प्रतियोगी परीक्षा टेस्ट सीरीज़",
       subtitle: "सभी प्रमुख प्रतियोगी परीक्षाओं के लिए हमारी व्यापक टेस्ट सीरीज़ के साथ अपने सपने की नौकरी की तैयारी करें",
       exams: [
-        { icon: "bi-journal-text", title: "यूपीएससी", desc: "मॉक टेस्ट और स्टडी मैटेरियल के साथ सिविल सर्विसेज़ परीक्षा की तैयारी", color: "blue" },
-        { icon: "bi-journal-text", title: "यूकेपीएससी", desc: "उत्तराखंड प्रोविंसियल सर्विसेज़ एग्ज़ाम सीरीज़ के साथ प्रैक्टिस टेस्ट", color: "orange" },
-        { icon: "bi-journal-text", title: "एसएससी", desc: "कर्मचारी चयन आयोग परीक्षा सीज़ेल, चेचएसएल, जेए टेस्ट सीरीज़ के साथ पूर्ण तैयारी", color: "green" },
-        { icon: "bi-shield-fill", title: "रक्षा (एनडीए/सीडीएस/एएफसीएटी)", desc: "विषयवार मॉक टेस्ट के साथ एनडीए, सीडीएस, एएफसीएटी की तैयारी", color: "purple" },
-        { icon: "bi-journal-medical", title: "कैट/एमएटी/सीएमएटी", desc: "प्रबंधन प्रवेश परीक्षा की तैयारी मॉक टेस्ट और विश्लेषण के साथ", color: "blue" },
-        { icon: "bi-building", title: "राज्य भर्ती परीक्षा", desc: "राज्य-वार भर्ती परीक्षा व्यापक टेस्ट सीरीज़ के साथ", color: "orange" },
-        { icon: "bi-mortarboard-fill", title: "शिक्षा योग्यता परीक्षा", desc: "सीटीईटी, यूपीटीईटी, बीएड प्रवेश परीक्षा की तैयारी", color: "green" },
+        { icon: "bi-journal-text", title: "यूपीएससी", desc: "मॉक टेस्ट और स्टडी मैटेरियल के साथ सिविल सर्विसेज़ परीक्षा की तैयारी", color: "blue", level: "graduation" },
+        { icon: "bi-journal-text", title: "यूकेपीएससी", desc: "उत्तराखंड प्रोविंसियल सर्विसेज़ एग्ज़ाम सीरीज़ के साथ प्रैक्टिस टेस्ट", color: "orange", level: "graduation" },
+        {
+          icon: "bi-journal-text",
+          title: "एसएससी",
+          desc: "कर्मचारी चयन आयोग परीक्षा सीज़ेल, चेचएसएल, जेए टेस्ट सीरीज़ के साथ पूर्ण तैयारी",
+          color: "green",
+          level: "school"
+        },
+        {
+          icon: "bi-shield-fill",
+          title: "रक्षा (एनडीए/सीडीएस/एएफसीएटी)",
+          desc: "विषयवार मॉक टेस्ट के साथ एनडीए, सीडीएस, एएफसीएटी की तैयारी", color: "purple"
+        },
+        { icon: "bi-journal-medical", title: "कैट/एमएटी/सीएमएटी", desc: "प्रबंधन प्रवेश परीक्षा की तैयारी मॉक टेस्ट और विश्लेषण के साथ", color: "blue", level: "graduation" },
+        { icon: "bi-building", title: "राज्य भर्ती परीक्षा", desc: "राज्य-वार भर्ती परीक्षा व्यापक टेस्ट सीरीज़ के साथ", color: "orange", level: "school" },
+        { icon: "bi-mortarboard-fill", title: "शिक्षा योग्यता परीक्षा", desc: "सीटीईटी, यूपीटीईटी, बीएड प्रवेश परीक्षा की तैयारी", color: "green", level: "graduation" },
         { icon: "bi-person-badge-fill", title: "पुलिस और पैरामिलिट्री", desc: "भारी शारीरिक प्रशिक्षण और मॉक टेस्ट के साथ पुलिस भर्ती परीक्षा", color: "purple" }
       ]
+    },
+    modal: {
+      en: { title: "Login Required", message: "Please log in to access the test series.", login: "Login Now", close: "Close" },
+      hi: { title: "लॉगिन आवश्यक है", message: "टेस्ट सीरीज़ तक पहुंचने के लिए कृपया लॉगिन करें।", login: "अभी लॉगिन करें", close: "बंद करें" }
     }
   }
 
   const t = content[language] || content.en
 
+  const schoolLevelExams = ["Defence (NDA/CDS/AFCAT)", "CHSL", "State Recruitment Exams", "Police & Paramilitary", "रक्षा (एनडीए/सीडीएस/एएफसीएटी)", "एसएससी", "राज्य भर्ती परीक्षा", "पुलिस और पैरामिलिट्री"];
+
+  const examsToDisplay = filter === 'school'
+    ? t.exams.filter(exam => schoolLevelExams.includes(exam.title))
+    : t.exams;
+
+  const navigate = useNavigate()
   const [showModal, setShowModal] = React.useState(false)
   const [selectedExam, setSelectedExam] = React.useState("")
 
@@ -43,6 +75,13 @@ function CompetitiveExams({ language }) {
     setShowModal(true)
   }
 
+  const handleLoginRedirect = () => {
+    setShowModal(false)
+    navigate('/login')
+  }
+
+  const modalText = content.modal[language] || content.modal.en
+
   return (
     <section className="competitive-exams-section role-section-school">
       <div className="role-header">
@@ -50,7 +89,7 @@ function CompetitiveExams({ language }) {
         <p>{t.subtitle}</p>
       </div>
       <Row className="g-4">
-        {t.exams.map((exam, index) => (
+        {examsToDisplay.map((exam, index) => (
           <Col lg={3} md={6} sm={12} key={index}>
             <div
               className={`benefit-card card-${exam.color} h-100 border-0 shadow-sm exam-card`}
@@ -70,28 +109,33 @@ function CompetitiveExams({ language }) {
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal-dialog modal-dialog-centered" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-content coming-soon-modal">
+            <div className="modal-content login-prompt-modal">
               <div className="modal-header border-0">
-                <h5 className="modal-title fw-bold">Coming Soon</h5>
+                <h5 className="modal-title fw-bold">{modalText.title}</h5>
                 <button
                   type="button"
                   className="btn-close"
                   onClick={() => setShowModal(false)}
                 ></button>
               </div>
-              <div className="modal-body text-center">
+              <div className="modal-body text-center px-4">
                 <div className="mb-3">
-                  <i className="bi bi-calendar-event display-4 text-primary"></i>
+                  <i className="bi bi-lock-fill display-4 text-primary"></i>
                 </div>
-                <h4 className="mb-3">{selectedExam}</h4>
-                <p className="text-muted">This exam series will be available very soon. Stay tuned!</p>
+                <p className="text-muted">{modalText.message}</p>
               </div>
               <div className="modal-footer border-0 justify-content-center">
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-outline-secondary"
                   onClick={() => setShowModal(false)}
                 >
-                  Close
+                  {modalText.close}
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={handleLoginRedirect}
+                >
+                  {modalText.login}
                 </button>
               </div>
             </div>
