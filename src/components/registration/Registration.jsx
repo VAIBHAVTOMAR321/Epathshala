@@ -29,8 +29,10 @@ const Registration = () => {
       verifyingBtn: "Verifying...",
       changeBtn: "Change",
       alreadyRegistered: "Already Registered!",
-      alreadyRegisteredMsg: "This Aadhaar number is already associated with a student account.",
+      alreadyRegisteredMsg: "This Aadhaar number is already associated with a student account. Please go to ",
       verifiedDetails: "Verified Aadhaar Details",
+      loginLinkText: "Login",
+      toAccessAccount: " to access your account.",
       fullName: "Full Name",
       mobileLabel: "Mobile Number",
       mobilePlaceholder: "10 digits",
@@ -82,8 +84,10 @@ const Registration = () => {
       verifyingBtn: "सत्यापित किया जा रहा है...",
       changeBtn: "बदलें",
       alreadyRegistered: "पहले से पंजीकृत!",
-      alreadyRegisteredMsg: "यह आधार नंबर पहले से ही एक छात्र खाते से जुड़ा हुआ है।",
+      alreadyRegisteredMsg: "यह आधार नंबर पहले से ही एक छात्र खाते से जुड़ा हुआ है। कृपया ",
       verifiedDetails: "सत्यापित आधार विवरण",
+      loginLinkText: "लॉगिन",
+      toAccessAccount: " पर जाएं अपना खाता एक्सेस करने के लिए।",
       fullName: "पूरा नाम",
       mobileLabel: "मोबाइल नंबर",
       mobilePlaceholder: "10 अंक",
@@ -783,6 +787,10 @@ const Registration = () => {
                   {aadhaarExists === true && (
                     <div className="alert alert-warning" style={{ marginTop: '6px', padding: '8px 10px', fontSize: '11px' }}>
                       <strong>{t.alreadyRegistered}</strong> {t.alreadyRegisteredMsg}
+                      <Link to="/login" className="alert-link" style={{ color: 'blue', textDecoration: 'none', fontWeight: 'bold' }}>
+                        {t.loginLinkText}
+                      </Link>
+                      {t.toAccessAccount}
                     </div>
                   )}
                 </div>
