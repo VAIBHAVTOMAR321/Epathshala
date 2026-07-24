@@ -5,10 +5,9 @@ import { useAuth } from '../all_login/AuthContext'
 import { useNavigate, useLocation } from 'react-router-dom'
 import UserHeader from './UserHeader'
 import UserLeftNav from './UserLeftNav'
-import { 
-  FaBriefcase, FaMapMarkerAlt, FaClock, FaMoneyBillWave, 
-  FaGraduationCap, FaExternalLinkAlt, FaSearch, FaFilter, 
-  FaInfoCircle, FaChalkboardTeacher, FaTools 
+import {
+  FaMapMarkerAlt, FaClock, FaMoneyBillWave, FaGraduationCap, FaExternalLinkAlt, FaFilter,
+  FaInfoCircle, FaChalkboardTeacher, FaTools, FaUsers, FaBriefcase
 } from 'react-icons/fa'
 import '../../assets/css/JobOpenings.css'
 import { useLanguage } from '../all_login/LanguageContext'
@@ -24,15 +23,12 @@ const JobOpenings = () => {
   const [isTablet, setIsTablet] = useState(false)
   
   // --- Data State ---
-  const [jobs, setJobs] = useState([])
   const [seminars, setSeminars] = useState([])
   const [workshops, setWorkshops] = useState([])
-  
+
   // --- UI State ---
-  const [loading, setLoading] = useState(true)
   const [loadingSeminars, setLoadingSeminars] = useState(true)
   const [loadingWorkshops, setLoadingWorkshops] = useState(true)
-  const [error, setError] = useState(null)
   const [errorSeminars, setErrorSeminars] = useState(null)
   const [errorWorkshops, setErrorWorkshops] = useState(null)
   
@@ -41,7 +37,7 @@ const JobOpenings = () => {
   const isLanguageHindi = language === 'hi'
 
   // --- Tab State ---
-  const [activeTab, setActiveTab] = useState('jobs')
+  const [activeTab, setActiveTab] = useState('seminars')
   
   // Update active tab whenever location.state changes
   useEffect(() => {
@@ -51,13 +47,10 @@ const JobOpenings = () => {
   }, [location.key])  // location.key changes on every navigation
 
   // --- Filter State ---
-  const [selectedQualification, setSelectedQualification] = useState('')
   const [selectedSeminarEligibility, setSelectedSeminarEligibility] = useState('')
   const [selectedWorkshopEligibility, setSelectedWorkshopEligibility] = useState('')
 
   // --- Modal State ---
-  const [showJobModal, setShowJobModal] = useState(false)
-  const [selectedJob, setSelectedJob] = useState(null)
   const [showSeminarModal, setShowSeminarModal] = useState(false)
   const [selectedSeminar, setSelectedSeminar] = useState(null)
   const [showWorkshopModal, setShowWorkshopModal] = useState(false)
@@ -94,55 +87,14 @@ const JobOpenings = () => {
 
    // Fetch Data - aligned with UserProfile pattern
    useEffect(() => {
-     // Wait for authentication before fetching
-     if (!uniqueId || !accessToken) {
-       // Ensure loading states are reset to avoid spinners
-       setLoading(false);
-       setLoadingSeminars(false);
-       setLoadingWorkshops(false);
-       return;
-     }
-
-     fetchJobs();
-     fetchSeminars();
-     fetchWorkshops();
-   }, [uniqueId, accessToken]);
+      fetchSeminars();
+      fetchWorkshops();
+    }, [uniqueId, accessToken]);
 
   // --- Handler Functions ---
   
   // Defined ONCE to prevent duplicate declaration error
   const handleToggleSidebar = () => setSidebarOpen(prev => !prev)
-
-  // Updated Auth Logic to match UserQuiz pattern exactly
-  const fetchJobs = async () => {
-    try {
-      setLoading(true)
-      setError(null)
-
-      const config = {
-        headers: {
-          'Authorization': `Bearer ${accessToken}`
-        }
-      }
-      const response = await axios.get(
-        'https://brjobsedu.com/epathshala/epathshala_backend/api/job-openings/',
-        config
-      )
-
-      if (response.data.success && Array.isArray(response.data.data)) {
-        const activeJobs = response.data.data.filter(job => job.status === 'active')
-        setJobs(activeJobs)
-      } else {
-        setJobs([])
-      }
-    } catch (err) {
-      console.error("Error fetching jobs:", err)
-      setError("Failed to load job openings")
-      setJobs([])
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const fetchSeminars = async () => {
     try {
@@ -204,26 +156,10 @@ const JobOpenings = () => {
     }
   }
 
-  const handleApplyClick = (applyLink) => {
-    if (applyLink) {
-      window.open(applyLink, '_blank')
-    }
-  }
-
   const handleRegisterClick = (registerLink) => {
     if (registerLink) {
       window.open(registerLink, '_blank')
     }
-  }
-
-  const handleViewDetails = (job) => {
-    setSelectedJob(job)
-    setShowJobModal(true)
-  }
-
-  const closeModal = () => {
-    setShowJobModal(false)
-    setSelectedJob(null)
   }
 
   const handleViewSeminarDetails = (seminar) => {
@@ -248,16 +184,6 @@ const JobOpenings = () => {
 
   // --- Helper Functions & Memos ---
 
-  const getJobTypeBadge = (jobType) => {
-    const variants = {
-      'full_time': 'primary',
-      'part_time': 'secondary',
-      'internship': 'info',
-      'contract': 'warning'
-    }
-    return variants[jobType] || 'secondary'
-  }
-
   const formatDate = (dateString) => {
     if (!dateString) return ''
     const date = new Date(dateString)
@@ -280,11 +206,6 @@ const JobOpenings = () => {
     })
   }
 
-  const isJobExpired = (lastDate) => {
-    if (!lastDate) return false
-    return new Date(lastDate) < new Date()
-  }
-
   const isSeminarExpired = (lastDate) => {
     if (!lastDate) return false
     return new Date(lastDate) < new Date()
@@ -294,26 +215,6 @@ const JobOpenings = () => {
     if (!lastDate) return false
     return new Date(lastDate) < new Date()
   }
-
-  const uniqueQualifications = useMemo(() => {
-    const qualifications = new Set()
-    jobs.forEach(job => {
-      if (job.qualifications_required && Array.isArray(job.qualifications_required)) {
-        job.qualifications_required.forEach(qual => qualifications.add(qual))
-      }
-    })
-    return Array.from(qualifications).sort()
-  }, [jobs])
-
-  const filteredJobs = useMemo(() => {
-    if (!selectedQualification) return jobs
-    return jobs.filter(job => {
-      if (job.qualifications_required && Array.isArray(job.qualifications_required)) {
-        return job.qualifications_required.includes(selectedQualification)
-      }
-      return false
-    })
-  }, [jobs, selectedQualification])
 
   const uniqueSeminarEligibility = useMemo(() => {
     const eligibility = new Set()
@@ -389,12 +290,6 @@ const JobOpenings = () => {
           <Tab.Container id="jobs-seminars-tabs" activeKey={activeTab} onSelect={(key) => setActiveTab(key)}>
             <Nav variant="tabs" className="mb-3 job-tabs">
               <Nav.Item>
-                <Nav.Link eventKey="jobs" className="job-tab-link">
-                  <FaBriefcase className="me-1" />
-                  {language === 'hi' ? 'नौकरियां' : 'Jobs'}
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
                 <Nav.Link eventKey="seminars" className="job-tab-link">
                   <FaChalkboardTeacher className="me-1" />
                   {language === 'hi' ? 'सेमिनार' : 'Seminars'}
@@ -409,155 +304,6 @@ const JobOpenings = () => {
             </Nav>
 
             <Tab.Content>
-              {/* --- Jobs Tab --- */}
-              <Tab.Pane eventKey="jobs">
-                {uniqueQualifications.length > 0 && (
-                  <Row className="mb-4">
-                    <Col xs={12}>
-<div className="d-flex align-items-center gap-2 job-filters">
-                          <div className="d-flex align-items-center">
-                            <FaFilter className="me-1 text-primary" />
-                            <span className="fw-semibold me-1 job-filter-select">
-                              {language === 'hi' ? 'योग्यता:' : 'Qualification:'}
-                            </span>
-                          </div>
-                          <Form.Select 
-                            style={{ width: 'auto', display: 'inline-block', fontSize: '10px' }}
-                            value={selectedQualification}
-                            onChange={(e) => setSelectedQualification(e.target.value)}
-                          >
-                            <option value="">
-                              {language === 'hi' ? 'सभी' : 'All'}
-                            </option>
-                            {uniqueQualifications.map((qual, idx) => (
-                              <option key={idx} value={qual}>{qual}</option>
-                            ))}
-                          </Form.Select>
-                          {selectedQualification && (
-                            <Button 
-                              variant="outline-secondary" 
-                              size="sm"
-                              className="job-btn"
-                              onClick={() => setSelectedQualification('')}
-                            >
-                              {language === 'hi' ? 'साफ़' : 'Clear'}
-                            </Button>
-                          )}
-                        </div>
-                    </Col>
-                  </Row>
-                )}
-
-                {error && (
-                  <Alert variant="danger">{error}</Alert>
-                )}
-
-                {loading ? (
-                  <div className="text-center py-5">
-                    <Spinner animation="border" variant="primary" style={{ width: '50px', height: '50px' }} />
-                    <p className="mt-3">
-                      {language === 'hi' ? 'नौकरी के अवसर लोड हो रहे हैं...' : 'Loading job openings...'}
-                    </p>
-                  </div>
-                ) : filteredJobs.length === 0 ? (
-                  <Card className="text-center py-5">
-                    <Card.Body>
-                      <FaSearch className="text-muted mb-3" style={{ fontSize: '48px' }} />
-                      <h5 className="text-muted">
-                        {selectedQualification 
-                          ? (language === 'hi' ? 'इस योग्यता के लिए कोई नौकरी नहीं मिली' : 'No jobs found for this qualification')
-                          : (language === 'hi' ? 'कोई नौकरी उपलब्ध नहीं है' : 'No job openings available')}
-                      </h5>
-                    </Card.Body>
-                  </Card>
-                ) : (
-                  <Row className="g-4">
-                    {filteredJobs.map((job, index) => {
-                      const isExpired = isJobExpired(job.last_date_to_apply)
-                      const title = language === 'hi' && job.title_hindi ? job.title_hindi : job.title
-                      const descriptions = language === 'hi' && job.description_hindi ? job.description_hindi : job.description || []
-
-                      return (
-                        <Col key={job.id || index} xs={12} md={6} lg={4}>
-                          <Card className={`h-100 job-card ${isExpired ? 'job-card-expired' : ''}`}>
-                            <Card.Body className="d-flex flex-column">
-                              <div className="d-flex justify-content-between align-items-start mb-2">
-                                <Badge bg={getJobTypeBadge(job.job_type)} className="job-badge">
-                                  {job.job_type === 'full_time' ? (language === 'hi' ? 'पूर्णकालिक' : 'Full Time') : 
-                                   job.job_type === 'part_time' ? (language === 'hi' ? 'अंशकालिक' : 'Part Time') : 
-                                   job.job_type === 'internship' ? (language === 'hi' ? 'इंटर्नशिप' : 'Internship') : 
-                                   job.job_type || 'Job'}
-                                </Badge>
-                                {isExpired && <Badge bg="secondary" className="job-badge">{language === 'hi' ? 'समाप्त' : 'Expired'}</Badge>}
-                              </div>
-
-                              <h6 className="fw-bold mb-1 job-title">{title}</h6>
-                              
-                              <div className="mb-2">
-                                <small className="text-muted d-flex align-items-center mb-1 job-meta">
-                                  <FaMapMarkerAlt className="me-1" /> {job.location}
-                                </small>
-                                <small className="text-muted d-flex align-items-center mb-1 job-meta">
-                                  <FaClock className="me-1" /> {job.experience_required}
-                                </small>
-                                <small className="text-muted d-flex align-items-center job-meta">
-                                  <FaMoneyBillWave className="me-1" /> {job.salary}
-                                </small>
-                              </div>
-
-                              {job.qualifications_required && job.qualifications_required.length > 0 && (
-                                <div className="mb-2">
-                                  <small className="text-muted fw-semibold d-block mb-1 job-meta">
-                                    <FaGraduationCap className="me-1" />
-                                    {language === 'hi' ? 'योग्यता:' : 'Qualifications:'}
-                                  </small>
-                                  <div className="d-flex flex-wrap gap-1">
-                                    {job.qualifications_required.map((qual, i) => (
-                                      <Badge key={i} bg="info" text="white" className="fw-normal job-badge">{qual}</Badge>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
-
-                              <div className="mt-auto pt-2 border-top">
-                                <div className="d-flex justify-content-between align-items-center">
-                                  <small className="text-muted job-meta">
-                                    {job.last_date_to_apply && (
-                                      <>
-                                        <FaClock className="me-1" />
-                                        {isLanguageHindi ? 'अंतिम: ' : 'Apply: '} 
-                                        {formatDate(job.last_date_to_apply)}
-                                      </>
-                                    )}
-                                  </small>
-                                  <div className="d-flex gap-1">
-                                    <Button variant="outline-primary" size="sm" onClick={() => handleViewDetails(job)} className="job-btn">
-                                      <FaInfoCircle className="me-1" />
-                                      {isLanguageHindi ? 'अधिक' : 'More'}
-                                    </Button>
-                                    <Button 
-                                      variant={isExpired ? 'secondary' : 'primary'}
-                                      size="sm"
-                                      onClick={() => handleApplyClick(job.apply_link)}
-                                      disabled={isExpired || !job.apply_link}
-                                      className="job-btn"
-                                      style={{ background: isExpired ? undefined : 'linear-gradient(135deg, rgb(94 117 223), rgb(75 101 218))', border: isExpired ? undefined : 'none' }}
-                                    >
-                                      <FaExternalLinkAlt className="me-1" />
-                                      {isLanguageHindi ? 'आवेदन' : 'Apply'}
-                                    </Button>
-                                  </div>
-                                </div>
-                              </div>
-                            </Card.Body>
-                          </Card>
-                        </Col>
-                      )
-                    })}
-                  </Row>
-                )}
-              </Tab.Pane>
-
               {/* --- Seminars Tab --- */}
               <Tab.Pane eventKey="seminars">
                 {errorSeminars && <Alert variant="danger">{errorSeminars}</Alert>}
@@ -792,76 +538,6 @@ const JobOpenings = () => {
 
       {/* --- Modals --- */}
       
-      {/* Job Modal */}
-      <Modal show={showJobModal} onHide={closeModal} size="lg" centered>
-        <Modal.Header closeButton className="job-modal-header">
-          <Modal.Title>
-            {selectedJob && (language === 'hi' && selectedJob.title_hindi ? selectedJob.title_hindi : selectedJob?.title)}
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body style={{ maxHeight: '70vh', overflowY: 'auto' }}>
-          {selectedJob && (
-            <>
-              <div className="mb-4">
-                <div className="d-flex gap-2 mb-3">
-                  <Badge bg={getJobTypeBadge(selectedJob.job_type)}>
-                    {selectedJob.job_type === 'full_time' ? (language === 'hi' ? 'पूर्णकालिक' : 'Full Time') : 
-                     selectedJob.job_type === 'part_time' ? (language === 'hi' ? 'अंशकालिक' : 'Part Time') : 
-                     selectedJob.job_type === 'internship' ? (language === 'hi' ? 'इंटर्नशिप' : 'Internship') : 
-                     selectedJob.job_type || 'Job'}
-                  </Badge>
-                  {isJobExpired(selectedJob.last_date_to_apply) && <Badge bg="secondary">{language === 'hi' ? 'समाप्त' : 'Expired'}</Badge>}
-                </div>
-                <div className="row mb-3">
-                  <div className="col-md-6 mb-2">
-                    <div className="d-flex align-items-center">
-                      <FaMapMarkerAlt className="me-2 text-primary" />
-                      <span><strong>{language === 'hi' ? 'स्थान:' : 'Location:'}</strong> {selectedJob.location}</span>
-                    </div>
-                  </div>
-                  <div className="col-md-6 mb-2">
-                    <div className="d-flex align-items-center">
-                      <FaClock className="me-2 text-primary" />
-                      <span><strong>{language === 'hi' ? 'अनुभव:' : 'Experience:'}</strong> {selectedJob.experience_required}</span>
-                    </div>
-                  </div>
-                  <div className="col-md-6 mb-2">
-                    <div className="d-flex align-items-center">
-                      <FaMoneyBillWave className="me-2 text-primary" />
-                      <span><strong>{language === 'hi' ? 'वेतन:' : 'Salary:'}</strong> {selectedJob.salary}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {(language === 'hi' ? selectedJob.description_hindi : selectedJob.description)?.length > 0 && (
-                <div className="mb-4">
-                  <h6 className="fw-bold mb-2">
-                    <FaInfoCircle className="me-2" />
-                    {language === 'hi' ? 'जिम्मेदारियाँ और कार्य' : 'Responsibilities & Duties'}
-                  </h6>
-                  <ul className="list-unstyled">
-                    {(language === 'hi' ? selectedJob.description_hindi : selectedJob.description)?.map((desc, i) => (
-                      <li key={i} className="mb-2 d-flex align-items-start">
-                        <span className="me-2 text-primary">•</span>
-                        <span>{desc}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </>
-          )}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={closeModal} className="job-btn">{language === 'hi' ? 'बंद करें' : 'Close'}</Button>
-          {selectedJob && !isJobExpired(selectedJob.last_date_to_apply) && selectedJob.apply_link && (
-            <Button variant="primary" onClick={() => handleApplyClick(selectedJob.apply_link)} className="job-btn" style={{ background: 'linear-gradient(135deg, rgb(94 117 223), rgb(75 101 218))', border: 'none' }}>
-              <FaExternalLinkAlt className="me-1" />{language === 'hi' ? 'अभी आवेदन करें' : 'Apply Now'}
-            </Button>
-          )}
-        </Modal.Footer>
-      </Modal>
-
       {/* Seminar Modal */}
       <Modal show={showSeminarModal} onHide={closeSeminarModal} size="lg" centered>
         <Modal.Header closeButton className="job-modal-header-success">

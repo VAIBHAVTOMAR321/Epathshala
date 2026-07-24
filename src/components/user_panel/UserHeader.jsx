@@ -140,7 +140,8 @@ function UserHeader({ toggleSidebar }) {
         break;
       case "job":
         path = "/JobOpenings";
-        state = { activeTab: "jobs" };
+        // The "jobs" tab has been removed, so we don't set an active tab.
+        // The page will default to the first available tab (seminars).
         break;
       case "seminar":
         path = "/JobOpenings";
