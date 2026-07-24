@@ -1636,8 +1636,38 @@ const AdminDashBoard = () => {
          </>
        );
      } else if (activeTab === "quiz-participants") {
-       // Return the custom quiz table
-       return renderQuizTable();
+        // Return the custom quiz table
+        return renderQuizTable();
+      } else if (activeTab === 'unique-courses') {
+        const uniqueCourses = [...new Map(enrollments.map(e => [e.course_id, e])).values()];
+        const currentCourses = uniqueCourses.slice(indexOfFirstItem, indexOfLastItem);
+        return (
+          <>
+            <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Course ID</th>
+                  <th>Course Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentCourses.length > 0 ? (
+                  currentCourses.map((course, index) => (
+                    <tr key={index}>
+                      <td>{indexOfFirstItem + index + 1}</td>
+                      <td><Badge bg="info">{course.course_id}</Badge></td>
+                      <td className="fw-bold">{course.course_name}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr><td colSpan="3" className="text-center">No courses found in enrollments</td></tr>
+                )}
+              </tbody>
+            </Table>
+            {renderPagination(uniqueCourses.length, currentPage)}
+          </>
+        );
       } else if (activeTab === "quiz-items") {
         // New: Quiz Items Table with Rank Distribution
         const currentQuizItems = quizItems.slice(indexOfFirstItem, indexOfLastItem);
