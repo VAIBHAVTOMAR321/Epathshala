@@ -197,7 +197,7 @@ const AdminDashBoard = () => {
        const totalScore = quizData.reduce((sum, item) => 
          sum + (item.attempt?.reduce((attemptSum, attempt) => attemptSum + (attempt.score || 0), 0) || 0), 0
        );
-       const averageScore = totalQuizAttempts > 0 ? (totalScore / totalQuizAttempts).toFixed(1) : 0;
+       const averageScore = totalQuizAttempts > 0 ? Math.round(totalScore / totalQuizAttempts) : 0;
        const passRate = totalQuizParticipants > 0 
          ? ((quizData.filter(item => 
              item.attempt?.some(attempt => attempt.status === 'passed')
@@ -512,7 +512,7 @@ const AdminDashBoard = () => {
                    style={{ cursor: 'pointer', transition: 'transform 0.2s' }}
                    title="Click to view students around average rank"
                  >
-                   <div className="h4 fw-bold text-primary">{((totalParticipants > 0 ? allRanks.reduce((a, b) => a + b, 0) / totalParticipants : 0)).toFixed(1)}</div>
+                   <div className="h4 fw-bold text-primary">{Math.round(totalParticipants > 0 ? allRanks.reduce((a, b) => a + b, 0) / totalParticipants : 0)}</div>
                    <div className="text-muted small">Avg Rank</div>
                  </div>
                </Col>
@@ -966,7 +966,7 @@ const AdminDashBoard = () => {
                   style={{ cursor: 'pointer', transition: 'transform 0.2s' }}
                   title="Click to view students around average rank"
                 >
-                  <div className="h4 fw-bold text-primary">{((totalAttempts > 0 ? allRanks.reduce((a, b) => a + b.rank, 0) / totalAttempts : 0)).toFixed(1)}</div>
+                  <div className="h4 fw-bold text-primary">{Math.round(totalAttempts > 0 ? allRanks.reduce((a, b) => a + b.rank, 0) / totalAttempts : 0)}</div>
                   <div className="text-muted small">Avg Rank</div>
                 </div>
               </Col>
@@ -1389,7 +1389,7 @@ const AdminDashBoard = () => {
       key: "unique-courses",
       icon: "bi-layers",
       number: stats.totalUniqueCourses,
-      label: "Unique Courses",
+      label: "Total Courses",
       className: "unique-courses"
     },
     {
