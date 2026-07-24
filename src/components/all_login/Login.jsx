@@ -110,14 +110,20 @@ const Login = () => {
 
   const t = content[language] || content.en;
 
-  const roleOptions = [
+  const studentRoleOptions = [
     { value: '9th-student', label: t.roles['9th-student'], icon: 'bi-mortarboard' },
     { value: '10th-student', label: t.roles['10th-student'], icon: 'bi-mortarboard' },
     { value: '11th-student', label: t.roles['11th-student'], icon: 'bi-mortarboard' },
     { value: '12th-student', label: t.roles['12th-student'], icon: 'bi-mortarboard' },
+  ];
+
+  const otherRoleOptions = [
     { value: 'school', label: t.roles['school'], icon: 'bi-building' },
     { value: 'admin', label: t.roles['admin'], icon: 'bi-person-workspace' },
   ];
+
+  const t_student = language === 'hi' ? 'छात्र' : 'Student';
+  const t_admin = language === 'hi' ? 'प्रशासन' : 'Administration';
 
   const handleRoleChange = (e) => {
     const newRole = e.target.value;
@@ -227,23 +233,49 @@ const Login = () => {
           <form onSubmit={handleSubmit} className="login-form">
             <div className="role-selector">
               <label>{t.roleLabel}</label>
-              <div className="role-radio-group">
-                {roleOptions.map((option) => (
-                  <div key={option.value} className="role-radio-item">
-                    <input
-                      type="radio"
-                      id={option.value}
-                      name="role"
-                      value={option.value}
-                      checked={formData.role === option.value}
-                      onChange={handleRoleChange}
-                    />
-                    <label htmlFor={option.value}>
-                      <i className={option.icon}></i>
-                      <span>{option.label}</span>
-                    </label>
+              <div className="role-group-container">
+                <div className="role-group">
+                  <h3 className="role-group-heading">{t_student}</h3>
+                  <div className="role-radio-group student-roles">
+                    {studentRoleOptions.map((option) => (
+                      <div key={option.value} className="role-radio-item">
+                        <input
+                          type="radio"
+                          id={option.value}
+                          name="role"
+                          value={option.value}
+                          checked={formData.role === option.value}
+                          onChange={handleRoleChange}
+                        />
+                        <label htmlFor={option.value}>
+                          <i className={option.icon}></i>
+                          <span>{option.label}</span>
+                        </label>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+                <div className="role-group">
+                  <h3 className="role-group-heading">{t_admin}</h3>
+                  <div className="role-radio-group admin-roles">
+                    {otherRoleOptions.map((option) => (
+                      <div key={option.value} className="role-radio-item">
+                        <input
+                          type="radio"
+                          id={option.value}
+                          name="role"
+                          value={option.value}
+                          checked={formData.role === option.value}
+                          onChange={handleRoleChange}
+                        />
+                        <label htmlFor={option.value}>
+                          <i className={option.icon}></i>
+                          <span>{option.label}</span>
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 
