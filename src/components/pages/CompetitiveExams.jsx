@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Modal, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
 function CompetitiveExams({ language, filter }) {
@@ -106,42 +106,27 @@ function CompetitiveExams({ language, filter }) {
         ))}
       </Row>
 
-      {showModal && (
-        <div className="modal-overlay" onClick={() => setShowModal(false)}>
-          <div className="modal-dialog modal-dialog-centered" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-content login-prompt-modal">
-              <div className="modal-header border-0">
-                <h5 className="modal-title fw-bold">{modalText.title}</h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  onClick={() => setShowModal(false)}
-                ></button>
-              </div>
-              <div className="modal-body text-center px-4">
-                <div className="mb-3">
-                  <i className="bi bi-lock-fill display-4 text-primary"></i>
-                </div>
-                <p className="text-muted">{modalText.message}</p>
-              </div>
-              <div className="modal-footer border-0 justify-content-center">
-                <button
-                  className="btn btn-outline-secondary"
-                  onClick={() => setShowModal(false)}
-                >
-                  {modalText.close}
-                </button>
-                <button
-                  className="btn btn-primary"
-                  onClick={handleLoginRedirect}
-                >
-                  {modalText.login}
-                </button>
-              </div>
-            </div>
+      <Modal show={showModal} onHide={() => setShowModal(false)} centered size="sm">
+        <Modal.Header closeButton className="border-0 pb-0">
+          <Modal.Title className="fs-5 fw-bold w-100 text-center">
+            {modalText.title}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="text-center pt-2">
+          <div className="mb-3">
+            <i className="bi bi-lock-fill display-4 text-primary"></i>
           </div>
-        </div>
-      )}
+          <p className="text-muted">{modalText.message}</p>
+        </Modal.Body>
+        <Modal.Footer className="border-0 justify-content-center pt-0">
+          <Button variant="outline-secondary" onClick={() => setShowModal(false)}>
+            {modalText.close}
+          </Button>
+          <Button variant="primary" onClick={handleLoginRedirect}>
+            {modalText.login}
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </section>
   )
 }
