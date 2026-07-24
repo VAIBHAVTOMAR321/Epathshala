@@ -6,21 +6,14 @@ import { useAuth } from '../all_login/AuthContext'
 import AdminHeader from './AdminHeader'
 import '../../assets/css/Enrollments.css'
 import { useNavigate } from 'react-router-dom'
-import { FaArrowLeft, FaPlus, FaEdit, FaTrash, FaCalendar, FaClock, FaBriefcase, FaLink, FaMapMarkerAlt, FaMoneyBillWave, FaGraduationCap, FaTools, FaToggleOn, FaToggleOff, FaChalkboardTeacher, FaUser, FaVideo } from 'react-icons/fa'
+import { FaArrowLeft, FaPlus, FaEdit, FaTrash, FaCalendar, FaClock, FaLink, FaMapMarkerAlt, FaGraduationCap, FaTools, FaToggleOn, FaToggleOff, FaChalkboardTeacher, FaUser, FaVideo } from 'react-icons/fa'
 
-const JOB_API_URL = 'https://brjobsedu.com/epathshala/epathshala_backend/api/job-openings/'
 const SEMINAR_API_URL = 'https://brjobsedu.com/epathshala/epathshala_backend/api/seminar-items/'
 const WORKSHOP_API_URL = 'https://brjobsedu.com/epathshala/epathshala_backend/api/workshop-items/'
-
-const statusLabels = {
-  active: 'Active',
-  inactive: 'Inactive'
-}
 
 const ManageJobs = () => {
   const { accessToken } = useAuth()
   const navigate = useNavigate()
-  const [jobs, setJobs] = useState([])
   const [seminars, setSeminars] = useState([])
   const [workshops, setWorkshops] = useState([])
   const [loading, setLoading] = useState(true)
@@ -35,13 +28,10 @@ const ManageJobs = () => {
   const [isTablet, setIsTablet] = useState(false)
   const [showDeleteModal, setShowDeleteModal] = useState(false)
   const [showViewModal, setShowViewModal] = useState(false)
-  const [selectedJob, setSelectedJob] = useState(null)
   const [selectedSeminar, setSelectedSeminar] = useState(null)
   const [selectedWorkshop, setSelectedWorkshop] = useState(null)
-  const [currentPage, setCurrentPage] = useState(1)
   const [recordsPerPage] = useState(10)
-  const [statusFilter, setStatusFilter] = useState('all')
-  const [activeTab, setActiveTab] = useState('jobs')
+  const [activeTab, setActiveTab] = useState('seminars')
   const [seminarFilter, setSeminarFilter] = useState('all')
   const [seminarCurrentPage, setSeminarCurrentPage] = useState(1)
   const [workshopFilter, setWorkshopFilter] = useState('all')
@@ -63,10 +53,7 @@ const ManageJobs = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  const isJobActive = (job) => job.status === 'active' || job.status === true || job.status === 1 || job.status === '1'
-
   useEffect(() => {
-    fetchJobs()
     fetchSeminars()
     fetchWorkshops()
   }, [])
@@ -77,22 +64,6 @@ const ManageJobs = () => {
     }
   })
 
-  const fetchJobs = async () => {
-    try {
-      setLoading(true)
-      const response = await axios.get(JOB_API_URL + '?_t=' + new Date().getTime(), getAuthConfig())
-      if (response.data && response.data.data) {
-        console.log('Jobs API response:', JSON.stringify(response.data.data))
-        setJobs(response.data.data)
-      }
-    } catch (error) {
-      console.error('Error fetching jobs:', error)
-      setJobs([])
-    } finally {
-      setLoading(false)
-    }
-  }
-
   const fetchSeminars = async () => {
     try {
       const response = await axios.get(SEMINAR_API_URL, getAuthConfig())
@@ -102,6 +73,8 @@ const ManageJobs = () => {
     } catch (error) {
       console.error('Error fetching seminars:', error)
       setSeminars([])
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -117,24 +90,9 @@ const ManageJobs = () => {
     }
   }
 
-  const handleEdit = (job) => {
-    navigate('/AddJob', { state: { editData: job } })
-  }
-
-  const handleDelete = (job) => {
-    setSelectedJob(job)
-    setShowDeleteModal(true)
-  }
-
   const confirmDelete = async () => {
     try {
-      if (activeTab === 'jobs') {
-        await axios.delete(JOB_API_URL, {
-          data: { job_id: selectedJob.job_id },
-          ...getAuthConfig()
-        })
-        fetchJobs()
-      } else if (activeTab === 'seminars') {
+      if (activeTab === 'seminars') {
         await axios.delete(SEMINAR_API_URL, {
           data: { seminar_id: selectedSeminar.seminar_id },
           ...getAuthConfig()
@@ -148,50 +106,11 @@ const ManageJobs = () => {
         fetchWorkshops()
       }
       setShowDeleteModal(false)
-      alert(`${activeTab === 'jobs' ? 'Job' : activeTab === 'seminars' ? 'Seminar' : 'Workshop'} deleted successfully!`)
+      alert(`${activeTab === 'seminars' ? 'Seminar' : 'Workshop'} deleted successfully!`)
     } catch (error) {
       console.error('Error deleting:', error)
       alert('Failed to delete')
     }
-  }
-
-  const toggleJobStatus = async (job) => {
-    try {
-      const currentStatus = isJobActive(job)
-      const newStatus = !currentStatus
-      console.log('Toggle job:', job.job_id, 'from status:', job.status, 'to', newStatus)
-      
-      await axios.put(JOB_API_URL, {
-        job_id: job.job_id,
-        status: newStatus ? 'active' : 'inactive'
-      }, getAuthConfig())
-      
-      fetchJobs()
-      alert(`Job ${newStatus ? 'activated' : 'deactivated'} successfully!`)
-    } catch (error) {
-      console.error('Error toggling job status:', error)
-      alert('Failed to update job status')
-    }
-  }
-
-  const toggleSeminarStatus = async (seminar) => {
-    try {
-      const newStatus = seminar.status === 'active' ? 'inactive' : 'active'
-      await axios.put(SEMINAR_API_URL, {
-        seminar_id: seminar.seminar_id,
-        status: newStatus
-      }, getAuthConfig())
-      fetchSeminars()
-      alert(`Seminar ${newStatus === 'active' ? 'activated' : 'deactivated'} successfully!`)
-    } catch (error) {
-      console.error('Error toggling seminar status:', error)
-      alert('Failed to update seminar status')
-    }
-  }
-
-  const handleView = (job) => {
-    setSelectedJob(job)
-    setShowViewModal(true)
   }
 
   const formatDate = (dateString) => {
@@ -202,36 +121,6 @@ const ManageJobs = () => {
       month: 'short', 
       year: 'numeric'
     })
-  }
-
-  const indexOfLastRecord = currentPage * recordsPerPage
-  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
-  
-  const filteredJobs = statusFilter === 'all' 
-    ? jobs 
-    : jobs.filter(job => {
-      const isActive = isJobActive(job)
-      return statusFilter === 'active' ? isActive : !isActive
-    })
-  
-  const currentRecords = filteredJobs.slice(indexOfFirstRecord, indexOfLastRecord)
-  const totalPages = Math.ceil(filteredJobs.length / recordsPerPage)
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber)
-  }
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1)
-  }
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1)
-  }
-
-  const handleFilterChange = (status) => {
-    setStatusFilter(status)
-    setCurrentPage(1)
   }
 
   const handleSeminarFilterChange = (status) => {
@@ -403,17 +292,12 @@ const ManageJobs = () => {
                   </Button>
                   <h4 className="mb-0">Manage Jobs, Seminars & Workshops</h4>
                 </div>
-                <Button variant="primary" size="sm" onClick={() => activeTab === 'jobs' ? navigate('/AddJob') : activeTab === 'seminars' ? navigate('/AddSeminar') : navigate('/AddWorkshop')}>
-                  <FaPlus className="me-1" /> {activeTab === 'jobs' ? 'Add New Job' : activeTab === 'seminars' ? 'Add New Seminar' : 'Add New Workshop'}
+                <Button variant="primary" size="sm" onClick={() => activeTab === 'seminars' ? navigate('/AddSeminar') : navigate('/AddWorkshop')}>
+                  <FaPlus className="me-1" /> {activeTab === 'seminars' ? 'Add New Seminar' : 'Add New Workshop'}
                 </Button> 
               </div>
 
               <Nav variant="tabs" activeKey={activeTab} onSelect={(k) => setActiveTab(k)} className="mb-3">
-                <Nav.Item>
-                  <Nav.Link eventKey="jobs">
-                    <FaBriefcase className="me-1" /> Jobs ({jobs.length})
-                  </Nav.Link>
-                </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey="seminars">
                     <FaChalkboardTeacher className="me-1" /> Seminars ({seminars.length})
@@ -425,244 +309,6 @@ const ManageJobs = () => {
                   </Nav.Link>
                 </Nav.Item>
               </Nav>
-
-              {activeTab === 'jobs' && (
-              <Row>
-                <Col xs={12}>
-                  <Card className="enrollments-table-card border">
-                    <Card.Header className="bg-light border-bottom py-2 px-3 d-flex justify-content-between align-items-center flex-wrap">
-                      <div className="d-flex align-items-center paid-btn gap-2">
-                        <h5 className="mb-0 fw-semibold text-secondary">
-                          All Jobs ({filteredJobs.length})
-                        </h5>
-                      </div>
-                      <div className="d-flex align-items-center gap-2 flex-wrap">
-                        <div className="btn-group btn-group-sm" role="group">
-                          <button
-                            type="button"
-                            className={`btn ${statusFilter === 'all' ? 'btn-primary' : 'btn-outline-primary'}`}
-                            onClick={() => handleFilterChange('all')}
-                          >
-                            All
-                          </button>
-                          <button
-                            type="button"
-                            className={`btn ${statusFilter === 'active' ? 'btn-success' : 'btn-outline-success'}`}
-                            onClick={() => handleFilterChange('active')}
-                          >
-                            Active
-                          </button>
-                          <button
-                            type="button"
-                            className={`btn ${statusFilter === 'inactive' ? 'btn-danger' : 'btn-outline-danger'}`}
-                            onClick={() => handleFilterChange('inactive')}
-                          >
-                            Inactive
-                          </button>
-                        </div>
-                      </div>
-                    </Card.Header>
-                    <Card.Body className="p-0">
-                      <div className="table-responsive d-none d-md-block">
-                        <Table hover className="custom-table align-middle mb-0">
-                          <thead className="table-light custom-table">
-                            <tr>
-                              <th className="ps-2">Job ID</th>
-                              <th>Title</th>
-                              <th><FaMapMarkerAlt className="me-1" /> Location</th>
-                              <th><FaBriefcase className="me-1" /> Type</th>
-                              <th><FaMoneyBillWave className="me-1" /> Salary</th>
-                              <th><FaCalendar className="me-1" /> Last Date</th>
-                              <th>Status</th>
-                              <th className="text-end pe-3">Actions</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {currentRecords.length === 0 ? (
-                              <tr>
-                                <td colSpan="8" className="text-center py-4 text-muted">
-                                  No jobs found
-                                </td>
-                              </tr>
-                            ) : (
-                              currentRecords.map((job) => (
-                                <tr key={job.job_id}>
-                                  <td className="ps-2">
-                                    <span className="text-muted small fw-medium">{job.job_id}</span>
-                                  </td>
-                                  <td className="fw-medium text-dark">
-                                    {job.title}
-                                    {job.title_hindi && (
-                                      <div className="small text-muted">{job.title_hindi}</div>
-                                    )}
-                                  </td>
-                                  <td className="small">
-                                    {job.location || '-'}
-                                  </td>
-                                  <td className="small">
-                                    <Badge bg={job.job_type === 'full_time' ? 'success' : job.job_type === 'part_time' ? 'info' : job.job_type === 'internship' ? 'warning' : 'secondary'}>
-                                      {job.job_type?.replace('_', ' ')}
-                                    </Badge>
-                                  </td>
-                                  <td className="small">
-                                    {job.salary || '-'}
-                                  </td>
-                                  <td className="small">
-                                    {formatDate(job.last_date_to_apply)}
-                                  </td>
-                                  <td className="small">
-                                    <Badge bg={isJobActive(job) ? 'success' : 'danger'}>
-                                      {isJobActive(job) ? 'Active' : 'Inactive'}
-                                    </Badge>
-                                  </td>
-                                  <td className="text-end pe-3">
-                                    <div className="d-flex gap-1 justify-content-end">
-                                      <Button
-                                        variant={isJobActive(job) ? 'outline-success' : 'outline-secondary'}
-                                        size="sm"
-                                        className="p-1"
-                                        style={{ width: '28px', height: '28px' }}
-                                        onClick={() => toggleJobStatus(job)}
-                                        title={isJobActive(job) ? 'Deactivate' : 'Activate'}
-                                      >
-                                        {isJobActive(job) ? <FaToggleOn style={{ fontSize: '12px', color: 'green' }} /> : <FaToggleOff style={{ fontSize: '12px', color: 'gray' }} />}
-                                      </Button>
-                                      <Button
-                                        variant="outline-primary"
-                                        size="sm"
-                                        className="p-1"
-                                        style={{ width: '28px', height: '28px' }}
-                                        onClick={() => handleView(job)}
-                                        title="View"
-                                      >
-                                        <i className="bi bi-eye" style={{ fontSize: '12px' }}></i>
-                                      </Button>
-                                      <Button
-                                        variant="outline-warning"
-                                        size="sm"
-                                        className="p-1"
-                                        style={{ width: '28px', height: '28px' }}
-                                        onClick={() => handleEdit(job)}
-                                        title="Edit"
-                                      >
-                                        <FaEdit style={{ fontSize: '12px' }} />
-                                      </Button>
-                                      <Button
-                                        variant="outline-danger"
-                                        size="sm"
-                                        className="p-1"
-                                        style={{ width: '28px', height: '28px' }}
-                                        onClick={() => handleDelete(job)}
-                                        title="Delete"
-                                      >
-                                        <FaTrash style={{ fontSize: '12px' }} />
-                                      </Button>
-                                    </div>
-                                  </td>
-                                </tr>
-                              ))
-                            )}
-                          </tbody>
-                        </Table>
-                      </div>
-                      <div className="mobile-card-view d-md-none">
-                        {currentRecords.length === 0 ? (
-                          <div className="text-center py-4 text-muted">
-                            No jobs found
-                          </div>
-                        ) : (
-                          currentRecords.map((job) => (
-                            <div key={job.job_id} className="grooming-class-card">
-                              <div className="card-header">
-                                <span className="class-id">ID: {job.job_id}</span>
-                              </div>
-                              <div className="class-title">{job.title}</div>
-                              {job.title_hindi && (
-                                <div className="class-title-hindi">{job.title_hindi}</div>
-                              )}
-                              <div className="class-info">
-                                <div className="info-item">
-                                  <span className="label"><FaMapMarkerAlt className="me-1" />Location:</span>{' '}
-                                  <span className="value">{job.location || '-'}</span>
-                                </div>
-                                <div className="info-item">
-                                  <span className="label"><FaBriefcase className="me-1" />Type:</span>{' '}
-                                  <span className="value">{job.job_type?.replace('_', ' ')}</span>
-                                </div>
-                                <div className="info-item">
-                                  <span className="label"><FaMoneyBillWave className="me-1" />Salary:</span>{' '}
-                                  <span className="value">{job.salary || '-'}</span>
-                                </div>
-                                <div className="info-item">
-                                  <span className="label"><FaCalendar className="me-1" />Last Date:</span>{' '}
-                                  <span className="value">{formatDate(job.last_date_to_apply)}</span>
-                                </div>
-<div className="info-item">
-                                   <span className="label">Status:</span>{' '}
-                                   <Badge bg={isJobActive(job) ? 'success' : 'danger'}>{isJobActive(job) ? 'Active' : 'Inactive'}</Badge>
-                                 </div>
-                               </div>
-                               <div className="card-actions">
-                                 <Button
-                                   variant={isJobActive(job) ? 'outline-success' : 'outline-secondary'}
-                                   size="sm"
-                                   onClick={() => toggleJobStatus(job)}
-                                 >
-                                   {isJobActive(job) ? <FaToggleOn className="me-1" /> : <FaToggleOff className="me-1" />} 
-                                   {isJobActive(job) ? 'Active' : 'Inactive'}
-                                 </Button>
-                                <Button
-                                  variant="outline-primary"
-                                  size="sm"
-                                  onClick={() => handleView(job)}
-                                >
-                                  <i className="bi bi-eye me-1"></i> View
-                                </Button>
-                                <Button
-                                  variant="outline-warning"
-                                  size="sm"
-                                  onClick={() => handleEdit(job)}
-                                >
-                                  <FaEdit className="me-1" /> Edit
-                                </Button>
-                                <Button
-                                  variant="outline-danger"
-                                  size="sm"
-                                  onClick={() => handleDelete(job)}
-                                >
-                                  <FaTrash className="me-1" /> Delete
-                                </Button>
-                              </div>
-                            </div>
-                          ))
-                        )}
-                      </div>
-                    </Card.Body>
-                    {totalPages > 1 && (
-                      <Card.Footer className="bg-light border-top py-2 px-3">
-                        <nav aria-label="Jobs pagination">
-                          <ul className="pagination justify-content-center pagination-sm mb-0">
-                            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                              <button className="page-link" onClick={handlePreviousPage}>‹</button>
-                            </li>
-                            {Array.from({ length: totalPages }, (_, i) => i + 1).filter(page => {
-                              return page >= currentPage - 1 && page <= currentPage + 1 && page <= totalPages && page >= 1
-                            }).map(page => (
-                              <li key={page} className={`page-item ${page === currentPage ? 'active' : ''}`}>
-                                <button className="page-link" onClick={() => handlePageChange(page)}>{page}</button>
-                              </li>
-                            ))}
-                            <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                              <button className="page-link" onClick={handleNextPage}>›</button>
-                            </li>
-                          </ul>
-                        </nav>
-                      </Card.Footer>
-                    )}
-                  </Card>
-                </Col>
-              </Row>
-              )}
 
               {activeTab === 'seminars' && (
               <Row>
@@ -755,7 +401,7 @@ const ManageJobs = () => {
                                   </td>
                                   <td className="text-end pe-3">
                                     <div className="d-flex gap-1 justify-content-end">
-                                      <Button
+                                      <Button 
                                         variant={seminar.status === 'active' ? 'outline-success' : 'outline-secondary'}
                                         size="sm"
                                         className="p-1"
@@ -993,7 +639,7 @@ const ManageJobs = () => {
                                   </td>
                                   <td className="text-end pe-3">
                                     <div className="d-flex gap-1 justify-content-end">
-                                      <Button
+                                      <Button 
                                         variant={workshop.status === 'active' ? 'outline-success' : 'outline-secondary'}
                                         size="sm"
                                         className="p-1"
@@ -1149,8 +795,8 @@ const ManageJobs = () => {
           <Modal.Title>Confirm Delete</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Are you sure you want to delete this {activeTab === 'jobs' ? 'job' : activeTab === 'seminars' ? 'seminar' : 'workshop'}?</p>
-          <p className="text-muted">{activeTab === 'jobs' ? 'Job ID: ' : activeTab === 'seminars' ? 'Seminar ID: ' : 'Workshop ID: '}{activeTab === 'jobs' ? selectedJob?.job_id : activeTab === 'seminars' ? selectedSeminar?.seminar_id : selectedWorkshop?.workshop_id}</p>
+          <p>Are you sure you want to delete this {activeTab === 'seminars' ? 'seminar' : 'workshop'}?</p>
+          <p className="text-muted">{activeTab === 'seminars' ? 'Seminar ID: ' : 'Workshop ID: '}{activeTab === 'seminars' ? selectedSeminar?.seminar_id : selectedWorkshop?.workshop_id}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
@@ -1164,73 +810,9 @@ const ManageJobs = () => {
  
       <Modal show={showViewModal} onHide={() => setShowViewModal(false)} centered size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>{activeTab === 'jobs' ? 'Job' : activeTab === 'seminars' ? 'Seminar' : 'Workshop'} Details - {activeTab === 'jobs' ? selectedJob?.title : activeTab === 'seminars' ? selectedSeminar?.title : selectedWorkshop?.title}</Modal.Title>
+          <Modal.Title>{activeTab === 'seminars' ? 'Seminar' : 'Workshop'} Details - {activeTab === 'seminars' ? selectedSeminar?.title : selectedWorkshop?.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {activeTab === 'jobs' && selectedJob && (
-            <div className="job-details">
-              <Row className="mb-3">
-                <Col md={6}>
-                  <p><strong>Job ID:</strong> {selectedJob.job_id}</p>
-                  <p><strong><FaBriefcase className="me-1" />Job Type:</strong> {selectedJob.job_type?.replace('_', ' ')}</p>
-                  <p><strong><FaMapMarkerAlt className="me-1" />Location:</strong> {selectedJob.location || '-'}</p>
-                  <p><strong><FaMoneyBillWave className="me-1" />Salary:</strong> {selectedJob.salary || '-'}</p>
-                  <p><strong><FaClock className="me-1" />Experience:</strong> {selectedJob.experience_required || '-'}</p>
-                </Col>
-                <Col md={6}>
-                  <p><strong><FaCalendar className="me-1" />Last Date to Apply:</strong> {formatDate(selectedJob.last_date_to_apply)}</p>
-                  <p><strong>Status:</strong> <Badge bg={isJobActive(selectedJob) ? 'success' : 'danger'}>{isJobActive(selectedJob) ? 'Active' : 'Inactive'}</Badge></p>
-                  {selectedJob.apply_link && (
-                    <p><strong><FaLink className="me-1" />Apply Link:</strong> <a href={selectedJob.apply_link} target="_blank" rel="noopener noreferrer">Apply Here</a></p>
-                  )}
-                </Col>
-              </Row>
-              
-              {selectedJob.description && selectedJob.description.length > 0 && (
-                <div className="mb-3">
-                  <h6>Description (English)</h6>
-                  <ul>
-                    {selectedJob.description.map((desc, index) => (
-                      <li key={index}>{desc}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
- 
-              {selectedJob.description_hindi && selectedJob.description_hindi.length > 0 && (
-                <div className="mb-3">
-                  <h6>Description (Hindi)</h6>
-                  <ul>
-                    {selectedJob.description_hindi.map((desc, index) => (
-                      <li key={index}>{desc}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
- 
-              {selectedJob.qualifications_required && selectedJob.qualifications_required.length > 0 && (
-                <div className="mb-3">
-                  <h6><FaGraduationCap className="me-1" />Qualifications Required</h6>
-                  <div className="d-flex flex-wrap gap-2">
-                    {selectedJob.qualifications_required.map((qual, index) => (
-                      <Badge key={index} bg="info">{qual}</Badge>
-                    ))}
-                  </div>
-                </div>
-              )}
- 
-              {selectedJob.skills_required && selectedJob.skills_required.length > 0 && (
-                <div className="mb-3">
-                  <h6><FaTools className="me-1" />Skills Required</h6>
-                  <div className="d-flex flex-wrap gap-2">
-                    {selectedJob.skills_required.map((skill, index) => (
-                      <Badge key={index} bg="warning" text="dark">{skill}</Badge>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
           {activeTab === 'seminars' && selectedSeminar && (
             <div className="seminar-details">
               <Row className="mb-3">

@@ -130,7 +130,7 @@ const menuItems = [
      },
      {
        icon: <FaBriefcase />,
-       label: language === 'hi' ? "नौकरियां और सेमिनार" : "Jobs & Seminars",
+       label: language === 'hi' ? "सेमिनार" : " Seminars",
        path: "/JobOpenings",
      },
      {
