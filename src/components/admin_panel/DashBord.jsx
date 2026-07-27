@@ -3291,13 +3291,15 @@ const DashBord = () => {
                                </Badge>
                              </td>
 <td>
-                                <Button variant="info" size="sm" onClick={() => handleViewCounseling(counseling)} className="me-1">
-                                  <FaEye className="me-1" /> View
-                                </Button>
-                                <Button variant="warning" size="sm" onClick={() => handleEditCounseling(counseling)}>
-                                  <FaEdit className="me-1" /> Edit
-                                </Button>
-                              </td>
+                                 <div className="d-flex gap-1">
+                                 <Button variant="info" size="sm" onClick={() => handleViewCounseling(counseling)}>
+                                   <FaEye className="me-1" /> View
+                                 </Button>
+                                 <Button variant="warning" size="sm" onClick={() => handleEditCounseling(counseling)}>
+                                   <FaEdit className="me-1" /> Edit
+                                 </Button>
+                                 </div>
+                               </td>
                            </tr>
                          )
                        })}
