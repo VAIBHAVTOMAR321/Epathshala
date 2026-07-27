@@ -869,10 +869,12 @@ const TwelfthGuidance = () => {
                             style={{ cursor: 'pointer', borderRadius: '10px', backgroundColor: prepType === 'govtCollege' ? '#4a90d9' : 'white', transition: 'all 0.3s ease' }}
                             onClick={() => { setPrepType('govtCollege'); setTimeout(() => { if (tabsRef.current) tabsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }) }, 100) }}
                           >
-                            <Card.Body className="p-4 text-center">
-                              <FaUniversity className={`fs-2 mb-2 ${prepType === 'govtCollege' ? 'text-white' : 'text-muted'}`} />
-                              <h6 className={prepType === 'govtCollege' ? 'text-white fw-bold' : 'text-muted'}>{language === 'hi' ? "सरकारी कॉलेज" : "Government College"}</h6>
-                              <small className={prepType === 'govtCollege' ? 'text-white' : 'text-muted'}>{language === 'hi' ? "इंजीनियरिंग, मेडिकल और रिसर्च पथ" : "Engineering, medical & research pathways"}</small>
+                            <Card.Body className="p-4 d-flex align-items-center">
+                              <FaUniversity className={`fs-2 me-3 ${prepType === 'govtCollege' ? 'text-white' : 'text-muted'}`} />
+                              <div>
+                                <h6 className={prepType === 'govtCollege' ? 'text-white fw-bold' : 'text-muted'}>{language === 'hi' ? "सरकारी कॉलेज" : "Government College"}</h6>
+                                <small className={prepType === 'govtCollege' ? 'text-white' : 'text-muted'}>{language === 'hi' ? "इंजीनियरिंग, मेडिकल और रिसर्च पथ" : "Engineering, medical & research pathways"}</small>
+                              </div>
                             </Card.Body>
                           </Card>
                         </Col>
@@ -882,10 +884,12 @@ const TwelfthGuidance = () => {
                             style={{ cursor: 'pointer', borderRadius: '10px', backgroundColor: prepType === 'govtJob' ? '#e7f1ff' : 'white' }}
                             onClick={() => { setPrepType('govtJob'); setTimeout(() => { if (tabsRef.current) tabsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }) }, 100) }}
                           >
-                            <Card.Body className="p-4 text-center">
-                              <FaShieldAlt className={`fs-2 mb-2 ${prepType === 'govtJob' ? 'text-primary' : 'text-muted'}`} />
-                              <h6 className={prepType === 'govtJob' ? 'text-primary fw-bold' : 'text-muted'}>{language === 'hi' ? "सरकारी नौकरी" : "Government Job"}</h6>
-                              <small className="text-muted">{language === 'hi' ? "प्रतियोगी परीक्षाओं की तैयारी करें" : "Prepare for competitive exams"}</small>
+                            <Card.Body className="p-4 d-flex align-items-center">
+                              <FaShieldAlt className={`fs-2 me-3 ${prepType === 'govtJob' ? 'text-primary' : 'text-muted'}`} />
+                              <div>
+                                <h6 className={prepType === 'govtJob' ? 'text-primary fw-bold' : 'text-muted'}>{language === 'hi' ? "सरकारी नौकरी" : "Government Job"}</h6>
+                                <small className="text-muted">{language === 'hi' ? "प्रतियोगी परीक्षाओं की तैयारी करें" : "Prepare for competitive exams"}</small>
+                              </div>
                             </Card.Body>
                           </Card>
                         </Col>
@@ -895,10 +899,12 @@ const TwelfthGuidance = () => {
                             style={{ cursor: 'pointer', borderRadius: '10px', backgroundColor: prepType === 'private' ? '#e7f1ff' : 'white' }}
                             onClick={() => { setPrepType('private'); setTimeout(() => { if (tabsRef.current) tabsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }) }, 100) }}
                           >
-                            <Card.Body className="p-4 text-center">
-                              <FaBriefcase className={`fs-2 mb-2 ${prepType === 'private' ? 'text-primary' : 'text-muted'}`} />
-                              <h6 className={prepType === 'private' ? 'text-primary fw-bold' : 'text-muted'}>{language === 'hi' ? "प्राइवेट कॉलेज" : "Private College"}</h6>
-                              <small className="text-muted">{language === 'hi' ? "प्राइवेट कॉलेजों में सीधा प्रवेश" : "Direct admission in private colleges"}</small>
+                            <Card.Body className="p-4 d-flex align-items-center">
+                              <FaBriefcase className={`fs-2 me-3 ${prepType === 'private' ? 'text-primary' : 'text-muted'}`} />
+                              <div>
+                                <h6 className={prepType === 'private' ? 'text-primary fw-bold' : 'text-muted'}>{language === 'hi' ? "प्राइवेट कॉलेज" : "Private College"}</h6>
+                                <small className="text-muted">{language === 'hi' ? "प्राइवेट कॉलेजों में सीधा प्रवेश" : "Direct admission in private colleges"}</small>
+                              </div>
                             </Card.Body>
                           </Card>
                         </Col>
