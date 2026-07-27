@@ -155,12 +155,18 @@ const DashBord = () => {
   })
   const [loadingExercises, setLoadingExercises] = useState(false)
 
-   // State for Counseling Management
-   const [counselingData, setCounselingData] = useState([])
-   const [selectedCounseling, setSelectedCounseling] = useState(null)
-   const [showCounselingModal, setShowCounselingModal] = useState(false)
-   const [counselingPage, setCounselingPage] = useState(1)
-   const counselingItemsPerPage = 100
+// State for Counseling Management
+    const [counselingData, setCounselingData] = useState([])
+    const [selectedCounseling, setSelectedCounseling] = useState(null)
+    const [showCounselingModal, setShowCounselingModal] = useState(false)
+    const [counselingPage, setCounselingPage] = useState(1)
+    const counselingItemsPerPage = 100
+
+    // State for Counseling Edit
+    const [editingCounseling, setEditingCounseling] = useState(null)
+    const [showCounselingEditModal, setShowCounselingEditModal] = useState(false)
+    const [editCounselingStatus, setEditCounselingStatus] = useState('')
+    const [submittingCounselingEdit, setSubmittingCounselingEdit] = useState(false)
 
    // State for Enrollment Filters
    const [enrollmentSelectedSchools, setEnrollmentSelectedSchools] = useState([])
@@ -624,6 +630,40 @@ const DashBord = () => {
   const handleCloseCounselingModal = () => {
     setShowCounselingModal(false)
     setSelectedCounseling(null)
+  }
+
+  const handleEditCounseling = (counseling) => {
+    setEditingCounseling(counseling)
+    setEditCounselingStatus(counseling.status || 'pending')
+    setShowCounselingEditModal(true)
+  }
+
+  const handleCloseCounselingEditModal = () => {
+    setShowCounselingEditModal(false)
+    setEditingCounseling(null)
+    setEditCounselingStatus('')
+  }
+
+  const handleUpdateCounselingStatus = async () => {
+    if (!editingCounseling) return
+    if (submittingCounselingEdit) return
+    setSubmittingCounselingEdit(true)
+    try {
+      const config = getAuthConfig()
+      await axios.put(
+        `https://brjobsedu.com/epathshala/epathshala_backend/api/student-cousult/`,
+        { id: editingCounseling.id, status: editCounselingStatus },
+        config
+      )
+      alert('Counseling status updated successfully!')
+      handleCloseCounselingEditModal()
+      fetchData()
+    } catch (error) {
+      console.error('Error updating counseling status:', error)
+      alert('Failed to update counseling status. Please check the console for details.')
+    } finally {
+      setSubmittingCounselingEdit(false)
+    }
   }
 
   const handleNotificationsClick = async () => {
@@ -3250,11 +3290,14 @@ const DashBord = () => {
                                  {counseling.status || 'pending'}
                                </Badge>
                              </td>
-                             <td>
-                               <Button variant="info" size="sm" onClick={() => handleViewCounseling(counseling)}>
-                                 <FaEye className="me-1" /> View
-                               </Button>
-                             </td>
+<td>
+                                <Button variant="info" size="sm" onClick={() => handleViewCounseling(counseling)} className="me-1">
+                                  <FaEye className="me-1" /> View
+                                </Button>
+                                <Button variant="warning" size="sm" onClick={() => handleEditCounseling(counseling)}>
+                                  <FaEdit className="me-1" /> Edit
+                                </Button>
+                              </td>
                            </tr>
                          )
                        })}
@@ -3783,67 +3826,118 @@ const DashBord = () => {
          </Modal.Footer>
        </Modal>
 
-       <Modal show={showCounselingModal} onHide={handleCloseCounselingModal} size="lg" centered>
-         <Modal.Header closeButton className="bg-info text-white">
-           <Modal.Title>
-             <FaComments className="me-2" /> Counseling Details
-           </Modal.Title>
-         </Modal.Header>
-         <Modal.Body>
-           {selectedCounseling && (
-             <div>
-               <Row className="g-3">
-                 <Col md={6}>
-                   <Card className="h-100 shadow-sm border-0">
-                     <Card.Header className="bg-light">
-                       <h6 className="mb-0">Personal Information</h6>
-                     </Card.Header>
-                     <Card.Body>
-                       <p><strong>Student ID:</strong> {selectedCounseling.student_details?.student_id || selectedCounseling.student_id || '-'}</p>
-                       <p><strong>Full Name:</strong> {selectedCounseling.student_details?.full_name || selectedCounseling.student_details?.candidate_name || '-'}</p>
-                       <p><strong>Aadhaar No:</strong> {selectedCounseling.student_details?.aadhaar_no ? `****${selectedCounseling.student_details.aadhaar_no.slice(-4)}` : '-'}</p>
-                       <p><strong>Phone:</strong> {selectedCounseling.student_details?.phone || selectedCounseling.student_details?.mobile_no || '-'}</p>
-                       <p><strong>Email:</strong> {selectedCounseling.student_details?.email || 'N/A'}</p>
-                       <p><strong>Class:</strong> {selectedCounseling.student_details?.class_name || '-'}</p>
-                       <p><strong>Status:</strong> <Badge bg={selectedCounseling.status === 'pending' ? 'warning' : selectedCounseling.status === 'approved' ? 'success' : 'danger'}>{selectedCounseling.status || 'pending'}</Badge></p>
-                     </Card.Body>
-                   </Card>
-                 </Col>
-                 <Col md={6}>
-                   <Card className="h-100 shadow-sm border-0">
-                     <Card.Header className="bg-light">
-                       <h6 className="mb-0">School & Location Details</h6>
-                     </Card.Header>
-                     <Card.Body>
-                       <p><strong>School Name:</strong> {selectedCounseling.student_details?.school_name || '-'}</p>
-                       <p><strong>School ID:</strong> {selectedCounseling.student_details?.school_uni_id || '-'}</p>
-                       <p><strong>State:</strong> {selectedCounseling.student_details?.state || '-'}</p>
-                       <p><strong>District:</strong> {selectedCounseling.student_details?.district || '-'}</p>
-                       <p><strong>Block:</strong> {selectedCounseling.student_details?.block || '-'}</p>
-                     </Card.Body>
-                   </Card>
-                 </Col>
-                 <Col md={12}>
-                   <Card className="shadow-sm border-0 mt-2">
-                     <Card.Header className="bg-light">
-                       <h6 className="mb-0">Counseling Information</h6>
-                     </Card.Header>
-                     <Card.Body>
-                       <p><strong>Category:</strong> {Array.isArray(selectedCounseling.category_consulting) ? selectedCounseling.category_consulting.join(', ') : selectedCounseling.category_consulting}</p>
-                       <p><strong>Requested At:</strong> {new Date(selectedCounseling.created_at || selectedCounseling.student_details?.created_at || Date.now()).toLocaleString()}</p>
-                     </Card.Body>
-                   </Card>
-                 </Col>
-               </Row>
-             </div>
-           )}
-         </Modal.Body>
-         <Modal.Footer>
-           <Button variant="secondary" onClick={handleCloseCounselingModal}>
-             Close
-           </Button>
-         </Modal.Footer>
-       </Modal>
+<Modal show={showCounselingModal} onHide={handleCloseCounselingModal} size="lg" centered>
+          <Modal.Header closeButton className="bg-info text-white">
+            <Modal.Title>
+              <FaComments className="me-2" /> Counseling Details
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {selectedCounseling && (
+              <div>
+                <Row className="g-3">
+                  <Col md={6}>
+                    <Card className="h-100 shadow-sm border-0">
+                      <Card.Header className="bg-light">
+                        <h6 className="mb-0">Personal Information</h6>
+                      </Card.Header>
+                      <Card.Body>
+                        <p><strong>Student ID:</strong> {selectedCounseling.student_details?.student_id || selectedCounseling.student_id || '-'}</p>
+                        <p><strong>Full Name:</strong> {selectedCounseling.student_details?.full_name || selectedCounseling.student_details?.candidate_name || '-'}</p>
+                        <p><strong>Aadhaar No:</strong> {selectedCounseling.student_details?.aadhaar_no ? `****${selectedCounseling.student_details.aadhaar_no.slice(-4)}` : '-'}</p>
+                        <p><strong>Phone:</strong> {selectedCounseling.student_details?.phone || selectedCounseling.student_details?.mobile_no || '-'}</p>
+                        <p><strong>Email:</strong> {selectedCounseling.student_details?.email || 'N/A'}</p>
+                        <p><strong>Class:</strong> {selectedCounseling.student_details?.class_name || '-'}</p>
+                        <p><strong>Status:</strong> <Badge bg={selectedCounseling.status === 'pending' ? 'warning' : selectedCounseling.status === 'approved' ? 'success' : 'danger'}>{selectedCounseling.status || 'pending'}</Badge></p>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                  <Col md={6}>
+                    <Card className="h-100 shadow-sm border-0">
+                      <Card.Header className="bg-light">
+                        <h6 className="mb-0">School & Location Details</h6>
+                      </Card.Header>
+                      <Card.Body>
+                        <p><strong>School Name:</strong> {selectedCounseling.student_details?.school_name || '-'}</p>
+                        <p><strong>School ID:</strong> {selectedCounseling.student_details?.school_uni_id || '-'}</p>
+                        <p><strong>State:</strong> {selectedCounseling.student_details?.state || '-'}</p>
+                        <p><strong>District:</strong> {selectedCounseling.student_details?.district || '-'}</p>
+                        <p><strong>Block:</strong> {selectedCounseling.student_details?.block || '-'}</p>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                  <Col md={12}>
+                    <Card className="shadow-sm border-0 mt-2">
+                      <Card.Header className="bg-light">
+                        <h6 className="mb-0">Counseling Information</h6>
+                      </Card.Header>
+                      <Card.Body>
+                        <p><strong>Category:</strong> {Array.isArray(selectedCounseling.category_consulting) ? selectedCounseling.category_consulting.join(', ') : selectedCounseling.category_consulting}</p>
+                        <p><strong>Requested At:</strong> {new Date(selectedCounseling.created_at || selectedCounseling.student_details?.created_at || Date.now()).toLocaleString()}</p>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </Row>
+              </div>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseCounselingModal}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
+        {/* Edit Counseling Status Modal */}
+        <Modal show={showCounselingEditModal} onHide={handleCloseCounselingEditModal} size="md" centered>
+          <Modal.Header closeButton className="bg-warning text-dark">
+            <Modal.Title>
+              <FaEdit className="me-2" /> Edit Counseling Status
+            </Modal.Title>
+          </Modal.Header>
+          <Form onSubmit={(e) => { e.preventDefault(); handleUpdateCounselingStatus() }}>
+            <Modal.Body>
+              {editingCounseling && (
+                <div>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Student</Form.Label>
+                    <p className="form-control-plaintext">
+                      {editingCounseling.student_details?.full_name || editingCounseling.student_details?.candidate_name || '-'}
+                    </p>
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Category</Form.Label>
+                    <p className="form-control-plaintext">
+                      {Array.isArray(editingCounseling.category_consulting)
+                        ? editingCounseling.category_consulting.join(', ')
+                        : editingCounseling.category_consulting || '-'}
+                    </p>
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Status</Form.Label>
+                    <Form.Select
+                      value={editCounselingStatus}
+                      onChange={(e) => setEditCounselingStatus(e.target.value)}
+                      required
+                    >
+                      <option value="pending">Pending</option>
+                      <option value="approved">Approved</option>
+                      <option value="rejected">Rejected</option>
+                    </Form.Select>
+                  </Form.Group>
+                </div>
+              )}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleCloseCounselingEditModal} disabled={submittingCounselingEdit}>
+                Cancel
+              </Button>
+              <Button variant="warning" type="submit" disabled={submittingCounselingEdit}>
+                {submittingCounselingEdit ? <Spinner size="sm" animation="border" /> : 'Save Changes'}
+              </Button>
+            </Modal.Footer>
+          </Form>
+        </Modal>
 
       {/* Create Notification Modal */}
       <Modal show={showNotificationModal} onHide={() => setShowNotificationModal(false)} centered>
