@@ -89,8 +89,8 @@ const Timeschedule = () => {
           day: task.day,
           time: task.time,
           type: task.type,
-          title: { en: task.title_en, hi: task.title_hi },
-          description: { en: task.description_en, hi: task.description_hi }
+          title: task.title || { en: task.title_en || "", hi: task.title_hi || "" },
+          description: task.description || { en: task.description_en || "", hi: task.description_hi || "" }
         }));
         setTasks(mappedTasks);
       }
