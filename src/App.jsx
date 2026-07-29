@@ -60,6 +60,7 @@ import Offlinecompetition from "./components/school_panel/Offlinecompetition";
 import NinthGuidance from "./components/user_panel/NinthGuidance";
 import Timeschedule from "./components/user_panel/Timeschedule";
 import Competitive from "./components/pages/Competitive";
+import CounselingDetails from "./components/user_panel/CounselingDetails";
 import CompetitiveExamQuiz from "./components/admin_panel/CompetitiveExamQuiz";
 
 // import TwelfthGuidance from "./components/user_panel/TwelfthGuidance";
@@ -107,7 +108,8 @@ function NavBarWrapper() {
       "/NinthGuidance",
       "/SchoolSendQuery",
       "/Timeschedule",
-      "/CompetitiveExamQuiz"
+      "/CompetitiveExamQuiz",
+      "/counseling-details"
 
     ];
 
@@ -163,7 +165,8 @@ function FooterWrapper() {
     "/SchoolSendQuery",
     "/Managecourse",
     "/Timeschedule",
-    "/CompetitiveExamQuiz"
+    "/CompetitiveExamQuiz",
+    "/counseling-details"
   ];
 
   const shouldHide = hideOnRoutes.some((route) =>
@@ -508,6 +511,14 @@ function AppContent() {
           element={
             <ProtectedRoute>
               <OccupationDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/counseling-details"
+          element={
+            <ProtectedRoute>
+              <CounselingDetails />
             </ProtectedRoute>
           }
         />

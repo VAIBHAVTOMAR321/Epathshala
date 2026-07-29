@@ -28,7 +28,8 @@ import {
   FaBriefcase,
   FaGraduationCap,
   FaTasks,
-  FaClock
+  FaClock,
+  FaUserTie
 } from "react-icons/fa";
 import axios from "axios";
 
@@ -155,6 +156,11 @@ const menuItems = [
        path: "/SendQuery",
      },
      
+     {
+      icon: <FaUserTie />,
+      label: language === 'hi' ? "मेरे परामर्श" : "My Counseling",
+      path: "/counseling-details",
+    },
      
       
      
