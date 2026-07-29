@@ -79,6 +79,7 @@ const DashBord = () => {
 // State for Data
     const [unpaidEnrollmentCount, setUnpaidEnrollmentCount] = useState(0)
     const [unpaidEnrollments, setUnpaidEnrollments] = useState([])
+    const [counselors, setCounselors] = useState([]);
     const [courses, setCourses] = useState([])
     const [courseType, setCourseType] = useState('unpaid') // 'paid' or 'unpaid'
     const [loading, setLoading] = useState(true)
@@ -166,6 +167,11 @@ const DashBord = () => {
     const [editingCounseling, setEditingCounseling] = useState(null)
     const [showCounselingEditModal, setShowCounselingEditModal] = useState(false)
     const [editCounselingStatus, setEditCounselingStatus] = useState('')
+    const [editCounselingData, setEditCounselingData] = useState({
+      counseulor_id: '',
+      con_datetime: '',
+      meeting_link: ''
+    });
     const [submittingCounselingEdit, setSubmittingCounselingEdit] = useState(false)
 
    // State for Enrollment Filters
@@ -389,6 +395,16 @@ const DashBord = () => {
         }
       } catch (courseError) {
         setCourses([])
+      }
+
+      // Fetch counselors for dropdown
+      try {
+        const counselorRes = await axios.get('https://brjobsedu.com/epathshala/epathshala_backend/api/counseulor/', config);
+        if (counselorRes.data && counselorRes.data.success) {
+          setCounselors(counselorRes.data.data);
+        }
+      } catch (counselorError) {
+        setCounselors([]);
       }
 
        // Fetch counseling data
@@ -634,25 +650,51 @@ const DashBord = () => {
 
   const handleEditCounseling = (counseling) => {
     setEditingCounseling(counseling)
-    setEditCounselingStatus(counseling.status || 'pending')
+    const status = counseling.status || 'pending';
+    setEditCounselingStatus(status);
+    if (status === 'approved') {
+      setEditCounselingData({
+        counseulor_id: counseling.counseulor_id || '',
+        con_datetime: counseling.con_datetime ? counseling.con_datetime.slice(0, 16) : '',
+        meeting_link: counseling.meeting_link || ''
+      });
+    } else {
+      setEditCounselingData({
+        counseulor_id: '',
+        con_datetime: '',
+        meeting_link: ''
+      });
+    }
     setShowCounselingEditModal(true)
   }
 
   const handleCloseCounselingEditModal = () => {
     setShowCounselingEditModal(false)
     setEditingCounseling(null)
-    setEditCounselingStatus('')
+    setEditCounselingStatus('');
+    setEditCounselingData({
+      counseulor_id: '',
+      con_datetime: '',
+      meeting_link: ''
+    });
   }
 
   const handleUpdateCounselingStatus = async () => {
     if (!editingCounseling) return
     if (submittingCounselingEdit) return
     setSubmittingCounselingEdit(true)
+    const payload = { id: editingCounseling.id, status: editCounselingStatus };
+
+    if (editCounselingStatus === 'approved') {
+      payload.counseulor_id = editCounselingData.counseulor_id;
+      payload.con_datetime = editCounselingData.con_datetime;
+      payload.meeting_link = editCounselingData.meeting_link;
+    }
     try {
       const config = getAuthConfig()
       await axios.put(
         `https://brjobsedu.com/epathshala/epathshala_backend/api/student-cousult/`,
-        { id: editingCounseling.id, status: editCounselingStatus },
+        payload,
         config
       )
       alert('Counseling status updated successfully!')
@@ -3852,6 +3894,12 @@ const DashBord = () => {
                         <p><strong>Class:</strong> {selectedCounseling.student_details?.class_name || '-'}</p>
                         <p><strong>Status:</strong> <Badge bg={selectedCounseling.status === 'pending' ? 'warning' : selectedCounseling.status === 'approved' ? 'success' : 'danger'}>{selectedCounseling.status || 'pending'}</Badge></p>
                       </Card.Body>
+                      {selectedCounseling.counselor_details && (
+                        <Card.Footer>
+                          <h6 className="mb-1">Assigned Counselor</h6>
+                          <p className="mb-0 small">{selectedCounseling.counselor_details.name}</p>
+                        </Card.Footer>
+                      )}
                     </Card>
                   </Col>
                   <Col md={6}>
@@ -3876,9 +3924,27 @@ const DashBord = () => {
                       <Card.Body>
                         <p><strong>Category:</strong> {Array.isArray(selectedCounseling.category_consulting) ? selectedCounseling.category_consulting.join(', ') : selectedCounseling.category_consulting}</p>
                         <p><strong>Requested At:</strong> {new Date(selectedCounseling.created_at || selectedCounseling.student_details?.created_at || Date.now()).toLocaleString()}</p>
+                        {selectedCounseling.status === 'approved' && (
+                          <>
+                            <hr />
+                            <p className="mb-1"><strong>Meeting Time:</strong> {selectedCounseling.con_datetime ? new Date(selectedCounseling.con_datetime).toLocaleString() : '-'}</p>
+                            <p className="mb-0"><strong>Meeting Link:</strong> <a href={selectedCounseling.meeting_link} target="_blank" rel="noopener noreferrer">{selectedCounseling.meeting_link}</a></p>
+                          </>
+                        )}
                       </Card.Body>
                     </Card>
                   </Col>
+                  {selectedCounseling.counselor_details && (
+                    <Col md={12}>
+                      <Card className="shadow-sm border-0 mt-2">
+                        <Card.Header className="bg-light"><h6 className="mb-0">Counselor Details</h6></Card.Header>
+                        <Card.Body>
+                          <p><strong>Name:</strong> {selectedCounseling.counselor_details.name}</p>
+                          <p><strong>Description:</strong> {selectedCounseling.counselor_details.description}</p>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  )}
                 </Row>
               </div>
             )}
@@ -3927,6 +3993,51 @@ const DashBord = () => {
                       <option value="rejected">Rejected</option>
                     </Form.Select>
                   </Form.Group>
+                  {editCounselingStatus === 'approved' && (
+                    <>
+                      <hr />
+                      <h5 className="mb-3">Assign Counselor</h5>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Counselor</Form.Label>
+                        <Form.Select
+                          value={editCounselingData.counseulor_id}
+                          onChange={(e) => setEditCounselingData({ ...editCounselingData, counseulor_id: e.target.value })}
+                          required
+                        >
+                          <option value="">Select a counselor</option>
+                          {counselors.map(c => (
+                            <option key={c.counseulor_id} value={c.counseulor_id}>{c.name}</option>
+                          ))}
+                        </Form.Select>
+                      </Form.Group>
+                      {editCounselingData.counseulor_id && counselors.find(c => c.counseulor_id === editCounselingData.counseulor_id) && (
+                        <Card className="mb-3 bg-light">
+                          <Card.Body className="p-2">
+                            <p className="small mb-1"><strong>Description:</strong> {counselors.find(c => c.counseulor_id === editCounselingData.counseulor_id).description}</p>
+                          </Card.Body>
+                        </Card>
+                      )}
+                      <Form.Group className="mb-3">
+                        <Form.Label>Date & Time</Form.Label>
+                        <Form.Control
+                          type="datetime-local"
+                          value={editCounselingData.con_datetime}
+                          onChange={(e) => setEditCounselingData({ ...editCounselingData, con_datetime: e.target.value })}
+                          required
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Meeting Link</Form.Label>
+                        <Form.Control
+                          type="url"
+                          value={editCounselingData.meeting_link}
+                          onChange={(e) => setEditCounselingData({ ...editCounselingData, meeting_link: e.target.value })}
+                          placeholder="https://meet.google.com/..."
+                          required
+                        />
+                      </Form.Group>
+                    </>
+                  )}
                 </div>
               )}
             </Modal.Body>

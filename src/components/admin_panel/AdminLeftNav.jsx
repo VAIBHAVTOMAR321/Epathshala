@@ -16,7 +16,8 @@ import {
   FaProjectDiagram,
   FaServer,
   FaUserCircle,
-  FaCalendarAlt,
+  FaCalendarAlt, 
+  FaUserTie,
   FaPlusSquare,
   FaListUl,
   FaEdit,
@@ -136,6 +137,11 @@ const menuItems = [
         icon: <FaPlusSquare />,
       },
     ],
+  },
+  {
+    icon: <FaUserTie />,
+    label: "Manage Counselors",
+    path: "/ManageCounselors",
   },
   {
     icon: <FaCube />,

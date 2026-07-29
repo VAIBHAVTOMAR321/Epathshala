@@ -52,6 +52,7 @@ import ManageJobs from "./components/admin_panel/ManageJobs";
 import AddSeminar from "./components/admin_panel/AddSeminar";
 import AddWorkshop from "./components/admin_panel/AddWorkshop";
 import Managecourse from "./components/admin_panel/Managecourse";
+import ManageCounselors from "./components/admin_panel/ManageCounselors";
 
 import JobOpenings from "./components/user_panel/JobOpenings";
 import UserEvents from "./components/user_panel/UserEvents";
@@ -60,6 +61,7 @@ import NinthGuidance from "./components/user_panel/NinthGuidance";
 import Timeschedule from "./components/user_panel/Timeschedule";
 import Competitive from "./components/pages/Competitive";
 import CompetitiveExamQuiz from "./components/admin_panel/CompetitiveExamQuiz";
+
 // import TwelfthGuidance from "./components/user_panel/TwelfthGuidance";
 
 //  Navbar Wrapper (Hide on specific routes)
@@ -99,6 +101,7 @@ function NavBarWrapper() {
       "/AddJob",
       "/ManageJobs",
       "/Managecourse",
+      "/ManageCounselors",
       "/AddSeminar",
       "/AddWorkshop",
       "/NinthGuidance",
@@ -152,6 +155,7 @@ function FooterWrapper() {
     "/Offlinecompetition",
     "/SchoolCompetitions",
     "/AddJob",
+    "/ManageCounselors",
     "/ManageJobs",
     "/AddSeminar",
     "/AddWorkshop",
@@ -488,6 +492,14 @@ function AppContent() {
           element={
             <ProtectedRoute>
               <AddWorkshop />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/ManageCounselors"
+          element={
+            <ProtectedRoute>
+              <ManageCounselors />
             </ProtectedRoute>
           }
         />
