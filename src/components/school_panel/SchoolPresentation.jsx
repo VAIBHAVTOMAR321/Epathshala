@@ -17,6 +17,7 @@ import '../../assets/css/SchoolPresentation.css';
 
 const API_URL = 'https://brjobsedu.com/epathshala/epathshala_backend/api/student-presentation-reg/';
 const SUBMISSIONS_API_URL = 'https://brjobsedu.com/epathshala/epathshala_backend/api/student-presentation-submissions/';
+const TOPICS_API_URL = 'https://brjobsedu.com/epathshala/epathshala_backend/api/presentation-topics/';
 const PAGE_SIZE = 50;
 
 const emptyStudentForm = { full_name: '', class_name: '', roll_no: '' };
@@ -38,6 +39,7 @@ const SchoolPresentation = () => {
   const [activeTab, setActiveTab] = useState('single');
   const [students, setStudents] = useState([]);
   const [groups, setGroups] = useState([]);
+const [topics, setTopics] = useState([]);
   const [loadingGroups, setLoadingGroups] = useState(false);
   const [groupSaving, setGroupSaving] = useState(false);
   const [editingGroup, setEditingGroup] = useState(null);
@@ -212,12 +214,25 @@ const SchoolPresentation = () => {
     }
   }, [accessToken, authConfig]);
 
+  const fetchTopics = useCallback(async () => {
+    if (!accessToken) return;
+    try {
+      const response = await axios.get(TOPICS_API_URL, authConfig());
+      const body = response.data;
+      const records = Array.isArray(body?.data) ? body.data : (body?.data ? [body.data] : []);
+      setTopics(records.filter((t) => t.is_active));
+    } catch (err) {
+      console.error('Fetch presentation topics failed:', err);
+    }
+  }, [accessToken, authConfig]);
+
   useEffect(() => {
     if (activeTab === 'groups') {
       fetchStudents();
       fetchGroups();
+      fetchTopics();
     }
-  }, [activeTab, fetchStudents, fetchGroups]);
+  }, [activeTab, fetchStudents, fetchGroups, fetchTopics]);
 
   const groupedStudentIds = useMemo(() => {
     const ids = new Set();
@@ -819,7 +834,7 @@ const SchoolPresentation = () => {
                     <Form onSubmit={submitGroup}>
                       <Row className="g-3">
                         <Col xs={12} md={6}><Form.Group><Form.Label>Group Name *</Form.Label><Form.Control value={groupForm.group_name} onChange={(e) => setGroupForm((p) => ({ ...p, group_name: e.target.value }))} placeholder="e.g. Digital Innovators" required /></Form.Group></Col>
-                        <Col xs={12} md={6}><Form.Group><Form.Label>Presentation Topic *</Form.Label><Form.Control value={groupForm.topic_name} onChange={(e) => setGroupForm((p) => ({ ...p, topic_name: e.target.value }))} placeholder="e.g. Digital India" required /></Form.Group></Col>
+                        <Col xs={12} md={6}><Form.Group><Form.Label>Presentation Topic *</Form.Label><Form.Select value={groupForm.topic_name} onChange={(e) => setGroupForm((p) => ({ ...p, topic_name: e.target.value }))} required><option value="">Select a topic</option>{topics.map((t) => <option key={t.id} value={t.topic}>{t.topic}</option>)}</Form.Select></Form.Group></Col>
                         <Col xs={12} md={6}><Form.Group><Form.Label>Presentation Link</Form.Label><Form.Control type="url" value={groupForm.submission_link} onChange={(e) => setGroupForm((p) => ({ ...p, submission_link: e.target.value }))} placeholder="https://..." /></Form.Group></Col>
                         <Col xs={12} md={6}><Form.Group><Form.Label>Presentation File</Form.Label><Form.Control type="file" accept=".pdf,.ppt,.pptx,.doc,.docx,.mp4" onChange={(e) => setGroupForm((p) => ({ ...p, submission_file: e.target.files?.[0] || null }))} /><Form.Text>Provide a link or upload a file.</Form.Text></Form.Group></Col>
                       </Row>
