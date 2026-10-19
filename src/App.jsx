@@ -171,7 +171,8 @@ function FooterWrapper() {
     "/Timeschedule",
     "/CompetitiveExamQuiz",
     "/counseling-details",
-    "/AdminSchoolPresentation"
+    "/AdminSchoolPresentation",
+    "/SchoolPresentation"
   ];
 
   const shouldHide = hideOnRoutes.some((route) =>
