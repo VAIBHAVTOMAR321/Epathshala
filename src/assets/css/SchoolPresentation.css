@@ -313,3 +313,434 @@
     min-width: 760px;
   }
 }
+
+/* Group creation and group-wise presentation submissions */
+.presentation-registration__group-picker {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  background: #fbfdff;
+}
+.presentation-registration__student-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  max-height: 380px;
+  overflow-y: auto;
+}
+.presentation-registration__student-option {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+.presentation-registration__student-option.is-selected {
+  border-color: #60a5fa;
+  background: #eff6ff;
+}
+.presentation-registration__student-option .form-check {
+  margin: 0;
+  flex: 0 0 auto;
+}
+.presentation-registration__student-option-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 3px;
+}
+.presentation-registration__student-option-main strong {
+  color: #1e293b;
+  font-size: 0.86rem;
+  overflow-wrap: anywhere;
+}
+.presentation-registration__student-option-main small {
+  color: #64748b;
+  font-size: 0.76rem;
+}
+.presentation-registration__student-option-id {
+  margin-left: auto;
+  color: #64748b;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+.presentation-registration__group-students {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 160px;
+}
+.presentation-registration__group-students span {
+  font-size: 0.78rem;
+}
+@media (max-width: 767px) {
+  .presentation-registration__student-options {
+    grid-template-columns: 1fr;
+  }
+  .presentation-registration__group-picker {
+    padding: 12px;
+  }
+  .presentation-registration__student-option {
+    align-items: flex-start;
+  }
+  .presentation-registration__student-option-id {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: right;
+  }
+}
+
+/* Compact, polished form controls */
+.presentation-registration {
+  max-width: 1480px;
+  font-size: 14px;
+}
+.presentation-registration__heading {
+  margin: 2px 0 16px;
+  gap: 14px;
+}
+.presentation-registration__heading h2 {
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  margin: 3px 0 5px;
+  letter-spacing: -0.025em;
+}
+.presentation-registration__heading p {
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+.presentation-registration__tabs {
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+}
+.presentation-registration__tabs .btn {
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  border-radius: 7px;
+}
+.presentation-registration__card {
+  border-radius: 12px;
+  box-shadow: 0 3px 14px rgba(15, 23, 42, 0.035);
+}
+.presentation-registration__card > .card-header {
+  padding: 13px 17px;
+  gap: 10px;
+}
+.presentation-registration__card-header h5,
+.presentation-registration__card .card-header h5 {
+  font-size: 0.92rem;
+}
+.presentation-registration__card .card-header p {
+  font-size: 0.77rem;
+  line-height: 1.4;
+}
+.presentation-registration__card-icon,
+.presentation-registration__upload-icon {
+  flex-basis: 36px;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  font-size: 0.95rem;
+}
+.presentation-registration__card .card-body {
+  padding: 17px;
+}
+.presentation-registration .form-label {
+  display: inline-block;
+  margin-bottom: 5px;
+  color: #334155;
+  font-size: 0.78rem;
+  line-height: 1.25;
+  font-weight: 650;
+}
+.presentation-registration .form-control,
+.presentation-registration .form-select {
+  min-height: 36px;
+  height: 36px;
+  padding: 7px 10px;
+  border: 1px solid #d7e0eb;
+  border-radius: 7px;
+  background-color: #fff;
+  color: #1e293b;
+  font-size: 0.82rem;
+  line-height: 1.3;
+  box-shadow: none;
+}
+.presentation-registration textarea.form-control {
+  min-height: 84px;
+  height: auto;
+  resize: vertical;
+}
+.presentation-registration input[type="file"].form-control {
+  height: auto;
+  min-height: 36px;
+  padding: 5px 8px;
+}
+.presentation-registration .form-control::placeholder {
+  color: #94a3b8;
+  opacity: 1;
+}
+.presentation-registration .form-control:focus,
+.presentation-registration .form-select:focus {
+  border-color: #8aaff7;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+.presentation-registration .form-text {
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 0.7rem;
+  line-height: 1.35;
+}
+.presentation-registration .form-check-label {
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+.presentation-registration .form-check-input {
+  width: 15px;
+  height: 15px;
+  margin-top: 0.15em;
+}
+.presentation-registration .btn {
+  font-size: 0.81rem;
+  line-height: 1.25;
+}
+.presentation-registration__form-actions {
+  margin-top: 16px;
+}
+.presentation-registration__form-actions .btn {
+  min-height: 35px;
+  padding: 8px 13px;
+  border-radius: 7px;
+}
+.presentation-registration__upload {
+  gap: 13px;
+  padding: 15px;
+  border-radius: 10px;
+}
+.presentation-registration__upload h6 {
+  font-size: 0.87rem;
+  margin-bottom: 4px;
+}
+.presentation-registration__upload p {
+  font-size: 0.77rem;
+  line-height: 1.4;
+  margin-bottom: 9px;
+}
+.presentation-registration__table-heading {
+  margin-bottom: 9px;
+}
+.presentation-registration__table-heading h5 {
+  font-size: 0.91rem;
+}
+.presentation-registration__table-heading span {
+  font-size: 0.74rem;
+}
+.presentation-registration__table thead th {
+  font-size: 0.73rem;
+  padding: 9px 10px;
+}
+.presentation-registration__table tbody td {
+  font-size: 0.78rem;
+  padding: 8px 10px;
+}
+.presentation-registration__group-picker {
+  padding: 13px;
+  border-radius: 10px;
+}
+.presentation-registration__student-options {
+  gap: 7px;
+  max-height: 310px;
+}
+.presentation-registration__student-option {
+  gap: 9px;
+  padding: 9px 10px;
+  border-radius: 8px;
+}
+.presentation-registration__student-option-main {
+  gap: 2px;
+}
+.presentation-registration__student-option-main strong {
+  font-size: 0.8rem;
+}
+.presentation-registration__student-option-main small {
+  font-size: 0.71rem;
+}
+.presentation-registration__student-option-id {
+  font-size: 0.66rem;
+}
+.presentation-registration .alert {
+  padding: 10px 12px;
+  font-size: 0.8rem;
+  border-radius: 8px;
+}
+.presentation-registration .badge {
+  color: #ffff;
+  font-size: 0.7rem;
+  font-weight: 650;
+}
+.presentation-registration .modal-header,
+.presentation-registration .modal-footer {
+  padding: 12px 16px;
+}
+.presentation-registration .modal-body {
+  padding: 16px;
+}
+.presentation-registration .modal-title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+@media (max-width: 1023px) {
+  .presentation-registration__card .card-body {
+    padding: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .presentation-registration__heading h2 {
+    font-size: 1.25rem;
+  }
+  .presentation-registration__tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .presentation-registration__tabs .btn {
+    padding: 8px 9px;
+    font-size: 0.78rem;
+  }
+  .presentation-registration__card > .card-header {
+    padding: 12px;
+  }
+  .presentation-registration__card .card-body {
+    padding: 12px;
+  }
+  .presentation-registration__group-picker {
+    padding: 10px;
+  }
+  .presentation-registration__student-option {
+    padding: 9px;
+  }
+  .presentation-registration__form-actions .btn {
+    width: auto;
+  }
+}
+
+/* Compact multi-select dropdown for presentation group students */
+.presentation-registration__student-dropdown-wrap {
+  width: 100%;
+  max-width: 620px;
+}
+.presentation-registration__student-dropdown {
+  width: 100%;
+}
+.presentation-registration__student-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #fff;
+  color: #334155;
+  font-size: 0.82rem;
+  text-align: left;
+  box-shadow: none;
+}
+.presentation-registration__student-dropdown-toggle:hover,
+.presentation-registration__student-dropdown-toggle:focus,
+.presentation-registration__student-dropdown-toggle.show {
+  border-color: #64748b;
+  background: #fff;
+  color: #1e293b;
+  box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.1);
+}
+.presentation-registration__dropdown-caret {
+  margin-left: 12px;
+  color: #64748b;
+  font-size: 1rem;
+}
+.presentation-registration__student-dropdown-menu {
+  width: 100%;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 5px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);
+}
+.presentation-registration__student-dropdown-hint {
+  position: sticky;
+  top: -5px;
+  z-index: 1;
+  padding: 7px 9px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.presentation-registration__student-dropdown-item {
+  padding: 7px 9px;
+  border-radius: 5px;
+  white-space: normal;
+  cursor: pointer;
+}
+.presentation-registration__student-dropdown-item:hover,
+.presentation-registration__student-dropdown-item.is-selected {
+  background: #f1f5f9;
+}
+.presentation-registration__student-dropdown-item.is-disabled {
+  opacity: 0.55;
+}
+.presentation-registration__student-dropdown-item .form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 0;
+  margin: 0;
+}
+.presentation-registration__student-dropdown-item .form-check-input {
+  flex: 0 0 auto;
+  margin: 3px 0 0;
+  cursor: pointer;
+}
+.presentation-registration__student-dropdown-item .form-check-input:disabled {
+  cursor: not-allowed;
+}
+.presentation-registration__student-dropdown-item .form-check-label {
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+.presentation-registration__dropdown-student-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.presentation-registration__dropdown-student-label strong {
+  color: #1e293b;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.presentation-registration__dropdown-student-label small {
+  color: #64748b;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.presentation-registration__selected-students-summary {
+  margin-top: 6px;
+  color: #64748b;
+  font-size: 0.73rem;
+  line-height: 1.45;
+}
