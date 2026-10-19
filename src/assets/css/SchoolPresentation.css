@@ -1,0 +1,315 @@
+/* Student Presentation Registration — scoped styles */
+.school-presentation-fresh {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: clip;
+}
+.school-presentation-fresh__main {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 0;
+}
+.school-presentation-fresh__content {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 20px;
+}
+.presentation-registration {
+  color: #1f2937;
+  max-width: 1600px;
+  padding: 0;
+}
+.presentation-registration__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 4px 0 22px;
+}
+.presentation-registration__eyebrow {
+  color: #2563eb;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+.presentation-registration__heading h2 {
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  margin: 5px 0 7px;
+}
+.presentation-registration__heading p {
+  color: #64748b;
+  margin: 0;
+  font-size: 0.94rem;
+}
+.presentation-registration__school-badge {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  padding: 9px 12px;
+  max-width: 280px;
+  font-size: 0.78rem;
+}
+.presentation-registration__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 6px;
+  margin-bottom: 18px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 13px;
+}
+.presentation-registration__tabs .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #64748b;
+  font-weight: 650;
+  text-decoration: none;
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 15px;
+}
+.presentation-registration__tabs .btn.active {
+  background: #fff;
+  color: #1d4ed8;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+.presentation-registration__card {
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  box-shadow: 0 5px 22px rgba(15, 23, 42, 0.045);
+  overflow: hidden;
+}
+.presentation-registration__card > .card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  background: #fff;
+  border-bottom: 1px solid #edf2f7;
+}
+.presentation-registration__card-header h5,
+.presentation-registration__card .card-header h5 {
+  font-size: 1rem;
+  font-weight: 750;
+  margin: 0;
+}
+.presentation-registration__card .card-header p {
+  color: #64748b;
+  font-size: 0.82rem;
+  margin: 4px 0 0;
+}
+.presentation-registration__card-icon,
+.presentation-registration__upload-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  color: #1d4ed8;
+  background: #eff6ff;
+  font-size: 1.1rem;
+}
+.presentation-registration__card .card-body {
+  padding: 22px;
+}
+.presentation-registration .form-label {
+  color: #334155;
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+.presentation-registration .form-control {
+  min-height: 42px;
+  border-color: #dbe3ee;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+.presentation-registration .form-control:focus {
+  border-color: #93b4fb;
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.1);
+}
+.presentation-registration .form-text {
+  font-size: 0.76rem;
+}
+.presentation-registration__form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 22px;
+}
+.presentation-registration__form-actions .btn {
+  min-height: 41px;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-weight: 650;
+}
+.presentation-registration__upload {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 20px;
+  border: 1px dashed #b8c7dc;
+  background: #f8fafc;
+  border-radius: 12px;
+}
+.presentation-registration__upload h6 {
+  font-weight: 750;
+  margin: 0 0 5px;
+}
+.presentation-registration__upload p {
+  color: #64748b;
+  font-size: 0.84rem;
+  margin: 0 0 12px;
+}
+.presentation-registration__upload > .btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.presentation-registration__table-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.presentation-registration__table-heading h5 {
+  font-size: 1rem;
+  font-weight: 750;
+  margin: 0 0 3px;
+}
+.presentation-registration__table-heading span {
+  color: #64748b;
+  font-size: 0.8rem;
+}
+.presentation-registration__table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 9px;
+}
+.presentation-registration__table {
+  margin: 0;
+  min-width: 760px;
+  vertical-align: middle;
+}
+.presentation-registration__table thead th {
+  background: #f1f5f9;
+  color: #334155;
+  white-space: nowrap;
+  font-size: 0.79rem;
+  font-weight: 750;
+  padding: 12px;
+}
+.presentation-registration__table tbody td {
+  font-size: 0.84rem;
+  padding: 11px 12px;
+}
+.presentation-registration__table .btn {
+  white-space: nowrap;
+}
+.presentation-registration__list-header {
+  justify-content: space-between;
+}
+.presentation-registration__list-header > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.presentation-registration__list-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.presentation-registration__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 45px 10px;
+  color: #64748b;
+}
+.presentation-registration .modal-content {
+  border: 0;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.presentation-registration .modal-header,
+.presentation-registration .modal-footer {
+  padding: 16px 20px;
+}
+@media (max-width: 1023px) {
+  .school-presentation-fresh__content {
+    padding: 16px;
+  }
+  .presentation-registration__card .card-body {
+    padding: 18px;
+  }
+  .presentation-registration__upload {
+    flex-wrap: wrap;
+  }
+  .presentation-registration__upload > .btn {
+    margin-left: 58px;
+  }
+}
+@media (max-width: 767px) {
+  .school-presentation-fresh__content {
+    padding: 12px;
+  }
+  .presentation-registration__heading {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .presentation-registration__school-badge {
+    max-width: 100%;
+  }
+  .presentation-registration__tabs {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .presentation-registration__tabs .btn {
+    justify-content: flex-start;
+  }
+  .presentation-registration__card > .card-header {
+    padding: 14px;
+  }
+  .presentation-registration__card .card-body {
+    padding: 14px;
+  }
+  .presentation-registration__upload {
+    align-items: flex-start;
+    padding: 14px;
+    gap: 12px;
+  }
+  .presentation-registration__upload > div:nth-child(2) {
+    flex-basis: calc(100% - 56px);
+  }
+  .presentation-registration__upload > .btn {
+    margin-left: 0;
+    width: 100%;
+  }
+  .presentation-registration__list-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .presentation-registration__list-actions {
+    width: 100%;
+  }
+  .presentation-registration__table-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .presentation-registration__form-actions .btn {
+    width: 100%;
+  }
+  .presentation-registration__table {
+    min-width: 760px;
+  }
+}
