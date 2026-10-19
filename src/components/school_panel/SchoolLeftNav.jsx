@@ -78,6 +78,11 @@ const menuItems = [
     path: "/SchoolQuizList",
   },
   {
+    icon: <FaBook />,
+    label: "School Presentation",
+    path: "/SchoolPresentation",
+  },
+  {
     icon: <FaUsers />,
     label: "Offline Competition",
     path: "/Offlinecompetition",

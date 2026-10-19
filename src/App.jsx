@@ -36,6 +36,8 @@ import StudentIssue from "./components/admin_panel/StudentIssue";
 import QuizManageMent from "./components/admin_panel/QuizManageMent";
 import SchoolQuiz from "./components/admin_panel/SchoolQuiz";
 import CourseFeedback from "./components/admin_panel/CourseFeedback";
+import AdminSchoolPresentation from "./components/admin_panel/AdminSchoolPresentation";
+import SchoolPresentation from "./components/school_panel/SchoolPresentation";
 import UserQuiz from "./components/user_panel/UserQuiz";
 import TenthGuidance from "./components/user_panel/TenthGuidance";
 import OccupationDetails from "./components/user_panel/OccupationDetails";
@@ -80,6 +82,8 @@ function NavBarWrapper() {
       "/SchoolStudentRegistration",
       "/StudentIssue",
       "/CourseFeedback",
+      "/AdminSchoolPresentation",
+      "/SchoolPresentation",
       "/SchoolQuiz",
       "/UserQuiz",
       "/TenthGuidance",
@@ -166,7 +170,8 @@ function FooterWrapper() {
     "/Managecourse",
     "/Timeschedule",
     "/CompetitiveExamQuiz",
-    "/counseling-details"
+    "/counseling-details",
+    "/AdminSchoolPresentation"
   ];
 
   const shouldHide = hideOnRoutes.some((route) =>
@@ -383,6 +388,22 @@ function AppContent() {
           element={
             <ProtectedRoute>
               <CourseFeedback />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/AdminSchoolPresentation"
+          element={
+            <ProtectedRoute>
+              <AdminSchoolPresentation />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/SchoolPresentation"
+          element={
+            <ProtectedRoute>
+              <SchoolPresentation />
             </ProtectedRoute>
           }
         />

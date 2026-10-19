@@ -175,6 +175,11 @@ const menuItems = [
     path: "/CourseFeedback",
   },
   {
+    icon: <FaClipboardList />,
+    label: "School Presentation",
+    path: "/AdminSchoolPresentation",
+  },
+  {
     icon: <FaQuestionCircle />,
     label: "All Queries",
     path: "/StudentIssue",
