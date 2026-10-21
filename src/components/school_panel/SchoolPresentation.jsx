@@ -20,7 +20,7 @@ const SUBMISSIONS_API_URL = 'https://brjobsedu.com/epathshala/epathshala_backend
 const TOPICS_API_URL = 'https://brjobsedu.com/epathshala/epathshala_backend/api/presentation-topics/';
 const PAGE_SIZE = 50;
 
-const emptyStudentForm = { full_name: '', class_name: '', roll_no: '' };
+const emptyStudentForm = { full_name: '', class_name: '', section_name: '', roll_no: '' };
 
 const normalizeRollNo = (value) => String(value ?? '').trim();
 const normalizeClassName = (value) => String(value ?? '').trim().toLowerCase();
@@ -78,6 +78,7 @@ const [topics, setTopics] = useState([]);
     list: 'छात्र सूची',
     fullName: 'छात्र का पूरा नाम',
     className: 'कक्षा',
+    sectionName: 'खण्ड',
     rollNo: 'रोल नंबर',
     register: 'छात्र पंजीकृत करें',
     registering: 'पंजीकरण हो रहा है...',
@@ -118,6 +119,7 @@ const [topics, setTopics] = useState([]);
     list: 'View Students',
     fullName: 'Full Name',
     className: 'Class Name',
+    sectionName: 'Section Name',
     rollNo: 'Roll Number',
     register: 'Register Student',
     registering: 'Registering...',
@@ -141,7 +143,7 @@ const [topics, setTopics] = useState([]);
     rollInvalid: 'Roll number must be a valid number.',
     loadFailed: 'Failed to load students.',
     fileInvalid: 'Please upload an .xlsx, .xls, or .csv file.',
-    fileFormat: 'File must contain full_name, class_name, and roll_no columns.',
+    fileFormat: 'File must contain full_name, class_name, section_name, and roll_no columns.',
     noRows: 'No data rows found in the file.',
     fixErrors: 'Please fix validation errors before submitting.',
     confirmDelete: 'Are you sure you want to delete the selected student record(s)? This cannot be undone.',
@@ -149,8 +151,8 @@ const [topics, setTopics] = useState([]);
     schoolId: 'School ID',
     autoSchool: 'Automatically filled from your login',
     selectAll: 'Select All',
-    duplicateBatch: 'Duplicate class/roll number found in this file.',
-    duplicateExisting: 'This class/roll number is already registered.',
+    duplicateBatch: 'Duplicate class/section/roll number found in this file.',
+    duplicateExisting: 'This class/section/roll number is already registered.',
   }, [isHindi]);
 
   useEffect(() => {
@@ -383,6 +385,7 @@ const [topics, setTopics] = useState([]);
     const errors = {};
     if (!String(student.full_name ?? '').trim()) errors.full_name = text.required;
     if (!String(student.class_name ?? '').trim()) errors.class_name = text.required;
+    if (!String(student.section_name ?? '').trim()) errors.section_name = text.required;
     const roll = normalizeRollNo(student.roll_no);
     if (!roll) errors.roll_no = text.required;
     else if (!/^\d+$/.test(roll) || Number(roll) < 0) errors.roll_no = text.rollInvalid;
@@ -410,6 +413,7 @@ const [topics, setTopics] = useState([]);
       await axios.post(API_URL, {
         full_name: singleForm.full_name.trim(),
         class_name: singleForm.class_name.trim(),
+        section_name: singleForm.section_name.trim(),
         roll_no: Number(singleForm.roll_no),
       }, authConfig());
       setSuccess(isHindi ? 'छात्र सफलतापूर्वक पंजीकृत हुआ।' : 'Student registered successfully.');
@@ -426,17 +430,17 @@ const [topics, setTopics] = useState([]);
 
   const downloadTemplate = () => {
     const worksheet = XLSX.utils.json_to_sheet([
-      { 'Full Name': 'Riya Sharma', 'Class Name': '9th', 'Roll Number': 12 },
-      { 'Full Name': 'Aman Verma', 'Class Name': '10th', 'Roll Number': 5 },
+      { 'Full Name': 'Riya Sharma', 'Class Name': '9th', 'Section Name': 'A', 'Roll Number': 12 },
+      { 'Full Name': 'Aman Verma', 'Class Name': '10th', 'Section Name': 'A', 'Roll Number': 5 },
     ]);
-    worksheet['!cols'] = [{ wch: 28 }, { wch: 18 }, { wch: 14 }];
+    worksheet['!cols'] = [{ wch: 28 }, { wch: 18 }, { wch: 18 }, { wch: 14 }];
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Students');
     XLSX.writeFile(workbook, 'student_presentation_template.xlsx');
   };
 
   const studentKey = (student) =>
-    `${normalizeClassName(student.class_name)}::${normalizeRollNo(student.roll_no)}`;
+    `${normalizeClassName(student.class_name)}::${normalizeClassName(student.section_name)}::${normalizeRollNo(student.roll_no)}`;
 
   const validateBulkRows = (rows, existing = new Set()) => {
     const errors = [];
@@ -511,9 +515,10 @@ const [topics, setTopics] = useState([]);
           return {
             full_name: String(normalized.full_name ?? normalized.name ?? normalized.student_name ?? '').trim(),
             class_name: String(normalized.class_name ?? normalized.class ?? '').trim(),
+            section_name: String(normalized.section_name ?? normalized.section ?? '').trim(),
             roll_no: String(normalized.roll_no ?? normalized.roll_number ?? normalized.roll ?? '').trim(),
           };
-        }).filter((row) => row.full_name || row.class_name || row.roll_no);
+        }).filter((row) => row.full_name || row.class_name || row.section_name || row.roll_no);
 
         if (!normalizedRows.length) {
           setError(text.noRows);
@@ -522,8 +527,9 @@ const [topics, setTopics] = useState([]);
         const headers = Object.keys(rows[0]).map((key) => key.trim().toLowerCase().replace(/[\s-]+/g, '_'));
         const hasName = headers.some((key) => ['full_name', 'name', 'student_name'].includes(key));
         const hasClass = headers.some((key) => ['class_name', 'class'].includes(key));
+        const hasSection = headers.some((key) => ['section_name', 'section'].includes(key));
         const hasRoll = headers.some((key) => ['roll_no', 'roll_number', 'roll'].includes(key));
-        if (!hasName || !hasClass || !hasRoll) {
+        if (!hasName || !hasClass || !hasSection || !hasRoll) {
           setError(text.fileFormat);
           return;
         }
@@ -572,6 +578,7 @@ const [topics, setTopics] = useState([]);
         await axios.post(API_URL, {
           full_name: row.full_name.trim(),
           class_name: row.class_name.trim(),
+          section_name: row.section_name.trim(),
           roll_no: Number(row.roll_no),
         }, authConfig());
         statuses[index] = { ...statuses[index], status: 'success', message: text.registered };
@@ -597,6 +604,7 @@ const [topics, setTopics] = useState([]);
     setEditForm({
       full_name: student.full_name || '',
       class_name: student.class_name || '',
+      section_name: student.section_name || '',
       roll_no: student.roll_no == null ? '' : String(student.roll_no),
     });
     setShowEditModal(true);
@@ -621,6 +629,7 @@ const [topics, setTopics] = useState([]);
         student_id: editingStudent.student_id,
         full_name: editForm.full_name.trim(),
         class_name: editForm.class_name.trim(),
+        section_name: editForm.section_name.trim(),
         roll_no: Number(editForm.roll_no),
       }, authConfig());
       setShowEditModal(false);
@@ -723,14 +732,14 @@ const [topics, setTopics] = useState([]);
                 <Card.Body>
                   <Form onSubmit={handleSingleSubmit} noValidate>
                     <Row className="g-3">
-                      <Col xs={12} md={4}>
+                      <Col xs={12} md={3}>
                         <Form.Group>
                           <Form.Label>{text.schoolId}</Form.Label>
                           <Form.Control value={school_uni_id || ''} disabled />
                           <Form.Text>{text.autoSchool}</Form.Text>
                         </Form.Group>
                       </Col>
-                      <Col xs={12} md={4}>
+                      <Col xs={12} md={3}>
                         <Form.Group>
                           <Form.Label>{text.fullName} <span className="text-danger">*</span></Form.Label>
                           <Form.Control name="full_name" value={singleForm.full_name} onChange={handleSingleChange} isInvalid={!!singleErrors.full_name} placeholder="e.g. Riya Sharma" />
@@ -742,6 +751,13 @@ const [topics, setTopics] = useState([]);
                           <Form.Label>{text.className} <span className="text-danger">*</span></Form.Label>
                           <Form.Control name="class_name" value={singleForm.class_name} onChange={handleSingleChange} isInvalid={!!singleErrors.class_name} placeholder="e.g. 9th" />
                           <Form.Control.Feedback type="invalid">{singleErrors.class_name}</Form.Control.Feedback>
+                        </Form.Group>
+                      </Col>
+                      <Col xs={12} md={2}>
+                        <Form.Group>
+                          <Form.Label>{text.sectionName} <span className="text-danger">*</span></Form.Label>
+                          <Form.Control name="section_name" value={singleForm.section_name} onChange={handleSingleChange} isInvalid={!!singleErrors.section_name} placeholder="e.g. A" />
+                          <Form.Control.Feedback type="invalid">{singleErrors.section_name}</Form.Control.Feedback>
                         </Form.Group>
                       </Col>
                       <Col xs={12} md={2}>
@@ -773,7 +789,7 @@ const [topics, setTopics] = useState([]);
                     <div className="presentation-registration__upload-icon"><FaFileExcel /></div>
                     <div className="flex-grow-1">
                       <h6>{text.upload}</h6>
-                      <p>Required Excel columns: <code>Full Name</code>, <code>Class Name</code>, <code>Roll Number</code>.</p>
+                      <p>Required Excel columns: <code>Full Name</code>, <code>Class Name</code>, <code>Section Name</code>, <code>Roll Number</code>.</p>
                       <Form.Control ref={fileInputRef} type="file" accept=".xlsx,.xls,.csv" onChange={handleFileChange} disabled={submitting} />
                     </div>
                     <Button variant="outline-primary" onClick={downloadTemplate}><FaFileExcel className="me-2" />{text.template}</Button>
@@ -789,7 +805,7 @@ const [topics, setTopics] = useState([]);
                       </div>
                       <div className="table-responsive presentation-registration__table-wrap">
                         <Table bordered hover responsive className="presentation-registration__table">
-                          <thead><tr><th>#</th><th>{text.fullName}</th><th>{text.className}</th><th>{text.rollNo}</th><th>{text.status}</th></tr></thead>
+                          <thead><tr><th>#</th><th>{text.fullName}</th><th>{text.className}</th><th>{text.sectionName}</th><th>{text.rollNo}</th><th>{text.status}</th></tr></thead>
                           <tbody>
                             {parsedData.map((row, index) => {
                               const status = rowStatuses[index];
@@ -797,7 +813,7 @@ const [topics, setTopics] = useState([]);
                               const alreadyExists = existingKeys.has(studentKey(row));
                               return (
                                 <tr key={`${row.class_name}-${row.roll_no}-${index}`}>
-                                  <td>{index + 1}</td><td>{row.full_name || '-'}</td><td>{row.class_name || '-'}</td><td>{row.roll_no || '-'}</td>
+                                  <td>{index + 1}</td><td>{row.full_name || '-'}</td><td>{row.class_name || '-'}</td><td>{row.section_name || '-'}</td><td>{row.roll_no || '-'}</td>
                                   <td>
                                     {status?.status === 'pending' ? <Spinner size="sm" /> :
                                       status?.status === 'success' ? <span className="text-success"><FaCheckCircle /> {status.message}</span> :
@@ -859,7 +875,7 @@ const [topics, setTopics] = useState([]);
                                       checked={checked}
                                       disabled={disabled}
                                       onChange={() => toggleGroupStudent(student.student_id)}
-                                      label={<span className="presentation-registration__dropdown-student-label"><strong>{student.full_name}</strong><small>{student.class_name} · Roll No. {student.roll_no} · {student.student_id}</small></span>}
+                                      label={<span className="presentation-registration__dropdown-student-label"><strong>{student.full_name}</strong><small>{student.class_name} · Section {student.section_name || '�'} · Roll No. {student.roll_no} · {student.student_id}</small></span>}
                                     />
                                   </Dropdown.Item>;
                                 })}
@@ -911,7 +927,7 @@ const [topics, setTopics] = useState([]);
                           <Table bordered hover responsive className="presentation-registration__table">
                             <thead><tr>
                               <th><Form.Check aria-label={text.selectAll} checked={students.length > 0 && selectedIds.length === students.length} onChange={() => setSelectedIds(selectedIds.length === students.length ? [] : students.map((s) => s.student_id).filter(Boolean))} /></th>
-                              <th>#</th><th>Student ID</th><th>{text.fullName}</th><th>{text.className}</th><th>{text.rollNo}</th><th>{text.createdAt}</th><th>{text.status}</th><th>{text.actions}</th>
+                              <th>#</th><th>Student ID</th><th>{text.fullName}</th><th>{text.className}</th><th>{text.sectionName}</th><th>{text.rollNo}</th><th>{text.createdAt}</th><th>{text.status}</th><th>{text.actions}</th>
                             </tr></thead>
                             <tbody>
                               {currentStudents.map((student, index) => (
@@ -919,7 +935,7 @@ const [topics, setTopics] = useState([]);
                                   <td><Form.Check aria-label={`Select ${student.full_name}`} checked={selectedIds.includes(student.student_id)} onChange={() => toggleSelected(student.student_id)} /></td>
                                   <td>{(currentPage - 1) * PAGE_SIZE + index + 1}</td>
                                   <td className="text-nowrap">{student.student_id}</td>
-                                  <td>{student.full_name}</td><td>{student.class_name}</td><td>{student.roll_no}</td>
+                                  <td>{student.full_name}</td><td>{student.class_name}</td><td>{student.section_name || '-'}</td><td>{student.roll_no}</td>
                                   <td className="text-nowrap">{student.created_at ? new Date(student.created_at).toLocaleDateString() : '-'}</td>
                                   <td><Badge bg={student.status === 'approved' ? 'success' : student.status === 'rejected' ? 'danger' : 'secondary'}>{student.status || 'pending'}</Badge></td>
                                   <td className="text-nowrap">
@@ -954,6 +970,7 @@ const [topics, setTopics] = useState([]);
             <Form.Group className="mb-3"><Form.Label>{text.fullName}</Form.Label><Form.Control value={editForm.full_name} onChange={(e) => setEditForm((p) => ({ ...p, full_name: e.target.value }))} required /></Form.Group>
             <Row>
               <Col sm={6}><Form.Group className="mb-3"><Form.Label>{text.className}</Form.Label><Form.Control value={editForm.class_name} onChange={(e) => setEditForm((p) => ({ ...p, class_name: e.target.value }))} required /></Form.Group></Col>
+              <Col sm={6}><Form.Group className="mb-3"><Form.Label>{text.sectionName}</Form.Label><Form.Control value={editForm.section_name} onChange={(e) => setEditForm((p) => ({ ...p, section_name: e.target.value }))} required /></Form.Group></Col>
               <Col sm={6}><Form.Group className="mb-3"><Form.Label>{text.rollNo}</Form.Label><Form.Control type="number" min="0" step="1" value={editForm.roll_no} onChange={(e) => setEditForm((p) => ({ ...p, roll_no: e.target.value }))} required /></Form.Group></Col>
             </Row>
             <small className="text-muted">Student ID: {editingStudent?.student_id}</small>

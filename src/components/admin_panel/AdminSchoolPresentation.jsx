@@ -307,7 +307,7 @@ const AdminSchoolPresentation = () => {
 
   const getStudentNames = (group) => {
     if (Array.isArray(group.student_details) && group.student_details.length) {
-      return group.student_details.map((student) => `${student.full_name || student.student_id}${student.class_name ? ` · Class ${student.class_name}` : ''}${student.roll_no !== undefined && student.roll_no !== null ? ` · Roll ${student.roll_no}` : ''}`).join(', ');
+      return group.student_details.map((student) => `${student.full_name || student.student_id}${student.class_name ? ` · Class ${student.class_name}` : ''}${student.section_name ? ` · Section ${student.section_name}` : ''}${student.roll_no !== undefined && student.roll_no !== null ? ` · Roll ${student.roll_no}` : ''}`).join(', ');
     }
     return getStudentIds(group).join(', ') || 'No student details returned';
   };

@@ -744,3 +744,12 @@
   font-size: 0.73rem;
   line-height: 1.45;
 }
+
+/* Keep the multi-select in document flow so opening it does not cover form fields. */
+.presentation-registration__student-dropdown-menu {
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  float: none;
+  margin-top: 6px !important;
+}
