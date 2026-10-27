@@ -412,6 +412,7 @@ const AdminMarks = () => {
                     <tr>
                       <th>School</th>
                       <th>Group Name</th>
+                      <th>Parameters</th>
                       <th>Points</th>
                       <th>Max Points</th>
                     </tr>
@@ -421,6 +422,11 @@ const AdminMarks = () => {
                       <tr key={ev.id}>
                         <td>{ev.school_name || '—'}</td>
                         <td><strong>{ev.group_name || 'Unnamed'}</strong></td>
+                        <td>
+                          {Array.isArray(ev.evaluation_details)
+                            ? ev.evaluation_details.map((d) => `${d.criteria}: ${d.points}/${d.max_points}`).join(', ')
+                            : '—'}
+                        </td>
                         <td className="text-center">
                           {Array.isArray(ev.evaluation_details)
                             ? ev.evaluation_details.reduce((s, d) => s + (Number(d.points) || 0), 0)
