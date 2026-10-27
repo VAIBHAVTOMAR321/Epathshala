@@ -221,6 +221,9 @@ const AdminMarks = () => {
     }
   };
 
+  const isEvaluated = (submissionId) =>
+    evaluations.some((ev) => ev.submission === submissionId || ev.submission_id === submissionId);
+
   const getStudentNames = (group) => {
     if (Array.isArray(group.student_details) && group.student_details.length) {
       return group.student_details.map((s) => s.full_name || s.student_id).join(', ');
@@ -371,8 +374,8 @@ const AdminMarks = () => {
                           {!submission.submission_link && !submission.submission_file ? <span className="text-muted">None</span> : null}
                         </td>
                         <td className="text-center">
-                          <Badge bg={submission.point ? 'success' : 'secondary'}>
-                            {submission.point ?? '—'}
+                          <Badge bg={submission.point || isEvaluated(submission.id) ? 'success' : 'secondary'}>
+                            {submission.point ?? (isEvaluated(submission.id) ? 'Done' : '—')}
                           </Badge>
                         </td>
                         <td className="text-center">
@@ -380,9 +383,9 @@ const AdminMarks = () => {
                             variant="outline-primary"
                             size="sm"
                             onClick={() => handleSelectSubmission(submission)}
-                            disabled={saving}
+                            disabled={saving || isEvaluated(submission.id)}
                           >
-                            <FaEdit /> Evaluate
+                            <FaEdit /> {isEvaluated(submission.id) ? 'Evaluated' : 'Evaluate'}
                           </Button>
                         </td>
                       </tr>
