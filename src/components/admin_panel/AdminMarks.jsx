@@ -211,8 +211,9 @@ const AdminMarks = () => {
         })),
         max_point: totalMaxPoint
       };
-      await axios.post(EVALUATION_API_URL, payload, getAuthConfig());
-      setSuccess('Evaluation submitted successfully.');
+       await axios.post(EVALUATION_API_URL, payload, getAuthConfig());
+       setSuccess('Evaluation submitted successfully.');
+       await fetchEvaluations();
     } catch (err) {
       const detail = err?.response?.data;
       setError(detail?.detail || detail?.message || 'Unable to submit evaluation.');
@@ -223,6 +224,15 @@ const AdminMarks = () => {
 
   const isEvaluated = (submissionId) =>
     evaluations.some((ev) => ev.submission === submissionId || ev.submission_id === submissionId);
+
+  const getEvaluatedPoints = (submissionId) => {
+    const ev = evaluations.find((e) => e.submission === submissionId || e.submission_id === submissionId);
+    if (!ev) return null;
+    if (Array.isArray(ev.evaluation_details)) {
+      return ev.evaluation_details.reduce((s, d) => s + (Number(d.points) || 0), 0);
+    }
+    return ev.point ?? null;
+  };
 
   const getStudentNames = (group) => {
     if (Array.isArray(group.student_details) && group.student_details.length) {
@@ -375,7 +385,7 @@ const AdminMarks = () => {
                         </td>
                         <td className="text-center">
                           <Badge bg={submission.point || isEvaluated(submission.id) ? 'success' : 'secondary'}>
-                            {submission.point ?? (isEvaluated(submission.id) ? 'Done' : '—')}
+                            {isEvaluated(submission.id) ? (getEvaluatedPoints(submission.id) ?? '—') : (submission.point ?? '—')}
                           </Badge>
                         </td>
                         <td className="text-center">
