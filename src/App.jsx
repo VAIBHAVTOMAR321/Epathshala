@@ -38,6 +38,7 @@ import SchoolQuiz from "./components/admin_panel/SchoolQuiz";
 import CourseFeedback from "./components/admin_panel/CourseFeedback";
 import AdminSchoolPresentation from "./components/admin_panel/AdminSchoolPresentation";
 import SchoolPresentation from "./components/school_panel/SchoolPresentation";
+import SchoolMarks from "./components/school_panel/SchoolMarks";
 import UserQuiz from "./components/user_panel/UserQuiz";
 import TenthGuidance from "./components/user_panel/TenthGuidance";
 import OccupationDetails from "./components/user_panel/OccupationDetails";
@@ -64,6 +65,8 @@ import Timeschedule from "./components/user_panel/Timeschedule";
 import Competitive from "./components/pages/Competitive";
 import CounselingDetails from "./components/user_panel/CounselingDetails";
 import CompetitiveExamQuiz from "./components/admin_panel/CompetitiveExamQuiz";
+import AddJudge from "./components/admin_panel/AddJudge";
+import AdminMarks from "./components/admin_panel/AdminMarks";
 
 // import TwelfthGuidance from "./components/user_panel/TwelfthGuidance";
 
@@ -113,7 +116,10 @@ function NavBarWrapper() {
       "/SchoolSendQuery",
       "/Timeschedule",
       "/CompetitiveExamQuiz",
-      "/counseling-details"
+      "/counseling-details",
+      "/SchoolMarks",
+      "/AddJudge",
+      "/AdminMarks"
 
     ];
 
@@ -172,7 +178,10 @@ function FooterWrapper() {
     "/CompetitiveExamQuiz",
     "/counseling-details",
     "/AdminSchoolPresentation",
-    "/SchoolPresentation"
+    "/SchoolPresentation",
+    "/SchoolMarks",
+    "/AddJudge",
+    "/AdminMarks"
   ];
 
   const shouldHide = hideOnRoutes.some((route) =>
@@ -222,6 +231,14 @@ function AppContent() {
             </ProtectedRoute>
           }
         />{" "}
+         <Route
+          path="/AdminMarks"
+          element={
+            <ProtectedRoute>
+              <AdminMarks />
+            </ProtectedRoute>
+          }
+        />{" "}
         <Route
           path="/UserDashboard"
           element={
@@ -255,6 +272,7 @@ function AppContent() {
     </ProtectedRoute>
   }
 />
+
 
         <Route
           path="/TwelfthGuidance"
@@ -409,6 +427,14 @@ function AppContent() {
           }
         />
         <Route
+          path="/SchoolMarks"
+          element={
+            <ProtectedRoute>
+              <SchoolMarks />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/QuizManagement"
           element={
             <ProtectedRoute>
@@ -541,6 +567,14 @@ function AppContent() {
           element={
             <ProtectedRoute>
               <CounselingDetails />
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/AddJudge"
+          element={
+            <ProtectedRoute>
+              <AddJudge />
             </ProtectedRoute>
           }
         />

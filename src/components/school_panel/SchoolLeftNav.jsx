@@ -92,6 +92,11 @@ const menuItems = [
     label: "Feedback & Queries",
     path: "/SchoolSendQuery",
   },
+   {
+    icon: <FaQuestionCircle />,
+    label: "School Marks",
+    path: "/SchoolMarks",
+  },
   ];
 
   //  Auto-close sidebar when switching to mobile or tablet

@@ -3,6 +3,12 @@
     height: 40px !important;
     object-fit: cover;
 }
+.dashboard-box{
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+   padding: 8px;
+    background-color: #fff;
+    border-radius: 8px;
+}
 /* --- Compact Card Size and Font --- */
 .dashboard-cards-grid {
     display: grid;

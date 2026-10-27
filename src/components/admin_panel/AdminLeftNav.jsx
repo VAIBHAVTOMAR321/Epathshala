@@ -143,30 +143,23 @@ const menuItems = [
     label: "Manage Counselors",
     path: "/ManageCounselors",
   },
+
   {
     icon: <FaCube />,
-    label: "Seminar & More",
+    label: "Judge & Marks",
     submenu: [
-      // {
-      //   label: "Add Job",
-      //   path: "/AddJob",
-      //   icon: <FaPlusSquare />,
-      // },
       {
-        label: "Manage Seminar & Workshop",
-        path: "/ManageJobs",
-        icon: <FaListUl />,
-      },
-      {
-        label: "Add Seminar",
-        path: "/AddSeminar",
+        label: "Add Judge",
+        path: "/AddJudge",
         icon: <FaPlusSquare />,
       },
-      {
-        label: "Add Workshop",
-        path: "/AddWorkshop",
-        icon: <FaListUl />,
+      
+       {
+        label: " Add Marks",
+        path: "/AdminMarks",
+        icon: <FaPlusSquare />,
       },
+      
     ],
   },
   {
