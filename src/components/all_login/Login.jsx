@@ -55,14 +55,14 @@ const Login = () => {
       roles: {
         '9th-student': '9th Student', '10th-student': '10th Student',
         '11th-student': '11th Student', '12th-student': '12th Student',
-        'admin': 'Admin', 'school': 'School'
+        'admin': 'Admin', 'school': 'School', 'sch-presentation-judge': 'Judge'
       }
       ,roleHeadings: {
         '9th-student': '9th Class Login',
         '10th-student': '10th Class Login',
         '11th-student': '11th Class Login',
         '12th-student': '12th Class Login',
-        'admin': 'Admin Login', 'school': 'School Login'
+        'admin': 'Admin Login', 'school': 'School Login', 'sch-presentation-judge': 'Judge Login'
       }
     },
     hi: {
@@ -96,14 +96,14 @@ const Login = () => {
       roles: {
         '9th-student': '9वीं छात्र', '10th-student': '10वीं छात्र',
         '11th-student': '11वीं छात्र', '12th-student': '12वीं छात्र',
-        'admin': 'एडमिन', 'school': 'शैक्षणिक संस्था'
+        'admin': 'एडमिन', 'school': 'शैक्षणिक संस्था', 'sch-presentation-judge': 'जज'
       }
       ,roleHeadings: {
         '9th-student': '9वीं कक्षा लॉगिन',
         '10th-student': '10वीं कक्षा लॉगिन',
         '11th-student': '11वीं कक्षा लॉगिन',
         '12th-student': '12वीं कक्षा लॉगिन',
-        'admin': 'एडमिन लॉगिन', 'school': 'स्कूल लॉगिन'
+        'admin': 'एडमिन लॉगिन', 'school': 'स्कूल लॉगिन', 'sch-presentation-judge': 'जज लॉगिन'
       }
     }
   };
@@ -120,6 +120,7 @@ const Login = () => {
   const otherRoleOptions = [
     { value: 'school', label: t.roles['school'], icon: 'bi-building' },
     { value: 'admin', label: t.roles['admin'], icon: 'bi-person-workspace' },
+    { value: 'sch-presentation-judge', label: t.roles['sch-presentation-judge'], icon: 'bi-person-badge' },
   ];
 
   const t_student = language === 'hi' ? 'छात्र' : 'Student';
@@ -151,6 +152,7 @@ const Login = () => {
     let currentError = '';
     switch (formData.role) {
       case 'admin':
+      case 'sch-presentation-judge':
         if (!formData.email_or_phone) currentError = t.validation.emailRequired;
         break;
       case 'school':
@@ -174,7 +176,7 @@ const Login = () => {
         password: formData.password,
       };
 
-      if (formData.role === 'admin') {
+      if (formData.role === 'admin' || formData.role === 'sch-presentation-judge') {
         payload.email_or_phone = formData.email_or_phone;
       } else if (formData.role === 'school') {
         payload.school_id = formData.school_id;
@@ -201,6 +203,8 @@ const Login = () => {
           navigate('/DashBord');
         } else if (response.data.role === 'school') {
           navigate('/SchoolDashBoard');
+        } else if (response.data.role === 'sch-presentation-judge') {
+          navigate('/JudgeDashBoard');
         } else {
           navigate('/UserDashboard');
         }
@@ -286,7 +290,7 @@ const Login = () => {
               </div>
             )}
 
-            {formData.role === 'admin' && (
+            {(formData.role === 'admin' || formData.role === 'sch-presentation-judge') && (
               <div className="form-group">
                 <label>{t.emailPhone}</label>
                 <div className="input-wrapper">

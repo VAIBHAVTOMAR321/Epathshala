@@ -23,6 +23,19 @@ const asArray = (response) => {
   return [];
 };
 
+const getErrorMessage = (error) => {
+  if (error.response?.data) {
+    const data = error.response.data;
+    if (typeof data === 'object') {
+      return Object.entries(data)
+        .map(([key, value]) => `${key}: ${Array.isArray(value) ? value.join(', ') : value}`)
+        .join('; ');
+    }
+    return String(data);
+  }
+  return error.message || 'An error occurred';
+};
+
 const AddJudge = () => {
   const { accessToken } = useAuth();
   const location = useLocation();
@@ -77,8 +90,8 @@ const AddJudge = () => {
     try {
       const response = await axios.get(SCHOOL_LIST_API_URL, getAuthConfig());
       setSchools(asArray(response.data));
-    } catch {
-      setError('Unable to load school list.');
+    } catch (err) {
+      setError(getErrorMessage(err));
     }
   }, [accessToken, getAuthConfig]);
 
@@ -93,8 +106,8 @@ const AddJudge = () => {
       const response = await axios.get(JUDGE_API_URL, getAuthConfig());
       setJudges(asArray(response.data));
       setError('');
-    } catch {
-      setError('Unable to load judges.');
+    } catch (err) {
+      setError(getErrorMessage(err));
       setJudges([]);
     } finally {
       setLoading(false);
@@ -187,8 +200,8 @@ const AddJudge = () => {
       closeForm();
       setSuccess(editMode ? 'Judge updated successfully.' : 'Judge added successfully.');
       await fetchJudges();
-    } catch {
-      setError('Unable to save judge.');
+    } catch (err) {
+      setError(getErrorMessage(err));
     } finally {
       setSaving(false);
     }
@@ -220,8 +233,8 @@ const AddJudge = () => {
       });
       setSuccess('Judge deleted successfully.');
       await fetchJudges();
-    } catch {
-      setError('Unable to delete judge.');
+    } catch (err) {
+      setError(getErrorMessage(err));
     } finally {
       setSaving(false);
     }

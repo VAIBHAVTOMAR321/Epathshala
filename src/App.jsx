@@ -67,6 +67,7 @@ import CounselingDetails from "./components/user_panel/CounselingDetails";
 import CompetitiveExamQuiz from "./components/admin_panel/CompetitiveExamQuiz";
 import AddJudge from "./components/admin_panel/AddJudge";
 import AdminMarks from "./components/admin_panel/AdminMarks";
+import JudgeDashBoard from "./components/judge_panel/JudgeDashBoard";
 
 // import TwelfthGuidance from "./components/user_panel/TwelfthGuidance";
 
@@ -119,7 +120,8 @@ function NavBarWrapper() {
       "/counseling-details",
       "/SchoolMarks",
       "/AddJudge",
-      "/AdminMarks"
+      "/AdminMarks",
+      "/JudgeDashBoard"
 
     ];
 
@@ -181,7 +183,8 @@ function FooterWrapper() {
     "/SchoolPresentation",
     "/SchoolMarks",
     "/AddJudge",
-    "/AdminMarks"
+    "/AdminMarks",
+    "/JudgeDashBoard"
   ];
 
   const shouldHide = hideOnRoutes.some((route) =>
@@ -559,6 +562,14 @@ function AppContent() {
           element={
             <ProtectedRoute>
               <OccupationDetails />
+            </ProtectedRoute>
+          }
+        />
+          <Route
+          path="/JudgeDashBoard"
+          element={
+            <ProtectedRoute>
+              <JudgeDashBoard />
             </ProtectedRoute>
           }
         />
