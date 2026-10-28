@@ -177,7 +177,10 @@ const AdminMarks = () => {
 
   const handleChange = (index, value) => {
     const next = [...evaluationDetails];
-    next[index].points = value;
+    const max = Number(next[index].max_points || 0);
+    let v = value;
+    if (v !== '' && Number(v) > max) v = String(max);
+    next[index].points = v;
     setEvaluationDetails(next);
   };
 
