@@ -159,6 +159,12 @@ const menuItems = [
         path: "/AdminMarks",
         icon: <FaPlusSquare />,
       },
+       {
+   
+    label: "School Presentation",
+    path: "/AdminSchoolPresentation",
+     icon: <FaClipboardList />,
+  },
       
     ],
   },
@@ -167,11 +173,7 @@ const menuItems = [
     label: "Course Feedback",
     path: "/CourseFeedback",
   },
-  {
-    icon: <FaClipboardList />,
-    label: "School Presentation",
-    path: "/AdminSchoolPresentation",
-  },
+ 
   {
     icon: <FaQuestionCircle />,
     label: "All Queries",
