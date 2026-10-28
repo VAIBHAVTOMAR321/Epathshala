@@ -24,9 +24,10 @@ const asArray = (response) => {
 };
 
 const getErrorMessage = (error) => {
-  if (error.response?.data) {
-    const data = error.response.data;
+  const data = error.response?.data;
+  if (data) {
     if (typeof data === 'object') {
+      if (data.message) return data.message;
       return Object.entries(data)
         .map(([key, value]) => `${key}: ${Array.isArray(value) ? value.join(', ') : value}`)
         .join('; ');
@@ -223,13 +224,13 @@ const AddJudge = () => {
     setShowForm(true);
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (judge) => {
     if (!window.confirm('Are you sure you want to delete this judge?')) return;
     setSaving(true);
     try {
-      await axios.delete(`${JUDGE_API_URL}${id}/`, {
+      await axios.delete(`${JUDGE_API_URL}`, {
         ...getAuthConfig(),
-        data: { id }
+        data: { id: judge.id, school_uni_id: judge.school_uni_id }
       });
       setSuccess('Judge deleted successfully.');
       await fetchJudges();
@@ -305,7 +306,7 @@ const AddJudge = () => {
                             <FaEdit /> Edit
                           </Button>
                           {' '}
-                          <Button variant="outline-danger" size="sm" onClick={() => handleDelete(judge.id)} disabled={saving}>
+                          <Button variant="outline-danger" size="sm" onClick={() => handleDelete(judge)} disabled={saving}>
                             <FaTrash /> Delete
                           </Button>
                         </td>
