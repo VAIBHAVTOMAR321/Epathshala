@@ -38,7 +38,7 @@ import SchoolQuiz from "./components/admin_panel/SchoolQuiz";
 import CourseFeedback from "./components/admin_panel/CourseFeedback";
 import AdminSchoolPresentation from "./components/admin_panel/AdminSchoolPresentation";
 import SchoolPresentation from "./components/school_panel/SchoolPresentation";
-import SchoolMarks from "./components/school_panel/SchoolMarks";
+import SchoolRegistration from "./components/school_panel/SchoolRegistration";
 import UserQuiz from "./components/user_panel/UserQuiz";
 import TenthGuidance from "./components/user_panel/TenthGuidance";
 import OccupationDetails from "./components/user_panel/OccupationDetails";
