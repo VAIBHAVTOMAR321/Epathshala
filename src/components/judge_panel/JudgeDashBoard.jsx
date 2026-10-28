@@ -131,7 +131,7 @@ const JudgeDashBoard = () => {
         <Container fluid className="dashboard-box mt-3">
          
 
-         
+         Judge
 
          
         </Container>
