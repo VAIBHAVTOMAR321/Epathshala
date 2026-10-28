@@ -29,6 +29,7 @@ import {
   FaChartPie,
   FaFilter,
   FaEye,
+  FaFileAlt,
   FaLightbulb,
   FaSortAmountDown,
   FaSortAmountDownAlt,
@@ -107,6 +108,52 @@ const JudgeDashBoard = () => {
   const [schoolRanks, setSchoolRanks] = useState([]);
   const [schoolRankLoading, setSchoolRankLoading] = useState(false);
 
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchSubmissions = async () => {
+      if (!accessToken) {
+        setLoading(false);
+        return;
+      }
+
+      setLoading(true);
+      setError("");
+
+      try {
+        const response = await axios.get(
+          "https://brjobsedu.com/epathshala/epathshala_backend/api/student-presentation-submissions-by-judge/",
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (isMounted) {
+          setQueries(Array.isArray(response.data) ? response.data : []);
+        }
+      } catch (err) {
+        if (isMounted) {
+          console.error("Error fetching submissions:", err);
+          setError("Failed to load presentation submissions");
+          setQueries([]);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchSubmissions();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [accessToken]);
+
   const toggleSidebar = () => {
     if (isMobile || isTablet) {
       setSidebarOpen(!sidebarOpen);
@@ -129,11 +176,111 @@ const JudgeDashBoard = () => {
         <JudgeTopNav toggleSidebar={toggleSidebar} />
 
         <Container fluid className="dashboard-box mt-3">
-         
+          {loading && (
+            <div className="text-center py-5">
+              <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            </div>
+          )}
 
-         Judge
+          {error && !loading && (
+            <Alert variant="danger" className="mb-3">
+              {error}
+            </Alert>
+          )}
 
-         
+          {!loading && !error && queries.length > 0 && (
+            <>
+              <Row className="mb-3">
+                <Col>
+                  <h4 className="fw-bold">Student Presentation Submissions</h4>
+                  <p className="text-muted">
+                    Total submissions: {queries.length}
+                  </p>
+                </Col>
+              </Row>
+
+              <Table striped bordered hover responsive className="table-card">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>School</th>
+                    <th>Group</th>
+                    <th>Topic</th>
+                    <th>Students</th>
+                    <th>Point</th>
+                    <th>Submission Link</th>
+                    <th>Submission File</th>
+                    <th>Created At</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {queries.map((submission, index) => (
+                    <tr key={submission.id}>
+                      <td>{index + 1}</td>
+                      <td>{submission.school_name}</td>
+                      <td>{submission.group_name}</td>
+                      <td>{submission.topic_name}</td>
+                      <td>
+                        {Array.isArray(submission.student_ids)
+                          ? submission.student_ids.join(", ")
+                          : "-"}
+                      </td>
+                      <td>
+                        <Badge
+                          variant={
+                            submission.point >= 80
+                              ? "success"
+                              : submission.point >= 50
+                                ? "warning"
+                                : "secondary"
+                          }
+                        >
+                          {submission.point}
+                        </Badge>
+                      </td>
+                      <td>
+                        {submission.submission_link ? (
+                          <a
+                            href={submission.submission_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-decoration-none"
+                          >
+                            <FaEye /> View
+                          </a>
+                        ) : (
+                          <span className="text-muted">-</span>
+                        )}
+                      </td>
+                      <td>
+                        {submission.submission_file ? (
+                          <a
+                            href={`https://brjobsedu.com/epathshala/epathshala_backend${submission.submission_file}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-decoration-none"
+                          >
+                            <FaFileAlt /> Download
+                          </a>
+                        ) : (
+                          <span className="text-muted">-</span>
+                        )}
+                      </td>
+                      <td>{new Date(submission.created_at).toLocaleDateString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </>
+          )}
+
+          {!loading && !error && queries.length === 0 && (
+            <Alert variant="info" className="mt-4">
+              No presentation submissions found.
+            </Alert>
+          )}
         </Container>
       </div>
     </div>

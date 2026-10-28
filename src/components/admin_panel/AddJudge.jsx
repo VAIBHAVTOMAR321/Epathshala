@@ -194,7 +194,7 @@ const AddJudge = () => {
     setSaving(true);
     try {
       if (editMode && editId) {
-        await axios.put(`${JUDGE_API_URL}${editId}/`, formData, getAuthConfig());
+        await axios.put(`${JUDGE_API_URL}`, formData, getAuthConfig());
       } else {
         await axios.post(JUDGE_API_URL, formData, getAuthConfig());
       }
