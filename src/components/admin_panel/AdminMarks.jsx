@@ -421,8 +421,13 @@ const AdminMarks = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {evaluations.map((ev) => (
-                      <tr key={ev.id}>
+                    {evaluations.map((ev) => {
+                      const total = Array.isArray(ev.evaluation_details)
+                        ? ev.evaluation_details.reduce((s, d) => s + (Number(d.points) || 0), 0)
+                        : (Number(ev.point) || 0);
+                      const full = total === Number(ev.max_point);
+                      return (
+                      <tr key={ev.id} className={full ? 'table-success' : ''}>
                         <td>{ev.school_name || '—'}</td>
                         <td><strong>{ev.group_name || 'Unnamed'}</strong></td>
                         <td>
@@ -437,7 +442,8 @@ const AdminMarks = () => {
                         </td>
                         <td className="text-center">{ev.max_point ?? '—'}</td>
                       </tr>
-                    ))}
+                      );
+                    })}
                   </tbody>
                 </Table>
               )}
