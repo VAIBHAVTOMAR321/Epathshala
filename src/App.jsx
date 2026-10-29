@@ -67,6 +67,7 @@ import CounselingDetails from "./components/user_panel/CounselingDetails";
 import CompetitiveExamQuiz from "./components/admin_panel/CompetitiveExamQuiz";
 import AddJudge from "./components/admin_panel/AddJudge";
 import AdminMarks from "./components/admin_panel/AdminMarks";
+import AllJudgesMarks from "./components/admin_panel/AllJudgesMarks";
 import JudgeDashBoard from "./components/judge_panel/JudgeDashBoard";
 
 // import TwelfthGuidance from "./components/user_panel/TwelfthGuidance";
@@ -120,8 +121,11 @@ function NavBarWrapper() {
       "/counseling-details",
 
       "/AddJudge",
-      "/AdminMarks",
-      "/JudgeDashBoard"
+       "/AdminMarks",
+     "/AllJudgesMarks",
+       "/AllJudgesMarks",
+      "/JudgeDashBoard",
+  
 
     ];
 
@@ -184,7 +188,8 @@ function FooterWrapper() {
 
     "/AddJudge",
     "/AdminMarks",
-    "/JudgeDashBoard"
+    "/JudgeDashBoard",
+    "/AllJudgesMarks"
   ];
 
   const shouldHide = hideOnRoutes.some((route) =>
@@ -533,14 +538,22 @@ function AppContent() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/AddSeminar"
-          element={
-            <ProtectedRoute>
-              <AddSeminar />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+           path="/AdminMarks"
+           element={
+             <ProtectedRoute>
+               <AdminMarks />
+             </ProtectedRoute>
+           }
+         />
+          <Route
+           path="/AllJudgesMarks"
+           element={
+             <ProtectedRoute>
+               <AllJudgesMarks />
+             </ProtectedRoute>
+           }
+         />
         <Route
           path="/AddWorkshop"
           element={

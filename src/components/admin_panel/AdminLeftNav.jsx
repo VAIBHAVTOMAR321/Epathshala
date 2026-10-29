@@ -154,11 +154,16 @@ const menuItems = [
         icon: <FaPlusSquare />,
       },
       
-       {
-        label: " Add Marks",
-        path: "/AdminMarks",
-        icon: <FaPlusSquare />,
-      },
+        {
+         label: " Add Marks",
+         path: "/AdminMarks",
+         icon: <FaPlusSquare />,
+       },
+        {
+         label: " All Judges Marks",
+         path: "/AllJudgesMarks",
+         icon: <FaPlusSquare />,
+       },
        {
    
     label: "School Presentation",
