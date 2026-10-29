@@ -95,7 +95,7 @@ const menuItems = [
    {
     icon: <FaQuestionCircle />,
     label: "School Marks",
-    path: "/SchoolMarks",
+
   },
   ];
 
