@@ -402,7 +402,7 @@ const AdminSchoolPresentation = () => {
                               <div className="asp-detail-heading"><div><h3>Presentation groups</h3><p>{school.groupCount} group{school.groupCount === 1 ? '' : 's'} · {school.studentCount} unique registered student{school.studentCount === 1 ? '' : 's'}</p></div></div>
                               {school.groups.length === 0 ? <div className="asp-no-groups">No presentation groups have been submitted by this school yet.</div> : (
                                 <div className="table-responsive"><Table className="asp-groups-table mb-0">
-                                  <thead><tr><th>Group / topic</th><th>Students in group</th><th>Presentation link</th><th>Presentation file</th><th>Points</th><th>Submitted on</th></tr></thead>
+                                  <thead><tr><th>Group / topic</th><th>Students in group</th><th>Presentation link</th><th>Presentation file</th><th>Submitted on</th></tr></thead>
                                   <tbody>{school.groups.map((group, index) => {
                                     const file = clean(group.submission_file);
                                     const link = clean(group.submission_link);
@@ -412,7 +412,6 @@ const AdminSchoolPresentation = () => {
                                       <td><div className="asp-member-count">{getStudentIds(group).length} students</div><div className="asp-member-list">{getStudentNames(group)}</div></td>
                                       <td>{link ? <a className="asp-resource-link" href={link} target="_blank" rel="noreferrer">Open link <FaExternalLinkAlt /></a> : <span className="asp-muted">Not provided</span>}</td>
                                       <td>{fileUrl ? <a className="asp-resource-link" href={fileUrl} target="_blank" rel="noreferrer">View file <FaExternalLinkAlt /></a> : <span className="asp-muted">Not provided</span>}</td>
-                                      <td><Badge bg="light" text="dark" className="asp-points">{group.point ?? 0}</Badge></td>
                                       <td>{group.created_at ? new Date(group.created_at).toLocaleDateString() : '—'}</td>
                                     </tr>;
                                   })}</tbody>
