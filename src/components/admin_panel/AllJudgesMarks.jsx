@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
-  Container, Row, Col, Table, Spinner, Alert, Form
+  Container, Row, Col, Table, Spinner, Alert, Form, Modal, Button
 } from 'react-bootstrap';
 import axios from 'axios';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import * as XLSX from 'xlsx';
@@ -12,7 +12,7 @@ import AdminHeader from './AdminHeader';
 import { useAuth } from '../all_login/AuthContext';
 
 const OVERALL_LIST_API_URL =
-  'https://brjobsedu.com/epathshala/epathshala_backend/api/student-presentation-evaluation-overall-list/';
+  'https://brjobsedu.com/epathshala/epathshala_backend/api/student-presentation-summary/';
 
 const asArray = (response) => {
   if (Array.isArray(response)) return response;
@@ -37,6 +37,7 @@ const AllJudgesMarks = () => {
   const [topicFilter, setTopicFilter] = useState('all');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -183,6 +184,14 @@ const AllJudgesMarks = () => {
                 ))}
               </Form.Select>
             </Col>
+             <Col md="auto">
+               <Form.Select value={topicFilter} onChange={(e) => setTopicFilter(e.target.value)}>
+                 <option value="all">All Topics</option>
+                 {[...new Set(items.map((i) => i.topic_name).filter(Boolean))].map((t) => (
+                   <option key={t} value={t}>{t}</option>
+                 ))}
+               </Form.Select>
+             </Col>
             <Col md="auto">
               <button className="btn btn-danger btn-sm me-2" onClick={exportPDF}>Export PDF</button>
               <button className="btn btn-success btn-sm" onClick={exportExcel}>Export Excel</button>
@@ -198,92 +207,96 @@ const AllJudgesMarks = () => {
               if (topicFilter !== 'all' && item.topic_name !== topicFilter) return false;
               return true;
             });
-            if (filtered.length === 0) return <Alert variant="info">No data found.</Alert>;
-            const chartData = filtered.map((item) => ({
-              name: `${item.school_name} - ${item.group_name}`,
-              points: (item.evaluations || []).reduce((s, ev) => s + (Array.isArray(ev.evaluation_details) ? ev.evaluation_details.reduce((a, d) => a + (Number(d.obtained_point ?? d.points) || 0), 0) : (Number(ev.point) || 0)), 0)
-            }));
-            return (
-              <>
-                <div style={{ display: 'flex', gap: 16, marginBottom: 16 }}>
-                  <div style={{ flex: 1, height: 260 }}>
-                    <ResponsiveContainer>
-                      <BarChart data={chartData}>
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                        <Tooltip />
-                        <Bar dataKey="points" fill="#0d6efd" />
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                  <div style={{ flex: 1, height: 260 }}>
-                    <ResponsiveContainer>
-                      <PieChart>
-                        <Pie data={chartData} dataKey="points" nameKey="name" cx="50%" cy="50%" outerRadius={90} label>
-                          {chartData.map((_, i) => <Cell key={i} fill={['#0d6efd','#198754','#ffc107','#dc3545','#6f42c1'][i % 5]} />)}
-                        </Pie>
-                        <Tooltip />
-                      </PieChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-              <Table striped bordered hover className="align-middle">
+             if (filtered.length === 0) return <Alert variant="info">No data found.</Alert>;
+             return (
+               <>
+                <div style={{ overflowX: 'auto' }}>
+                <Table striped bordered hover className="align-middle" style={{ whiteSpace: 'nowrap' }}>
                 <thead style={{ backgroundColor: '#0d6efd', color: '#fff' }}>
-                  <tr>
-                    <th>School</th>
-                    <th>Group</th>
-                    <th>Topic</th>
-                    <th>Judge</th>
-                    <th>Criteria</th>
-                    <th className="text-center">Points</th>
-                    <th className="text-center">Max</th>
-                    <th className="text-center">Total</th>
-                  </tr>
+                   <tr>
+                     <th>School</th>
+                     <th>Group</th>
+                     <th>Topic</th>
+                     <th>Rank</th>
+                     <th>Total Obtained</th>
+                     <th>Action</th>
+                   </tr>
                 </thead>
                 <tbody>
-                  {filtered.flatMap((item) => {
-                    const evals = item.evaluations || [];
-                    if (evals.length === 0) {
-                      return [(
-                        <tr key={`empty-${item.id}`}>
-                          <td>{item.school_name || '—'}</td>
-                          <td>{item.group_name || '—'}</td>
-                          <td>{item.topic_name || '—'}</td>
-                          <td colSpan={5} className="text-center text-muted">No evaluations.</td>
-                        </tr>
-                      )];
-                    }
-                    return evals.map((ev) => (
-                      <tr key={ev.id}>
-                        <td>{item.school_name || '—'}</td>
-                        <td>{item.group_name || '—'}</td>
-                        <td>{item.topic_name || '—'}</td>
-                        <td>{ev.created_by || '—'}</td>
-                        <td>
-                          {Array.isArray(ev.evaluation_details)
-                            ? ev.evaluation_details.map((d, i) => (
-                                <div key={i}>
-                                  {d.criteria}: <span style={{ color: '#0d6efd', fontWeight: 600 }}>{d.obtained_point ?? d.points ?? '—'}</span>/{d.max_point ?? d.max_points ?? '—'}
-                                </div>
-                              ))
-                            : '—'}
-                        </td>
-                        <td className="text-center">
-                          {Array.isArray(ev.evaluation_details)
-                            ? ev.evaluation_details.reduce((s, d) => s + (Number(d.obtained_point ?? d.points) || 0), 0)
-                            : (ev.point ?? '—')}
-                        </td>
-                        <td className="text-center">{ev.max_point ?? '—'}</td>
-                        <td className="text-center"><strong>{ev.max_point ?? '—'}</strong></td>
-                      </tr>
-                    ));
-                  })}
+                   {filtered.map((item) => {
+                     const evals = item.evaluations || [];
+                     if (evals.length === 0) {
+                       return (
+                         <tr key={`empty-${item.submission_id}`}>
+                           <td>{item.school_name || '—'}</td>
+                           <td>{item.group_name || '—'}</td>
+                           <td>{item.topic_name || '—'}</td>
+                           <td className="text-center">{item.rank ?? '—'}</td>
+                           <td className="text-center">{item.total_obtained_point ?? '—'}</td>
+                           <td><Button size="sm" onClick={() => setSelected(item)}>View</Button></td>
+                         </tr>
+                       );
+                     }
+                     return (
+                       <tr key={item.submission_id}>
+                         <td>{item.school_name || '—'}</td>
+                         <td>{item.group_name || '—'}</td>
+                         <td>{item.topic_name || '—'}</td>
+                         <td className="text-center">{item.rank ?? '—'}</td>
+                         <td className="text-center">{item.total_obtained_point ?? '—'}</td>
+                         <td><Button size="sm" onClick={() => setSelected(item)}>View</Button></td>
+                       </tr>
+                     );
+                   })}
                 </tbody>
-              </Table>
-              </>
+               </Table>
+               </div>
+               </>
             );
-          })()}
-        </Container>
+           })()}
+          <Modal show={!!selected} onHide={() => setSelected(null)} size="lg">
+            <Modal.Header closeButton><Modal.Title>Submission Details</Modal.Title></Modal.Header>
+            <Modal.Body>
+              {selected && (
+                <div>
+                  <h6 className="mb-2">School & Submission</h6>
+                  <p><strong>School:</strong> {selected.school_name} ({selected.school_uni_id})</p>
+                  <p><strong>Group:</strong> {selected.group_name}</p>
+                  <p><strong>Topic:</strong> {selected.topic_name}</p>
+                  <p><strong>Students:</strong> {(selected.student_ids || []).join(', ')}</p>
+                  <p><strong>Rank:</strong> {selected.rank}</p>
+                  <p><strong>Total Obtained:</strong> {selected.total_obtained_point} / {selected.total_max_point}</p>
+                  <p><strong>Average:</strong> {selected.average_obtained_point}</p>
+                  <p><strong>Submission Link:</strong> {selected.submission_link ? <a href={selected.submission_link} target="_blank" rel="noreferrer">Open</a> : '—'}</p>
+                  <p><strong>Submission File:</strong> {selected.submission_file ? <a href={`https://brjobsedu.com/epathshala/epathshala_backend${selected.submission_file}`} target="_blank" rel="noreferrer">Download</a> : '—'}</p>
+                  <p><strong>Judges:</strong> {(selected.evaluations || []).map(e => e.created_by).join(', ') || '—'}</p>
+                
+                  <hr />
+                  <h6 className="mb-2">Evaluations</h6>
+                  {(selected.evaluations || []).length === 0 && <p className="text-muted">No evaluations.</p>}
+                  {(selected.evaluations || []).map((ev) => (
+                    <div key={ev.id} className="mb-3 border rounded p-2">
+                      <p className="mb-1"><strong>Judge:</strong> <span style={{ color: '#0d6efd', fontWeight: 600 }}>{ev.created_by}</span></p>
+                      <p className="mb-1"><strong>Obtained:</strong> {ev.obtained_point} / {ev.max_point}</p>
+                      <Table size="sm" bordered>
+                        <thead><tr><th>Criteria</th><th>Obtained</th><th>Max</th></tr></thead>
+                        <tbody>
+                          {(ev.evaluation_details || []).map((d, i) => (
+                            <tr key={i}>
+                              <td>{d.criteria}</td>
+                              <td>{d.obtained_point ?? d.points ?? '—'}</td>
+                              <td>{d.max_point ?? d.max_points ?? '—'}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </Table>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </Modal.Body>
+          </Modal>
+         </Container>
       </div>
     </div>
   );
