@@ -557,7 +557,7 @@ setLoading(false);
                         <th>School</th>
                         <th>Group</th>
                         <th>Topic</th>
-                        <th>Students</th>
+                      
                         <th>Submission Link</th>
                         <th>Submission File</th>
                         <th className="text-center">Status</th>
@@ -577,18 +577,7 @@ setLoading(false);
                               <strong>{submission.group_name}</strong>
                             </td>
                             <td>{submission.topic_name}</td>
-                            <td>
-                              {Array.isArray(submission.student_ids)
-                                ? submission.student_ids.join(", ")
-                                : Array.isArray(submission.students)
-                                ? submission.students
-                                    .map(
-                                      (s) =>
-                                        s.student_name || s.full_name || s.name
-                                    )
-                                    .join(", ")
-                                : "-"}
-                            </td>
+                           
                             <td>
                               {submission.submission_link ? (
                                 <a
