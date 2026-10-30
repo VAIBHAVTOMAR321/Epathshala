@@ -14,7 +14,11 @@ body {
 
 
 }
+.table-card th{
+  background-color: #b87b0d;
+  color: #fff;
 
+}
 
 /* svg {
       fill: #0d77cb;

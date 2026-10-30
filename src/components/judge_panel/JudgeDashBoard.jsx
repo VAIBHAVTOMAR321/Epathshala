@@ -611,16 +611,7 @@ setLoading(false);
                                 {evaluated ? "Evaluated" : "Pending"}
                               </Badge>
                             </td>
-                            <td className="text-center small">
-                              {evaluator ? (
-                                <span title={evaluator}>
-                                  <FaUserCheck className="me-1 text-success" />
-                                  {evaluator}
-                                </span>
-                              ) : (
-                                <span className="text-muted">—</span>
-                              )}
-                            </td>
+                          
                             <td className="text-center">
                               <Button
                                 variant="outline-primary"
