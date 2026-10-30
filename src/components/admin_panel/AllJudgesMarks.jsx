@@ -263,7 +263,7 @@ const AllJudgesMarks = () => {
                   <p><strong>School:</strong> {selected.school_name} ({selected.school_uni_id})</p>
                   <p><strong>Group:</strong> {selected.group_name}</p>
                   <p><strong>Topic:</strong> {selected.topic_name}</p>
-                  <p><strong>Students:</strong> {(selected.student_ids || []).join(', ')}</p>
+                  <p><strong>Students ({(selected.student_ids || []).length}):</strong> {(selected.student_ids || []).map((s) => typeof s === 'object' ? (s.full_name || s.student_id || JSON.stringify(s)) : s).join(', ')}</p>
                   <p><strong>Rank:</strong> {selected.rank}</p>
                   <p><strong>Total Obtained:</strong> {selected.total_obtained_point} / {selected.total_max_point}</p>
                   <p><strong>Average:</strong> {selected.average_obtained_point}</p>
