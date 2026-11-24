@@ -648,7 +648,7 @@ setLoading(false);
                       <p className="text-muted small mb-0">
                         Total evaluations: {evaluations.length}
                         {evaluations.length > 0 &&
-                          " · Shows all evaluations by every judge in your school"}
+                          " · Shows all evaluations by every Selection Committee in your school"}
                       </p>
                     </Col>
                   </Row>

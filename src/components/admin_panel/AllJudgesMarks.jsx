@@ -141,7 +141,7 @@ const AllJudgesMarks = () => {
           <Container fluid className="dashboard-box mt-3">
             <div className="text-center py-5">
               <Spinner animation="border" role="status" />
-              <span className="ms-2">Loading all judges marks…</span>
+              <span className="ms-2">Loading all Selection Committee marks…</span>
             </div>
           </Container>
         </div>
@@ -158,7 +158,7 @@ const AllJudgesMarks = () => {
           {error && <Alert variant="danger" dismissible onClose={() => setError('')}>{error}</Alert>}
           <Row className="mb-3 align-items-center">
             <Col md>
-              <h5>All Judges Marks</h5>
+              <h5>All Selection Committee Marks</h5>
               <p className="text-muted small mb-0">Overall presentation evaluation list across judges.</p>
             </Col>
             <Col md="auto">
