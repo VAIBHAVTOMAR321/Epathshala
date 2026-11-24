@@ -199,7 +199,7 @@ const AddJudge = () => {
         await axios.post(JUDGE_API_URL, formData, getAuthConfig());
       }
       closeForm();
-      setSuccess(editMode ? 'Judge updated successfully.' : 'Judge added successfully.');
+      setSuccess(editMode ? 'Selection Committee updated successfully.' : 'Selection Committee added successfully.');
       await fetchJudges();
     } catch (err) {
       setError(getErrorMessage(err));
@@ -225,14 +225,14 @@ const AddJudge = () => {
   };
 
   const handleDelete = async (judge) => {
-    if (!window.confirm('Are you sure you want to delete this judge?')) return;
+    if (!window.confirm('Are you sure you want to delete this Selection Committee?')) return;
     setSaving(true);
     try {
       await axios.delete(`${JUDGE_API_URL}`, {
         ...getAuthConfig(),
         data: { id: judge.id, school_uni_id: judge.school_uni_id }
       });
-      setSuccess('Judge deleted successfully.');
+      setSuccess('Selection Committee deleted successfully.');
       await fetchJudges();
     } catch (err) {
       setError(getErrorMessage(err));
@@ -271,11 +271,11 @@ const AddJudge = () => {
             <>
               <Row className="mb-3 align-items-center">
                 <Col md="auto">
-                  <h5><FaUserTie /> Manage Judges</h5>
+                  <h5><FaUserTie /> Manage Selection Committee</h5>
                 </Col>
                 <Col className="text-end">
                   <Button variant="primary" onClick={openAddForm} disabled={saving}>
-                    <FaPlus /> Add Judge
+                    <FaPlus /> Add Selection Committee
                   </Button>
                 </Col>
               </Row>
@@ -288,7 +288,7 @@ const AddJudge = () => {
                   <thead>
                     <tr>
                       <th>School</th>
-                      <th>Judge Name</th>
+                      <th>Selection Committee Name</th>
                       <th>Phone</th>
                       <th>Achievement</th>
                       <th className="text-center">Action</th>
@@ -321,7 +321,7 @@ const AddJudge = () => {
               <Card.Header>
                 <Row className="align-items-center">
                   <Col md={8}>
-                    {editMode ? <><FaEdit /> Edit Judge</> : <><FaPlus /> Add Judge</>}
+                    {editMode ? <><FaEdit /> Edit Selection Committee</> : <><FaPlus /> Add Selection Committee</>}
                   </Col>
                   <Col md={4} className="text-end">
                     <Button variant="outline-secondary" onClick={closeForm} disabled={saving}>
@@ -377,7 +377,7 @@ const AddJudge = () => {
                   </Row>
                   <Button type="submit" variant="primary" disabled={saving} className="w-auto">
                     {saving ? <Spinner animation="border" size="sm" role="status" /> : ''}
-                    {editMode ? 'Update Judge' : 'Add Judge'}
+                    {editMode ? 'Update Selection Committee' : 'Add Selection Committee'}
                   </Button>
                 </Form>
               </Card.Body>

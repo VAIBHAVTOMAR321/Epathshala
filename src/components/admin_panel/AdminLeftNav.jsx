@@ -146,10 +146,10 @@ const menuItems = [
 
   {
     icon: <FaCube />,
-    label: "Judge & Marks",
+    label: "Selection Committee & Marks",
     submenu: [
       {
-        label: "Add Judge",
+        label: "Add Selection Committee",
         path: "/AddJudge",
         icon: <FaPlusSquare />,
       },
@@ -160,7 +160,7 @@ const menuItems = [
          icon: <FaPlusSquare />,
        },
         {
-         label: " All Judges Marks",
+         label: " All Selection Committee Marks",
          path: "/AllJudgesMarks",
          icon: <FaPlusSquare />,
        },

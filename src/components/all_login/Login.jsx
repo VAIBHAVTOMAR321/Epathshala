@@ -55,14 +55,14 @@ const Login = () => {
       roles: {
         '9th-student': '9th Student', '10th-student': '10th Student',
         '11th-student': '11th Student', '12th-student': '12th Student',
-        'admin': 'Admin', 'school': 'School', 'sch-presentation-judge': 'Judge'
+        'admin': 'Admin', 'school': 'School', 'sch-presentation-judge': 'Selection Committee'
       }
       ,roleHeadings: {
         '9th-student': '9th Class Login',
         '10th-student': '10th Class Login',
         '11th-student': '11th Class Login',
         '12th-student': '12th Class Login',
-        'admin': 'Admin Login', 'school': 'School Login', 'sch-presentation-judge': 'Judge Login'
+        'admin': 'Admin Login', 'school': 'School Login', 'sch-presentation-judge': 'Selection Committee Login'
       }
     },
     hi: {

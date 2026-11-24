@@ -46,9 +46,8 @@ function JudgeTopNav({ toggleSidebar, searchTerm, setSearchTerm }) {
    const [imageError, setImageError] = useState(false);
 
 
-
     const getDisplayName = () => {
-      return userDetails.full_name || "Judge";
+      return userDetails.full_name || "Selection Committee";
     };
 
   // Function to fetch user data with auth handling
